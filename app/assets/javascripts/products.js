@@ -14,5 +14,16 @@ $(document).ready(function() {
     $(this).find('.brand-image').show();
     $(this).find('.trailer-panel').hide();
   });
+
+  var countDown =  function() {
+    $('.product-sale-remain-time').each(function() {
+      var time = $(this).data('time');
+      time = Math.max(time - 1, 0);
+      $(this).data('time', time);
+      $(this).text(time);
+    });
+  };
+  window.setInterval(countDown, 1000);
+  countDown();
 });
 

@@ -152,6 +152,14 @@ body {
   left: 24px;
 }
 
+.on-sale-product .product-sale-remain-time {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: #212121;
+  font-size: 14px;
+}
+
 .upcoming-products {
   width: 100%;
   text-align: center;

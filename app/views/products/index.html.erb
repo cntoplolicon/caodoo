@@ -15,6 +15,8 @@
           <div class="product-current-price">&#165;<%= product.price %></div>
           <div class="product-original-price">原价&#165;<%= product.original_price %> </div>
         </div>
+        <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %>">
+        </div>
       </div>
     <% end %>
   </div>
@@ -29,7 +31,7 @@
         <div class="trailer-panel">
           <%= image_tag(product.product_view.trailer_image_url, class: "trailer-image") %>
           <div class="trailer-content">
-            <div class="trailer-time">下周3</div>
+            <div class="trailer-time"> <%= product.product_sale_schedules[0].sale_start %> </div>
             <div class="trailer-description"> <%= product.product_view.trailer_description %> </div>
           </div>
         </div>
