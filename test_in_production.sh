@@ -1,0 +1,4 @@
+export SECRET_KEY_BASE=6c58cb9209d3d5a244a9b8acc6a1b2138057b7918c4ebe01d2ef208ef3b72a2e8d6a1d75abf329745fcbbd10e202fc26fe1eb37e0ce5d11ac73f161c9286162a
+export RAILS_SERVE_STATIC_FILES=true
+
+rails server -e production -b 0.0.0.0
