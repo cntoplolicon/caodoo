@@ -12,6 +12,10 @@ body {
   margin: 0 auto;
 }
 
+.on-sale-notification {
+  margin-bottom: 18px;
+}
+
 .upcoming-notification {
   margin-top: 32px;
   margin-bottom: 34px;
@@ -48,4 +52,97 @@ body {
 .custom-service-info {
   text-align: left;
 }
+
+.on-sale-products {
+  margin: 0 auto;
+  width: 960px;
+}
+
+.on-sale-product0 {
+  width: 480px;
+  height: 960px;
+}
+
+.on-sale-product1 {
+  width: 480px;
+  height: 480px;
+}
+
+.on-sale-product2 {
+  width: 960px;
+  height: 480px;
+}
+
+.on-sale-product .product-name {
+  color: #212121;
+  font-size: 34px;
+  position: absolute;
+}
+
+.on-sale-product0 .product-name {
+  top: 410px;
+  left: 24px;
+}
+
+.on-sale-product1 .product-name {
+  top: 96px;
+  left: 28px;
+}
+
+.on-sale-product2 .product-name {
+  top: 92px;
+  left: 24px;
+}
+
+.on-sale-product .product-description {
+  color: #212121;
+  font-size: 24px;
+  position: absolute;
+}
+
+.on-sale-product0 .product-description {
+  top: 454px;
+  left: 24px;
+}
+
+.on-sale-product1 .product-description {
+  top: 140px;
+  left: 28px;
+}
+
+.on-sale-product2 .product-description {
+  top: 134px;
+  left: 24px;
+}
+
+.on-sale-product .product-price {
+  position: absolute;
+}
+
+.on-sale-product .product-current-price {
+  color: #212121;
+  font-size: 24px;
+}
+
+.on-sale-product .product-original-price {
+  color: #757575;
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+.on-sale-product0 .product-price {
+  top: 503px;
+  left: 24px;
+}
+
+.on-sale-product1 .product-price {
+  top: 188px;
+  left: 28px;
+}
+
+.on-sale-product2 .product-price {
+  top: 183px;
+  left: 24px;
+}
+
 
