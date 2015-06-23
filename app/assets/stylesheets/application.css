@@ -15,8 +15,11 @@
  *= require  bootstrap/dist/css/bootstrap
  */
 
-.app-navbar.navbar-inverse {
-  min-height: 58px;
+.app-navbar {
+  min-height: 58px !important;
+  margin-bottom: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
 }
 
 .navbar-brand.brand {
@@ -29,5 +32,28 @@
   padding-top: 15px;
   padding-bottom: 15px;
   line-height: 28px;
+}
+
+.footer > * {
+  display: inline-block;
+  padding-top: 39px;
+  padding-bottom: 39px;
+}
+
+.footer {
+  text-align: center;
+  line-height: 12px;
+  background-color: #222;
+  min-height: 90px;
+  color: rgba(255,255,255,0.54);
+}
+
+.footer a {
+  color: rgba(255,255,255,0.54);
+}
+
+.footer .copy-right {
+  margin-left: 42px;
+  margin-right: 42px;
 }
 
