@@ -12,52 +12,59 @@
           <%= product.product_view.home_page_description %>
         </div>
         <div class="product-price">
-          <span class="product-current-price">&#165;<%= product.price %> </span>
-          <span class="product-original-price">原价&#165;<%= product.original_price %> </span>
+          <div class="product-current-price">&#165;<%= product.price %></div>
+          <div class="product-original-price">原价&#165;<%= product.original_price %> </div>
         </div>
       </div>
     <% end %>
   </div>
   <%= image_tag("upcoming.png", class: "center-img upcoming-notification") %>
-  <% @upcoming_products.each do |product| %>
-    <div> <%= product.id %> </div>
-  <% end %>
 </div>
 
 <div class="container">
-  <div class="row promises-row">
-    <div class="col-xs-3">
-      <div class="promise-panel">
-        <%= image_tag("zhengpin.png", class: "promise-icon") %>
-        <div class="promise-content">
-          <div class="first-promise">正品保证</div>
-          <div class="second-promise">100%优质</div>
+  <div class="upcoming-products">
+    <% @upcoming_products.each do |product| %>
+      <div class="upcoming-product"> 
+        <%= image_tag(product.brand.logo_url, class: "brand-image") %>
+        <div class="trailer-panel">
+          <%= image_tag(product.product_view.trailer_image_url, class: "trailer-image") %>
+          <div class="trailer-content">
+            <div class="trailer-time">下周3</div>
+            <div class="trailer-description"> <%= product.product_view.trailer_description %> </div>
+          </div>
         </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="promises-row">
+    <div class="promise-panel">
+      <%= image_tag("zhengpin.png", class: "promise-icon") %>
+      <div class="promise-content">
+        <div class="first-promise">正品保证</div>
+        <div class="second-promise">100%优质</div>
       </div>
     </div>
-    <div class="col-xs-3">
-      <div class="promise-panel">
-        <%= image_tag("tuihuo.png", class: "promise-icon") %>
-        <div class="promise-content">
-          <div class="first-promise">7天放心退</div>
-          <div class="second-promise">满意的服务</div>
-        </div>
+    <div class="promise-panel">
+      <%= image_tag("tuihuo.png", class: "promise-icon") %>
+      <div class="promise-content">
+        <div class="first-promise">7天放心退</div>
+        <div class="second-promise">满意的服务</div>
       </div>
-      </div><div class="col-xs-3">
-      <div class="promise-panel">
-        <%= image_tag("baoyou.png", class: "promise-icon") %>
-        <div class="promise-content">
-          <div class="first-promise">全场包邮</div>
-          <div class="second-promise">抢购更低价</div>
-        </div>
+    </div>
+    <div class="promise-panel">
+      <%= image_tag("baoyou.png", class: "promise-icon") %>
+      <div class="promise-content">
+        <div class="first-promise">全场包邮</div>
+        <div class="second-promise">抢购更低价</div>
       </div>
-      </div><div class="col-xs-3">
-      <div class="promise-panel">
-        <div class="promise-splitter"></div>
-        <div class="promise-content">
-          <div class="second-promise custom-service-info">客服QQ: 3224707692</div>
-          <div class="second-promise custom-service-info">客服电话: 010-64900459</div>
-        </div>
+    </div>
+    <div class="promise-panel">
+      <div class="promise-content">
+        <div class="second-promise custom-service-info">客服QQ: 3224707692</div>
+        <div class="second-promise custom-service-info">客服电话: 010-64900459</div>
       </div>
     </div>
   </div>
