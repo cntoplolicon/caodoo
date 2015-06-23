@@ -1,7 +1,13 @@
 <div class="container-fluid">
   <%= image_tag("banner.png", class: "center-img app-banner") %>
   <%= image_tag("onsale.png", class: "center-img") %>
+  <% @on_sale_products.each do |product| %>
+    <div> <%= product.id %> </div>
+  <% end %>
   <%= image_tag("upcoming.png", class: "center-img upcoming-notification") %>
+  <% @upcoming_products.each do |product| %>
+    <div> <%= product.id %> </div>
+  <% end %>
 </div>
 
 <div class="container">
@@ -15,7 +21,7 @@
         </div>
       </div>
     </div>
-<div class="col-xs-3">
+    <div class="col-xs-3">
       <div class="promise-panel">
         <%= image_tag("tuihuo.png", class: "promise-icon") %>
         <div class="promise-content">
@@ -23,7 +29,7 @@
           <div class="second-promise">满意的服务</div>
         </div>
       </div>
-    </div><div class="col-xs-3">
+      </div><div class="col-xs-3">
       <div class="promise-panel">
         <%= image_tag("baoyou.png", class: "promise-icon") %>
         <div class="promise-content">
@@ -31,7 +37,7 @@
           <div class="second-promise">抢购更低价</div>
         </div>
       </div>
-    </div><div class="col-xs-3">
+      </div><div class="col-xs-3">
       <div class="promise-panel">
         <div class="promise-splitter"></div>
         <div class="promise-content">
