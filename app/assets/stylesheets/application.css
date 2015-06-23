@@ -14,3 +14,20 @@
  *= require_self
  *= require  bootstrap/dist/css/bootstrap
  */
+
+.app-navbar.navbar-inverse {
+  min-height: 58px;
+}
+
+.navbar-brand.brand {
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+}
+
+.app-navbar.navbar-inverse .navbar-nav > li > a {
+  color: rgba(255,255,255,0.87);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  line-height: 28px;
+}
+
