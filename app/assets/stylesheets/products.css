@@ -3,11 +3,6 @@
   They will automatically be included in application.css.
 */
 
-.center-img {
-  display: block;
-  margin: 0 auto;
-}
-
 .on-sale-notification {
   margin-bottom: 18px;
 }
@@ -70,19 +65,21 @@
   padding-top: 24px;
 }
 
+.on-sale-product .product-current-price,
+.on-sale-product .product-original-price {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .on-sale-product .product-current-price {
   color: #212121;
   font-size: 24px;
-  display: inline-block;
-  vertical-align: middle;
 }
 
 .on-sale-product .product-original-price {
   color: #757575;
   font-size: 14px;
   text-decoration: line-through;
-  display: inline-block;
-  vertical-align: middle;
 }
 
 .on-sale-product .product-sale-remain-time {
@@ -129,4 +126,131 @@
 
 .upcoming-product .trailer-description {
   line-height: 24px;
+}
+
+.product-detail {
+  margin: 0 auto;
+  background-color: #FFF;
+}
+
+.product-detail-countdown {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #DFDFDF;
+}
+
+.product-detail-content {
+  padding: 0 44px;
+  height: 560px;
+}
+
+.product-detail-images-container {
+  width: 420px;
+  display: inline-block;
+}
+
+.product-detail-text-container {
+  display: inline-block;
+}
+
+.product-detail .promises-row {
+  background-color: #FFF;
+  padding-top: 13px;
+  padding-bottom: 28px;
+}
+
+.product-detail .promise-panel {
+  text-align: left;
+}
+
+.product-detail .promise {
+  line-height: 18px;
+  font-size: 16px;
+  color: #6B6B6B;
+}
+
+.product-detail .product-name {
+  padding-top: 72px;
+  color: #000;
+  font-size: 21px;
+}
+
+.product-detail .product-description {
+  font-size: 14px;
+  color: #6B6B6B;
+  padding-top: 10px;
+}
+
+.product-detail .product-price {
+  padding-top: 30px;
+}
+
+.product-detail .product-current-price,
+.product-detail .product-original-price {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.product-detail .product-current-price {
+  font-size: 24px;
+  color: #D73131;
+}
+
+.product-detail .product-original-price {
+  font-size: 14px;
+  color: #6B6B6B;
+  text-decoration: line-through;
+  vertical-align: middle;
+}
+
+.product-detail .product-quantity-panel {
+  display: inline-block;
+  margin-left: 87px;
+}
+
+.product-detail .product-quantity {
+  padding-top: 20px;
+  font-size: 16px;
+  color: #6B6B6B;
+}
+
+.product-detail .quantity-controller {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #838383;
+  text-align: center;
+  color: #8F8F8F;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.product-detail .quantity-input {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #E8E8E8;
+  border: none;
+} 
+
+.product-detail .splitter {
+  height: 1px;
+  background-color: #E6E6E6;
+  margin-top: 15px;
+}
+
+.product-detail .purchase-button {
+  width: 300px;
+  height: 40px;
+}
+
+.product-detail-notification {
+  height: 60px;
+  font-size: 14px;
+  color: #DEDEDE;
+  text-align: center;
+  background-color: #000;
+  line-height: 60px;
 }

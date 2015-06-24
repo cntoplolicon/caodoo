@@ -3,8 +3,8 @@
 <% end %>
 
 <div class="container-fluid">
-  <%= image_tag("banner.png", class: "center-img app-banner") %>
-  <%= image_tag("onsale.png", class: "center-img on-sale-notification") %>
+  <%= image_tag("banner.png", class: "center-block app-banner") %>
+  <%= image_tag("onsale.png", class: "center-block on-sale-notification") %>
   <div class="on-sale-products">
     <% @on_sale_products.each do |product| %>
       <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
@@ -26,7 +26,7 @@
       </div>
     <% end %>
   </div>
-  <%= image_tag("upcoming.png", class: "center-img upcoming-notification") %>
+  <%= image_tag("upcoming.png", class: "center-block upcoming-notification") %>
 </div>
 
 <div class="container">

@@ -64,6 +64,10 @@ body {
   margin-right: 42px;
 }
 
+.footer-promises-container {
+  max-width: 960px;
+}
+
 .promises-row {
   background-color: #000;
   padding-top: 90px;
@@ -100,4 +104,13 @@ body {
   text-align: left;
 }
 
+button {
+  border-radius: 1px;
+}
 
+.btn-red {
+  background-color: #D73131;
+  color: #FFF;
+  font-size: 14px;
+  border: none;
+}

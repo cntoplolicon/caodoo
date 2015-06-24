@@ -1,3 +1,58 @@
-<div>
-  距离抢购结束
+<div class="container">
+  <div class="product-detail">
+    <div class="product-detail-countdown">距离抢购结束还有 <%= [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %></div>
+    <div class="product-detail-content">
+      <div class="product-detail-images-container"></div>
+      <div class="product-detail-text-container">
+        <div class="product-name">
+          <%= @product.name %>
+        </div>
+        <div class="product-description">
+          <%= @product.product_view.detail_page_description %>
+        </div>
+        <div class="product-price">
+          <div class="product-current-price">&#165;<%= @product.price %></div>
+          <div class="product-original-price">原价&#165;<%= @product.original_price %> </div>
+        </div>
+        <div class="product-quantity">
+          购买数量:（单次限购10个以内）
+          <div class="product-quantity-panel">
+            <a class="quantity-controller">-</a>
+            <input class="quantity-input" type="text" value="1"></input>
+            <a class="quantity-controller">+</a>
+          </div>
+        </div>
+        <div class="splitter"></div>
+        <div class="promises-row">
+          <div class="promise-panel">
+            <%= image_tag("zhengpin2.png", class: "promise-icon") %>
+            <div class="promise-content">
+              <div class="promise">正品</div>
+              <div class="promise">保证</div>
+            </div>
+          </div>
+          <div class="promise-panel">
+            <%= image_tag("tuihuo2.png", class: "promise-icon") %>
+            <div class="promise-content">
+              <div class="promise">7天</div>
+              <div class="promise">包退</div>
+            </div>
+          </div>
+          <div class="promise-panel">
+            <%= image_tag("baoyou2.png", class: "promise-icon") %>
+            <div class="promise-content">
+              <div class="promise">全场</div>
+              <div class="promise">包邮</div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-red purchase-button">
+          立即购买
+        </button>
+      </div>
+    </div>
+    <div class="product-detail-notification">
+      产品详情
+    </div>
+  </div>
 </div>

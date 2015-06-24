@@ -11,4 +11,8 @@ class ProductsController < ApplicationController
       .where(schedule_table[:trailer_start].lt(now))
       .where(schedule_table[:trailer_end].gt(now))
   end
+
+  def show
+    @product = Product.find(params[:id])
+  end
 end
