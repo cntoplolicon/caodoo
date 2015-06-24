@@ -54,7 +54,12 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  root 'products#index'
   resources :products
 
-  root 'products#index'
+  resources :users do
+    collection do
+      get :login
+    end
+  end
 end

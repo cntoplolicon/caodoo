@@ -42,7 +42,7 @@
       </div>
     </nav>
 
-    <%= yield %>
+    <%= content_for?(:content) ? yield(:content) : yield %>
 
     <div class="promises-row">
       <div class="footer-promises-container center-block">

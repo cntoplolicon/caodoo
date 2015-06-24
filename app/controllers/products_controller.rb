@@ -13,6 +13,10 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product
+      .where(id: params[:id])
+      .joins(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
+      .includes(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
+      .take
   end
 end
