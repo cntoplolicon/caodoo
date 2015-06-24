@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_view_id: 
+  position: 1
+  url: MyText
+
+two:
+  product_view_id: 
+  position: 1
+  url: MyText

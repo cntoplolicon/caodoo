@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623114351) do
+ActiveRecord::Schema.define(version: 20150624041052) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -19,6 +19,26 @@ ActiveRecord::Schema.define(version: 20150623114351) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  create_table "product_carousel_images", force: :cascade do |t|
+    t.integer  "product_view_id", limit: 4
+    t.integer  "position",        limit: 4
+    t.text     "url",             limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "product_carousel_images", ["product_view_id"], name: "index_product_carousel_images_on_product_view_id", using: :btree
+
+  create_table "product_detail_images", force: :cascade do |t|
+    t.integer  "product_view_id", limit: 4
+    t.integer  "position",        limit: 4
+    t.text     "url",             limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "product_detail_images", ["product_view_id"], name: "index_product_detail_images_on_product_view_id", using: :btree
 
   create_table "product_sale_schedules", force: :cascade do |t|
     t.integer  "product_id",    limit: 4
@@ -57,6 +77,8 @@ ActiveRecord::Schema.define(version: 20150623114351) do
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
 
+  add_foreign_key "product_carousel_images", "product_views"
+  add_foreign_key "product_detail_images", "product_views"
   add_foreign_key "product_sale_schedules", "products"
   add_foreign_key "product_views", "products"
   add_foreign_key "products", "brands"

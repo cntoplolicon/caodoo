@@ -135,8 +135,8 @@
 
 .product-detail-countdown {
   text-align: center;
-  padding-top: 50px;
-  padding-bottom: 15px;
+  padding: 50px 0 15px 0;
+  margin: 0 40px 0 40px;
   border-bottom: 1px solid #DFDFDF;
 }
 
@@ -148,10 +148,13 @@
 .product-detail-images-container {
   width: 420px;
   display: inline-block;
+  vertical-align: top;
 }
 
 .product-detail-text-container {
+  margin-left: 36px;
   display: inline-block;
+  vertical-align: top;
 }
 
 .product-detail .promises-row {
@@ -253,4 +256,19 @@
   text-align: center;
   background-color: #000;
   line-height: 60px;
+}
+
+#product-detail-carousel {
+  margin-top: 18px;
+}
+
+.product-detail-thumbnail {
+  width: 72px;
+  height: 72px;
+  display: inline-block !important;
+  vertical-align: top;
+  margin: 24px 12px 0 12px;
+}
+.product-detail-thumnail-panel {
+  text-align: center;
 }

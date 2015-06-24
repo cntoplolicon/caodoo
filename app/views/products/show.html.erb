@@ -2,7 +2,24 @@
   <div class="product-detail">
     <div class="product-detail-countdown">距离抢购结束还有 <%= [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %></div>
     <div class="product-detail-content">
-      <div class="product-detail-images-container"></div>
+      <div class="product-detail-images-container">
+        <div id="product-detail-carousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <% @product.product_view.product_carousel_images.each_with_index do |image, i| %>
+              <div class="item <%= i == 0 ? 'active' : '' %>">
+                <%= image_tag(image.url) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="product-detail-thumnail-panel">
+          <% @product.product_view.product_carousel_images.each do |image| %>
+            <a href="#" class="thumbnail product-detail-thumbnail">
+              <%= image_tag(image.url) %>
+            </a>
+          <% end %>
+        </div>
+      </div>
       <div class="product-detail-text-container">
         <div class="product-name">
           <%= @product.name %>
@@ -53,6 +70,11 @@
     </div>
     <div class="product-detail-notification">
       产品详情
+    </div>
+    <div>
+      <% @product.product_view.product_detail_images.each do |image| %>
+        <%= image_tag(image.url, class: "center-block") %>
+      <% end %>
     </div>
   </div>
 </div>
