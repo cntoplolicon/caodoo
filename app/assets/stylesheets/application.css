@@ -18,7 +18,6 @@
 body {
   background-color: #E8E8E8 !important;
 }
-
 .app-navbar {
   min-height: 58px !important;
   margin-bottom: 0 !important;
@@ -72,14 +71,14 @@ body {
   background-color: #000;
   padding-top: 90px;
   padding-bottom: 70px;
-  white-space: nowrap;
 }
 
 .promise-panel {
   max-height: 35px;
   text-align: center;
   display: inline-block;
-  width: 25%;
+  width: 24%;
+  vertical-align: text-top;
 }
 
 .promise-content, .promise-icon {

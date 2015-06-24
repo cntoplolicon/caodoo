@@ -1,7 +1,11 @@
 <% content_for :content do %>
-  This is user_op layout
-  <div>
-    <%= yield %>
+  <div class="user-op-container">
+    <div class="user-op-form-container">
+      <div class="center-block user-op-form" style="<%= yield :user_op_form_style %>">
+        <%= yield %>
+      </div>
+    </div>
+    <%= image_tag("user-op-background.png", class: "center-block") %>
   </div>
 <% end %>
 <%= render template: "layouts/application" %>

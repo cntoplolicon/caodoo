@@ -1,3 +1,80 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-op-container {
+  background-color: #000;
+  position: relative;
+}
+
+.user-op-form-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.user-op-form {
+  width: 640px;
+  height: 360px;
+  background-color: #FFF;
+  margin-top: 185px;
+  color: #898989;
+  position: relative;
+}
+
+.user-op-form-panel {
+  width: 235px;
+  position: relative;
+}
+
+.user-op-form-header {
+  text-align: center;
+  color: #3BAF47;
+  font-size: 21px;
+  padding-top: 40px;
+}
+
+.user-op-form input {
+  width: 100%;
+  background-color: #EBEBEB;
+  border-radius: 2px;
+  border: 2px solid #DEDEDE;
+  height: 36px;
+  padding: 0 5px;
+}
+
+.user-op-form input[type='submit'] {
+  color: #FFF;
+  background-color: #15AE10;
+  border: none;
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.26);
+}
+
+.user-op-form .input-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.login-box .username-panel {
+  top: 122px;
+}
+
+.login-box .password-panel {
+  top: 182px;
+}
+
+.login-box .forget-password-panel {
+  top: 240px;
+  color: #3BAF47;
+}
+
+.login-box .submit-panel {
+  top: 270px;
+}
+
+.user-op-form-link {
+  color: #3BAF47;
+  position: absolute;
+  top: 24px;
+  right: 42px;
+
+}
