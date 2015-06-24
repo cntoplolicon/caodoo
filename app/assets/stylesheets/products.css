@@ -76,50 +76,37 @@ body {
   height: 480px;
 }
 
-.on-sale-product .product-name {
-  color: #212121;
-  font-size: 34px;
+.on-sale-product .product-information {
   position: absolute;
 }
 
-.on-sale-product0 .product-name {
-  top: 410px;
+.on-sale-product0 .product-information {
   left: 24px;
+  top: 412px;
 }
 
-.on-sale-product1 .product-name {
+.on-sale-product1 .product-information {
+  left: 24px;
   top: 96px;
-  left: 28px;
 }
 
-.on-sale-product2 .product-name {
-  top: 92px;
+.on-sale-product2 .product-information {
   left: 24px;
+  top: 92px;
+}
+
+.on-sale-product .product-name {
+  color: #212121;
+  font-size: 34px;
 }
 
 .on-sale-product .product-description {
   color: #212121;
   font-size: 24px;
-  position: absolute;
-}
-
-.on-sale-product0 .product-description {
-  top: 454px;
-  left: 24px;
-}
-
-.on-sale-product1 .product-description {
-  top: 140px;
-  left: 28px;
-}
-
-.on-sale-product2 .product-description {
-  top: 134px;
-  left: 24px;
 }
 
 .on-sale-product .product-price {
-  position: absolute;
+  padding-top: 24px;
 }
 
 .on-sale-product .product-current-price {
@@ -135,21 +122,6 @@ body {
   text-decoration: line-through;
   display: inline-block;
   vertical-align: middle;
-}
-
-.on-sale-product0 .product-price {
-  top: 503px;
-  left: 24px;
-}
-
-.on-sale-product1 .product-price {
-  top: 188px;
-  left: 28px;
-}
-
-.on-sale-product2 .product-price {
-  top: 183px;
-  left: 24px;
 }
 
 .on-sale-product .product-sale-remain-time {
