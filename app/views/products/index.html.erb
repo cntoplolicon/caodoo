@@ -1,3 +1,7 @@
+<% content_for :body_style do %>
+  background-color: #000 !important;
+<% end %>
+
 <div class="container-fluid">
   <%= image_tag("banner.png", class: "center-img app-banner") %>
   <%= image_tag("onsale.png", class: "center-img on-sale-notification") %>
@@ -42,34 +46,3 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="promises-row">
-    <div class="promise-panel">
-      <%= image_tag("zhengpin.png", class: "promise-icon") %>
-      <div class="promise-content">
-        <div class="first-promise">正品保证</div>
-        <div class="second-promise">100%优质</div>
-      </div>
-    </div>
-    <div class="promise-panel">
-      <%= image_tag("tuihuo.png", class: "promise-icon") %>
-      <div class="promise-content">
-        <div class="first-promise">7天放心退</div>
-        <div class="second-promise">满意的服务</div>
-      </div>
-    </div>
-    <div class="promise-panel">
-      <%= image_tag("baoyou.png", class: "promise-icon") %>
-      <div class="promise-content">
-        <div class="first-promise">全场包邮</div>
-        <div class="second-promise">抢购更低价</div>
-      </div>
-    </div>
-    <div class="promise-panel">
-      <div class="promise-content">
-        <div class="second-promise custom-service-info">客服QQ: 3224707692</div>
-        <div class="second-promise custom-service-info">客服电话: 010-64900459</div>
-      </div>
-    </div>
-  </div>
-</div>

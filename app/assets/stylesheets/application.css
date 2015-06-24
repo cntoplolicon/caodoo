@@ -15,6 +15,9 @@
  *= require  bootstrap/dist/css/bootstrap
  */
 
+body {
+  background-color: #E8E8E8 !important;
+}
 
 .app-navbar {
   min-height: 58px !important;
@@ -60,4 +63,41 @@
   margin-left: 42px;
   margin-right: 42px;
 }
+
+.promises-row {
+  background-color: #000;
+  padding-top: 90px;
+  padding-bottom: 70px;
+  white-space: nowrap;
+}
+
+.promise-panel {
+  max-height: 35px;
+  text-align: center;
+  display: inline-block;
+  width: 25%;
+}
+
+.promise-content, .promise-icon {
+  display: inline-block;
+  line-height: 35px;
+  vertical-align: text-top;
+}
+
+.first-promise {
+  line-height: 18px;
+  font-size: 16px;
+  color: #DEDEDE;
+}
+
+.second-promise {
+  line-height: 17px;
+  font-size:14px;
+  color: #909090;
+}
+
+.custom-service-info {
+  text-align: left;
+}
+
 

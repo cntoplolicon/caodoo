@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body style=" <%= yield :body_style %>">
     <nav class="navbar navbar-inverse app-navbar">
       <div class="container">
         <div class="navbar-header">
@@ -44,6 +44,36 @@
 
     <%= yield %>
 
+    <div class="promises-row">
+      <div class="promise-panel">
+        <%= image_tag("zhengpin.png", class: "promise-icon") %>
+        <div class="promise-content">
+          <div class="first-promise">正品保证</div>
+          <div class="second-promise">100%优质</div>
+        </div>
+      </div>
+      <div class="promise-panel">
+        <%= image_tag("tuihuo.png", class: "promise-icon") %>
+        <div class="promise-content">
+          <div class="first-promise">7天放心退</div>
+          <div class="second-promise">满意的服务</div>
+        </div>
+      </div>
+      <div class="promise-panel">
+        <%= image_tag("baoyou.png", class: "promise-icon") %>
+        <div class="promise-content">
+          <div class="first-promise">全场包邮</div>
+          <div class="second-promise">抢购更低价</div>
+        </div>
+      </div>
+      <div class="promise-panel">
+        <div class="promise-content">
+          <div class="second-promise custom-service-info">客服QQ: 3224707692</div>
+          <div class="second-promise custom-service-info">客服电话: 010-64900459</div>
+        </div>
+      </div>
+    </div>
+
     <div class="footer">
       <%= image_tag("footer-logo.png", class: "footer-logo") %>
       <div class="copy-right">&#169;CAODOO 京ICP备 15024750号</div>
@@ -57,3 +87,4 @@
     <![endif]-->
   </body>
 </html>
+

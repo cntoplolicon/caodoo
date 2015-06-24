@@ -3,10 +3,6 @@
   They will automatically be included in application.css.
 */
 
-body {
-  background-color: #000 !important;
-}
-
 .center-img {
   display: block;
   margin: 0 auto;
@@ -19,41 +15,6 @@ body {
 .upcoming-notification {
   margin-top: 32px;
   margin-bottom: 34px;
-}
-
-.promises-row {
-  margin-top: 90px;
-  margin-bottom: 70px;
-  white-space: nowrap;
-}
-
-.promise-panel {
-  max-height: 35px;
-  text-align: center;
-  display: inline-block;
-  width: 25%;
-}
-
-.promise-content, .promise-icon {
-  display: inline-block;
-  line-height: 35px;
-  vertical-align: text-top;
-}
-
-.first-promise {
-  line-height: 18px;
-  font-size: 16px;
-  color: #DEDEDE;
-}
-
-.second-promise {
-  line-height: 17px;
-  font-size:14px;
-  color: #909090;
-}
-
-.custom-service-info {
-  text-align: left;
 }
 
 .on-sale-products {
