@@ -1,22 +1,22 @@
 <div class="user-op-form-link">
-  新用户，快速注册？
+  新用户，快速注册？&#x2192
 </div>
 <div class="user-op-form-panel center-block login-box">
   <div class="user-op-form-header">
     登陆
   </div>
-  <form action="/user/do_login" method="post" accept-charset="utf-8">
+  <%= form_for @user, url: {action: :login} do |f| %>
     <div class="username-panel input-panel">
-      <input type="text" name="username" id="username" placeholder="注册手机号">
+      <%= f.text_field :username, placeholder: "注册手机号" %>
     </div>
     <div class="password-panel input-panel">
-      <input type="password" name="password" id="password" placeholder="密码">
+      <%= password_field_tag :password, '', placeholder: '密码' %>
     </div>
     <div class="forget-password-panel input-panel">
       忘记密码?
     </div>
     <div class="submit-panel input-panel">
-      <input type="submit" value="登录">
+      <%= f.submit "登录" %>
     </div>
-  </form>
+  <% end %>
 </div>

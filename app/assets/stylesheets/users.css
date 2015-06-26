@@ -41,6 +41,12 @@
   padding: 0 5px;
 }
 
+.user-op-form input[type="checkbox"] {
+  vertical-align: top;
+  width: 14px;
+  height: 14px;
+}
+
 .user-op-form input[type='submit'] {
   color: #FFF;
   background-color: #15AE10;
@@ -76,5 +82,40 @@
   position: absolute;
   top: 24px;
   right: 42px;
+}
 
+.register-box .username-panel {
+  top: 83px;
+}
+
+.register-box .security-code-panel {
+  top: 143px;
+}
+
+.register-box .password-panel {
+  top: 203px;
+}
+
+.user-op-form .security-code-input {
+  width: 138px;
+}
+
+.user-op-form .security-code-button {
+  border: 1px solid #E6E6E6;
+  background-color: #FFF;
+  width: 88px;
+  height: 36px;
+  color: #3BAF47;
+}
+
+.register-box .terms-of-service-panel {
+  top: 260px;
+}
+
+.register-box .submit-panel {
+  top: 293px;
+}
+
+.register-box .terms-of-service-link {
+  color: #3BAF47;
 }

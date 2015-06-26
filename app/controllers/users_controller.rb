@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   layout 'user_op'
 
   def login
+    @user = User.new
   end
 
   def do_login
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   private 
