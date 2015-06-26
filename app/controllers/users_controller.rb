@@ -6,6 +6,18 @@ class UsersController < ApplicationController
   end
 
   def do_login
+    @user = User.find_by_username(params[:user][:username])
+    unless @user.present?
+      @user = User.new
+      @user.errors.add(:username, '用户名不存在')
+      render 'login' and return
+    end
+    unless @user.authenticate(params[:user][:password])
+      @user.errors.add(:password, '密码不正确')
+      render 'login' and return
+    end
+    session[:login_user_id] = @user.id
+    redirect_to(session[:return_to] || '/')
   end
 
   def forget_password

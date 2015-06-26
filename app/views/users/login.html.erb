@@ -5,12 +5,14 @@
   <div class="user-op-form-header">
     登陆
   </div>
-  <%= form_for @user, url: {action: :do_login} do |f| %>
+  <%= form_for @user, url: {action: :do_login}, method: :post do |f| %>
     <div class="username-panel input-panel">
       <%= f.text_field :username, placeholder: "注册手机号" %>
+      <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first %></div>
     </div>
     <div class="password-panel input-panel">
-      <%= password_field_tag :password, '', placeholder: '密码' %>
+      <%= f.password_field :password, placeholder: '密码' %>
+      <div class="error-message"><%= @user.errors.messages[:password].first %></div>
     </div>
     <div class="forget-password-panel input-panel">
       忘记密码?
