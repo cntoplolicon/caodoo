@@ -20,35 +20,37 @@ class UsersController < ApplicationController
     redirect_to(session[:return_to] || '/')
   end
 
+  def logout
+    session.delete(:login_user_id)
+    redirect_to :login
+  end
+
   def forget_password
     @user = User.new
   end
 
-  def verify_forget_password_security_code
-  end
-
-  def do_forget_password
-  end
-
   def reset_password
+    @user = User.find_by_username(params[:user][:username])
+    unless @user.present?
+      @user = User.new
+      @user.errors.add(:username, '用户名不存在')
+      render 'forget_password' and return
+    end
+    security_code = params[:user][:security_code]
+    @user.security_code = security_code
+    render 'forget_password' and return unless verify_security_code(security_code)
+  end
+
+  def new
     @user = User.new
-  end
-
-  def do_reset_password
-  end
-
-  def logout
-    session.delete(:login_user_id)
-    redirect_to :login
+    @user.terms_of_service = true
   end
 
   def create
     @user = User.new(user_params)
     security_code = params[:user][:security_code]
     @user.security_code = security_code
-    unless verify_security_code(security_code)
-      render 'new' and return
-    end
+    render 'new' and return unless verify_security_code(security_code)
     unless @user.save
       render 'new'
     else
@@ -57,33 +59,53 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    @user = User.new
-    @user.terms_of_service = true
+  def terms_of_service
   end
 
-  def terms_of_service
+  def reset_password_done
+  end
+
+  def update
+    user_id = params[:id].to_i
+    if params[:user].has_key?(:username)
+      # code goes here
+    elsif params[:user].has_key?(:oldPassword)
+      # code goes here
+    elsif params[:user].has_key?(:password)
+      @user = User.find(user_id)
+      head :forbidden and return unless @user.username == session[:user_verified]
+      @user.password = params[:user][:password]
+      if params[:user][:password] != params[:user][:password_confirmation]
+        @user.errors.add(:password_confirmation, '两次输入的密码不一致')
+        render 'reset_password' and return
+      end
+      render 'reset_password' and return unless @user.save
+      clear_verify_information
+      redirect_to action: :reset_password_done
+    else
+      head :bad_request
+    end
   end
 
   def get_security_code_for_new_user
     username = params[:username]
     @user = User.find_by_username(username)
-    if @user.present?
-      render status: :bad_request, json: {error: '用户名已存在'}
-    elsif
-      @user = User.new(username: username)
-      if @user.invalid?(:username)
-        render status: :bad_request, json: {error: @user.errors[:username].first}
-      else
-        send_security_code_over_sms(username)
-      end
+    render status: :bad_request, json: {error: '用户名已存在'} and return if @user.present?
+    @user = User.new(username: username)
+    if @user.invalid? && @user.errors[:username].any?
+      render status: :bad_request, json: {error: @user.errors[:username].first} and return
     end
+    send_security_code_over_sms(username)
   end
 
   def get_security_code_for_password
     username = params[:username]
-    user = User.find_by_username(username)
-    render status: :not_found, json: {error: 'AccountNotFound'} and return unless user.present?
+    @user = User.new(username: username)
+    if @user.invalid? && @user.errors[:username].any?
+      render status: :bad_request, json: {error: @user.errors[:username].first} and return
+    end
+    @user = User.find_by_username(username)
+    render status: :bad_request, json: {error: '用户名不存在'} and return unless @user.present?
     send_security_code_over_sms(username)
   end
 
