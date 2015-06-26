@@ -46,6 +46,7 @@ body {
 
 .footer > * {
   display: inline-block;
+  *display: inline;
   line-height: 90px;
 }
 
@@ -70,38 +71,6 @@ body {
 
 .footer-promises-container {
   max-width: 960px;
-}
-
-.promises-row {
-  background-color: #000;
-  padding-top: 90px;
-  padding-bottom: 70px;
-}
-
-.promise-panel {
-  max-height: 35px;
-  text-align: center;
-  display: inline-block;
-  width: 24%;
-  vertical-align: text-top;
-}
-
-.promise-content, .promise-icon {
-  display: inline-block;
-  line-height: 35px;
-  vertical-align: text-top;
-}
-
-.first-promise {
-  line-height: 18px;
-  font-size: 16px;
-  color: #DEDEDE;
-}
-
-.second-promise {
-  line-height: 17px;
-  font-size:14px;
-  color: #909090;
 }
 
 .custom-service-info {
