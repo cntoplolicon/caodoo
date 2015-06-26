@@ -35,12 +35,14 @@
 }
 
 .user-op-form input {
-  width: 100%;
+  width: 235px;
   background-color: #EBEBEB;
   border-radius: 2px;
   border: 2px solid #DEDEDE;
   height: 36px;
+  line-height: 36px;
   padding: 0 5px;
+  *padding: 0;
 }
 
 .user-op-form input[type="checkbox"] {
@@ -65,7 +67,8 @@
 .user-op-form .input-panel {
   position: absolute;
   left: 0;
-  right: 0;
+  width: 235px;
+  min-width: 235px;
 }
 
 .login-box .username-panel {
@@ -109,6 +112,7 @@
 
 .user-op-form .security-code-input {
   width: 138px;
+  display: inline;
 }
 
 .user-op-form .security-code-button {
@@ -128,7 +132,7 @@
   top: 293px;
 }
 
-.register-box .terms-of-service-link {
+.register-box .terms-of-service-panel a {
   color: #3BAF47;
 }
 

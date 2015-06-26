@@ -50,7 +50,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     security_code = params[:user][:security_code]
     @user.security_code = security_code
-    render 'new' and return unless verify_security_code(security_code)
+    user_valid = @user.valid?
+    security_code_verified = verify_security_code(security_code)
+    render 'new' and return unless security_code_verified && user_valid
     unless @user.save
       render 'new'
     else

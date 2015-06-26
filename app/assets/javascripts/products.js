@@ -3,9 +3,9 @@
 
 (function (window, $) {
   $(document).ready(function() {
-    $('.on-sale-products').masonry({
-      itemSelector: '.on-sale-product'
-    });
+    //$('.on-sale-products').masonry({
+      //itemSelector: '.on-sale-product'
+    //});
 
     $('.trailer-panel').hide();
     $('.upcoming-product').hover(function() {

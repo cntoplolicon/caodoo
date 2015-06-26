@@ -21,7 +21,8 @@
     </div>
     <div class="terms-of-service-panel input-panel">
       <%= f.check_box :terms_of_service %>
-      同意<a href="#" class="terms-of-service-link">服务条款</a>
+      同意
+      <%= link_to "服务条款", action: :terms_of_service %>
       <span class="error-message"><%= @user.errors.messages[:terms_of_service].first %></span>
     </div>
     <div class="submit-panel input-panel">
