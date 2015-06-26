@@ -9,15 +9,17 @@ class UsersController < ApplicationController
   end
 
   def forget_password
+    @user = User.new
   end
 
   def verify_forget_password_security_code
   end
 
-  def show_reset_password_page
+  def do_forget_password
   end
 
   def reset_password
+    @user = User.new
   end
 
   def do_reset_password

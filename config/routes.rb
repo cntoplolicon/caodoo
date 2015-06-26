@@ -60,6 +60,11 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get :login
+      post:do_login
+      get :forget_password
+      post :do_forget_password
+      get :reset_password
+      post :do_reset_password
     end
   end
 end
