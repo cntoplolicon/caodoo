@@ -37,6 +37,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def terms_of_service
+  end
+
   private 
 
   def user_params

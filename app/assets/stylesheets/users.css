@@ -53,6 +53,7 @@
   color: #FFF;
   background-color: #15AE10;
   border: none;
+  font-size: 14px;
   box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.26);
 }
 
@@ -145,4 +146,34 @@
 
 .reset-password-box .submit-panel {
   top: 245px;
+}
+
+.user-op-form .success-icon {
+  padding-top: 124px;
+}
+
+.user-op-form .success-message {
+  padding-top: 53px;
+  text-align: center;
+  color: #3BAF47;
+  font-size: 16px
+}
+
+.user-op-form .terms-of-service-title {
+  padding-top: 42px;
+  font-size: 24px;
+  color: #000;
+  text-align: center;
+}
+
+.user-op-form .terms-of-service-content {
+  width: 754px;
+  height: 294px;
+  margin-top: 48px;
+  margin-bottom: 44px;
+  overflow: auto;
+}
+
+.user-op-form .close-button {
+  width: 235px;
 }
