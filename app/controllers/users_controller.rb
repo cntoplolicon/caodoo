@@ -31,19 +31,52 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
+    security_code = params[:user][:security_code]
+    @user.security_code = security_code
+    unless verify_security_code(security_code)
+      render 'new' and return
+    end
+    unless @user.save
+      render 'new'
+    else
+      clear_verify_information
+      session[:login_user_id] = @user.id
+    end
   end
 
   def new
     @user = User.new
+    @user.terms_of_service = true
   end
 
   def terms_of_service
   end
 
-  private 
+  def get_security_code_for_new_user
+    username = params[:username]
+    @user = User.find_by_username(username)
+    if @user.present?
+      render status: :bad_request, json: {error: '用户名已存在'}
+    elsif
+      @user = User.new(username: username)
+      if @user.invalid?(:username)
+        render status: :bad_request, json: {error: @user.errors[:username].first}
+      else
+        send_security_code_over_sms(username)
+      end
+    end
+  end
+
+  def get_security_code_for_password
+    username = params[:username]
+    user = User.find_by_username(username)
+    render status: :not_found, json: {error: 'AccountNotFound'} and return unless user.present?
+    send_security_code_over_sms(username)
+  end
 
   def user_params
-    params.permit(:username, :password)
+    params.require(:user).permit(:username, :password, :terms_of_service)
   end
 
   def send_security_code_over_sms(username)
@@ -62,15 +95,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def verify_security_code
-    username = params[:username]
-    render status: :forbidden, json: {error: 'SecurityCodeIncorrect'} and return false unless session[:security_code]
-    render status: :forbidden, json: {error: 'SecurityCodeIncorrect'} and return false if params[:securityCode] != session[:security_code]
+  def verify_security_code(security_code)
+    @user.errors.add(:security_code, '验证码不能为空') and return false unless security_code.present?
+    @user.errors.add(:security_code, '验证码错误') and return false unless session[:security_code]
+    @user.errors.add(:security_code, '验证码错误') and return false if security_code != session[:security_code]
     time_compared = Time.now <=> session[:security_code_expire]
-    render status: :forbidden, json: {error: 'SecurityCodeExpired'} and return false if time_compared == 1
-    render status: :forbidden, json: {error: 'UsernameMismatch'} and return false if params[:username] != username
-    params.delete(:verifyCode)
-    session[:user_verified] = username
+    @user.errors.add(:security_code, '验证码已过期') and return false if time_compared == 1
+    @user.errors.add(:security_code, '用户名不匹配') and return false if session[:user_to_verify] != @user.username
+    session[:user_verified] = @user.username
     return true
   end
 

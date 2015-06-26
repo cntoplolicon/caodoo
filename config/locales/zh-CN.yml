@@ -1,0 +1,14 @@
+zh-CN:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              blank: '手机号不能为空'
+              invalid: '请输入正确的手机号'
+            password:
+              blank: "密码不能为空"
+              invalid: "密码为6-20位字符"
+            terms_of_service:
+              accepted: '注册须同意服务条款'

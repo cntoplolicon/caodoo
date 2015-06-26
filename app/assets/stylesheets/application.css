@@ -18,6 +18,11 @@
 body {
   background-color: #E8E8E8 !important;
 }
+
+.field_with_errors { 
+  display: inline; 
+}
+
 .app-navbar {
   min-height: 58px !important;
   margin-bottom: 0 !important;

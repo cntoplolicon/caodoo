@@ -57,6 +57,11 @@
   box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.26);
 }
 
+.user-op-form .error-message {
+  font-size: 12px;
+  color: #D73131;
+}
+
 .user-op-form .input-panel {
   position: absolute;
   left: 0;
@@ -81,10 +86,13 @@
 }
 
 .user-op-form-link {
-  color: #3BAF47;
   position: absolute;
   top: 24px;
   right: 42px;
+}
+
+.user-op-form-link a {
+  color: #3BAF47;
 }
 
 .register-box .username-panel {
@@ -177,3 +185,4 @@
 .user-op-form .close-button {
   width: 235px;
 }
+

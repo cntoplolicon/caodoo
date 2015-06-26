@@ -66,6 +66,8 @@ Rails.application.routes.draw do
       get :reset_password
       post :do_reset_password
       get :terms_of_service
+      post :get_security_code_for_new_user
+      post :get_security_code_for_password
     end
   end
 end
