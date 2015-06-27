@@ -136,6 +136,7 @@
 .product-detail {
   margin: 0 auto;
   background-color: #FFF;
+  width: 960px;
 }
 
 .product-detail-countdown {
@@ -160,6 +161,7 @@
 .product-detail-text-container {
   position: absolute;
   left: 500px;
+  width: 400px;
 }
 
 .product-detail .promises-row {
@@ -218,7 +220,6 @@
   display: inline-block;
   *display: inline;
   zoom: 1;
-  margin-left: 87px;
 }
 
 .product-detail .product-quantity {
@@ -291,14 +292,9 @@
   cursor: pointer;
 }
 
-.product-detail-text-container {
-  width: 520px;
-}
-
 .product-detail-thumnail-panel {
   text-align: center;
 }
-
 
 .product-detail-thumnail-panel {
   width: 420px;
