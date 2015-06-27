@@ -8,12 +8,97 @@
     <%= csrf_meta_tags %>
   </head>
   <body style=" <%= yield :body_style %>">
+    <div class="header">
+      <div class="header_center">
+        <ul class="header_ul_left">
+          <li>
+            <a href="">
+              <%= image_tag "logo.png", :class => "header_logo" %>
+            </a>
+          </li>
+          <li>
+            <a href="/" class="header_li_marign">
+              首页
+            </a>
+          </li>
+          <li>
+            <a href="about.html" class="header_li_marign">
+              关于我们
+            </a>
+          </li>
+        </ul>
+        <ul class="header_ul_right">
+          <li>
+            <a href="">
+              注册
+            </a>
+          </li>
+          <li>
+            <a href="">
+              登陆
+            </a>
+          </li>
+          <li style="position:relative;">
+            <a class="header_account_link">
+              <%= image_tag "user_icon.png", :class => "user_icon" %>
+            </a>
+            <div class="cd_dropdown">
+              <%= image_tag "dropdown_top.png", :class => "user_icon" %>
+              <ul>
+                <li>
+                  <a>
+                    订单管理
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    收货地址
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    客户服务
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    用户设置
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    退出账户
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
     <%= content_for?(:content) ? yield(:content) : yield %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <div class="our_ts">
+      <%= image_tag "ts.png" %>
+    </div>
+    <div class="footer">
+      <ul class="footer_ul">
+        <li>
+          <a href="">
+            <%= image_tag "footer_logo.png" %>
+          </a>
+        </li>
+        <li>
+          <a>
+            ©2015 CAODOO   京ICP备 15024750号
+          </a>
+        </li>
+        <li>
+          <a href="">
+            隐私条款
+          </a>
+        </li>
+      </ul>
+    </div>
   </body>
 </html>
-

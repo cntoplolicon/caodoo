@@ -26,15 +26,5 @@
     };
     window.setInterval(countDown, 1000);
     countDown();
-
-    $('#product-detail-carousel').carousel({
-      interval: false,
-      wrap: false,
-      keyboard: false
-    });
-
-    $('.product-detail-thumbnail').click(function() {
-      $('#product-detail-carousel').carousel($(this).index());
-    });
   });
 })(this, jQuery);

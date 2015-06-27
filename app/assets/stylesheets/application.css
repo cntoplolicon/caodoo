@@ -12,73 +12,20 @@
  *
  *= require_tree .
  *= require_self
- *= require  bootstrap/dist/css/bootstrap
  */
 
 body {
   background-color: #E8E8E8 !important;
 }
 
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 .field_with_errors { 
   display: inline; 
-}
-
-.app-navbar {
-  min-height: 58px !important;
-  margin-bottom: 0 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  background-color: #000 !important;
-  font-size: 16px !important;
-}
-
-.navbar-brand.brand {
-  padding-top: 7.5px;
-  padding-bottom: 7.5px;
-}
-
-.app-navbar.navbar-inverse .navbar-nav > li > a {
-  color: #DEDEDE;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  line-height: 28px;
-}
-
-.footer > * {
-  display: inline-block;
-  *display: inline;
-  line-height: 90px;
-}
-
-.footer {
-  text-align: center;
-  line-height: 12px;
-  background-color: #000;
-  min-height: 90px;
-  font-size: 12px;
-  color: #8A8A8A;
-  width: 100%;
-}
-
-.footer a {
-  color: #8A8A8A;
-}
-
-.footer .copy-right {
-  margin-left: 42px;
-  margin-right: 42px;
-}
-
-.footer-promises-container {
-  max-width: 960px;
-}
-
-.custom-service-info {
-  text-align: left;
-}
-
-button {
-  border-radius: 1px;
 }
 
 .btn-red {
