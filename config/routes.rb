@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     collection do
       get :login
       post:do_login
+      get :logout
       get :forget_password
       get :reset_password_done
       post :reset_password

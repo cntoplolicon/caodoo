@@ -17,14 +17,14 @@ class UsersController < ApplicationController
       render 'login' and return
     end
     session[:login_user_id] = @user.id
-    session[:login_user_name] = @user.username
+    session[:login_username] = @user.username
     redirect_to(session[:return_to] || '/')
   end
 
   def logout
     session.delete(:login_user_id)
-    session.delete(:login_user_name)
-    redirect_to :login
+    session.delete(:login_username)
+    redirect_to action: :login
   end
 
   def forget_password
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     else
       clear_verify_information
       session[:login_user_id] = @user.id
-      session[:login_user_name] = @user.username
+      session[:login_username] = @user.username
       redirect_to(session[:return_to] || '/')
     end
   end

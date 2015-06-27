@@ -12,7 +12,7 @@
       <div class="header_center">
         <ul class="header_ul_left">
           <li>
-            <a href="">
+            <a href="/">
               <%= image_tag "logo.png", :class => "header_logo" %>
             </a>
           </li>
@@ -22,22 +22,24 @@
             </a>
           </li>
           <li>
-            <a href="about.html" class="header_li_marign">
+            <a href="/about" class="header_li_marign">
               关于我们
             </a>
           </li>
         </ul>
         <ul class="header_ul_right">
-          <li>
-            <a href="">
-              注册
-            </a>
-          </li>
-          <li>
-            <a href="">
-              登陆
-            </a>
-          </li>
+          <% if session[:login_username] %>
+            <li>
+              <%= session[:login_username] %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "注册", controller: :users, action: :new %>
+            </li>
+            <li>
+              <%= link_to "登录", controller: :users, action: :login %>
+            </li>
+          <% end %>
           <li style="position:relative;">
             <a class="header_account_link">
               <%= image_tag "user_icon.png", :class => "user_icon" %>
@@ -66,9 +68,7 @@
                   </a>
                 </li>
                 <li>
-                  <a>
-                    退出账户
-                  </a>
+                  <%= link_to "退出账户", controller: :users, action: :logout %>
                 </li>
               </ul>
             </div>

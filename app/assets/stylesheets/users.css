@@ -43,6 +43,7 @@
   line-height: 36px;
   padding: 0 5px;
   *padding: 0;
+  box-sizing: border-box;
 }
 
 .user-op-form input[type="checkbox"] {
@@ -67,6 +68,7 @@
 .user-op-form .input-panel {
   position: absolute;
   left: 0;
+  right: 0;
   width: 235px;
   min-width: 235px;
 }
@@ -104,6 +106,7 @@
 
 .register-box .security-code-panel {
   top: 143px;
+  white-space: nowrap;
 }
 
 .register-box .password-panel {
@@ -111,17 +114,19 @@
 }
 
 .user-op-form .security-code-input {
-  width: 138px;
+  width: 134px;
   display: inline;
 }
 
 .user-op-form .security-code-button {
   border: 1px solid #E6E6E6;
   background-color: #FFF;
-  width: 88px;
   height: 36px;
   color: #3BAF47;
   border-radius: 1px;
+  box-sizing: border-box;
+  width: 88px;
+  margin-left: 7px;
 }
 
 .register-box .terms-of-service-panel {
