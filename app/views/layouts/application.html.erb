@@ -22,7 +22,7 @@
             </a>
           </li>
           <li>
-            <%= link_to "关于我们", controller: :standalone, action: :about_us %>
+            <%= link_to "关于我们", about_us_url %>
           </li>
         </ul>
         <ul class="header_ul_right">
@@ -46,27 +46,35 @@
               <%= image_tag "dropdown_top.png", :class => "user_icon" %>
               <ul>
                 <li>
-                  <a>
-                    订单管理
-                  </a>
+                  <% if session[:login_user_id] %>
+                    <%= link_to "订单管理", user_orders_url(session[:login_user_id]) %>
+                  <% else %>
+                    <%= link_to "订单管理", login_users_url %>
+                  <% end %>
                 </li>
                 <li>
-                  <a>
-                    收货地址
-                  </a>
+                  <% if session[:login_user_id] %>
+                    <%= link_to "收货地址", user_addresses_url(session[:login_user_id]) %>
+                  <% else %>
+                    <%= link_to "收货地址", login_users_url %>
+                  <% end %>
                 </li>
                 <li>
-                  <a>
-                    客户服务
-                  </a>
+                  <% if session[:login_user_id] %>
+                    <%= link_to "客户服务", custom_service_url %>
+                  <% else %>
+                    <%= link_to "客户服务", login_users_url %>
+                  <% end %>
                 </li>
                 <li>
-                  <a>
-                    用户设置
-                  </a>
+                  <% if session[:login_user_id] %>
+                    <%= link_to "用户设置", user_settings_user_url(session[:login_user_id]) %>
+                  <% else %>
+                    <%= link_to "用户设置", login_users_url %>
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to "退出账户", controller: :users, action: :logout %>
+                  <%= link_to "退出账户", logout_users_url %>
                 </li>
               </ul>
             </div>

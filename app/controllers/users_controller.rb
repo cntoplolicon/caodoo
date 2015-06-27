@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   layout 'user_op'
+  before_action :find_user, only: [:user_settings, :username_setting, :password_setting]
 
   def login
     @user = User.new
@@ -71,6 +72,18 @@ class UsersController < ApplicationController
   def reset_password_done
   end
 
+  def user_settings
+    render layout: 'account_setting'
+  end
+  
+  def username_setting
+    render layout: 'account_setting'
+  end
+
+  def password_setting
+    render layout: 'account_setting'
+  end
+
   def update
     user_id = params[:id].to_i
     if params[:user].has_key?(:username)
@@ -115,6 +128,8 @@ class UsersController < ApplicationController
     send_security_code_over_sms(username)
   end
 
+  private
+
   def user_params
     params.require(:user).permit(:username, :password, :terms_of_service)
   end
@@ -151,5 +166,11 @@ class UsersController < ApplicationController
     session.delete(:security_code)
     session.delete(:user_to_verify)
     session.delete(:user_verified)
+  end
+
+  def find_user
+    redirect_to action: :login and return unless session[:login_user_id].present?
+    head :forbidden and return if session[:login_user_id] != params[:id].to_i
+    @user = User.find(session[:login_user_id])
   end
 end

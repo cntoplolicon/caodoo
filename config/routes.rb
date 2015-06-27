@@ -58,6 +58,9 @@ Rails.application.routes.draw do
   resources :products
 
   resources :users do
+    resources :orders
+    resources :addresses
+
     collection do
       get :login
       post:do_login
@@ -69,7 +72,12 @@ Rails.application.routes.draw do
       post :get_security_code_for_new_user
       post :get_security_code_for_password
     end
+
+    member do
+      get :user_settings, :username_setting, :account_setting
+    end
   end
 
   get :about_us, to: 'standalone#about_us'
+  get :custom_service, to: 'standalone#custom_service'
 end
