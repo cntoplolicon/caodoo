@@ -35,22 +35,25 @@
     </a>
   </div>
   <div class="user_info_box password-box">
-    <form>
+    <%= form_for @user do |f| %>
       <ul>
         <li>
-          <input class="cd_input" type="password" placeholder="旧密码">
+          <%= password_field_tag :'user[old_password]', '', class: 'cd_input', placeholder: "旧密码" %>
+          <div class="error-message"><%= @user.errors.messages[:old_password].first if @user.errors[:old_password].any? %></div>
         </li>
         <li>
-          <input class="cd_input" type="password" placeholder="新密码">
+          <%= f.password_field :password, placeholder: '新密码', class: 'cd_input' %>
+          <div class="error-message"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
         </li>
         <li>
-          <input class="cd_input" type="password" placeholder="再输一遍新密码">
+          <%= f.password_field :password_confirmation, placeholder: '再输一遍新密码', class: 'cd_input' %>
+          <div class="error-message"><%= @user.errors.messages[:password_confirmation].first if @user.errors[:password_confirmation].any? %></div>
         </li>
         <li>
-          <a href="" class="bt_green" style="float: left">保存</a>
+          <%= f.submit '保存', :disable_with => '正在保存', class: 'bt_green', style: 'float: left'%>
           <a class="bt cancel_button" style="float: left">取消</a>
         </li>
       </ul>
-    </form>
+    <% end %>
   </div>
 </div>

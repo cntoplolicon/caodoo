@@ -95,17 +95,27 @@ class UsersController < ApplicationController
         @page_status = 'editing_username'
         render 'user_settings', layout: 'account_setting'
       end
-    elsif params[:user].has_key?(:oldPassword)
-      # code goes here
+    elsif params[:user].has_key?(:old_password)
+      head :forbidden and return unless user_id == session[:login_user_id]
+      @user = User.find(user_id)
+      old_password_valid = @user.authenticate(params[:user][:old_password])
+      @user.password = params[:user][:password]
+      @user.password_confirmation = params[:user][:password_confirmation]
+      @user.updating_password = true
+      user_valid = @user.valid?
+      @user.errors.add(:old_password, '密码不正确') unless old_password_valid
+      if old_password_valid && user_valid && @user.save
+        redirect_to action: :user_settings
+      else
+        @page_status = 'editing_password'
+        render 'user_settings', layout: 'account_setting'
+      end
     elsif params[:user].has_key?(:password)
       @user = User.find(user_id)
       head :forbidden and return unless @user.username == session[:user_verified]
       @user.password = params[:user][:password]
+      @user.password_confirmation = params[:user][:password_confirmation]
       @user.updating_password = true
-      if params[:user][:password] != params[:user][:password_confirmation]
-        @user.errors.add(:password_confirmation, '两次输入的密码不一致')
-        render 'reset_password' and return
-      end
       render 'reset_password' and return unless @user.save
       clear_verify_information
       redirect_to action: :reset_password_done

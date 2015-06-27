@@ -10,5 +10,7 @@ zh-CN:
             password:
               blank: "密码不能为空"
               invalid: "密码为6-20位字符"
+            password_confirmation:
+              confirmation: '两次输入的密码不一致'
             terms_of_service:
               accepted: '注册须同意服务条款'
