@@ -8,11 +8,11 @@
   <%= form_for @user, url: {action: :do_login}, method: :post do |f| %>
     <div class="username-panel input-panel">
       <%= f.text_field :username, placeholder: "注册手机号" %>
-      <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first %></div>
+      <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first if @user.errors[:username].any? %></div>
     </div>
     <div class="password-panel input-panel">
       <%= f.password_field :password, placeholder: '密码' %>
-      <div class="error-message"><%= @user.errors.messages[:password].first %></div>
+      <div class="error-message"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
     </div>
     <div class="forget-password-panel input-panel">
       <%= link_to "忘记密码?", forget_password_users_url %>

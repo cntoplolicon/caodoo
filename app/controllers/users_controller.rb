@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   layout 'user_op'
-  before_action :find_user, only: [:user_settings, :username_setting, :password_setting]
 
   def login
     @user = User.new
@@ -10,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user][:username])
     unless @user.present?
       @user = User.new
+      @user.username = params[:user][:username]
       @user.errors.add(:username, '用户名不存在')
       render 'login' and return
     end
@@ -73,19 +73,35 @@ class UsersController < ApplicationController
   end
 
   def user_settings
+    @user = User.find(session[:login_user_id])
     render layout: 'account_setting'
   end
   
   def update
     user_id = params[:id].to_i
     if params[:user].has_key?(:username)
-      # code goes here
+      head :forbidden and return unless user_id == session[:login_user_id]
+      @user = User.find(user_id)
+      another_user = User.find_by_username(params[:user][:username])
+      @user.errors.add(:username, '用户名已存在') if another_user.present?
+      @user.username = params[:user][:username]
+      user_valid = another_user.nil? && @user.valid?
+      security_code_verified = verify_security_code(params[:user][:security_code])
+      if user_valid && security_code_verified && @user.save
+        clear_verify_information
+        session[:login_username] = @user.username
+        redirect_to action: :user_settings
+      else
+        @page_status = 'editing_username'
+        render 'user_settings', layout: 'account_setting'
+      end
     elsif params[:user].has_key?(:oldPassword)
       # code goes here
     elsif params[:user].has_key?(:password)
       @user = User.find(user_id)
       head :forbidden and return unless @user.username == session[:user_verified]
       @user.password = params[:user][:password]
+      @user.updating_password = true
       if params[:user][:password] != params[:user][:password_confirmation]
         @user.errors.add(:password_confirmation, '两次输入的密码不一致')
         render 'reset_password' and return

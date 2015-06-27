@@ -18,13 +18,18 @@ $(document).ready(function () {
   };
 
   $('.update_username_action').click(function () {
-    $('.username_box').show();
-    $('.password_box').hide();
+    $('.username-box').show();
+    $('.password-box').hide();
   });
   $('.update_password_action').click(function () {
-    $('.username_box').hide();
-    $('.password_box').show();
+    $('.username-box').hide();
+    $('.password-box').show();
   });
+  if ($('#page-status').val() === 'editing_username') {
+    $('.username-box').show();
+  } else if ($('#page-status').val() === 'editing_password') {
+    $('.password-box').show();
+  }
 
   $('.user_info_box .cancel_button').click(function() {
     $(this).closest('.user_info_box').hide();
@@ -36,9 +41,8 @@ $(document).ready(function () {
     }, 2000);
   }
 
-  $('.reset-password-to-login-link')
-
   initSecurityCodeButton('.register-box .security-code-button', '/users/get_security_code_for_new_user');
   initSecurityCodeButton('.forget-password-box .security-code-button', '/users/get_security_code_for_password');
+  initSecurityCodeButton('.username-box .security-code-button', '/users/get_security_code_for_new_user');
 })
 
