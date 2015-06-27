@@ -214,7 +214,7 @@ input {
 
     margin: 0 auto;
 
-    background-image: url("../img/about_slogan_bg.jpg");
+    background-image: image-url("about_slogan_bg.jpg");
 
     overflow: hidden;
 }
@@ -351,7 +351,7 @@ input {
 
     height: 300px;
 
-    background-image: url("../img/about_company.jpg");
+    background-image: image-url("about_company.jpg");
 
     margin: 0 auto;
 }
@@ -380,7 +380,7 @@ input {
 
     overflow: hidden;
 
-    background-image: url("../img/about_contact.png");
+    background-image: image-url("about_contact.png");
 
     background-size: cover;
 
@@ -1048,7 +1048,7 @@ input {
     position: fixed;
     top: 0;
     left: 0;
-    background-image: url("../img/popup_black_bg.png");
+    background-image: image-url("popup_black_bg.png");
 
     z-index: 99;
 }

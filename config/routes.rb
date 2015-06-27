@@ -70,4 +70,6 @@ Rails.application.routes.draw do
       post :get_security_code_for_password
     end
   end
+
+  get :about_us, to: 'standalone#about_us'
 end
