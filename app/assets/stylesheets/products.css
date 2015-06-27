@@ -111,6 +111,7 @@
 .upcoming-product .trailer-image {
   width: 148px;
   height: 148px;
+  display: none;
 }
 
 .upcoming-product .trailer-content {
@@ -123,6 +124,19 @@
   filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#80000000', endColorstr='#80000000');
   text-align: left;
   padding-left: 8px;
+  display: none;
+}
+
+.upcoming-product:hover .brand-image{
+  display: none;
+}
+
+.upcoming-product:hover .trailer-image {
+  display: inline;
+}
+
+.upcoming-product:hover .trailer-content {
+  display: block;
 }
 
 .upcoming-product .trailer-time {
