@@ -270,6 +270,13 @@
   line-height: 60px;
 }
 
+.product-detail-carousel {
+  width: 420px;
+  height: 420px;
+  margin-top: 18px;
+  border: 1px solid #E6E6E6;
+}
+
 .product-detail-thumbnail {
   width: 72px;
   height: 72px;
@@ -279,6 +286,9 @@
   vertical-align: top;
   margin: 24px 12px 0 12px;
   *margin: 18px 6px 0 6px;
+  border: 1px solid #E6E6E6;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 .product-detail-text-container {

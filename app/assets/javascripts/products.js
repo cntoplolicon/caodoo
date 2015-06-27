@@ -26,5 +26,9 @@
     };
     window.setInterval(countDown, 1000);
     countDown();
+
+    $('.product-detail-thumbnail').click(function() {
+      $('.carousel-image').attr('src', $(this).attr('src'));
+    });
   });
 })(this, jQuery);
