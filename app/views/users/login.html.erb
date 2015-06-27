@@ -15,7 +15,7 @@
       <div class="error-message"><%= @user.errors.messages[:password].first %></div>
     </div>
     <div class="forget-password-panel input-panel">
-      忘记密码?
+      <%= link_to "忘记密码?", forget_password_users_url %>
     </div>
     <div class="submit-panel input-panel">
       <%= f.submit "登录" %>

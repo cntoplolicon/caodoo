@@ -74,7 +74,7 @@ Rails.application.routes.draw do
     end
 
     member do
-      get :user_settings, :username_setting, :account_setting
+      get :user_settings
     end
   end
 

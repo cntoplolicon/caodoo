@@ -21,5 +21,7 @@
     $('.product-detail-thumbnail').click(function() {
       $('.carousel-image').attr('src', $(this).attr('src'));
     });
+
+
   });
 })(this, jQuery);

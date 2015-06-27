@@ -17,6 +17,27 @@ $(document).ready(function () {
     });
   };
 
+  $('.update_username_action').click(function () {
+    $('.username_box').show();
+    $('.password_box').hide();
+  });
+  $('.update_password_action').click(function () {
+    $('.username_box').hide();
+    $('.password_box').show();
+  });
+
+  $('.user_info_box .cancel_button').click(function() {
+    $(this).closest('.user_info_box').hide();
+  });
+
+  if ($('.reset-password-to-login-link').attr('href')) {
+    window.setTimeout(function () {
+      window.location.href = $('.reset-password-to-login-link').attr('href');
+    }, 2000);
+  }
+
+  $('.reset-password-to-login-link')
+
   initSecurityCodeButton('.register-box .security-code-button', '/users/get_security_code_for_new_user');
   initSecurityCodeButton('.forget-password-box .security-code-button', '/users/get_security_code_for_password');
 })

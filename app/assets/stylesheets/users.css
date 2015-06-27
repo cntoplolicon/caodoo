@@ -83,6 +83,9 @@
 
 .login-box .forget-password-panel {
   top: 240px;
+}
+
+.login-box .forget-password-panel a {
   color: #3BAF47;
 }
 
@@ -163,6 +166,10 @@
 
 .reset-password-box .submit-panel {
   top: 245px;
+}
+
+.reset-password-to-login-link {
+  display: none;
 }
 
 .user-op-form .success-icon {

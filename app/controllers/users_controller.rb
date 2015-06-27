@@ -76,14 +76,6 @@ class UsersController < ApplicationController
     render layout: 'account_setting'
   end
   
-  def username_setting
-    render layout: 'account_setting'
-  end
-
-  def password_setting
-    render layout: 'account_setting'
-  end
-
   def update
     user_id = params[:id].to_i
     if params[:user].has_key?(:username)
