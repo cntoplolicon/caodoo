@@ -1,0 +1,58 @@
+.payment-detail-container {
+    text-align: center;
+    background-color: #e8e8e8;
+    display: block;
+}
+.payment-detail {
+    width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #ffffff;
+    padding-top: 40px;
+    padding-bottom: 56px;
+    position: relative;
+    min-height: 717px;
+}
+.payment-deadline {
+    font-size: 14px;
+    height: 30px;
+    width: 880px;
+    border-bottom: solid 1px rgba(0, 0, 0, 10);
+    margin-left: auto;
+    margin-right: auto;
+}
+.backward {
+    position: absolute;
+    left: 40px;
+}
+.back-icon {
+    float: left;
+}
+.back-text {
+    float: left;
+    color: #3baf47;
+    font-size: 14px;
+}
+.total-cost {
+    font-size: 30px;
+    color: #15ae10;
+    margin-top: 30px;
+}
+.order-content {
+    font-size: 14px;
+    width: 452px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.micro-message {
+    font-size: 21px;
+    margin-top: 90px;
+    height: 38px;
+    border-bottom: solid 1px #979797;
+    width: 452px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.qrcode-example {
+    margin-top: 30px;
+}

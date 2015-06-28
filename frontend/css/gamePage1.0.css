@@ -1,0 +1,73 @@
+.game_poster_content {
+    text-align: center;
+}
+
+.game_poster {
+    width: 960px;
+}
+
+.game_container {
+    background: #3BBD75;
+}
+
+.game_recommend_content {
+    background: white;
+    margin: 0 auto;
+    width: 960px;
+    overflow: hidden;
+    position: relative;
+}
+
+.game_recommend_product_container {
+    margin-top: 50px;
+}
+
+.game_recommend_product_content {
+    float: left;
+    width: 240px;
+    margin-left: 54px;
+    margin-bottom: 50px;
+    text-align: left;
+    border: 1px solid #E5E5E5;
+}
+
+.game_recommend_title {
+    padding-top: 50px;
+    text-align: center;
+    margin-right: 50px 30px 0px 30px;
+}
+
+.game_recommend_product_detail {
+    border-top: 1px solid #E5E5E5;
+    padding-top: 20px;
+}
+
+.game_recommend_product_detail p {
+    margin: 0px 0px 10px 20px;
+}
+
+.game_share_content {
+    /*float:right;*/
+    /*margin-top:-20px;*/
+    /*margin-right:50px;*/
+
+    position: absolute;
+
+    right: 30px;
+
+    top: 50px;
+}
+
+.recommend_product_price {
+    color: #FB3127;
+}
+.game_recommend_product_img {
+    width: 240px;
+}
+.game_share_title {
+    float: left;
+}
+.game_share_icons {
+    float: left;
+    margin-left:10px
+}

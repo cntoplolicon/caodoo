@@ -1,0 +1,1307 @@
+/**
+ * Created with JetBrains WebStorm.
+ * User: WEIDONG MENG
+ * Date: 15-06-24
+ * Time: 上午11:37
+ * To change this template use File | Settings | File Templates.
+ */
+
+/*公共*/
+
+
+
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-family: SimHei, Helvetica, sans-serif;
+    color: #333333;
+
+}
+
+ol, ul, li, h1, h2, h3, h4, form, input, p, a, textarea {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+b, i, em, strong, h1, h2, h3, h4 {
+    font-style: normal;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+    cursor: pointer;
+
+}
+
+button{
+
+    border: none;
+
+}
+
+
+img {
+    border: none;
+}
+
+input {
+
+    outline: 0;
+    border: 0;
+
+}
+
+.header_center{
+
+    width: 960px;
+
+    height: 58px;
+
+    margin: 0 auto;
+}
+
+.center{
+
+    overflow: hidden;
+
+    width: 960px;
+
+    margin: 0 auto;
+
+}
+
+.container{
+
+    overflow: hidden;
+
+
+    width: 100%;
+
+}
+
+
+.white{
+
+    color: white;
+
+}
+
+.black{
+
+    color:black;
+
+}
+
+
+.gray_bg{
+
+    background-color: #F7F7F7;
+
+}
+
+/*header*/
+
+
+.header{
+
+    height: 58px;
+
+    background-color: black;
+
+}
+.header_ul_left{
+
+    float: left;
+
+    overflow: hidden;
+
+    height: 58px;
+
+}
+
+.header_ul_left li {
+
+    line-height: 58px;
+
+
+
+    float: left;
+}
+
+.header_ul_left li a {
+
+    color: white;
+
+    font-size: 16px;
+
+
+}
+
+.header_li_marign{
+
+    margin: 0 30px;
+
+}
+
+.header_logo{
+
+
+    margin-top: 4px;
+
+}
+
+.header_ul_right{
+
+    float: right;
+
+    height: 58px;
+}
+
+
+.header_ul_right li{
+
+    line-height: 58px;
+
+    float:left;
+
+    margin: 0px 10px;
+
+}
+
+.header_ul_right li a{
+
+    font-size: 16px;
+
+    color: white;
+
+
+}
+
+
+
+
+/*about*/
+
+.about_slogan{
+
+    width: 100%;
+
+    background-color: black;
+
+    height: 424px;
+
+    overflow: hidden;
+
+}
+
+
+.about_slogan_bg{
+
+    display: block;
+
+    width: 1280px;
+
+    height: 424px;
+
+    margin: 0 auto;
+
+    background-image: url("../img/about_slogan_bg.jpg");
+
+    overflow: hidden;
+}
+
+.about_slogan_box{
+
+    margin-top: 160px;
+
+}
+
+.about_slogan_title{
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 56px;
+
+}
+
+.about_slogan_desc_box{
+
+    width: 400px;
+
+    margin: 0 auto;
+
+    margin-top: 10px;
+
+}
+
+.about_slogan_desc_text{
+
+    float: left;
+
+    font-size: 24px;
+
+    color: white;
+
+    text-align: center;
+
+}
+
+.about_slogan_desc_line{
+
+    margin-top: 14px;
+
+    float: left;
+
+    width: 48px;
+
+    border-bottom: 1px solid white;
+}
+
+
+.black_title{
+
+    text-align: center;
+
+    color: black;
+
+    font-size: 24px;
+
+    margin: 30px 0px;
+
+}
+.white_title{
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 24px;
+
+    margin: 30px 0px;
+
+}
+
+.about_segment_ul{
+
+    overflow: hidden;
+
+}
+
+.about_segment_li{
+
+    float: left;
+
+    width: 122px;
+}
+
+.about_segment_li img{
+
+    display: block;
+}
+
+.about_segment_img{
+
+
+
+
+}
+
+.about_segment_title{
+
+    text-align: center;
+
+    margin: 10px 0px;
+}
+
+.about_segment_p{
+
+    text-align: center;
+
+    line-height: 18px;
+}
+
+.team{
+
+    height: 300px;
+
+    background-color: black;
+
+    overflow: hidden;
+
+    margin-top: 40px;
+
+}
+
+.team_bg{
+
+    overflow: hidden;
+
+    width: 1280px;
+
+    height: 300px;
+
+    background-image: url("../img/about_company.jpg");
+
+    margin: 0 auto;
+}
+
+.team_desc{
+
+    margin-top: 80px;
+
+    font-size: 16px;
+
+    color:white;
+
+    text-align: center;
+
+    line-height: 34px;
+}
+
+
+
+
+.contact{
+
+    height: 300px;
+
+    background-color: black;
+
+    overflow: hidden;
+
+    background-image: url("../img/about_contact.png");
+
+    background-size: cover;
+
+    background-position: center center;
+
+    height: 300px;
+}
+
+.contact_desc{
+
+    margin-top: 90px;
+
+    font-size: 16px;
+
+    color:white;
+
+    text-align: center;
+}
+.contact_segment_ul{
+
+    overflow: hidden;
+
+    width: 604px;
+
+    margin: 0 auto;
+
+}
+
+.contact_segment_li{
+
+    float: left;
+
+    margin: 5px 20px;
+}
+
+.contact_address{
+
+    margin-top: 2px;
+}
+
+.partner{
+
+    margin-bottom: 40px;
+}
+
+.partner_center{
+
+    display: block;
+
+    margin: 0 auto;
+
+
+
+}
+
+
+
+
+
+
+/*footer*/
+
+.footer{
+
+    overflow: hidden;
+
+    height: 90px;
+
+    background-color: black;
+
+}
+.footer_ul{
+
+    overflow:hidden;
+
+    width: 580px;
+
+    margin: 0 auto;
+
+    margin-top: 40px;
+
+
+
+}
+
+.footer_ul li{
+
+    float: left;
+
+    padding: 0px 30px;
+
+    border-right: 1px solid gray;
+
+}
+
+.footer_ul li a{
+
+    color: white;
+
+}
+
+
+
+/*order menu */
+
+
+.order_menu{
+
+    float: left;
+
+    width: 130px;
+
+    padding: 0px 10px;
+
+    background-color: white;
+
+
+
+}
+
+.order_menu ul li{
+
+    border-bottom: 1px solid #EEEEEE;
+
+    width: 130px;
+
+    padding-top: 15px;
+
+    padding-bottom: 15px;
+
+    text-align: center;
+
+    margin-bottom: 4px;
+
+}
+
+
+
+.order{
+
+    overflow: hidden;
+
+    padding: 40px 0px;
+}
+
+.li_current{
+
+
+    border-bottom: 1px solid #3FB134;
+
+}
+
+.order_box{
+
+    float: right;
+
+    width: 760px;
+
+    min-height: 717px;
+
+    background-color: white;
+
+    padding: 0px 20px;
+
+}
+
+.status_box{
+
+    overflow: hidden;
+}
+
+.status_box ul li {
+
+    float: left;
+
+    margin-right: 20px;
+
+}
+
+.status_box ul li a{
+
+
+    position: relative;
+
+    z-index: 22;
+
+    float: left;
+
+    padding: 15px 0;
+
+    margin-right: 30px;
+}
+.order_row{
+
+    width: 750px;
+
+    height: 177px;
+
+    background-color: #F7F7F7;
+
+}
+
+.order_title{
+
+
+    height: 36px;
+
+    line-height: 36px;
+
+    background-color: #E7E7E7;
+
+    padding: 0px 20px;
+}
+
+.order_infos{
+
+    overflow: hidden;
+
+    margin-top: 35px;
+}
+
+.order_infos li{
+
+    width: 124px;
+
+    float: left;
+
+    text-align: center;
+}
+
+.product_text_color{
+
+    color: #6B6B6B;;
+
+}
+
+.product_title{
+
+    color: #6B6B6B;
+}
+
+.product_name{
+
+
+}
+
+.product_price{
+
+    line-height: 30px;
+
+}
+
+
+.order_action{
+
+    margin-top: 10px;
+
+    margin-left: 20px;
+
+}
+
+
+
+.product_tt{
+
+    margin-top: 20px;
+
+    height: 40px;
+
+    border-right: 1px solid #EEEEEE;
+}
+
+.product_tt_40{
+
+    line-height: 40px;
+
+    text-align: center;
+
+}
+
+.order_hight{
+
+    color: #3FB134;
+}
+
+.pay_order{
+
+    display: block;
+
+    color: white;
+
+    width: 84px;
+
+    height: 30px;
+
+    line-height: 30px;
+
+    background-color:  #3FB134;
+
+}
+
+.cancel_order{
+
+    display: block;
+
+    color: white;
+
+    width: 84px;
+
+    height: 30px;
+
+    line-height: 30px;
+
+    color: #6B6B6B;
+
+}
+
+.page_action{
+
+    overflow: hidden;
+
+    margin: 20px 0;
+
+}
+
+
+.page_action ul {
+
+
+    overflow: hidden;
+
+    width: 420px;
+
+    margin: 0 auto;
+
+}
+
+
+.page_action ul li {
+
+    float: left;
+
+    margin-right: 20px;
+
+}
+
+.page_action ul li a{
+
+    display: block;
+
+    height: 24px;
+
+    width: 24px;
+
+    line-height: 24px;
+
+    text-align: center;
+
+    background-color: #F7F7F7;
+
+
+}
+
+.return_action{
+
+
+    height: 40px;
+
+    line-height: 40px;
+
+    border-bottom: 1px solid #EEEEEE;
+
+}
+
+.order_process{
+
+    margin: 30px 0px;
+
+}
+
+.order_info{
+
+    height: 70px;
+
+    background-color: #F7F7F7;
+
+    padding: 20px;
+}
+
+
+.order_product{
+
+    float: left;
+
+}
+.order_product_info{
+
+    float: left;
+
+    margin-left: 30px;
+
+    margin-top: -10px;
+
+}
+
+.order_product_info ul li {
+
+
+    margin: 6px 0;
+
+
+}
+
+.order_product_price{
+
+    float: right;
+
+    margin-right: 20px;
+
+    padding-bottom: 50px;
+
+    margin-top: 50px;
+}
+
+.order_product_name{
+
+    font-size: 16px;
+}
+
+.order_info_block{
+
+    float: left;
+
+    width: 450px;
+
+    background-color: #F7F7F7;
+
+    padding: 15px;
+
+    height: 140px;
+
+    font-size: 16px;
+
+}
+
+.order_info_block li {
+
+    color: #6B6B6B;
+
+    font-size: 16px;
+
+    line-height: 30px;
+
+}
+
+.order_span{
+
+    color: black;
+}
+
+.info_block{
+
+
+    overflow: hidden;
+
+    width: 760px;
+
+}
+
+.order_info_block2{
+
+    overflow: hidden;
+
+    float: right;
+
+    width: 220px;
+
+    height: 140px;
+
+    background-color: #F7F7F7;
+
+    padding: 15px;
+
+    font-size: 16px;
+}
+
+.order_info_block2 ul li {
+
+
+    margin: 10px 0;
+
+}
+
+.bt_green{
+
+    border-radius: 4px;
+
+    color: white;
+
+    float: right;
+
+    padding: 10px 15px;
+
+    background-color: #3FB134;
+
+    margin: 10px;
+
+
+    text-align: center;
+
+
+
+}
+
+.bt{
+
+    border-radius: 4px;
+
+    color: #6B6B6B;
+
+    float: right;
+
+    padding: 10px 15px;
+
+    background-color: white;
+
+    border: 1px solid #EAEAEA;
+
+    margin: 10px;
+
+    text-align: center;
+
+
+
+}
+
+.our_ts{
+
+    background-color: black;
+
+    overflow: hidden;
+
+}
+
+.our_ts img{
+
+    display: block;
+
+    width: 930px;
+
+    margin: 0 auto;
+
+    margin-top: 30px;
+
+}
+
+.service_box{
+
+    margin-top: 20px;
+
+    margin-bottom: 20px;
+}
+
+.update_action{
+
+    float: right;
+}
+
+.update_action a:hover{
+
+
+
+
+}
+
+.user_info{
+
+    margin: 20px 0;
+
+
+}
+
+.cd_input{
+
+    border-radius: 4px;
+
+    width: 221px;
+
+    height: 30px;
+
+    padding: 4px 6px;
+
+    background-color: #EBEBEB;
+
+    margin: 8px 0;
+
+    border: 1px solid #DEDEDE;
+
+
+}
+
+
+.user_info_box{
+
+    overflow: hidden;
+
+    background-color: #F7F7F7;
+
+    padding: 6px;
+
+    margin: 10px 0;
+
+}
+
+.user_info_box ul li{
+
+    overflow: hidden;
+
+}
+
+.delivery_user ul li{
+
+    overflow: hidden;
+
+    background-color: #F7F7F7;
+
+    padding: 8px;
+
+    font-size: 14px;
+
+    margin: 6px 0px;
+
+}
+
+.user_before{
+
+    float: left;
+}
+
+.set_address_default{
+
+    color: #969696;
+
+    float: right;
+
+    margin: 0px 20px;
+
+}
+
+.user_after {
+
+    color: #969696;
+
+    float: right;
+
+    margin: 0px 20px;
+}
+
+.popup{
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url("../img/popup_black_bg.png");
+
+    z-index: 99;
+}
+
+.popup_box{
+
+    width: 640px;
+
+    height: 360px;
+
+    margin: 0 auto;
+
+    margin-top: 120px;
+
+    background-color: white;
+
+    overflow: hidden;
+
+    box-shadow: 3px 3px 3px #666;
+
+    z-index: 99;
+}
+
+.address_center{
+
+    width: 480px;
+
+    margin: 0 auto;
+
+    margin-top: 20px;
+
+}
+
+.green_text{
+
+    color: #15AE10;
+
+}
+.cd_select{
+
+    border-radius: 4px;
+    width: 154px;
+    height: 38px;
+    padding: 4px 6px;
+    background-color: #EBEBEB;
+    margin: 8px 0;
+    border: 1px solid #DEDEDE;
+
+}
+
+.address_center ul li {
+
+    margin: 10px 0px;
+
+}
+
+.delivery_user span{
+
+    float: left;
+}
+
+
+.address_span{
+
+    width: 80px;
+
+    text-align: left;
+
+    margin-right: 20px;
+
+
+}
+
+.status_box ul {
+
+    overflow: hidden;
+
+}
+
+.currnet_tab{
+
+    border-bottom: 2px solid #3FB134;
+
+}
+
+.status_box_line
+
+{
+
+    width: 750px;
+    border-bottom: 2px solid #EEEEEE;
+    margin-bottom: 10px;position: relative;
+    top: -2px;
+    z-index: 10
+
+
+}
+
+.service_box p{
+
+    line-height: 22px;
+
+}
+
+.resales_popup_box{
+
+    overflow: hidden;
+
+
+    width: 400px;
+
+    height: 180px;
+
+    background-color: white;
+
+    margin:180px auto 0px auto;
+
+    box-shadow: 3px 3px 3px #666;
+
+    z-index: 99;
+
+
+}
+
+.customer_service_info{
+
+
+    width: 250px;
+
+    margin: 60px auto 0 auto;
+
+}
+
+.customer_service_info ul li {
+
+    margin: 14px 0;
+
+    color: #909090;
+
+}
+
+.customer_service_info ul li a{
+
+    color: #909090;
+
+}
+
+.confirm_popup_box{
+
+    position: relative;
+
+    width: 400px;
+
+    height: 180px;
+
+    margin: 180px auto 0 auto;
+
+    background-color: white;
+
+    overflow: hidden;
+
+    box-shadow: 3px 3px 3px #666;
+
+    z-index: 99;
+
+}
+
+.confirm_title{
+
+    margin-top: 62px;
+
+    margin-left: 39px;
+
+
+    color: #909090;
+
+}
+
+.confirm_action{
+
+
+    position: absolute;
+
+    bottom: 30px;
+
+    right: 30px;
+
+
+
+}
+
+.confirm_action a{
+
+    color: #909090;
+
+}
+
+
+.currnet_address{
+
+    color:#3FB134;
+
+}
+
+.user_icon{
+
+    margin-top: 15px;
+
+
+}
+
+.cd_dropdown{
+
+    width: 140px;
+
+    position: absolute;
+
+    right: 0;
+
+    top: 40px;
+
+    display: none;
+
+
+}
+
+.cd_dropdown ul{
+
+    background-color: #ffffff;
+
+    margin-top: -25px;
+
+}
+
+
+.cd_dropdown ul li {
+
+    float: none;
+
+    line-height: 40px;
+
+}
+
+.cd_dropdown ul li a{
+
+    text-align: center;
+
+    display: block;
+
+    color: #333333;
+
+    font-size: 14px;
+
+    width: 114px;
+
+    border-bottom: 1px solid lightgray;
+}

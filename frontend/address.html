@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>收货地址</title>
+    <link type="text/css" rel="stylesheet" href="css/caodoo1.0.css">
+    <meta name="keywords" content="可穿戴设备，特卖，智能硬件" />
+    <meta name="description" content="草垛网-智能硬件特卖平台" />
+
+    <script type="text/javascript" src="js/jquery-1.8.0.js"></script>
+
+
+    <script>
+
+
+
+        function save_new_address(){
+
+            hide_new_address_box();
+
+
+        }
+
+
+        function save_update_address(){
+
+            hide_update_address_box();
+
+
+        }
+
+
+        function del_address(){
+
+
+            hide_del_box();
+
+        }
+
+
+        function hide_new_address_box(){
+
+
+
+            $("#new_address_box").hide();
+
+
+
+
+        }
+
+        function show_new_address_box(){
+
+            $("#new_address_box").show();
+
+        }
+
+        function hide_update_address_box(){
+
+
+
+            $("#update_address_box").hide();
+
+
+
+
+        }
+
+        function show_update_address_box(){
+
+
+
+            $("#update_address_box").show();
+
+
+
+
+        }
+
+
+        function show_del_box(){
+
+            $("#delete_address_box").show();
+
+
+        }
+
+        function hide_del_box(){
+
+            $("#delete_address_box").hide();
+
+
+        }
+
+
+        function show_update_default_address_box(){
+
+            $("#update_default_address_box").show();
+
+
+        }
+
+        function hide_update_default_address_box(){
+
+            $("#update_default_address_box").hide();
+
+
+        }
+
+
+
+
+        $(document).ready(function(){
+
+
+
+            //设置默认地址
+
+            $(".set_address_default").click(function(){
+
+
+                show_update_default_address_box();
+
+
+
+                $(".default_address").hide();
+
+                $(this).hide();
+
+
+                $(".set_address_default").removeAttr("style");
+
+
+                $(this).attr("style","color:#3FB134");
+
+
+                $(this).parent().parent().find(".default_address").show();
+
+                $(this).hide();
+
+
+            });
+
+
+
+        });
+
+
+
+    </script>
+
+
+
+</head>
+<body>
+
+
+<!--header-->
+
+<div class="header">
+
+    <div class="center">
+
+        <ul class="header_ul_left">
+
+            <li>
+
+                <a href="">
+
+
+                    <img   class="header_logo" src="img/logo.png">
+
+
+                </a>
+
+
+            </li>
+
+
+            <li>
+
+                <a href="" class="header_li_marign">
+
+                    首页
+
+
+                </a>
+
+
+            </li>
+
+            <li>
+
+                <a href="about.html" class="header_li_marign">
+
+                    关于我们
+
+
+                </a>
+
+
+            </li>
+
+
+
+        </ul>
+
+
+        <ul class="header_ul_right">
+
+            <li>
+
+                <a href="">
+
+                    注册
+
+                </a>
+
+
+            </li>
+
+            <li>
+
+                <a href="">
+
+                    登陆
+
+                </a>
+
+
+            </li>
+
+
+        </ul>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<!--container-->
+
+<div class="container gray_bg">
+
+
+    <!--orders-->
+
+
+    <div class="center order">
+
+
+        <!--left-->
+
+        <div class="order_menu">
+
+            <ul>
+
+                <li class="li_current" >
+
+
+                    <a href="orders.html">
+
+                        订单管理
+
+                    </a>
+
+
+                </li>
+
+                <li style="border-bottom: none;border-bottom: 1px solid #3FB134;">
+
+
+                    <a href="address.html">
+
+                        收货地址
+
+                    </a>
+
+
+                </li>
+
+
+                <li>
+
+
+                    <a href="service.html">
+
+                        客户服务
+
+                    </a>
+
+
+                </li>
+
+                <li style="">
+
+
+                    <a href="service.html">
+
+                        个人设置
+
+                    </a>
+
+
+                </li>
+
+            </ul>
+
+
+        </div>
+
+
+        <div class="order_box">
+
+
+        <!--status-->
+
+
+
+        <div class="status_box">
+
+
+            <ul>
+
+
+                <li >
+
+                    <a onclick="show_new_address_box()" class="currnet_tab">
+
+                        添加收货地址
+
+                    </a>
+
+
+                </li>
+
+
+
+
+
+            </ul>
+
+
+            <div class="status_box_line">
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <!--order detail content-->
+
+
+            <div class="delivery_user">
+
+
+
+                <ul>
+
+
+
+                    <li>
+
+
+                        <ul>
+
+
+                            <li>
+
+
+                                <span class="address_span">
+
+                                收件人：
+
+                                    </span>
+
+                                <span >
+
+                                青云
+
+                                    </span>
+
+
+
+                                <span class="default_address"  style="float: right;margin-right: 20px;color: #3FB134">
+
+                                    默认地址
+
+
+                                </span>
+
+
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                               所在地区：
+
+                                    </span>
+
+                                 <span>
+
+                               北京市东城区王府井大街
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                                地址：
+
+                                    </span>
+
+                                <span>
+
+                                世纪大厦2134
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+
+                                <span class="user_before address_span">
+                                手机：
+
+                                    </span>
+
+                                 <span class="user_before">
+                                15811628765
+
+                                    </span>
+
+
+
+                                <a class="user_after" onclick="show_del_box()">删除</a>
+
+
+                                <a class="user_after" onclick="show_update_address_box()">修改</a>
+
+                                <a style="display: none;" class="set_address_default">设为默认地址</a>
+
+
+
+
+                            </li>
+
+
+
+
+                        </ul>
+
+
+
+                    </li>
+
+
+                    <li>
+
+
+                        <ul>
+
+
+                            <li>
+
+
+                                <span class="address_span">
+
+                                收件人：
+
+                                    </span>
+
+                                <span >
+
+                                青云
+
+                                    </span>
+
+
+                                <span  class="default_address"  style="display: none;float: right;margin-right: 20px;color: #3FB134">
+
+                                    默认地址
+
+
+                                </span>
+
+
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                               所在地区：
+
+                                    </span>
+
+                                 <span>
+
+                               北京市东城区王府井大街
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                                地址：
+
+                                    </span>
+
+                                <span>
+
+                                世纪大厦2134
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+
+                                <span class="user_before address_span">
+                                手机：
+
+                                    </span>
+
+                                 <span class="user_before">
+                                15811628765
+
+                                    </span>
+
+
+
+                                <a class="user_after" onclick="show_del_box()">删除</a>
+
+
+                                <a class="user_after" onclick="show_update_address_box()">修改</a>
+
+                                <a class="set_address_default" >设为默认地址</a>
+
+
+
+
+                            </li>
+
+
+
+
+                        </ul>
+
+
+
+                    </li>
+
+                    <li>
+
+
+                        <ul>
+
+
+                            <li>
+
+
+                                <span class="address_span">
+
+                                收件人：
+
+                                    </span>
+
+                                <span >
+
+                                青云
+
+                                    </span>
+
+
+                                <span  class="default_address"  style="display: none;float: right;margin-right: 20px;color: #3FB134">
+
+                                    默认地址
+
+
+                                </span>
+
+
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                               所在地区：
+
+                                    </span>
+
+                                 <span>
+
+                               北京市东城区王府井大街
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                                地址：
+
+                                    </span>
+
+                                <span>
+
+                                世纪大厦2134
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+
+                                <span class="user_before address_span">
+                                手机：
+
+                                    </span>
+
+                                 <span class="user_before">
+                                15811628765
+
+                                    </span>
+
+
+
+                                <a class="user_after" onclick="show_del_box()">删除</a>
+
+
+                                <a class="user_after" onclick="show_update_address_box()">修改</a>
+
+                                <a class="set_address_default" >设为默认地址</a>
+
+
+
+
+                            </li>
+
+
+
+
+                        </ul>
+
+
+
+                    </li>
+
+
+                    <li>
+
+
+                        <ul>
+
+
+                            <li>
+
+
+                                <span class="address_span">
+
+                                收件人：
+
+                                    </span>
+
+                                <span >
+
+                                青云
+
+                                    </span>
+
+
+                                <span  class="default_address"  style="display: none;float: right;margin-right: 20px;color: #3FB134">
+
+                                    默认地址
+
+
+                                </span>
+
+
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                               所在地区：
+
+                                    </span>
+
+                                 <span>
+
+                               北京市东城区王府井大街
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                                地址：
+
+                                    </span>
+
+                                <span>
+
+                                世纪大厦2134
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+
+                                <span class="user_before address_span">
+                                手机：
+
+                                    </span>
+
+                                 <span class="user_before">
+                                15811628765
+
+                                    </span>
+
+
+
+                                <a class="user_after" onclick="show_del_box()">删除</a>
+
+
+                                <a class="user_after" onclick="show_update_address_box()">修改</a>
+
+                                <a class="set_address_default" >设为默认地址</a>
+
+
+
+
+                            </li>
+
+
+
+
+                        </ul>
+
+
+
+                    </li>
+
+
+                    <li>
+
+
+                        <ul>
+
+
+                            <li>
+
+
+                                <span class="address_span">
+
+                                收件人：
+
+                                    </span>
+
+                                <span >
+
+                                青云
+
+                                    </span>
+
+
+                                <span  class="default_address"  style="display: none;float: right;margin-right: 20px;color: #3FB134">
+
+                                    默认地址
+
+
+                                </span>
+
+
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                               所在地区：
+
+                                    </span>
+
+                                 <span>
+
+                               北京市东城区王府井大街
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                                地址：
+
+                                    </span>
+
+                                <span>
+
+                                世纪大厦2134
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+
+                                <span class="user_before address_span">
+                                手机：
+
+                                    </span>
+
+                                 <span class="user_before">
+                                15811628765
+
+                                    </span>
+
+
+
+                                <a class="user_after" onclick="show_del_box()">删除</a>
+
+
+                                <a class="user_after" onclick="show_update_address_box()">修改</a>
+
+                                <a class="set_address_default" >设为默认地址</a>
+
+
+
+
+                            </li>
+
+
+
+
+                        </ul>
+
+
+
+                    </li>
+
+
+                    <li>
+
+
+                        <ul>
+
+
+                            <li>
+
+
+                                <span class="address_span">
+
+                                收件人：
+
+                                    </span>
+
+                                <span >
+
+                                青云
+
+                                    </span>
+
+
+                                <span  class="default_address"  style="display: none;float: right;margin-right: 20px;color: #3FB134">
+
+                                    默认地址
+
+
+                                </span>
+
+
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                               所在地区：
+
+                                    </span>
+
+                                 <span>
+
+                               北京市东城区王府井大街
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                                地址：
+
+                                    </span>
+
+                                <span>
+
+                                世纪大厦2134
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+
+                                <span class="user_before address_span">
+                                手机：
+
+                                    </span>
+
+                                 <span class="user_before">
+                                15811628765
+
+                                    </span>
+
+
+
+                                <a class="user_after" onclick="show_del_box()">删除</a>
+
+
+                                <a class="user_after" onclick="show_update_address_box()">修改</a>
+
+                                <a class="set_address_default" >设为默认地址</a>
+
+
+
+
+                            </li>
+
+
+
+
+                        </ul>
+
+
+
+                    </li>
+
+
+                    <li>
+
+
+                        <ul>
+
+
+                            <li>
+
+
+                                <span class="address_span">
+
+                                收件人：
+
+                                    </span>
+
+                                <span >
+
+                                青云
+
+                                    </span>
+
+
+                                <span  class="default_address"  style="display: none;float: right;margin-right: 20px;color: #3FB134">
+
+                                    默认地址
+
+
+                                </span>
+
+
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                               所在地区：
+
+                                    </span>
+
+                                 <span>
+
+                               北京市东城区王府井大街
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+                                <span class="address_span">
+
+                                地址：
+
+                                    </span>
+
+                                <span>
+
+                                世纪大厦2134
+
+                                    </span>
+
+
+                            </li>
+
+                            <li>
+
+
+                                <span class="user_before address_span">
+                                手机：
+
+                                    </span>
+
+                                 <span class="user_before">
+                                15811628765
+
+                                    </span>
+
+
+
+                                <a class="user_after" onclick="show_del_box()">删除</a>
+
+
+                                <a class="user_after" onclick="show_update_address_box()">修改</a>
+
+                                <a class="set_address_default" >设为默认地址</a>
+
+
+
+
+                            </li>
+
+
+
+
+                        </ul>
+
+
+
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+<!--our ts -->
+
+<div class="our_ts">
+
+
+    <img src="img/ts.png">
+
+
+</div>
+
+
+
+
+
+
+<!--footer-->
+
+<div class="footer">
+
+
+    <ul class="footer_ul">
+
+
+        <li>
+
+            <a href="">
+
+                <img src="img/footer_logo.png">
+
+
+            </a>
+
+
+        </li>
+
+        <li>
+
+            <a>
+
+                ©2015 CAODOO   京ICP备 15024750号
+
+            </a>
+
+
+        </li>
+
+        <li>
+
+            <a href="">
+
+                隐私条款
+
+            </a>
+
+
+        </li>
+
+
+    </ul>
+
+
+
+
+
+</div>
+
+<!--popup 录入新地址-->
+
+<div id="new_address_box" class="popup">
+
+
+
+    <div class="popup_box">
+
+
+        <h1 style="text-align: center;font-size: 21px;margin-top: 20px;color: #3BAF47">
+
+            添加收货地址
+
+
+        </h1>
+
+
+        <form class="address_center">
+
+
+            <ul>
+
+                <li>
+
+                    <input class="cd_input" type="text" placeholder="收件人姓名">
+
+                    <input class="cd_input" type="text" placeholder="联系方式">
+
+
+
+                </li>
+
+
+
+                <li>
+
+
+                    <select class="cd_select">
+
+                        <option>请选择省份</option>
+
+                        <option>河北</option>
+
+                        <option>山西</option>
+
+                        <option>湖北</option>
+
+
+
+                    </select>
+
+
+                    <select class="cd_select">
+
+                        <option>请选择省份</option>
+
+                        <option>北京</option>
+
+                        <option>上海</option>
+
+                        <option>重庆</option>
+
+
+
+                    </select>
+
+
+                    <select class="cd_select">
+
+                        <option>请选择地区</option>
+
+                        <option>大望路</option>
+
+                        <option>国贸</option>
+
+                        <option>望京西</option>
+
+
+
+                    </select>
+
+
+
+                </li>
+
+
+
+                <li>
+
+
+                    <input type="text" class="cd_input" placeholder="收货地址" style="width: 465px">
+
+
+                </li>
+
+
+
+                <li>
+
+
+                    <input id="set_default" type="checkbox" >
+
+
+                    <label class="green_text" for="set_default">设置为默认地址</label>
+
+
+
+                </li>
+
+
+
+                <li>
+
+                    <a onclick="hide_new_address_box()" class="bt" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px">取消</a>
+
+                    <a onclick="save_new_address()" class="bt_green" style="float: left;cursor: pointer;width: 114px;margin: 10px 0">保存</a>
+
+
+
+                </li>
+
+
+            </ul>
+
+
+
+        </form>
+
+
+
+
+    </div>
+
+
+
+</div>
+
+<!--popup 修改新地址-->
+
+<div id="update_address_box" class="popup">
+
+
+
+    <div class="popup_box">
+
+
+        <h1 style="text-align: center;font-size: 21px;margin-top: 20px;color: #3BAF47">
+
+            修改收货地址
+
+
+        </h1>
+
+
+        <form class="address_center">
+
+
+            <ul>
+
+                <li>
+
+                    <input class="cd_input" type="text" value="张山">
+
+                    <input class="cd_input" type="text" value="1890191222">
+
+
+
+                </li>
+
+
+
+                <li>
+
+
+                    <select class="cd_select">
+
+                        <option>请选择省份</option>
+
+                        <option selected>河北</option>
+
+                        <option>山西</option>
+
+                        <option>湖北</option>
+
+
+
+                    </select>
+
+
+                    <select class="cd_select">
+
+                        <option>请选择省份</option>
+
+                        <option selected>北京</option>
+
+                        <option>上海</option>
+
+                        <option>重庆</option>
+
+
+
+                    </select>
+
+
+                    <select class="cd_select">
+
+                        <option>请选择地区</option>
+
+                        <option selected>大望路</option>
+
+                        <option>国贸</option>
+
+                        <option>望京西</option>
+
+
+
+                    </select>
+
+
+
+                </li>
+
+
+
+                <li>
+
+
+                    <input type="text" class="cd_input" value="北京市海淀区xxxx路" style="width: 465px">
+
+
+                </li>
+
+
+
+                <li>
+
+
+                    <input id="set_default" type="checkbox" >
+
+
+                    <label class="green_text" for="set_default">设置为默认地址</label>
+
+
+
+                </li>
+
+
+
+                <li>
+
+                    <a onclick="hide_update_address_box()" class="bt" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px">取消</a>
+
+                    <a onclick="save_update_address()" class="bt_green" style="float: left;cursor: pointer;width: 114px;margin: 10px 0">保存</a>
+
+
+
+                </li>
+
+
+            </ul>
+
+
+
+        </form>
+
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<!--popup   alert  删除地址-->
+
+<div id="delete_address_box" class="popup">
+
+
+
+    <div class="confirm_popup_box">
+
+
+
+        <div class="confirm_title">
+            
+            
+            <img src="img/warning.png">
+
+
+            <span style="position: relative;top: -20px">
+
+            确定删除此收货地址吗？
+
+                </span>
+
+        </div>
+
+
+
+        <div class="confirm_action" >
+
+
+            <a onclick="hide_del_box()">
+                取消
+
+            </a>
+
+            &nbsp;&nbsp;&nbsp;
+
+            <a onclick="del_address()">
+
+                确认删除
+
+            </a>
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+<!--popup   alert  更新默认地址-->
+
+<div id="update_default_address_box" class="popup">
+
+
+
+    <div class="confirm_popup_box">
+
+
+
+        <div class="confirm_title">
+
+
+            <img src="img/warning.png">
+
+
+            <span style="position: relative;top: -20px">
+
+            设置当前地址为默认地址吗？
+
+                </span>
+
+        </div>
+
+
+
+        <div class="confirm_action" >
+
+
+            <a onclick="hide_del_box()">
+
+                取消
+
+            </a>
+
+            &nbsp;&nbsp;&nbsp;
+
+            <a onclick="del_address()">
+
+                确认
+
+            </a>
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+</body>
+</html>
