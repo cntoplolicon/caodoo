@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  receiver: MyString
+  phone: MyString
+  province_code: MyString
+  city_code: MyString
+  district_code: MyString
+  detailed_address: MyText
+  default: false
+  deleted: false
+
+two:
+  user_id: 
+  receiver: MyString
+  phone: MyString
+  province_code: MyString
+  city_code: MyString
+  district_code: MyString
+  detailed_address: MyText
+  default: false
+  deleted: false

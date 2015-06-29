@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624082744) do
+ActiveRecord::Schema.define(version: 20150629015251) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "user_id",          limit: 4
+    t.string   "receiver",         limit: 255
+    t.string   "phone",            limit: 255
+    t.string   "province_code",    limit: 255
+    t.string   "city_code",        limit: 255
+    t.string   "district_code",    limit: 255
+    t.text     "detailed_address", limit: 65535
+    t.boolean  "default",          limit: 1,     default: false
+    t.boolean  "deleted",          limit: 1,     default: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
   create_table "brands", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -77,6 +93,16 @@ ActiveRecord::Schema.define(version: 20150624082744) do
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
 
+  create_table "regions", force: :cascade do |t|
+    t.integer  "code",       limit: 4
+    t.string   "name",       limit: 255
+    t.string   "parent",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "regions", ["code"], name: "index_regions_on_code", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "username",        limit: 255
     t.string   "password_digest", limit: 255
@@ -84,6 +110,7 @@ ActiveRecord::Schema.define(version: 20150624082744) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "product_carousel_images", "product_views"
   add_foreign_key "product_detail_images", "product_views"
   add_foreign_key "product_sale_schedules", "products"
