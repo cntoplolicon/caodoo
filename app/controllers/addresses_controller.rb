@@ -56,12 +56,14 @@ class AddressesController < ApplicationController
   end
 
   def address_params
+    params[:address][:city_code] = '' unless params[:address][:city_code].present?
+    params[:address][:district_code] = '' unless params[:address][:district_code].present?
     params.require(:address).permit(:user_id, :receiver, :phone, :province_code, :city_code, :district_code, :detailed_address, :default, :deleted)
   end
 
   def load_regions_for_address
     @provinces = Region.where(parent: nil)
     @cities = @address.province.nil? ? [] : Region.where(parent: @address.province.code)
-    @districts = @address.city.nil? ? [] : Region.where(parent: @address.city.code)
+    @districts = @address.province.nil? || @address.city.nil? ? [] : Region.where(parent: @address.city.code)
   end
 end

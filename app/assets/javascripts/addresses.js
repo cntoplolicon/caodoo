@@ -28,11 +28,7 @@ $(document).ready(function () {
   });
 
   var toggle_region_selection = function() {
-    if ($(this).find('option').length > 1) {
-      $(this).show();
-    } else {
-      $(this).hide();
-    }
+    $(this).prop('disabled', $(this).find('option').length <= 1);
   }
   var edit_address_box_ready = function() {
     $('#edit_address_box').show();
@@ -72,6 +68,7 @@ $(document).ready(function () {
 
   $('#edit_address_box').on('change', '#province_select', function() {
     $('#city_select').find('option').remove();
+    $('#district_select').find('option').remove();
     if ($(this).val() !== '') {
       $('#city_select').load('/provinces/' + $(this).val() + '/cities', toggle_region_selection);
     }
