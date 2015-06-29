@@ -73,6 +73,8 @@ class UsersController < ApplicationController
   end
 
   def user_settings
+    redirect_to action: :login and return unless session[:login_user_id].present?
+    head :forbidden and return if session[:login_user_id] != params[:id].to_i
     @user = User.find(session[:login_user_id])
     render layout: 'account_setting'
   end
@@ -184,11 +186,5 @@ class UsersController < ApplicationController
     session.delete(:security_code)
     session.delete(:user_to_verify)
     session.delete(:user_verified)
-  end
-
-  def find_user
-    redirect_to action: :login and return unless session[:login_user_id].present?
-    head :forbidden and return if session[:login_user_id] != params[:id].to_i
-    @user = User.find(session[:login_user_id])
   end
 end
