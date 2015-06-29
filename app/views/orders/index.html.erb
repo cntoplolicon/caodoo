@@ -2,436 +2,86 @@
   <div class="status_box">
     <ul>
       <li>
-        <a href="" class="currnet_tab">
-          全部订单
-        </a>
+        <%= link_to "全部订单", user_orders_path(@user), class: params[:status].blank? ? 'current_tab' : '' %>
       </li>
       <li>
-        <a>
-          待付款
-        </a>
+        <%= link_to "待付款", user_orders_path(@user, status: [0]), class: params[:status] == ['0'] ? 'current_tab' : '' %>
       </li>
       <li>
-        <a>
-          待收货
-        </a>
+        <%= link_to "待收货", user_orders_path(@user, status: [1, 2]), class: params[:status] == ['1', '2'] ? 'current_tab' : '' %>
       </li>
       <li>
-        <a>
-          已完成
-        </a>
+        <%= link_to "已完成", user_orders_path(@user, status: [3, 4]), class: params[:status] == ['3', '4'] ? 'current_tab' : '' %>
       </li>
     </ul>
     <div class="status_box_line">
     </div>
   </div>
-  <!--table-->
   <div>
     <ul>
-      <li>
-        <div class="order_row">
-          <div class="order_title">
-            <span style="float: left"> 订单号：32523523919</span>
-            <a href="order.html" style="float: right">查看订单</a>
+      <% @orders.each do |order| %>
+        <li>
+          <div class="order_row">
+            <div class="order_title">
+              <span style="float: left"> 订单号：<%= order.order_number %></span>
+              <%= link_to "查看订单", user_order_path(@user, order), style: 'float: right' %>
+            </div>
+            <ul class="order_infos">
+              <li>
+                <%= image_tag order.product_image_url, class: 'order_product_thumbnail' %>
+              </li>
+              <li>
+                <div class="product_title">
+                  产品
+                </div>
+                <div class="product_tt ">
+                  <div class="product_text_color">
+                    <%= order.product_name %>
+                  </div>
+                  <div class="product_price">
+                    <span>¥<%= order.unit_price %></span>（单价）
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="product_title">
+                  购买数量
+                </div>
+                <div class="product_tt product_tt_40">
+                  x<span> <%= order.quantity %></span>
+                </div>
+              </li>
+              <li>
+                <div class="product_title">
+                  订单金额
+                </div>
+                <div class="product_tt product_tt_40 order_hight">
+                  ¥<%= order.total_price %>
+                </div>
+              </li>
+              <li>
+                <div class="product_title">
+                  订单状态
+                </div>
+                <div class="product_tt product_tt_40 order_hight">
+                  <%= order_status_text(order.status) %>
+                </div>
+              </li>
+              <li>
+                <div class="product_title">
+                  订单操作
+                </div>
+                <div class="order_action product_tt_40">
+                  <% if order.status == Order::TO_PAY %>
+                    <a href="" class="pay_order"> 立即支付 </a>
+                    <a onclick="show_cancel_order_box()" class="cancel_order"> 取消订单 </a>
+                  <% end %>
+                </div>
+              </li>
+            </ul>
           </div>
-          <ul class="order_infos">
-            <li>
-              <img src="img/product_img.png">
-            </li>
-            <li>
-              <div class="product_title">
-                产品
-              </div>
-              <div class="product_tt ">
-                <div class="product_text_color">
-                  乐心职能设计师
-                </div>
-                <div class="product_price">
-                  <span>$352</span>（单价）
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                购买数量
-              </div>
-              <div class="product_tt product_tt_40">
-                x<span>1</span>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单金额
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                $352
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单状态
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                待付款
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单操作
-              </div>
-              <div class="order_action product_tt_40">
-                <a href="" class="pay_order"> 立即支付 </a>
-                <a onclick="show_cancel_order_box()" class="cancel_order"> 取消订单 </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li>
-        <div class="order_row">
-          <div class="order_title">
-            <span style="float: left"> 订单号：32523523919</span>
-            <a href="order.html" style="float: right">查看订单</a>
-          </div>
-          <ul class="order_infos">
-            <li>
-              <img src="img/product_img.png">
-            </li>
-            <li>
-              <div class="product_title">
-                产品
-              </div>
-              <div class="product_tt ">
-                <div class="product_text_color">
-                  乐心职能设计师
-                </div>
-                <div class="product_price">
-                  <span>$352</span>（单价）
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                购买数量
-              </div>
-              <div class="product_tt product_tt_40">
-                x<span>1</span>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单金额
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                $352
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单状态
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                待付款
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单操作
-              </div>
-              <div class="order_action product_tt_40">
-                <a href="" class="pay_order"> 立即支付 </a>
-                <a onclick="show_cancel_order_box()" class="cancel_order"> 取消订单 </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li>
-        <div class="order_row">
-          <div class="order_title">
-            <span style="float: left"> 订单号：32523523919</span>
-            <a href="order.html" style="float: right">查看订单</a>
-          </div>
-          <ul class="order_infos">
-            <li>
-              <img src="img/product_img.png">
-            </li>
-            <li>
-              <div class="product_title">
-                产品
-              </div>
-              <div class="product_tt ">
-                <div class="product_text_color">
-                  乐心职能设计师
-                </div>
-                <div class="product_price">
-                  <span>$352</span>（单价）
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                购买数量
-              </div>
-              <div class="product_tt product_tt_40">
-                x<span>1</span>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单金额
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                $352
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单状态
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                待付款
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单操作
-              </div>
-              <div class="order_action product_tt_40">
-                <a href="" class="pay_order"> 立即支付 </a>
-                <a onclick="show_cancel_order_box()" class="cancel_order"> 取消订单 </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li>
-        <div class="order_row">
-          <div class="order_title">
-            <span style="float: left"> 订单号：32523523919</span>
-            <a href="order.html" style="float: right">查看订单</a>
-          </div>
-          <ul class="order_infos">
-            <li>
-              <img src="img/product_img.png">
-            </li>
-            <li>
-              <div class="product_title">
-                产品
-              </div>
-              <div class="product_tt ">
-                <div class="product_text_color">
-                  乐心职能设计师
-                </div>
-                <div class="product_price">
-                  <span>$352</span>（单价）
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                购买数量
-              </div>
-              <div class="product_tt product_tt_40">
-                x<span>1</span>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单金额
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                $352
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单状态
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                待付款
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单操作
-              </div>
-              <div class="order_action product_tt_40">
-                <a href="" class="pay_order"> 立即支付 </a>
-                <a onclick="show_cancel_order_box()" class="cancel_order"> 取消订单 </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li>
-        <div class="order_row">
-          <div class="order_title">
-            <span style="float: left"> 订单号：32523523919</span>
-            <a href="order.html" style="float: right">查看订单</a>
-          </div>
-          <ul class="order_infos">
-            <li>
-              <img src="img/product_img.png">
-            </li>
-            <li>
-              <div class="product_title">
-                产品
-              </div>
-              <div class="product_tt ">
-                <div class="product_text_color">
-                  乐心职能设计师
-                </div>
-                <div class="product_price">
-                  <span>$352</span>（单价）
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                购买数量
-              </div>
-              <div class="product_tt product_tt_40">
-                x<span>1</span>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单金额
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                $352
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单状态
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                待付款
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单操作
-              </div>
-              <div class="order_action product_tt_40">
-                <a href="" class="pay_order"> 立即支付 </a>
-                <a onclick="show_cancel_order_box()" class="cancel_order"> 取消订单 </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li>
-        <div class="order_row">
-          <div class="order_title">
-            <span style="float: left"> 订单号：32523523919</span>
-            <a href="order.html" style="float: right">查看订单</a>
-          </div>
-          <ul class="order_infos">
-            <li>
-              <img src="img/product_img.png">
-            </li>
-            <li>
-              <div class="product_title">
-                产品
-              </div>
-              <div class="product_tt ">
-                <div class="product_text_color">
-                  乐心职能设计师
-                </div>
-                <div class="product_price">
-                  <span>$352</span>（单价）
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                购买数量
-              </div>
-              <div class="product_tt product_tt_40">
-                x<span>1</span>
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单金额
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                $352
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单状态
-              </div>
-              <div class="product_tt product_tt_40 order_hight">
-                待付款
-              </div>
-            </li>
-            <li>
-              <div class="product_title">
-                订单操作
-              </div>
-              <div class="order_action product_tt_40">
-                <a href="" class="pay_order"> 立即支付 </a>
-                <a onclick="show_cancel_order_box()" class="cancel_order"> 取消订单 </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <!--page action-->
-  <div class="page_action">
-    <ul>
-      <li>
-        <a href="">
-          &lt;
-        </a>
-      </li>
-      <li>
-        <a href="">
-          1
-        </a>
-      </li>
-      <li>
-        <a href="">
-          2
-        </a>
-      </li>
-      <li>
-        <a href="">
-          3
-        </a>
-      </li>
-      <li>
-        <a href="">
-          4
-        </a>
-      </li>
-      <li>
-        <a href="">
-          5
-        </a>
-      </li>
-      <li>
-        <a href="">
-          6
-        </a>
-      </li>
-      <li>
-        <a href="">
-          7
-        </a>
-      </li>
-      <li>
-        <a href="">
-          &gt;
-        </a>
-      </li>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

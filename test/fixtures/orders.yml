@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_number: MyString
+  user_id: 
+  product_id: 
+  product_name: MyString
+  product_image_url: MyText
+  unit_price: 9.99
+  quantity: 1
+  total_price: 9.99
+  recevier: MyString
+  phone: MyString
+  detailed_address: MyString
+  province_code: MyString
+  province_name: MyString
+  city_code: MyString
+  city_name: MyString
+  district_code: MyString
+  district_name: MyString
+  status: 1
+  receive_time: 2015-06-29 19:05:41
+
+two:
+  order_number: MyString
+  user_id: 
+  product_id: 
+  product_name: MyString
+  product_image_url: MyText
+  unit_price: 9.99
+  quantity: 1
+  total_price: 9.99
+  recevier: MyString
+  phone: MyString
+  detailed_address: MyString
+  province_code: MyString
+  province_name: MyString
+  city_code: MyString
+  city_name: MyString
+  district_code: MyString
+  district_name: MyString
+  status: 1
+  receive_time: 2015-06-29 19:05:41

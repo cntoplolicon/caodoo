@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: 
+  payment_type: 1
+  amount: 9.99
+  payment_time: 2015-06-29 19:06:54
+  status: 1
+  alipay_expire: MyString
+  wx_code_url: MyText
+
+two:
+  order_id: 
+  payment_type: 1
+  amount: 9.99
+  payment_time: 2015-06-29 19:06:54
+  status: 1
+  alipay_expire: MyString
+  wx_code_url: MyText

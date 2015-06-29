@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629015251) do
+ActiveRecord::Schema.define(version: 20150629110654) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -35,6 +35,47 @@ ActiveRecord::Schema.define(version: 20150629015251) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "order_number",      limit: 255
+    t.integer  "user_id",           limit: 4
+    t.integer  "product_id",        limit: 4
+    t.string   "product_name",      limit: 255
+    t.text     "product_image_url", limit: 65535
+    t.decimal  "unit_price",                      precision: 10, scale: 2
+    t.integer  "quantity",          limit: 4
+    t.decimal  "total_price",                     precision: 10, scale: 2
+    t.string   "recevier",          limit: 255
+    t.string   "phone",             limit: 255
+    t.string   "detailed_address",  limit: 255
+    t.string   "province_code",     limit: 255
+    t.string   "province_name",     limit: 255
+    t.string   "city_code",         limit: 255
+    t.string   "city_name",         limit: 255
+    t.string   "district_code",     limit: 255
+    t.string   "district_name",     limit: 255
+    t.integer  "status",            limit: 4
+    t.datetime "receive_time"
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+  end
+
+  add_index "orders", ["product_id"], name: "index_orders_on_product_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "payment_records", force: :cascade do |t|
+    t.integer  "order_id",      limit: 4
+    t.integer  "payment_type",  limit: 4
+    t.decimal  "amount",                      precision: 10, scale: 2
+    t.datetime "payment_time"
+    t.integer  "status",        limit: 4
+    t.string   "alipay_expire", limit: 255
+    t.text     "wx_code_url",   limit: 65535
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+  end
+
+  add_index "payment_records", ["order_id"], name: "index_payment_records_on_order_id", using: :btree
 
   create_table "product_carousel_images", force: :cascade do |t|
     t.integer  "product_view_id", limit: 4
@@ -111,6 +152,9 @@ ActiveRecord::Schema.define(version: 20150629015251) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "payment_records", "orders"
   add_foreign_key "product_carousel_images", "product_views"
   add_foreign_key "product_detail_images", "product_views"
   add_foreign_key "product_sale_schedules", "products"
