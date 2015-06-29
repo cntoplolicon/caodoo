@@ -165,7 +165,6 @@
   position: relative;
   padding: 0 44px;
   height: 560px;
-  width: 1080px;
 }
 
 .product-detail-images-container {
@@ -349,4 +348,12 @@
   line-height: 17px;
   font-size:14px;
   color: #909090;
+}
+
+.faq {
+  padding: 24px;
+}
+
+.faq p {
+  margin-top: 12px;
 }
