@@ -73,8 +73,8 @@
                 </div>
                 <div class="order_action product_tt_40">
                   <% if order.status == Order::TO_PAY %>
-                    <a href="" class="pay_order"> 立即支付 </a>
-                    <a onclick="show_cancel_order_box()" class="cancel_order"> 取消订单 </a>
+                    <a href="" class="pay_order" data-order-id="<%= order.id %>"> 立即支付 </a>
+                    <a class="cancel_order cancel_order_action" data-order-id="<%= order.id %>"> 取消订单 </a>
                   <% end %>
                 </div>
               </li>
@@ -83,5 +83,21 @@
         </li>
       <% end %>
     </ul>
+  </div>
+</div>
+<div id="cancel_order_box" class="popup">
+  <div class="confirm_popup_box">
+    <div class="confirm_title">
+      确定取消订单？
+    </div>
+    <div class="confirm_action">
+      <a class="cancel_cancel_order_button">
+        关闭窗口
+      </a>
+      &nbsp;&nbsp;&nbsp;
+      <a class="confirm_cancel_order_button">
+        取消订单
+      </a>
+    </div>
   </div>
 </div>

@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150629110654) do
     t.decimal  "unit_price",                      precision: 10, scale: 2
     t.integer  "quantity",          limit: 4
     t.decimal  "total_price",                     precision: 10, scale: 2
-    t.string   "recevier",          limit: 255
+    t.string   "receiver",          limit: 255
     t.string   "phone",             limit: 255
     t.string   "detailed_address",  limit: 255
     t.string   "province_code",     limit: 255

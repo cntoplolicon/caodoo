@@ -9,7 +9,7 @@ class CreateOrders < ActiveRecord::Migration
       t.decimal :unit_price, precision: 10, scale: 2
       t.integer :quantity
       t.decimal :total_price, precision: 10, scale: 2
-      t.string :recevier
+      t.string :receiver
       t.string :phone
       t.string :detailed_address
       t.string :province_code
