@@ -5,6 +5,7 @@
         <a onclick="show_new_address_box()" class="currnet_tab">
           添加收货地址
         </a>
+        <%= hidden_field_tag :new_address_url, user_addresses_path(@user), class: 'new_address_url' %>
       </li>
     </ul>
     <div class="status_box_line">
@@ -13,7 +14,14 @@
   <div class="delivery_user">
     <ul>
       <% @addresses.each do |address| %>
-        <li>
+        <li class="user_address_li">
+          <%= form_for([@user, address], html: {class: "delete_address_#{address.id}_form"}) do |f| %>
+            <%= f.hidden_field :deleted, value: true %>
+          <% end %>
+          <%= form_for([@user, address], html: {class: "update_default_address_#{address.id}_form"}) do |f| %>
+            <%= f.hidden_field :default, value: true %>
+          <% end %>
+          <input type="hidden" class="update_address_url" value="<%=user_address_path(@user, address)%>">
           <ul>
             <li>
               <span class="address_span">
@@ -51,10 +59,10 @@
               <span class="user_before">
                 <%= address.phone %>
               </span>
-              <a class="user_after delete_address_action">删除</a>
-              <a class="user_after modify_address_action">修改</a>
+              <a class="user_after delete_address_action" data-address-id="<%=address.id%>">删除</a>
+              <a class="user_after modify_address_action" data-address-id="<%=address.id%>">修改</a>
               <% if !address.default %>
-                <a class="set_address_default">设为默认地址</a>
+                <a class="set_address_default update_default_address_action" data-address-id="<%=address.id%>">设为默认地址</a>
               <% end %>
             </li>
           </ul>
@@ -161,17 +169,17 @@
 <div id="delete_address_box" class="popup">
   <div class="confirm_popup_box">
     <div class="confirm_title">
-      <img src="img/warning.png">
+      <%= image_tag "warning.png" %>
       <span style="position: relative;top: -20px">
         确定删除此收货地址吗？
       </span>
     </div>
     <div class="confirm_action" >
-      <a onclick="hide_del_box()">
+      <a class="cancel_delete_address_button">
         取消
       </a>
       &nbsp;&nbsp;&nbsp;
-      <a onclick="del_address()">
+      <a class="confirm_delete_address_button">
         确认删除
       </a>
     </div>
@@ -181,17 +189,17 @@
 <div id="update_default_address_box" class="popup">
   <div class="confirm_popup_box">
     <div class="confirm_title">
-      <img src="img/warning.png">
+      <%= image_tag "warning.png" %>
       <span style="position: relative;top: -20px">
         设置当前地址为默认地址吗？
       </span>
     </div>
-    <div class="confirm_action" >
-      <a onclick="hide_del_box()">
+    <div class="confirm_action">
+      <a class="cancel_update_default_address_button">
         取消
       </a>
       &nbsp;&nbsp;&nbsp;
-      <a onclick="del_address()">
+      <a class="confirm_update_default_address_button">
         确认
       </a>
     </div>
