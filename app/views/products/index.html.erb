@@ -31,11 +31,11 @@
 <div class="container">
   <div class="upcoming-products">
     <% @upcoming_products.each do |product| %>
-      <div class="upcoming-product"> 
+      <div class="upcoming-product">
         <%= image_tag(product.brand.logo_url, class: "brand-image") %>
         <%= image_tag(product.product_view.trailer_image_url, class: "trailer-image") %>
         <div class="trailer-content">
-          <div class="trailer-time"> 闪购开始时间 </div>
+          <div class="trailer-time"><%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %></div>
           <div class="trailer-description"> <%= product.product_view.trailer_description %> </div>
         </div>
       </div>

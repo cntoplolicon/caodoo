@@ -137,6 +137,7 @@
 
 .upcoming-product:hover .trailer-content {
   display: block;
+  color: #DEDEDE;
 }
 
 .upcoming-product .trailer-time {

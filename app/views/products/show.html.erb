@@ -3,7 +3,10 @@
 <% end %>
 
 <div class="product-detail">
-  <div class="product-detail-countdown">距离抢购结束还有 <%= [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %></div>
+  <div class="product-detail-countdown">
+    <input type="hidden" class="hidden" value="<%= [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %>">
+    距离抢购结束还有 <span class="show-remain-time"></span>
+  </div>
   <div class="product-detail-content">
     <div class="product-detail-images-container">
       <div class="product-detail-carousel">
