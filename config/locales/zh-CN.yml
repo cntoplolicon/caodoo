@@ -14,3 +14,17 @@ zh-CN:
               confirmation: '两次输入的密码不一致'
             terms_of_service:
               accepted: '注册须同意服务条款'
+        address:
+          attributes:
+            receiver:
+              blank: '收件人姓名不能为空'
+            phone:
+              blank: '联系方式不能为空'
+            detailed_address:
+              blank: '详细地址不能为空'
+            province_code:
+              blank: '省份不能为空'
+            city_code:
+              blank: '城市不能为空'
+            district_code:
+              blank: '地区不能为空'

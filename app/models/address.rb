@@ -6,7 +6,19 @@ class Address < ActiveRecord::Base
   belongs_to :district, class_name: 'Region', foreign_key: 'district_code', primary_key: 'code'
 
   validates :receiver, presence: true
-  validates :detailed_address, presence:  true
+  validates :detailed_address, presence: true
   validates :phone, presence:  true
+  validates :province_code, presence: true
+  validates :city_code, presence: true, if: :province_has_cities 
+  validates :district_code, presence: true, if: :city_has_districts
   validates_format_of :phone, with: /\A[^a-zA-Z]*\z/
+
+  def province_has_cities
+    province_code.present? && Region.exists?(parent: province_code)
+  end
+
+  def city_has_districts
+    city_code.present? && Region.exists?(parent: province_code)
+  end
+
 end

@@ -80,4 +80,7 @@ Rails.application.routes.draw do
 
   get :about_us, to: 'standalone#about_us'
   get :custom_service, to: 'standalone#custom_service'
+
+  get '/provinces/:province_code/cities', to: 'regions#get_cities_in_province'
+  get '/cities/:city_code/districts', to: 'regions#get_districts_in_city'
 end

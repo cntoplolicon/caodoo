@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-  before_action :find_user, except: [:new]
+  before_action :find_user
 
   def index
     @addresses = @user.addresses.where(deleted: false).order(created_at: :desc)
@@ -7,11 +7,28 @@ class AddressesController < ApplicationController
   end
 
   def new
-    @address = Address.new
+    @address = @user.addresses.build
+    load_regions_for_address
+    render layout: false
+  end
+
+  def create
+    @address = @user.addresses.build(address_params)
+    Address.transaction do
+      if @address.save
+        @user.addresses.where(deleted: false).where.not(id: @address.id).update_all(default: false)
+        redirect_to action: :index
+      else
+        load_regions_for_address
+        render 'new', layout: false, status: :bad_request
+      end
+    end
   end
 
   def edit
     @address = @user.addresses.find(params[:id])
+    load_regions_for_address
+    render layout: false
   end
 
   def update
@@ -24,7 +41,8 @@ class AddressesController < ApplicationController
         end
         redirect_to action: :index 
       else
-        render 'edit'
+        load_regions_for_address
+        render 'edit', layout: false, status: :bad_request
       end
     end
   end
@@ -39,5 +57,11 @@ class AddressesController < ApplicationController
 
   def address_params
     params.require(:address).permit(:user_id, :receiver, :phone, :province_code, :city_code, :district_code, :detailed_address, :default, :deleted)
+  end
+
+  def load_regions_for_address
+    @provinces = Region.where(parent: nil)
+    @cities = @address.province.nil? ? [] : Region.where(parent: @address.province.code)
+    @districts = @address.city.nil? ? [] : Region.where(parent: @address.city.code)
   end
 end

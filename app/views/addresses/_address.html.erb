@@ -1,0 +1,51 @@
+<%= form_for [@user, @address] do |f| %>
+  <div class="popup_box">
+    <h1 style="text-align: center;font-size: 21px;margin-top: 20px;color: #3BAF47">
+      <% if @address.new_record? %>
+        添加收货地址
+      <% else %>
+        修改收货地址
+      <% end %>
+    </h1>
+    <div class="address_center">
+      <ul>
+        <li>
+          <div style="float: left">
+            <%= f.text_field :receiver, class: 'cd_input', placeholder: '收件人姓名' %>
+            <div class="error-message" id="username-error"><%= @address.errors.messages[:receiver].first if @address.errors[:receiver].any? %></div>
+          </div>
+          <div style="float: right">
+            <%= f.text_field :phone, class: 'cd_input', placeholder: '联系方式' %>
+            <div class="error-message" id="username-error"><%= @address.errors.messages[:phone].first if @address.errors[:phone].any? %></div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <%= f.collection_select(:province_code, @provinces, :code, :name, {prompt: '请选择省份'}, {class: 'cd_select', id: 'province_select'}) %>
+            <%= f.collection_select(:city_code, @cities, :code, :name, {prompt: '请选择城市'}, {class: 'cd_select', id: 'city_select'}) %>
+            <%= f.collection_select(:district_code, @districts, :code, :name, {prompt: '请选择地区'}, {class: 'cd_select', id: 'district_select'}) %>
+          </div>
+          <div class="error-message" id="username-error">
+            <%= @address.errors.messages[:province_code].first if @address.errors[:province_code].any? %>
+            <%= @address.errors.messages[:city_code].first if @address.errors[:city_code].any? %>
+            <%= @address.errors.messages[:district_code].first if @address.errors[:district_code].any? %>
+          </div>
+        </li>
+        <li>
+          <div>
+            <%= f.text_field :detailed_address, class: 'cd_input', placeholder: '详细地址' %>
+            <div class="error-message" id="username-error"><%= @address.errors.messages[:detailed_address].first if @address.errors[:detailed_address].any? %></div>
+          </div>
+        </li>
+        <li>
+          <%= f.check_box :default, id: 'set_default' %>
+          <label class="green_text" for="set_default">设置为默认地址</label>
+        </li>
+        <li>
+          <a class="bt cancel_edit_address_button" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px">取消</a>
+          <a class="bt_green save_address_button" style="float: left;cursor: pointer;width: 114px;margin: 10px 0">保存</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% end %>
