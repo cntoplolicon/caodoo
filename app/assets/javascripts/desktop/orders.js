@@ -2,6 +2,40 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
+  var paymentTimeCountDown = function() {
+    if (time > 0) {
+      time = Math.max(time - 1, 0);
+      var remainTimeString = orderRemainTime(time);
+      $('#payment-remain-time-hidden-field').val(time);
+      $('.payment-remain-time').text(remainTimeString);
+    } else if (time === 0) {
+      time--;
+      window.location.reload();
+    }
+  };
+
+  function orderRemainTime(time) {
+    if (typeof(time) !== 'number') {
+      return '00分00秒';
+    }
+    var _minute = 60;
+    var minutes = Math.floor(time / _minute);
+    var seconds = Math.floor(time % _minute);
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+    if (seconds < 10) {
+      seconds = '0' + seconds;
+    }
+    return minutes + '分' + seconds + '秒';
+  };
+
+	if ($('.payment-deadline').length > 0) {
+	  var time = $('#payment-remain-time-hidden-field').val();
+	  paymentTimeCountDown();
+	  window.setInterval(paymentTimeCountDown, 1000);
+	};
+
   $('.return_application_action').click(function() {
     $('#return_application_box').show();
   });
