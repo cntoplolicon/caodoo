@@ -59,8 +59,10 @@
         var quantity = parseInt($('.quantity-input').val());
         if (isNaN(quantity)) {
           quantity = 1;
-          $('.quantity-input').val(quantity);
         }
+        quantity = Math.max(quantity, 1);
+        quantity = Math.min(quantity, $('#quantity-limit-field').val());
+        $('.quantity-input').val(quantity);
         update_quantity_and_price();
     });
 

@@ -1,4 +1,7 @@
 class StandaloneController < ApplicationController
+  def sold_out
+  end
+
   def about_us
   end
 

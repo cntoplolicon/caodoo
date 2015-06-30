@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :find_user_or_login, only: [:new]
 
   def new
-    @addresses = @user.addresses.order(created_at: :desc)
+    @addresses = @user.addresses.where(deleted: false).order(created_at: :desc)
     @order = @user.orders.build
     default_address = @addresses.find(&:default)
     if default_address.present?
@@ -21,6 +21,54 @@ class OrdersController < ApplicationController
     @order.product_id = @product.id
   end
 
+  def create
+    @order = Order.new(order_params)
+    @order.build_payment_record(status: PaymentRecord::TO_PAY)
+    head :forbidden and return if @order.user_id != @user.id
+
+    @product = Product.where(id: @order.product_id).lock.joins(:product_sale_schedules, :product_view => :product_carousel_images)
+      .includes(:product_sale_schedules, :product_view => :product_carousel_images)
+      .take
+    @onsale = @product.product_sale_schedules.any? do |s|
+      s.sale_start < Time.now && s.sale_end > Time.now
+    end 
+    render action: :sold_out, controller: :standalone unless @onsale
+    
+    if @order.invalid?
+      render 'new' and return
+    end
+
+    @address = @user.addresses.find(@order.address_id)
+
+    @order.order_number = '%010d' % @order.user_id + Time.now.to_i.to_s
+    @order.product_name = @product.name
+    @order.product_image_url = @product.product_view.product_carousel_images[0].url
+    @order.unit_price = @product.price
+    @order.total_price = @order.quantity * @product.price
+    @order.receiver = @address.receiver
+    @order.phone = @address.phone
+    @order.status = Order::TO_PAY
+    if @address.province.present?
+      @order.province_code = @address.province.code
+      @order.province_name = @address.province.name
+    end
+    if @address.city.present?
+      @order.city_code = @address.city.code
+      @order.city_name = @address.city.name
+    end
+    if @address.district.present?
+      @order.district_code = @address.district.code
+      @order.district_name = @address.district.name
+    end
+    @order.detailed_address = @address.detailed_address
+
+    if @order.save
+      redirect_to user_order_payment_url(@user, @order)
+    else
+      render 'new'
+    end
+  end
+
   def index
     if params[:status].present?
       @orders = @user.orders.where(status: params[:status]).order(created_at: :desc)
@@ -33,6 +81,9 @@ class OrdersController < ApplicationController
   def show
     @order = @user.orders.find(params[:id])
     render layout: 'account_setting'
+  end
+
+  def payment
   end
 
   private
@@ -51,5 +102,9 @@ class OrdersController < ApplicationController
     else
       find_user
     end
+  end
+
+  def order_params
+    params.require(:order).permit(:address_id, :product_id, :quantity, :user_id)
   end
 end

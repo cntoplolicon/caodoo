@@ -41,6 +41,7 @@ class AddressesController < ApplicationController
         end
         redirect_to action: :index 
       else
+        debugger
         load_regions_for_address
         render 'edit', layout: false, status: :bad_request
       end
@@ -57,8 +58,10 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params[:address][:city_code] = nil unless params[:address][:city_code].present?
-    params[:address][:district_code] = nil unless params[:address][:district_code].present?
+    if params[:address].has_key?(:province_code)
+      params[:address][:city_code] = nil unless params[:address][:city_code].present?
+      params[:address][:district_code] = nil unless params[:address][:district_code].present?
+    end
     params.require(:address).permit(:user_id, :receiver, :phone, :province_code, :city_code, :district_code, :detailed_address, :default, :deleted)
   end
 

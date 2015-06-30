@@ -1,5 +1,7 @@
 <%= form_for [@user, @order] do |f| %>
   <%= f.hidden_field :product_id %>
+  <%= f.hidden_field :user_id %>
+  <%= hidden_field_tag :new_address_url, new_user_address_path(@user), class: 'new_address_url' %>
   <div class="submission-detail-container">
     <div class="submission-detail">
       <div class="submission-deadline">库存有限，请尽快支付订单</div>
@@ -57,12 +59,17 @@
       </div>
       <div class="submission-address">
         <div class="address-container">
-          <a href="#" class="address-creation">+添加收货地址</a>
+          <a href="#" class="address-creation new_address_action">+添加收货地址</a>
           <div class="address-hint">收货地址：</div>
-          <%= f.collection_select :address_id, @addresses, :id, :to_text, {prompt: '请选择收货地址'}, {class: 'address-selection'} %>
+          <%= f.collection_select :address_id, @addresses || @user.addresses.where(deleted: false).order(created_at: :desc),
+            :id, :to_text, {prompt: '请选择收货地址'}, {class: 'address-selection'} %>
+          <div class="error-message" id="username-error"><%= @order.errors.messages[:address_id].first if @order.errors[:address_id].any? %></div>
         </div>
       </div>
       <button class="order-submission">提交订单</button>
     </div>
   </div>
 <% end %>
+
+<div id="edit_address_box" class="popup">
+</div>

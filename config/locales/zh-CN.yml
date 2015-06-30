@@ -28,3 +28,7 @@ zh-CN:
               blank: '城市不能为空'
             district_code:
               blank: '地区不能为空'
+        order:
+          attributes:
+            address_id:
+              blank: '收货地址不能为空'

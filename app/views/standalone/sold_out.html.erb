@@ -1,0 +1,19 @@
+<div class="payment-detail-container">
+  <div class="payment-detail">
+    <div class="flex-top"></div>
+    <div class="error-icon">
+      <%= image_tag "greengantanhao.png" %>
+    </div>
+    <div class="text-top">很抱歉，手慢了一点点～</div>
+    <% if @onsale %>
+      <div class="text-bottom">有买家未付款，您还有机会抢倒此商品。先逛逛，发现更多心仪的酷玩吧</div>
+    <% else %>
+      <div class="text-bottom">商品闪购已经结束了，去看看其他酷玩吧</div>
+    <% end %>
+    <div>
+      <a href="/">
+        <button type="button" class="go-on-shopping">继续逛逛</button>
+      </a>
+    </div>
+  </div>
+</div>

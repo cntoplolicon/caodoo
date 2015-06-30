@@ -58,7 +58,9 @@ Rails.application.routes.draw do
   resources :products
 
   resources :users do
-    resources :orders
+    resources :orders do
+      get :payment
+    end
     resources :addresses
 
     collection do
@@ -80,6 +82,7 @@ Rails.application.routes.draw do
 
   get :about_us, to: 'standalone#about_us'
   get :custom_service, to: 'standalone#custom_service'
+  get :sold_out, to: 'standalone#sold_out'
 
   get '/provinces/:province_code/cities', to: 'regions#get_cities_in_province'
   get '/cities/:city_code/districts', to: 'regions#get_districts_in_city'
