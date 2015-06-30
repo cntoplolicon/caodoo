@@ -10,13 +10,13 @@
     <div class="payment-hint">订单提交成功，您的订单号为<span><%= @order.order_number %></span>，请尽快支付！</div>
     <div class="payment-choise">
       <div class="radio-icon">
-        <input type="radio" class="order-radio" name="order-radio">
+        <input type="radio" class="order-radio alipay-radio" name="order-radio">
       </div>
       <div class="payment-icon">
         <%= image_tag "alipay.png" %>
       </div>
       <div class="radio-icon">
-        <input type="radio" class="order-radio" name="order-radio">
+        <input type="radio" class="order-radio wechat-radio" name="order-radio">
       </div>
       <div class="payment-icon">
         <%= image_tag "wechat.png" %>
@@ -64,6 +64,32 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div id="alipay_confirm_box" class="popup">
+  <div class="confirm_popup_box">
+    <div class="confirm_title">
+      支付成功？
+    </div>
+    <div class="confirm_action">
+      <a class="alipay_fail_button">
+        支付失败
+      </a>
+      &nbsp;&nbsp;&nbsp;
+      <%= link_to "支付成功", user_order_path(@user, @order), class: 'alipay_succeed_button' %>
+    </div>
+  </div>
+</div>
+<div id="payment_failure_box" class="popup">
+  <div class="confirm_popup_box">
+    <div class="confirm_title">
+      请选择另一种支付方式或联系客服
+    </div>
+    <div class="confirm_action">
+      <a class="close_button">
+        知道了
+      </a>
     </div>
   </div>
 </div>
