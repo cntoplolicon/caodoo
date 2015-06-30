@@ -7,23 +7,25 @@
   <%= image_tag("onsale.png", class: "center-block on-sale-notification") %>
   <div class="on-sale-products">
     <% @on_sale_products.each do |product| %>
-      <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
-        <%= image_tag product.product_view.sale_image_url %>
-        <div class="product-information">
-          <div class="product-name">
-            <%= product.name %>
+      <%= link_to product_path(product) do %>
+        <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
+          <%= image_tag product.product_view.sale_image_url %>
+          <div class="product-information">
+            <div class="product-name">
+              <%= product.name %>
+            </div>
+            <div class="product-description">
+              <%= product.product_view.home_page_description %>
+            </div>
+            <div class="product-price">
+              <div class="product-current-price">&#165;<%= product.price %></div>
+              <div class="product-original-price">原价&#165;<%= product.original_price %> </div>
+            </div>
           </div>
-          <div class="product-description">
-            <%= product.product_view.home_page_description %>
-          </div>
-          <div class="product-price">
-            <div class="product-current-price">&#165;<%= product.price %></div>
-            <div class="product-original-price">原价&#165;<%= product.original_price %> </div>
+          <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %>">
           </div>
         </div>
-        <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %>">
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
   <%= image_tag("upcoming.png", class: "center-block upcoming-notification") %>
