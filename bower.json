@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "jquery": "1.11.3",
-    "masonry": "v2.1.08"
+    "masonry": "v2.1.08",
+    "jquery-placeholder": "~2.1.2"
   }
 }

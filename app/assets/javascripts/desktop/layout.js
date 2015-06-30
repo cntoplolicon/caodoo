@@ -2,6 +2,7 @@ $(document).ready(function () {
   $('.header_account_link').click(function() {
     $('.cd_dropdown').toggle();
   });
+  $('input, textarea').placeholder();
 });
 function showRemainTime(time) {
   if (typeof(time) !== 'number') {

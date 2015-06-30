@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-placeholder
 //= require masonry/jquery.masonry
 //= require turbolinks
 //= require_tree ./common
