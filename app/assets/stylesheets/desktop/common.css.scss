@@ -597,6 +597,17 @@ input {
     padding: 0px 20px;
 }
 
+.order_box .return_action {
+    position: relative;
+    text-align: center;
+}
+
+.order_box .return_action_link {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 .order_infos{
 
     overflow: hidden;
