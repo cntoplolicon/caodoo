@@ -1,22 +1,25 @@
 <div class="payment-detail-container">
   <div class="payment-detail">
-    <div class="payment-deadline">支付结束时间：00分00秒</div>
-    <div class="payment-progress">
-      <img src="img/payment-step-two.png">
+    <div class="payment-deadline">
+      支付结束时间：
+      <span class=".payment-remain-time"><%= [0, (@order.created_at + Settings.payment.expired.to_i.minutes - Time.now).to_i].max %></span>
     </div>
-    <div class="payment-hint">订单提交成功，您的订单号为12345678，请尽快支付！</div>
+    <div class="payment-progress">
+      <%= image_tag "payment-step-two.png" %>
+    </div>
+    <div class="payment-hint">订单提交成功，您的订单号为<span><%= @order.order_number %></span>，请尽快支付！</div>
     <div class="payment-choise">
       <div class="radio-icon">
         <input type="radio" class="order-radio" name="order-radio">
       </div>
       <div class="payment-icon">
-        <img src="img/alipay.png">
+        <%= image_tag "alipay.png" %>
       </div>
       <div class="radio-icon">
         <input type="radio" class="order-radio" name="order-radio">
       </div>
       <div class="payment-icon">
-        <img src="img/micro-message.png">
+        <%= image_tag "wechat.png" %>
       </div>
     </div>
     <div class="flex-y"></div>
@@ -25,33 +28,39 @@
     </div>
     <div class="order-detail">
       <div class="order-picture">
-        <img src="img/product-example.png">
+        <%= image_tag @order.product_image_url, class: 'order_product_thumbnail' %>
       </div>
       <div class="order-description" style="width: 268px">
         <div class="order-description-text">产品</div>
         <div class="order-summary">
-          <div class="product-in-order order-description-text">乐心智能乐心智能乐心智能乐心智能乐心智能乐心智能乐心智能</div>
+          <div class="product-in-order order-description-text"><%= @order.product_name %></div>
           <div class="order-description-text">
-            <div class="inline-layout">￥352（单价）</div>
+            <div class="inline-layout">￥<%= @order.unit_price %>（单价）</div>
             <div class="flex"></div>
-            <div class="inline-layout">数量：X1</div>
+            <div class="inline-layout">数量：X<%= @order.quantity %></div>
           </div>
         </div>
       </div>
       <div class="order-description" style="width: 220px">
         <div class="order-description-text">订单金额</div>
         <div class="order-summary">
-          <div class="total-price order-description-text">￥352</div>
+          <div class="total-price order-description-text">￥<%= @order.total_price %></div>
         </div>
       </div>
       <div class="order-description" style="width: 310px">
         <div class="order-description-text">收货地址</div>
         <div class="order-summary" style="border: none">
-          <div class="order-description-text">北京市某某区某某街某某某某某某某某某某某某某某某</div>
           <div class="order-description-text">
-            <div class="inline-layout">小可</div>
+            <%= "#{@order.province_name}#{@order.city_name}#{@order.district_name}#{@order.detailed_address}" %>
+          </div>
+          <div class="order-description-text">
+            <div class="inline-layout">
+              <%= @order.receiver %>
+            </div>
             <div class="flex"></div>
-            <div class="inline-layout">12345678901</div>
+            <div class="inline-layout">
+              <%= @order.phone %>
+            </div>
           </div>
         </div>
       </div>

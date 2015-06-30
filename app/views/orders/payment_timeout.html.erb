@@ -1,0 +1,15 @@
+<div class="payment-detail-container">
+  <div class="payment-detail">
+    <div class="payment-deadline">支付结束时间：00分00秒
+    </div>
+    <div class="time-out-bottom">
+      <div class="time-out-icon">
+        <%= image_tag "greengantanhao.png" %>
+      </div>
+      <div class="time-out-text">支付超时，请</div>
+      <div class="time-out-link">
+        <%= link_to "重新购买", product_path(@order.product_id), style: 'color: #15ae10' %>
+      </div>
+    </div>
+  </div>
+</div>

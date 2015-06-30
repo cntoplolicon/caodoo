@@ -75,6 +75,9 @@
         <a class="bt_green">查看物流</a>
       <% end %>
       <% if @order.status == 0  %>
+        <%= form_for [@user, @order], html: {class: "cancel_order_#{@order.id}_form"} do |f| %>
+          <%= f.hidden_field :status, value: Order::CANCELLED %>
+        <% end %>
         <a class="bt cancel_order_action" data-order-id="<%= @order.id %>">取消订单</a>
       <% end %>
       <% if [4].include?(@order.status)  %>

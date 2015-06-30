@@ -71,10 +71,13 @@
                 <div class="product_title">
                   订单操作
                 </div>
+                <%= form_for [@user, order], html: {class: "cancel_order_#{order.id}_form"} do |f| %>
+                  <%= f.hidden_field :status, value: Order::CANCELLED %>
+                <% end %>
                 <div class="order_action product_tt_40">
                   <% if order.status == Order::TO_PAY %>
-                    <a href="" class="pay_order" data-order-id="<%= order.id %>"> 立即支付 </a>
-                    <a class="cancel_order cancel_order_action" data-order-id="<%= order.id %>"> 取消订单 </a>
+                    <%= link_to "立即支付", user_order_payment_path(@user, order), class: 'pay_order' %>
+                    <a class="cancel_order cancel_order_action" data-order-id="<%= order.id %>">取消订单</a>
                   <% end %>
                 </div>
               </li>

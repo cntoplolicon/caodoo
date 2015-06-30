@@ -60,6 +60,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :orders do
       get :payment
+      get :payment_timeout
     end
     resources :addresses
 

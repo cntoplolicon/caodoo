@@ -1,4 +1,8 @@
 class StandaloneController < ApplicationController
+
+  def payment_timeout
+  end
+
   def sold_out
   end
 

@@ -69,6 +69,16 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order = @user.orders.lock.find(params[:id])
+    if params[:order][:status].to_i == Order::CANCELLED && @order.status == Order::TO_PAY
+      @order.status = Order::CANCELLED
+      @order.payment_record.status = PaymentRecord::CANCELLED
+      @order.save
+    end
+    redirect_to action: :index
+  end
+
   def index
     if params[:status].present?
       @orders = @user.orders.where(status: params[:status]).order(created_at: :desc)
@@ -84,6 +94,19 @@ class OrdersController < ApplicationController
   end
 
   def payment
+    @order = @user.orders.find(params[:order_id])
+    if Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
+      redirect_to user_order_payment_timeout_path(@user, @order)
+    end
+  end
+
+  def payment_timeout
+    @order = @user.orders.lock.find(params[:order_id])
+    if @order.status == Order::TO_PAY && Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
+      @order.status = Order::CANCELLED
+      @order.payment_record.status = PaymentRecord::CANCELLED
+      @order.save
+    end
   end
 
   private

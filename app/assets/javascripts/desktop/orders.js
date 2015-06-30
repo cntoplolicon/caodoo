@@ -15,4 +15,8 @@ $(document).ready(function() {
   $('.cancel_cancel_order_button').click(function() {
     $('#cancel_order_box').hide();
   });
+  $('.confirm_cancel_order_button').click(function() {
+    var orderId = $('#cancel_order_box').data('orderId');
+    $('.cancel_order_' + orderId + '_form').submit();
+  });
 });

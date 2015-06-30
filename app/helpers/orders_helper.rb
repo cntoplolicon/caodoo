@@ -9,6 +9,8 @@ module OrdersHelper
       '已发货'
     when 3
       '交易完成'
+    when 10
+      '交易取消'
     end
   end
 end
