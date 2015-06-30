@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :find_user, except: [:new]
-  before_action :find_user_and_order, only: [:payment, :payment_timeout, :payment_succeed]
+  before_action :find_user_and_order, only: [:payment, :payment_timeout, :payment_succeed, :status]
   before_action :find_user_or_login, only: [:new]
 
   def new
@@ -109,6 +109,10 @@ class OrdersController < ApplicationController
   end
 
   def payment_succeed
+  end
+
+  def status
+    render json: {status: @order.status}
   end
 
   private

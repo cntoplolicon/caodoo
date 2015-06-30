@@ -34,4 +34,19 @@ $(document).ready(function() {
   $('#payment_failure_box .close_button').click(function() {
     $('#payment_failure_box').hide();
   });
+
+  if ($('#order_status_url').length > 0) {
+    window.setInterval(function() {
+      $.ajax({
+        url: $('#order_status_url').val(),
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+          if (res.status === 1) {
+            window.location.href = $('#payment_succeed_url').val();
+          }
+        }
+      });
+    }, 7000);
+  }
 });

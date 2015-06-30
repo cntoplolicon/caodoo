@@ -1,4 +1,6 @@
 <div class="payment-detail-container">
+  <%= hidden_field_tag :payment_succeed_url, user_order_payment_succeed_url(@order.user_id, @order) %>
+  <%= hidden_field_tag :order_status_url, user_order_status_url(@order.user_id, @order) %>
   <div class="payment-detail">
     <%= link_to user_order_payment_path(@order.user_id, @order), class: 'backward' do %>
       <div class="back-icon">
