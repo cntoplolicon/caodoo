@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :find_user, except: [:new]
+  before_action :find_user_and_order, only: [:payment, :payment_timeout, :payment_succeed]
   before_action :find_user_or_login, only: [:new]
 
   def new
@@ -94,19 +95,20 @@ class OrdersController < ApplicationController
   end
 
   def payment
-    @order = @user.orders.find(params[:order_id])
     if Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
       redirect_to user_order_payment_timeout_path(@user, @order)
     end
   end
 
   def payment_timeout
-    @order = @user.orders.lock.find(params[:order_id])
     if @order.status == Order::TO_PAY && Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
       @order.status = Order::CANCELLED
       @order.payment_record.status = PaymentRecord::CANCELLED
       @order.save
     end
+  end
+
+  def payment_succeed
   end
 
   private
@@ -116,6 +118,11 @@ class OrdersController < ApplicationController
     user_id = params[:user_id].to_i
     head :forbidden and return if user_id != session[:login_user_id]
     @user = User.find(user_id)
+  end
+
+  def find_user_and_order
+    find_user
+    @order = @user.orders.lock.find(params[:order_id])
   end
 
   def find_user_or_login

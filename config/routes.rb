@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     resources :orders do
       get :payment
       get :payment_timeout
+      get :payment_succeed
     end
     resources :addresses
 
@@ -87,4 +88,8 @@ Rails.application.routes.draw do
 
   get '/provinces/:province_code/cities', to: 'regions#get_cities_in_province'
   get '/cities/:city_code/districts', to: 'regions#get_districts_in_city'
+
+  post 'alipay/pay', to: 'alipay#pay'
+  get 'alipay/return', to: 'alipay#sync_notify'
+  post 'alipay/notify', to: 'alipay#async_notify'
 end

@@ -67,6 +67,9 @@
     </div>
   </div>
 </div>
+<%= form_for @order, url: '/alipay/pay', method: :post, html: {class: 'alipay_submission_form', target: '_blank'} do |f| %>
+  <%= hidden_field_tag(:order_id, @order.id) %>
+<% end %>
 <div id="alipay_confirm_box" class="popup">
   <div class="confirm_popup_box">
     <div class="confirm_title">
