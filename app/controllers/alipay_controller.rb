@@ -1,4 +1,5 @@
 class AlipayController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:async_notify]
   before_action :verify_notify_id, :only => [:sync_notify, :async_notify]
   before_action :find_order, :only => [:pay, :payment_succeed]
 

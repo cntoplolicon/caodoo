@@ -2,7 +2,7 @@ require 'ipaddr'
 require 'rqrcode'
 
 class WxPayController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token, only: [:notify]
 
   def pay
     @order = Order.lock.find(params[:order_id])
