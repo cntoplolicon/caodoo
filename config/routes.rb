@@ -92,4 +92,7 @@ Rails.application.routes.draw do
   post 'alipay/pay', to: 'alipay#pay'
   get 'alipay/return', to: 'alipay#sync_notify'
   post 'alipay/notify', to: 'alipay#async_notify'
+
+  post 'wx_pay/pay', to: 'wx_pay#pay'
+  post 'wx_pay/notify', to: 'wx_pay#notify'
 end

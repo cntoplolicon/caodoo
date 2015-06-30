@@ -1,0 +1,16 @@
+<div class="payment-detail-container">
+  <div class="payment-detail">
+    <%= link_to user_order_payment_path(@order.user_id, @order), class: 'backward' do %>
+      <div class="back-icon">
+        <%= image_tag "backward.png" %>
+      </div>
+      <div class="back-text">重新选择支付方式</div>
+    <% end %>
+    <div class="micro-message">微信支付</div>
+    <div class="qrcode-example">
+      <div class="qrcode"> <%= raw @qr.as_html %> </div>
+    </div>
+    <div class="total-cost">￥ <%= @order.total_price %> </div>
+    <div class="order-content">购买产品： <%= @order.product_name %></div>
+  </div>
+</div>

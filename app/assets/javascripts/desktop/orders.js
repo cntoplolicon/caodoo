@@ -23,6 +23,8 @@ $(document).ready(function() {
     if ($('.alipay-radio').prop('checked')) {
       $('#alipay_confirm_box').show();
       $('.alipay_submission_form').submit();
+    } else if ($('.wechat-radio').prop('checked')) {
+      $('.wechat_submission_form').submit();
     }
   });
   $('#alipay_confirm_box .alipay_fail_button').click(function() {

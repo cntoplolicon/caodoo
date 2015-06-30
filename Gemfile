@@ -41,6 +41,6 @@ end
 gem 'mysql2'
 gem 'bcrypt'
 gem 'rails_config'
+gem 'rqrcode'
 gem 'alipay'
 gem 'wx_pay'
-
