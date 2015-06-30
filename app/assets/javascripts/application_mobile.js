@@ -14,5 +14,5 @@
 //= require masonry/jquery.masonry
 //= require turbolinks
 //= require_tree ./common
-//= require_tree ./desktop
+//= require_tree ./mobile
 
