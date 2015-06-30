@@ -4,8 +4,7 @@ class Order < ActiveRecord::Base
   has_one :payment_record
 
   validates :quantity, :inclusion => {:in => 1..10}
-  validates_presence_of :receiver
-  validates_presence_of :phone
+  validates_presence_of :address_id
   validates_presence_of :product_id
   validates_presence_of :user_id
 

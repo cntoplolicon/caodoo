@@ -21,4 +21,7 @@ class Address < ActiveRecord::Base
     city_code.present? && Region.exists?(parent: province_code)
   end
 
+  def to_text
+    "#{self.try(:province).try(:name)}#{self.try(:city).try(:name)}#{self.try(:district).try(:name)}"
+  end
 end

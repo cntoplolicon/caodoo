@@ -9,3 +9,6 @@ security_code:
 
 payment:
   expired: 30
+
+sale:
+  max_quantity: 10

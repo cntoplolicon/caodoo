@@ -10,7 +10,6 @@
     var countDown =  function() {
       $('.product-sale-remain-time').each(function() {
         var time = $(this).data('time');
-        time = Math.max(time - 1, 0);
         var remainTimeString = showRemainTime(time);
         $(this).data('time', time);
         $(this).text(remainTimeString);
@@ -23,10 +22,10 @@
     };
 
     var productDetailCountDown = function() {
-        var time = $('.hidden').val();
+        var time = $('#remain-time-hidden-field').val();
         time = Math.max(time - 1, 0);
         var remainTimeString = showRemainTime(time);
-        $('.hidden').val(time);
+        $('#remain-time-hidden-field').val(time);
         $('.show-remain-time').text(remainTimeString);
     };
 
@@ -39,6 +38,36 @@
       $('.carousel-image').attr('src', $(this).attr('src'));
     });
 
+    var update_quantity_and_price = function() {
+      if ($("#unit-price-field").length > 0) {
+        var quantity = parseInt($('.quantity-input').val());
+        var unit_price = parseFloat($('#unit-price-field').val());
+        $('.quantity-display').text(quantity);
+        $('.total-price-display').text((quantity * unit_price).toFixed(2));
+      }
+    }
+    update_quantity_and_price();
+    $('.quantity-controller-decrease').click(function() {
+      $('.quantity-input').val(Math.max(parseInt($('.quantity-input').val()) - 1, 1));
+      update_quantity_and_price();
+    });
+    $('.quantity-controller-increase').click(function() {
+      $('.quantity-input').val(Math.min(parseInt($('.quantity-input').val()) + 1, $('#quantity-limit-field').val()));
+      update_quantity_and_price();
+    });
+    $('.quantity-input').change(function() {
+        var quantity = parseInt($('.quantity-input').val());
+        if (isNaN(quantity)) {
+          quantity = 1;
+          $('.quantity-input').val(quantity);
+        }
+        update_quantity_and_price();
+    });
 
+    $('.product-detail .purchase-button').click(function(event) {
+      event.preventDefault();
+      var link = $(this).closest('a');
+      window.location.href = link.attr('href') + '&quantity=' + $('.quantity-input').val();
+    });
   });
 })(this, jQuery);

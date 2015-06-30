@@ -39,6 +39,5 @@
       $('.carousel-image').attr('src', $(this).attr('src'));
     });
 
-
   });
 })(this, jQuery);

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     end
     session[:login_user_id] = @user.id
     session[:login_username] = @user.username
-    redirect_to(session[:return_to] || '/')
+    back_to_before_login_or_index
   end
 
   def logout
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
       clear_verify_information
       session[:login_user_id] = @user.id
       session[:login_username] = @user.username
-      redirect_to(session[:return_to] || '/')
+      back_to_before_login_or_index
     end
   end
 
@@ -186,5 +186,15 @@ class UsersController < ApplicationController
     session.delete(:security_code)
     session.delete(:user_to_verify)
     session.delete(:user_verified)
+  end
+
+  def back_to_before_login_or_index
+    if session[:return_to].present?
+      link = session[:return_to] % {user_id: session[:login_user_id]}
+      session.delete(:return_to)
+      redirect_to link
+    else
+      redirect_to '/'
+    end
   end
 end

@@ -50,14 +50,15 @@ class AddressesController < ApplicationController
   private
 
   def find_user
+    redirect_to login_users_url and return unless session[:login_user_id].present?
     user_id = params[:user_id].to_i
-    head :forbidden if user_id != session[:login_user_id]
+    head :forbidden and return if user_id != session[:login_user_id]
     @user = User.find(user_id)
   end
 
   def address_params
-    params[:address][:city_code] = '' unless params[:address][:city_code].present?
-    params[:address][:district_code] = '' unless params[:address][:district_code].present?
+    params[:address][:city_code] = nil unless params[:address][:city_code].present?
+    params[:address][:district_code] = nil unless params[:address][:district_code].present?
     params.require(:address).permit(:user_id, :receiver, :phone, :province_code, :city_code, :district_code, :detailed_address, :default, :deleted)
   end
 
