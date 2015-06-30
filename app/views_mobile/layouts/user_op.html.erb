@@ -1,11 +1,14 @@
 <% content_for :content do %>
+<div class="user-page-header">
+	<div class="user-page-title"><%= yield :page_title %></div>
+</div>
   <div class="user-op-container">
     <div class="user-op-form-container">
       <div class="center-block user-op-form" style="<%= yield :user_op_form_style %>">
         <%= yield %>
       </div>
     </div>
-    <%= image_tag("user-op-background.png", class: "center-block") %>
+    <%= image_tag("user-op-background-mobile.png", class: "center-block user-background-img") %>
   </div>
 <% end %>
 <%= render template: "layouts/application" %>

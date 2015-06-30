@@ -24,8 +24,12 @@ body {
   display: block;
 }
 
-.field_with_errors { 
-  display: inline; 
+.user-background-img {
+	width: 320px;
+}
+
+.field_with_errors {
+  display: inline;
 }
 
 .btn-red {

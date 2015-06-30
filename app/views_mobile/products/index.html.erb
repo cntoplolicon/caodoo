@@ -2,6 +2,80 @@
   background-color: #000 !important;
 <% end %>
 
+<div class="header">
+      <div class="header_center">
+        <ul class="header_ul_left">
+          <li>
+            <a href="/">
+              <%= image_tag "logo.png", :class => "header_logo" %>
+            </a>
+          </li>
+          <li>
+            <a href="/" class="header_li_marign">
+              移动首页
+            </a>
+          </li>
+          <li>
+            <%= link_to "关于我们", about_us_url %>
+          </li>
+        </ul>
+        <ul class="header_ul_right">
+          <% if session[:login_username] %>
+            <li>
+              <%= session[:login_username] %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "注册", controller: :users, action: :new %>
+            </li>
+            <li>
+              <%= link_to "登录", controller: :users, action: :login %>
+            </li>
+          <% end %>
+          <li style="position:relative;">
+            <a class="header_account_link">
+              <%= image_tag "user_icon.png", :class => "user_icon" %>
+            </a>
+            <div class="cd_dropdown">
+              <%= image_tag "dropdown_top.png", :class => "user_icon" %>
+              <ul>
+                <li>
+                  <% if session[:login_user_id] %>
+                    <%= link_to "订单管理", user_orders_url(session[:login_user_id]) %>
+                  <% else %>
+                    <%= link_to "订单管理", login_users_url %>
+                  <% end %>
+                </li>
+                <li>
+                  <% if session[:login_user_id] %>
+                    <%= link_to "收货地址", user_addresses_url(session[:login_user_id]) %>
+                  <% else %>
+                    <%= link_to "收货地址", login_users_url %>
+                  <% end %>
+                </li>
+                <li>
+                  <% if session[:login_user_id] %>
+                    <%= link_to "客户服务", custom_service_url %>
+                  <% else %>
+                    <%= link_to "客户服务", login_users_url %>
+                  <% end %>
+                </li>
+                <li>
+                  <% if session[:login_user_id] %>
+                    <%= link_to "用户设置", user_settings_user_url(session[:login_user_id]) %>
+                  <% else %>
+                    <%= link_to "用户设置", login_users_url %>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to "退出账户", logout_users_url %>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+     </div>
 <div class="container-fluid">
   <%= image_tag("banner.png", class: "center-block app-banner") %>
   <%= image_tag("onsale.png", class: "center-block on-sale-notification") %>
@@ -41,4 +115,23 @@
       </div>
     <% end %>
   </div>
+</div>
+<div class="footer">
+  <ul class="footer_ul">
+        <li>
+          <a href="">
+            <%= image_tag "footer_logo.png" %>
+          </a>
+        </li>
+        <li>
+          <a>
+            ©2015 CAODOO   京ICP备 15024750号
+          </a>
+        </li>
+        <li>
+          <a href="">
+            隐私条款
+          </a>
+        </li>
+  </ul>
 </div>

@@ -12,10 +12,10 @@
 }
 
 .user-op-form {
-  width: 640px;
   height: 360px;
+  width: 320px;
   background-color: #FFF;
-  margin-top: 185px;
+  margin-top: 22px;
   color: #898989;
   position: relative;
   border-radius: 2px;
@@ -38,7 +38,7 @@
   width: 235px;
   background-color: #EBEBEB;
   border-radius: 2px;
-  border: 2px solid #DEDEDE;
+  border: 1px solid #DEDEDE;
   height: 36px;
   line-height: 36px;
   padding: 0 5px;
@@ -131,6 +131,7 @@
   box-sizing: border-box;
   width: 88px;
   margin-left: 7px;
+  font-size : 12px;
 }
 
 .register-box .terms-of-service-panel {
@@ -203,3 +204,15 @@
   width: 235px;
 }
 
+.user-page-header {
+	height: 58px;
+	background: black;
+	color: white;
+	font-size: 18px;
+	text-align: center;
+	padding-top: 21px;
+}
+
+.user-page-header div {
+	display: inline;
+}
