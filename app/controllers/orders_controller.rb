@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :find_user, except: [:new]
-  before_action :find_user_and_order, only: [:payment, :payment_timeout, :payment_succeed, :status]
+  before_action :find_user_and_order, only: [:payment, :payment_succeed, :status]
   before_action :find_user_or_login, only: [:new]
 
   def new
@@ -86,26 +86,30 @@ class OrdersController < ApplicationController
     else
       @orders = @user.orders.order(created_at: :desc)
     end
+    @orders.each do |order|
+      if time_out?(order)
+        try_cancel_timeout_order(order.id)
+      end
+    end
     render layout: 'account_setting'
   end
 
   def show
     @order = @user.orders.find(params[:id])
+    if time_out?(@order)
+      try_cancel_timeout_order(@order.id)
+    end
     render layout: 'account_setting'
   end
 
   def payment
-    if Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
+    if time_out?(@order)
       redirect_to user_order_payment_timeout_path(@user, @order)
     end
   end
 
   def payment_timeout
-    if @order.status == Order::TO_PAY && Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
-      @order.status = Order::CANCELLED
-      @order.payment_record.status = PaymentRecord::CANCELLED
-      @order.save
-    end
+    try_cancel_timeout_order(params[:order_id])
   end
 
   def payment_succeed
@@ -126,7 +130,7 @@ class OrdersController < ApplicationController
 
   def find_user_and_order
     find_user
-    @order = @user.orders.lock.find(params[:order_id])
+    @order = @user.orders.find(params[:order_id])
   end
 
   def find_user_or_login
@@ -135,6 +139,19 @@ class OrdersController < ApplicationController
       redirect_to login_users_url
     else
       find_user
+    end
+  end
+
+  def time_out?(order)
+    Time.now > order.created_at + Settings.payment.expired.to_i.minutes
+  end
+
+  def try_cancel_timeout_order(order_id)
+    @order = @user.orders.lock.find(order_id)
+    if @order.status == Order::TO_PAY && Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
+      @order.status = Order::TIMEOUT
+      @order.payment_record.status = PaymentRecord::TIMEOUT
+      @order.save
     end
   end
 

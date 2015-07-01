@@ -1,16 +1,18 @@
 module OrdersHelper
   def order_status_text(status)
     case status
-    when 0
+    when Order::TO_PAY
       '待付款'
-    when 1
+    when Order::PAID
       '已付款'
-    when 2
+    when Order::DELIVERED
       '已发货'
-    when 3
+    when Order::COMPLETE
       '交易完成'
-    when 10
+    when Order::CANCELLED
       '交易取消'
+    when Order::TIMEOUT
+      '交易超时'
     end
   end
 end

@@ -7,4 +7,5 @@ class PaymentRecord < ActiveRecord::Base
   TO_PAY = 0
   PAID = 1
   CANCELLED = 10
+  TIMEOUT = 11
 end

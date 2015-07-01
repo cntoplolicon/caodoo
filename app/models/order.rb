@@ -15,4 +15,5 @@ class Order < ActiveRecord::Base
   COMPLETE = 3
   RETURNED = 4
   CANCELLED = 10
+  TIMEOUT = 11
 end
