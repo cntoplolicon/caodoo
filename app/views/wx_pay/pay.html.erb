@@ -10,7 +10,9 @@
     <% end %>
     <div class="micro-message">微信支付</div>
     <div class="qrcode-example">
-      <div class="qrcode"> <%= @code_url %> </div>
+      <div class="qrcode">
+      <%= hidden_field_tag('wechat-qrcode-field', @code_url) %>
+      </div>
     </div>
     <div class="total-cost">￥ <%= @order.total_price %> </div>
     <div class="order-content">购买产品： <%= @order.product_name %></div>

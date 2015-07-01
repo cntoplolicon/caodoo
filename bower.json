@@ -14,6 +14,7 @@
   "dependencies": {
     "jquery": "1.11.3",
     "masonry": "v2.1.08",
-    "jquery-placeholder": "~2.1.2"
+    "jquery-placeholder": "~2.1.2",
+    "jquery-qrcode": "lrsjng/jquery-qrcode#~0.12.0"
   }
 }

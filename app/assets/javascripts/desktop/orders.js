@@ -30,11 +30,18 @@ $(document).ready(function() {
     return minutes + '分' + seconds + '秒';
   };
 
-	if ($('.payment-deadline').length > 0) {
-	  var time = $('#payment-remain-time-hidden-field').val();
-	  paymentTimeCountDown();
-	  window.setInterval(paymentTimeCountDown, 1000);
-	};
+  if ($('.payment-deadline').length > 0) {
+    var time = $('#payment-remain-time-hidden-field').val();
+    paymentTimeCountDown();
+    window.setInterval(paymentTimeCountDown, 1000);
+  };
+
+  var wxPayUrl = $('#wechat-qrcode-field').val();
+  $('.qrcode').qrcode({
+    'render': 'div',
+    'size': 250,
+    'text': wxPayUrl
+  });
 
   $('.return_application_action').click(function() {
     $('#return_application_box').show();
