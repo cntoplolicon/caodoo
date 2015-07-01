@@ -1,5 +1,4 @@
 require 'ipaddr'
-require 'rqrcode'
 
 class WxPayController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:notify]
@@ -35,7 +34,6 @@ class WxPayController < ApplicationController
       head :unprocessable_entity and return unless @order.save
       @code_url = r['code_url']
     end
-    @qr = RQRCode::QRCode.new(@code_url, size: 5, level: :h)
   end
 
   def notify
