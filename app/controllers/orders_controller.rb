@@ -23,61 +23,65 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.build_payment_record(status: PaymentRecord::TO_PAY)
-    head :forbidden and return if @order.user_id != @user.id
+    Order.transaction do
+      @order = Order.new(order_params)
+      @order.build_payment_record(status: PaymentRecord::TO_PAY)
+      head :forbidden and return if @order.user_id != @user.id
 
-    @product = Product.where(id: @order.product_id).lock.joins(:product_sale_schedules, :product_view => :product_carousel_images)
-      .includes(:product_sale_schedules, :product_view => :product_carousel_images)
-      .take
-    @onsale = @product.product_sale_schedules.any? do |s|
-      s.sale_start < Time.now && s.sale_end > Time.now
-    end 
-    render action: :sold_out, controller: :standalone unless @onsale
-    
-    if @order.invalid?
-      render 'new' and return
-    end
+      @product = Product.where(id: @order.product_id).lock.joins(:product_sale_schedules, :product_view => :product_carousel_images)
+        .includes(:product_sale_schedules, :product_view => :product_carousel_images)
+        .take
+      @onsale = @product.product_sale_schedules.any? do |s|
+        s.sale_start < Time.now && s.sale_end > Time.now
+      end 
+      render action: :sold_out, controller: :standalone unless @onsale
 
-    @address = @user.addresses.find(@order.address_id)
+      if @order.invalid?
+        render 'new' and return
+      end
 
-    @order.order_number = '%010d' % @order.user_id + Time.now.to_i.to_s
-    @order.product_name = @product.name
-    @order.product_image_url = @product.product_view.product_carousel_images[0].url
-    @order.unit_price = @product.price
-    @order.total_price = @order.quantity * @product.price
-    @order.receiver = @address.receiver
-    @order.phone = @address.phone
-    @order.status = Order::TO_PAY
-    if @address.province.present?
-      @order.province_code = @address.province.code
-      @order.province_name = @address.province.name
-    end
-    if @address.city.present?
-      @order.city_code = @address.city.code
-      @order.city_name = @address.city.name
-    end
-    if @address.district.present?
-      @order.district_code = @address.district.code
-      @order.district_name = @address.district.name
-    end
-    @order.detailed_address = @address.detailed_address
+      @address = @user.addresses.find(@order.address_id)
 
-    if @order.save
-      redirect_to user_order_payment_url(@user, @order)
-    else
-      render 'new'
+      @order.order_number = '%010d' % @order.user_id + Time.now.to_i.to_s
+      @order.product_name = @product.name
+      @order.product_image_url = @product.product_view.product_carousel_images[0].url
+      @order.unit_price = @product.price
+      @order.total_price = @order.quantity * @product.price
+      @order.receiver = @address.receiver
+      @order.phone = @address.phone
+      @order.status = Order::TO_PAY
+      if @address.province.present?
+        @order.province_code = @address.province.code
+        @order.province_name = @address.province.name
+      end
+      if @address.city.present?
+        @order.city_code = @address.city.code
+        @order.city_name = @address.city.name
+      end
+      if @address.district.present?
+        @order.district_code = @address.district.code
+        @order.district_name = @address.district.name
+      end
+      @order.detailed_address = @address.detailed_address
+
+      if @order.save
+        redirect_to user_order_payment_url(@user, @order)
+      else
+        render 'new'
+      end
     end
   end
 
   def update
-    @order = @user.orders.lock.find(params[:id])
-    if params[:order][:status].to_i == Order::CANCELLED && @order.status == Order::TO_PAY
-      @order.status = Order::CANCELLED
-      @order.payment_record.status = PaymentRecord::CANCELLED
-      @order.save
+    Order.transaction do
+      @order = @user.orders.lock.find(params[:id])
+      if params[:order][:status].to_i == Order::CANCELLED && @order.status == Order::TO_PAY
+        @order.status = Order::CANCELLED
+        @order.payment_record.status = PaymentRecord::CANCELLED
+        @order.save
+      end
+      redirect_to action: :index
     end
-    redirect_to action: :index
   end
 
   def index
@@ -86,18 +90,23 @@ class OrdersController < ApplicationController
     else
       @orders = @user.orders.order(created_at: :desc)
     end
-    @orders.each do |order|
-      if time_out?(order)
-        try_cancel_timeout_order(order.id)
+    Order.transaction do
+      @orders.each do |order|
+        if time_out?(order)
+          try_cancel_timeout_order(order.id)
+        end
       end
     end
     render layout: 'account_setting'
   end
 
+
   def show
     @order = @user.orders.find(params[:id])
-    if time_out?(@order)
-      try_cancel_timeout_order(@order.id)
+    Order.transaction do
+      if time_out?(@order)
+        try_cancel_timeout_order(@order.id)
+      end
     end
     render layout: 'account_setting'
   end
@@ -109,7 +118,9 @@ class OrdersController < ApplicationController
   end
 
   def payment_timeout
-    try_cancel_timeout_order(params[:order_id])
+    Order.transaction do
+      try_cancel_timeout_order(params[:order_id])
+    end
   end
 
   def payment_succeed

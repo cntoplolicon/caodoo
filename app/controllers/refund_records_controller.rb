@@ -2,28 +2,30 @@ class RefundRecordsController < ApplicationController
   before_action :require_login
 
   def create
-    @refund_record = RefundRecord.new(create_params)
-    @order = Order.lock.find_by_order_number(@refund_record.order_number)
-    if @order.nil?
-      @refund_record.errors.add(:order_number, '订单号不存在')
-    else
-      if @order.refund_record.present?
-        @refund_record.errors.add(:order_number, '该订单已经存在退货记录')
+    RefundRecord.transaction do
+      @refund_record = RefundRecord.new(create_params)
+      @order = Order.lock.find_by_order_number(@refund_record.order_number)
+      if @order.nil?
+        @refund_record.errors.add(:order_number, '订单号不存在')
+      else
+        if @order.refund_record.present?
+          @refund_record.errors.add(:order_number, '该订单已经存在退货记录')
+        end
+        if @order.contest_team_id != @contest_team.id
+          @refund_record.errors.add(:order_number, '该订单并非由本小组推荐购买')
+        end
+        if @order.receiver != @refund_record.receiver
+          @refund_record.errors.add(:receiver, '订单收件人不匹配')
+        end
+        @refund_record.order_id = @order.id
+        @refund_record.status = RefundRecord::PENDING
       end
-      if @order.contest_team_id != @contest_team.id
-        @refund_record.errors.add(:order_number, '该订单并非由本小组推荐购买')
-      end
-      if @order.receiver != @refund_record.receiver
-        @refund_record.errors.add(:receiver, '订单收件人不匹配')
-      end
-      @refund_record.order_id = @order.id
-      @refund_record.status = RefundRecord::PENDING
-    end
 
-    if @refund_record.errors.empty? && @refund_record.save
-      redirect_to action: :index
-    else
-      render 'new'
+      if @refund_record.errors.empty? && @refund_record.save
+        redirect_to action: :index
+      else
+        render 'new'
+      end
     end
   end
 
