@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630053802) do
+ActiveRecord::Schema.define(version: 20150701063701) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150630053802) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "order_number",      limit: 255
+    t.string   "order_number",      limit: 32
     t.integer  "user_id",           limit: 4
     t.integer  "product_id",        limit: 4
     t.string   "product_name",      limit: 255
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150630053802) do
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree
+  add_index "orders", ["order_number"], name: "index_orders_on_order_number", unique: true, using: :btree
   add_index "orders", ["product_id"], name: "index_orders_on_product_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
