@@ -1,0 +1,36 @@
+<div>
+  <ul>
+    <% if @refund_record.errors.any? %>
+      <% @refund_record.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+
+<%= form_for [@contest_team, @refund_record] do |f| %>
+  <div>
+    <% if @refund_record.new_record? %>
+      <%= f.text_field :order_number, placeholder: '订单号' %>
+    <% else %>
+      <%= @refund_record.order.order_number %>
+    <% end %>
+  </div>
+  <div>
+    <% if @refund_record.new_record? %>
+      <%= f.text_field :receiver, placeholder: '收件人' %>
+    <% else %>
+      <%= @refund_record.order.receiver %>
+    <% end %>
+  </div>
+  <div>
+    <%= f.collection_select :express_id, Express.all, :id, :name, prompt: '请选择快递公司' %>
+  </div>
+  <div>
+    <%= f.text_field :tracking_number, placeholder: '运单号' %>
+  </div>
+  <div>
+    <%= f.submit '提交', :disable_with => '正在提交...' %>
+  </div>
+<% end %>

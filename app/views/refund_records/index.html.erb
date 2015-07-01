@@ -1,0 +1,22 @@
+<table>
+  <% @refund_records.each do |r| %>
+    <tr>
+      <td>
+        <%= r.order.order_number %>
+      </td>
+      <td>
+        <%= r.express.name %>
+      </td>
+      <td>
+        <%= r.tracking_number %>
+      </td>
+      <td>
+        <%= r.status %>
+      </td>
+      <td>
+        <%= link_to "update", edit_contest_team_refund_record_path(@contest_team, r) %>
+      </td>
+    </tr>
+  <% end %>
+  <%= link_to "new", new_contest_team_refund_record_path(@contest_team) %>
+</table>

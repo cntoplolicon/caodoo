@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701070044) do
+ActiveRecord::Schema.define(version: 20150701081853) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -81,9 +81,11 @@ ActiveRecord::Schema.define(version: 20150701070044) do
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
     t.integer  "address_id",        limit: 4
+    t.integer  "contest_team_id",   limit: 4
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree
+  add_index "orders", ["contest_team_id"], name: "index_orders_on_contest_team_id", using: :btree
   add_index "orders", ["order_number"], name: "index_orders_on_order_number", unique: true, using: :btree
   add_index "orders", ["product_id"], name: "index_orders_on_product_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -159,6 +161,18 @@ ActiveRecord::Schema.define(version: 20150701070044) do
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
 
+  create_table "refund_records", force: :cascade do |t|
+    t.integer  "order_id",        limit: 4
+    t.integer  "express_id",      limit: 4
+    t.string   "tracking_number", limit: 255
+    t.integer  "status",          limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "refund_records", ["express_id"], name: "index_refund_records_on_express_id", using: :btree
+  add_index "refund_records", ["order_id"], name: "index_refund_records_on_order_id", using: :btree
+
   create_table "regions", force: :cascade do |t|
     t.integer  "code",       limit: 4
     t.string   "name",       limit: 255
@@ -178,6 +192,7 @@ ActiveRecord::Schema.define(version: 20150701070044) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "contest_teams"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "payment_records", "orders"
@@ -186,4 +201,6 @@ ActiveRecord::Schema.define(version: 20150701070044) do
   add_foreign_key "product_sale_schedules", "products"
   add_foreign_key "product_views", "products"
   add_foreign_key "products", "brands"
+  add_foreign_key "refund_records", "expresses"
+  add_foreign_key "refund_records", "orders"
 end

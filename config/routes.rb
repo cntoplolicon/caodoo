@@ -68,7 +68,7 @@ Rails.application.routes.draw do
 
     collection do
       get :login
-      post:do_login
+      post :do_login
       get :logout
       get :forget_password
       get :reset_password_done
@@ -96,4 +96,12 @@ Rails.application.routes.draw do
 
   post 'wx_pay/pay', to: 'wx_pay#pay'
   post 'wx_pay/notify', to: 'wx_pay#notify'
+
+  resources :contest_teams do
+    collection do
+      get :login
+      post :do_login
+    end
+    resources :refund_records
+  end
 end

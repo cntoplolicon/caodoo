@@ -32,3 +32,10 @@ zh-CN:
           attributes:
             address_id:
               blank: '收货地址不能为空'
+        refund_record:
+          attributes:
+            express_id:
+              blank: '快递公司不能为空'
+            tracking_number:
+              blank: '运单号不能为空'
+

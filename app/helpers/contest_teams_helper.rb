@@ -1,0 +1,2 @@
+module ContestTeamsHelper
+end

@@ -1,0 +1,20 @@
+<div>
+  <ul>
+    <% if @contest_team.errors.any? %>
+      <% @contest_team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+<%= form_for @contest_team, url: {action: :do_login}, method: :post do |f| %>
+  <div>
+    <%= f.text_field :name, placeholder: '团队名称' %>
+  </div>
+  <div>
+    <%= f.password_field :password, placeholder: '密码' %>
+  </div>
+  <div>
+    <input type="submit" value="登录" />
+  </div>
+<% end %>

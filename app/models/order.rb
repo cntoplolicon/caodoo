@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :user_id
 
   has_one :payment_record, autosave: true, validate: true
+  has_one :refund_record, autosave: true, validate: true
 
   TO_PAY = 0
   PAID = 1
