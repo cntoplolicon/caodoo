@@ -3,357 +3,50 @@
   They will automatically be included in application.css.
 */
 
-.on-sale-notification {
-  margin-bottom: 18px;
-}
-
-.upcoming-notification {
-  margin-top: 32px;
-  margin-bottom: 34px;
-}
-
-.on-sale-products {
-  margin: 0 auto;
-  width: 960px;
-}
-
-.on-sale-product0 {
-  width: 480px;
-  height: 960px;
-}
-
-.on-sale-product1 {
-  width: 480px;
-  height: 480px;
-}
-
-.on-sale-product2 {
-  width: 960px;
-  height: 480px;
-}
-
-.on-sale-product .product-information {
-  position: absolute;
-}
-
-.on-sale-product0 .product-information {
-  left: 24px;
-  top: 412px;
-}
-
-.on-sale-product1 .product-information {
-  left: 24px;
-  top: 96px;
-}
-
-.on-sale-product2 .product-information {
-  left: 24px;
-  top: 92px;
-}
-
-.on-sale-product .product-name {
-  color: #212121;
-  font-size: 34px;
-}
-
-.on-sale-product .product-description {
-  color: #212121;
-  font-size: 24px;
-}
-
-.on-sale-product .product-price {
-  padding-top: 24px;
-}
-
-.on-sale-product .product-current-price,
-.on-sale-product .product-original-price {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  vertical-align: middle;
-}
-
-.on-sale-product .product-current-price {
-  color: #212121;
-  font-size: 24px;
-}
-
-.on-sale-product .product-original-price {
-  color: #757575;
-  font-size: 14px;
-  text-decoration: line-through;
-}
-
-.on-sale-product .product-sale-remain-time {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  color: #212121;
-  font-size: 14px;
-}
-
-.upcoming-products {
+.banner {
   width: 100%;
-  text-align: center;
+  height: 120px;
+  overflow: hidden;
+  background-color: black;
 }
 
-.upcoming-product {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  position: relative;
-  margin: 0 24px;
-  width: 148px;
-  height: 148px;
-  background-color: white;
+.product_now,
+.product_soon {
+  background-color: black;
 }
 
-.upcoming-product .trailer-image {
-  width: 148px;
-  height: 148px;
-  display: none;
-}
-
-.upcoming-product .trailer-content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.product_bottom_black {
+  width: 147px;
   height: 48px;
-  background-color: rgba(0,0,0,0.5);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#80000000', endColorstr='#80000000');
-  text-align: left;
-  padding-left: 8px;
-  display: none;
+  position: absolute;
+  bottom: 0;
+  background-image: url("../img/bottom.png");
 }
 
-.upcoming-product:hover .brand-image{
-  display: none;
+.product_infos {
+  position: absolute;
+  bottom: 0;
+  width: 147px;
+  height: 48px;
+  color: white;
 }
 
-.upcoming-product:hover .trailer-image {
-  display: inline;
+.product_soon_ul {
+  overflow: hidden;
 }
 
-.upcoming-product:hover .trailer-content {
-  display: block;
-  color: #DEDEDE;
-}
-
-.upcoming-product .trailer-time {
-  line-height: 24px;
-}
-
-.upcoming-product .trailer-description {
-  line-height: 24px;
-}
-
-.product-detail {
-  margin: 0 auto;
-  background-color: #FFF;
-  width: 960px;
-}
-
-.product-detail-countdown {
-  text-align: center;
-  padding: 50px 0 15px 0;
-  margin: 0 40px 0 40px;
-  border-bottom: 1px solid #DFDFDF;
-}
-
-.product-detail-content {
+.product_soon_ul li {
+  float: left;
   position: relative;
-  padding: 0 44px;
-  height: 560px;
+  margin: 0px 6px;
 }
 
-.product-detail-images-container {
-  width: 420px;
-  position: absolute;
+.product_date {
+  margin-left: 14px;
+  margin-top: 3px;
 }
 
-.product-detail-text-container {
-  position: absolute;
-  left: 500px;
-  width: 400px;
-}
-
-.product-detail .promises-row {
-  background-color: #FFF;
-  padding-top: 13px;
-  padding-bottom: 28px;
-}
-
-.product-detail .promise-panel {
-  text-align: left;
-}
-
-.product-detail .promise {
-  line-height: 18px;
-  font-size: 16px;
-  color: #6B6B6B;
-}
-
-.product-detail .product-name {
-  padding-top: 72px;
-  color: #000;
-  font-size: 21px;
-}
-
-.product-detail .product-description {
-  font-size: 14px;
-  color: #6B6B6B;
-  padding-top: 10px;
-}
-
-.product-detail .product-price {
-  padding-top: 30px;
-}
-
-.product-detail .product-current-price,
-.product-detail .product-original-price {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  vertical-align: middle;
-}
-
-.product-detail .product-current-price {
-  font-size: 24px;
-  color: #D73131;
-}
-
-.product-detail .product-original-price {
-  font-size: 14px;
-  color: #6B6B6B;
-  text-decoration: line-through;
-  vertical-align: middle;
-}
-
-.product-detail .product-quantity-panel {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-}
-
-.product-detail .product-quantity {
-  padding-top: 20px;
-  font-size: 16px;
-  color: #6B6B6B;
-}
-
-.product-detail .quantity-controller {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  width: 22px;
-  height: 22px;
-  border: 1px solid #838383;
-  text-align: center;
-  color: #8F8F8F;
-  cursor: pointer;
-  vertical-align: middle;
-}
-
-.product-detail .quantity-input {
-  width: 22px;
-  height: 22px;
-  line-height: 22px;
-  vertical-align: middle;
-  text-align: center;
-  background-color: #E8E8E8;
-  border: none;
-} 
-
-.product-detail .splitter {
-  height: 1px;
-  background-color: #E6E6E6;
-  margin-top: 15px;
-}
-
-.product-detail .purchase-button {
-  width: 300px;
-  height: 40px;
-}
-
-.product-detail-notification {
-  height: 60px;
-  font-size: 14px;
-  color: #DEDEDE;
-  text-align: center;
-  background-color: #000;
-  line-height: 60px;
-}
-
-.product-detail-carousel {
-  width: 420px;
-  height: 420px;
-  margin-top: 18px;
-  border: 1px solid #E6E6E6;
-}
-
-.product-detail-thumbnail {
-  width: 72px;
-  height: 72px;
-  display: inline-block !important;
-  *display: inline;
-  zoom: 1;
-  vertical-align: top;
-  margin: 24px 12px 0 12px;
-  *margin: 18px 6px 0 6px;
-  border: 1px solid #E6E6E6;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.product-detail-thumnail-panel {
-  text-align: center;
-}
-
-.product-detail-thumnail-panel {
-  width: 420px;
-}
-
-.promises-row {
-  background-color: #000;
-  padding-top: 90px;
-  padding-bottom: 70px;
-}
-
-.promise-panel {
-  max-height: 35px;
-  text-align: center;
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  width: 24%;
-  vertical-align: text-top;
-}
-
-.promise-content, .promise-icon {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  line-height: 35px;
-  vertical-align: text-top;
-}
-
-.first-promise {
-  line-height: 18px;
-  font-size: 16px;
-  color: #DEDEDE;
-}
-
-.second-promise {
-  line-height: 17px;
-  font-size:14px;
-  color: #909090;
-}
-
-.faq {
-  padding: 24px;
-}
-
-.faq p {
-  margin-top: 12px;
+.product_title {
+  margin-left: 14px;
+  margin-top: 2px;
 }

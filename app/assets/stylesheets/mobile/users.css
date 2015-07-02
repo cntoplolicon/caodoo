@@ -15,7 +15,7 @@
   height: 360px;
   width: 320px;
   background-color: #FFF;
-  margin-top: 22px;
+  margin-top: 50px;
   color: #898989;
   position: relative;
   border-radius: 2px;
@@ -187,14 +187,14 @@
 
 .user-op-form .terms-of-service-title {
   padding-top: 42px;
-  font-size: 24px;
+  font-size: 21px;
   color: #000;
   text-align: center;
 }
 
 .user-op-form .terms-of-service-content {
-  width: 754px;
-  height: 294px;
+  width: 250px;
+  height: 280px;
   margin-top: 48px;
   margin-bottom: 44px;
   overflow: auto;
@@ -202,17 +202,4 @@
 
 .user-op-form .close-button {
   width: 235px;
-}
-
-.user-page-header {
-	height: 58px;
-	background: black;
-	color: white;
-	font-size: 18px;
-	text-align: center;
-	padding-top: 21px;
-}
-
-.user-page-header div {
-	display: inline;
 }

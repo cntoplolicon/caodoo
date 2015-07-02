@@ -39,5 +39,12 @@
       $('.carousel-image').attr('src', $(this).attr('src'));
     });
 
+    $(".othmenu").click(function() {
+      $(".menu_list").toggle();
+    });
+
+    $(".dropdown_action").click(function() {
+      $(".children_list").toggle();
+    });
   });
 })(this, jQuery);

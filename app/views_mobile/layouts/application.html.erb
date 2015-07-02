@@ -8,7 +8,77 @@
     <%= csrf_meta_tags %>
   </head>
   <body style=" <%= yield :body_style %>">
+    <div class="header">
+      <%= yield :page_header %>
+      <a class="othmenu">
+        <%= image_tag "menu.png" %>
+      </a>
+    </div>
+    <div class="menu_list" style="display: none">
+      <ul>
+        <% if session[:login_username] %>
+          <li>
+            <a href="/">首页</a>
+          </li>
+          <li>
+            <a class="dropdown_action">
+            <span>我的</span>
+            <%= image_tag "dropdown.png", :class => "dropdown" %>
+            </a>
+          </li>
+          <li style="padding: 0">
+            <ul class="children_list" style="display: none">
+              <li>
+                <%= link_to "订单管理", user_orders_url(session[:login_user_id]) %>
+              </li>
+              <li>
+                <%= link_to "收货地址", user_addresses_url(session[:login_user_id]) %>
+              </li>
+              <li>
+                <%= link_to "客户服务", custom_service_url %>
+              </li>
+              <li>
+                <%= link_to "用户设置", user_settings_user_url(session[:login_user_id]) %>
+              </li>
+              <li>
+                <%= link_to "退出账户", logout_users_url %>
+              </li>
+            </ul>
+          </li>
+          <li>
+             <%= link_to "关于我们", about_us_url %>
+          </li>
+        <% else %>
+          <li>
+            <a href="/">首页</a>
+          </li>
+          <li>
+            <%= link_to "登录", controller: :users, action: :login %>
+          </li>
+          <li>
+            <%= link_to "注册", controller: :users, action: :new %>
+          </li>
+          <li>
+            <%= link_to "关于我们", about_us_url %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
     <%= content_for?(:content) ? yield(:content) : yield %>
     <%= javascript_include_tag 'application_mobile' %>
+    <!--copyright-->
+    <ul class="footer_links">
+      <li>
+        <a>&nbsp;&nbsp;©2015 CAODOO</a>
+      </li>
+      <li>
+        京ICP备 15024750号
+      </li>
+      <li>
+        <a href="m-terms-of-privicy.html">
+          隐私条款
+        </a>
+      </li>
+   </ul>
   </body>
 </html>
