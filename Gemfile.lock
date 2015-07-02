@@ -52,6 +52,9 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
+    crono (0.9.0)
+      activerecord (~> 4.0)
+      activesupport (~> 4.0)
     debug_inspector (0.0.2)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
@@ -160,6 +163,7 @@ DEPENDENCIES
   alipay
   bcrypt
   byebug
+  crono
   jbuilder (~> 2.0)
   mysql2
   rails (= 4.2.1)

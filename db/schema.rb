@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702030856) do
+ActiveRecord::Schema.define(version: 20150702121515) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -60,6 +60,17 @@ ActiveRecord::Schema.define(version: 20150702030856) do
   add_index "contest_teams", ["identifier"], name: "index_contest_teams_on_identifier", unique: true, using: :btree
   add_index "contest_teams", ["name"], name: "index_contest_teams_on_name", unique: true, using: :btree
   add_index "contest_teams", ["university"], name: "index_contest_teams_on_university", using: :btree
+
+  create_table "crono_jobs", force: :cascade do |t|
+    t.string   "job_id",            limit: 64,    null: false
+    t.text     "log",               limit: 65535
+    t.datetime "last_performed_at"
+    t.boolean  "healthy",           limit: 1
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "crono_jobs", ["job_id"], name: "index_crono_jobs_on_job_id", unique: true, using: :btree
 
   create_table "expresses", force: :cascade do |t|
     t.string   "code",       limit: 32

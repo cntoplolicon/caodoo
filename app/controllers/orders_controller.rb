@@ -86,10 +86,15 @@ class OrdersController < ApplicationController
   def update
     Order.transaction do
       @order = @user.orders.lock.find(params[:id])
-      if params[:order][:status].to_i == Order::CANCELLED && @order.status == Order::TO_PAY
-        @order.status = Order::CANCELLED
-        @order.payment_record.status = PaymentRecord::CANCELLED
-        @order.save
+      if params[:order][:status].to_i == Order::CANCELLED
+        if @order.status == Order::TO_PAY
+          @order.status = Order::CANCELLED
+          @order.payment_record.status = PaymentRecord::CANCELLED
+          @order.save
+        elsif @order.status == Order::PAIED
+          @order.status = Order::CANCELLING
+          @order.save
+        end
       end
       redirect_to action: :index
     end
@@ -131,6 +136,12 @@ class OrdersController < ApplicationController
 
   def status
     render json: {status: @order.status}
+  end
+
+  def check_timeout_orders
+    p '------------------'
+    p 'fuck'
+    p '------------------'
   end
 
   private
