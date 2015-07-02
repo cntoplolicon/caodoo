@@ -14,6 +14,5 @@
 //= require jquery-placeholder
 //= require masonry/jquery.masonry
 //= require jquery-qrcode
-//= require turbolinks
 //= require_tree ./common
 //= require_tree ./desktop

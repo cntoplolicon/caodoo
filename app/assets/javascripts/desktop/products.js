@@ -10,6 +10,7 @@
     var countDown =  function() {
       $('.product-sale-remain-time').each(function() {
         var time = $(this).data('time');
+        time = Math.max(time - 1, 0);
         var remainTimeString = showRemainTime(time);
         $(this).data('time', time);
         $(this).text(remainTimeString);
