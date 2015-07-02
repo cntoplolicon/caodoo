@@ -34,11 +34,12 @@ class OrdersController < ApplicationController
       @onsale = @product.product_sale_schedules.any? do |s|
         s.sale_start < Time.now && s.sale_end > Time.now
       end 
-      render action: :sold_out, controller: :standalone unless @onsale
-
-      if @order.invalid?
-        render 'new' and return
+      redirect_to action: :sold_out, controller: :standalone and return unless @onsale
+      redirect_to action: :sold_out, controller: :standalone and return if @product.quantity <= 0
+      if @order.quantity > @product.quantity
+        @order.errors.add(:quantity, "库存仅剩下#{@product.quantity}件")
       end
+      render 'new' and return if @order.errors.any? || @order.invalid?
 
       @address = @user.addresses.find(@order.address_id)
 
@@ -74,6 +75,7 @@ class OrdersController < ApplicationController
       end
 
       if @order.save
+        @product.update(quantity: @product.quantity - @order.quantity)
         redirect_to user_order_payment_url(@user, @order)
       else
         render 'new'
@@ -101,7 +103,6 @@ class OrdersController < ApplicationController
     end
     render layout: 'account_setting'
   end
-
 
   def show
     @order = @user.orders.find(params[:id])

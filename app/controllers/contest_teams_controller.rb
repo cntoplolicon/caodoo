@@ -1,4 +1,6 @@
 class ContestTeamsController < ApplicationController
+  before_action :find_contest_team, only: [:edit, :update, :show]
+
   def login
     @contest_team = ContestTeam.new
   end
@@ -20,11 +22,9 @@ class ContestTeamsController < ApplicationController
   end
 
   def edit
-    @contest_team = ContestTeam.find(params[:id])
   end
 
   def update
-    @contest_team = ContestTeam.find(params[:id])
     unless @contest_team.authenticate(params[:old_password])
       @contest_team.errors.add(:old_password, '原密码错误')
     else
@@ -39,7 +39,36 @@ class ContestTeamsController < ApplicationController
   end
 
   def show
+    today = [Time.zone.now.beginning_of_day..Time.zone.now.end_of_day]
+    @total_orders = Order.where(contest_team_id: @contest_team.id).joins(:product).includes(:product).group(:product_id)
+      .pluck('count(orders.id)', 'sum(orders.total_price)', 'products.name').map{|r| {quantity: r[0], total_price: r[1], product_name: r[2]} }
+    @today_orders = Order.where(contest_team_id: @contest_team.id, created_at: today).joins(:product).includes(:product).group(:product_id)
+      .pluck('count(orders.id)', 'sum(orders.total_price)', 'products.name').map{|r| {quantity: r[0], total_price: r[1], product_name: r[2]} }
+
     @total_statistics = {
+      quantity: @total_orders.inject(0) { |sum, orders| sum + orders[:quantity] },
+      price: @total_orders.inject(0) { |sum, orders| sum + orders[:total_price] },
+      pv: ContestPageView.where(contest_team_id: @contest_team.id).count(:all),
+      uv: ContestPageView.where(contest_team_id: @contest_team.id).distinct.count(:request_ip)
     }
+    @today_statistics = {
+      quantity: @today_orders.inject(0) { |sum, orders| sum + orders[:quantity] },
+      price: @today_orders.inject(0) { |sum, orders| sum + orders[:total_price] },
+      pv: ContestPageView.where(contest_team_id: @contest_team.id, created_at: today).count(:all),
+      uv: ContestPageView.where(contest_team_id: @contest_team.id, created_at: today).distinct.count(:request_ip)
+    }
+  end
+
+  def find_contest_team
+    head :forbidden if params[:id].to_i != session[:login_contest_team_id]
+    @contest_team = ContestTeam.find(params[:id])
+  end
+
+  def contest_product_links
+    product_table = Product.arel_table
+    @products = Product.joins(product_view: :product_carousel_images)
+      .includes(product_view: :product_carousel_images)
+      .where(product_table[:contest_level].gteq(@contest_team.level))
+      .order(priority: :desc)
   end
 end

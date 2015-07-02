@@ -39,6 +39,7 @@
                       <span>+</span>
                     </a>
                   </div>
+                  <div class="error-message"><%= @order.errors.messages[:quantity].first if @order.errors[:quantity].any? %></div>
                 </div>
               </div>
             </div>

@@ -1,1 +1,46 @@
-<div>这是销售业绩页面</div>
+总体统计
+<div>
+  <%= @total_statistics[:quantity] %>
+</div>
+<div>
+  <%= @total_statistics[:price] %>
+</div>
+<div>
+  <%= @total_statistics[:pv] %>
+</div>
+<div>
+  <%= @total_statistics[:uv] %>
+</div>
+
+今日统计
+<div>
+  <%= @today_statistics[:quantity] %>
+</div>
+<div>
+  <%= @today_statistics[:price] %>
+</div>
+<div>
+  <%= @today_statistics[:pv] %>
+</div>
+<div>
+  <%= @today_statistics[:uv] %>
+</div>
+
+<table>
+<% @total_orders.each_with_index do |orders, index| %>
+  <tr>
+    <td>
+      <%= "#{index + 1}" %>
+    </td>
+    <td>
+      <%= orders[:quantity] %>
+    </td>
+    <td>
+      <%= orders[:total_price] %>
+    </td>
+    <td>
+      <%= orders[:product_name] %>
+    </td>
+  </tr>
+<% end %>
+</table>
