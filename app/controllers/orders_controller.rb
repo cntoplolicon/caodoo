@@ -90,13 +90,6 @@ class OrdersController < ApplicationController
     else
       @orders = @user.orders.order(created_at: :desc)
     end
-    Order.transaction do
-      @orders.each do |order|
-        if time_out?(order)
-          try_cancel_timeout_order(order.id)
-        end
-      end
-    end
     render layout: 'account_setting'
   end
 
