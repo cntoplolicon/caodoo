@@ -107,4 +107,8 @@ Rails.application.routes.draw do
   end
 
   resources :contest_products
+
+  namespace :admin do
+    resources :products
+  end
 end
