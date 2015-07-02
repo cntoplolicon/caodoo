@@ -63,6 +63,15 @@ class OrdersController < ApplicationController
         @order.district_name = @address.district.name
       end
       @order.detailed_address = @address.detailed_address
+      if @product.contest_product?
+        if session[:contest_team_id].present?
+          @contest_team = ContestTeam.find(session[:contest_team_id])
+        else
+          @contest_team = ContestTeam.find_by_identifier(Settings.contest.default_team_identifier)
+        end
+        head :bad_request and return if  @product.contest_level > @contest_team.level
+        @order.contest_team_id = @contest_team.id
+      end
 
       if @order.save
         redirect_to user_order_payment_url(@user, @order)

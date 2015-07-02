@@ -6,10 +6,14 @@ class ProductsController < ApplicationController
       .includes(:product_sale_schedules, :product_view)
       .where(schedule_table[:sale_start].lt(now))
       .where(schedule_table[:sale_end].gt(now))
+      .where(contest_level: nil)
+      .order(priority: :desc)
     @upcoming_products = Product.joins(:product_sale_schedules, :product_view, :brand)
       .includes(:product_sale_schedules, :product_view, :brand)
       .where(schedule_table[:trailer_start].lt(now))
       .where(schedule_table[:trailer_end].gt(now))
+      .where(contest_level: nil)
+      .order(priority: :desc)
   end
 
   def show

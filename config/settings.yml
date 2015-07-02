@@ -12,3 +12,7 @@ payment:
 
 sale:
   max_quantity: 10
+
+contest:
+  default_team_identifier: '85ab5238f634ae970da47c3863921e6c'
+  level_exp: [0, 3, 5, 8]

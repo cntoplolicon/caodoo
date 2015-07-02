@@ -1,0 +1,2 @@
+module ContestProductsHelper
+end

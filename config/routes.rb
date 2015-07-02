@@ -103,5 +103,8 @@ Rails.application.routes.draw do
       post :do_login
     end
     resources :refund_records
+    resources :contest_products
   end
+
+  resources :contest_products
 end

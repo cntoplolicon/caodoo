@@ -19,9 +19,27 @@ class ContestTeamsController < ApplicationController
     redirect_to contest_team_path(@contest_team)
   end
 
+  def edit
+    @contest_team = ContestTeam.find(params[:id])
+  end
+
   def update
+    @contest_team = ContestTeam.find(params[:id])
+    unless @contest_team.authenticate(params[:old_password])
+      @contest_team.errors.add(:old_password, '原密码错误')
+    else
+      @contest_team.password = params[:contest_team][:password]
+      @contest_team.password_confirmation = params[:contest_team][:password_confirmation]
+    end
+    if @contest_team.errors.empty? && @contest_team.save
+      redirect_to action: :show
+    else
+      render 'edit'
+    end
   end
 
   def show
+    @total_statistics = {
+    }
   end
 end

@@ -38,4 +38,10 @@ zh-CN:
               blank: '快递公司不能为空'
             tracking_number:
               blank: '运单号不能为空'
-
+        contest_team:
+          attributes:
+            password:
+              invalid: "密码为6-20位字符"
+              blank: '密码不能为空'
+            password_confirmation:
+              confirmation: '两次输入的密码不一致'
