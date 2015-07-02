@@ -10,7 +10,7 @@
   background-color: black;
 }
 
-.product_now,
+.on-sale-products,
 .product_soon {
   background-color: black;
 }
@@ -20,7 +20,7 @@
   height: 48px;
   position: absolute;
   bottom: 0;
-  background-image: url("../img/bottom.png");
+  background-color: rgba(0,0,0,0.5);
 }
 
 .product_infos {
@@ -49,4 +49,90 @@
 .product_title {
   margin-left: 14px;
   margin-top: 2px;
+}
+
+.product_soon_ul .trailer-image {
+	width: 146px;
+}
+
+.on-sale-products {
+  margin: 0 auto;
+  width: 320px;
+}
+
+.on-sale-product0, .on-sale-product0 img {
+  width: 160px;
+  height: 320px;
+}
+
+.on-sale-product1, .on-sale-product1 img {
+  width: 160px;
+  height: 160px;
+}
+
+.on-sale-product2, .on-sale-product2 img{
+  width: 320px;
+  height: 160px;
+}
+
+.on-sale-product .product-information {
+  position: absolute;
+}
+
+.on-sale-product0 .product-information {
+  left: 6px;
+  top: 140px;
+}
+
+.on-sale-product1 .product-information {
+  left: 6px;
+  top: 30px;
+}
+
+.on-sale-product2 .product-information {
+  left: 6px;
+  top: 30px;
+}
+
+.on-sale-product .product-name {
+  color: #212121;
+  font-size: 15px;
+}
+
+.on-sale-product .product-description {
+  color: #212121;
+  font-size: 24px;
+}
+
+.on-sale-product .product-current-price,
+.on-sale-product .product-original-price {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  vertical-align: middle;
+}
+
+.on-sale-product .product-current-price {
+  color: #212121;
+  font-size: 13px;
+}
+
+.on-sale-product .product-original-price {
+  color: #757575;
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+.on-sale-product .product-sale-remain-time {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: #212121;
+  font-size: 14px;
+}
+
+.product-detail .product-name {
+  padding-top: 0px;
+  color: #000;
+  font-size: 21px;
 }
