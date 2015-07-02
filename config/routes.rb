@@ -102,6 +102,9 @@ Rails.application.routes.draw do
       get :login
       post :do_login
     end
+    member do
+      get :contest_product_links
+    end
     resources :refund_records
     resources :contest_products
   end

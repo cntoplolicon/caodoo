@@ -1,5 +1,5 @@
 class ContestTeamsController < ApplicationController
-  before_action :find_contest_team, only: [:edit, :update, :show]
+  before_action :find_contest_team, only: [:edit, :update, :show, :contest_product_links]
 
   def login
     @contest_team = ContestTeam.new
@@ -61,16 +61,18 @@ class ContestTeamsController < ApplicationController
     }
   end
 
-  def find_contest_team
-    head :forbidden if params[:id].to_i != session[:login_contest_team_id]
-    @contest_team = ContestTeam.find(params[:id])
-  end
-
   def contest_product_links
     product_table = Product.arel_table
     @products = Product.joins(product_view: :product_carousel_images)
       .includes(product_view: :product_carousel_images)
       .where(product_table[:contest_level].gteq(@contest_team.level))
       .order(priority: :desc)
+  end
+
+  private
+
+  def find_contest_team
+    head :forbidden if params[:id].to_i != session[:login_contest_team_id]
+    @contest_team = ContestTeam.find(params[:id])
   end
 end
