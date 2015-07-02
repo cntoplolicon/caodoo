@@ -1,10 +1,10 @@
+<% content_for :page_title do %>
+  登录
+<% end %>
 <div class="user-op-form-link">
   <%= link_to "新用户，快速注册？", action: :new %>
 </div>
 <div class="user-op-form-panel center-block login-box">
-  <div class="user-op-form-header">
-    登陆
-  </div>
   <%= form_for @user, url: {action: :do_login}, method: :post do |f| %>
     <div class="username-panel input-panel">
       <%= f.text_field :username, placeholder: "注册手机号" %>

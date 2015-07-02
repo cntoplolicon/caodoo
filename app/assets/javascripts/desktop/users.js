@@ -12,7 +12,24 @@ $(document).ready(function () {
         $('#username-error').text(response.error);
       })
       .done(function() {
+        var time = 60;
         $('#username-error').text('');
+        $('.security-code-button').prop('disabled', true);
+        $('.security-code-button').css('color', 'grey');
+        $('.security-code-button').text(time + 's重新发送');
+        var timecounter = window.setInterval(function() {
+          if (time-- > 0) {
+            $('.security-code-button').text(time + 's重新发送');
+          } else {
+            myStopFunction();
+          }
+        }, 1000);
+        function myStopFunction() {
+          window.clearInterval(timecounter);
+          $('.security-code-button').prop('disabled', false);
+          $('.security-code-button').text('重新发送');
+          $('.security-code-button').css('color', '');
+        }
       });
     });
   };
