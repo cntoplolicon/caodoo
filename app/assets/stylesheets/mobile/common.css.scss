@@ -220,7 +220,7 @@ button {
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url("../img/popup_black_bg.png");
+  /*background-image: url("../img/popup_black_bg.png");*/
   z-index: 199;
 }
 
@@ -278,7 +278,7 @@ button {
 
 .cd_input {
   border-radius: 4px;
-  width: 133px;
+  width: 220px;
   height: 30px;
   padding: 4px 6px;
   background-color: #EBEBEB;

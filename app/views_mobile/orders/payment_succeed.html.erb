@@ -1,0 +1,27 @@
+<div class="payment-detail-container">
+  <div class="payment-detail">
+    <div class="flex-top"></div>
+    <div class="step-three">
+      <%= image_tag "payment-step-three.png", :title => "title", :class => "class" %>
+    </div>
+    <div class="succeed-icon">
+      <%= image_tag "succeed.png" %>
+    </div>
+    <div class="text-top">支付成功！</div>
+    <div class="text-bottom">
+      <div class="text-bottom-hint payment-succeed-message">
+        <p>
+          您的订单号为 #<%= @order.order_number %>
+      </p>
+      <p>
+        支付<%= @order.payment_record.amount %>元，您可直接<%= link_to "查看订单", user_order_path(@user, @order) %>
+    </p>
+  </div>
+</div>
+<div>
+  <a href="/">
+        <button type="button" class="go-on-shopping">继续逛逛</button>
+      </a>
+    </div>
+  </div>
+</div>

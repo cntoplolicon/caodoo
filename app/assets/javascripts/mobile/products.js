@@ -6,7 +6,6 @@
     $('.on-sale-products').masonry({
       itemSelector: '.on-sale-product'
     });
-
     var countDown =  function() {
       $('.product-sale-remain-time').each(function() {
         var time = $(this).data('time');
@@ -30,21 +29,56 @@
         $('.show-remain-time').text(remainTimeString);
     };
 
-    if ($('.product-detail-countdown').length > 0) {
+    if ($('.on-sale-time-left').length > 0) {
       productDetailCountDown();
       window.setInterval(productDetailCountDown, 1000);
     };
-
     $('.product-detail-thumbnail').click(function() {
       $('.carousel-image').attr('src', $(this).attr('src'));
     });
 
     $(".othmenu").click(function() {
+    	console.log('click othmenu');
       $(".menu_list").toggle();
     });
 
     $(".dropdown_action").click(function() {
       $(".children_list").toggle();
     });
+
+    var update_quantity_and_price = function() {
+      if ($("#unit-price-field").length > 0) {
+        var quantity = parseInt($('.quantity-number').val());
+        var unit_price = parseFloat($('#unit-price-field').val());
+        $('.quantity-display').text(quantity);
+        $('.total-price-display').text((quantity * unit_price).toFixed(2));
+      }
+    }
+    update_quantity_and_price();
+    $('.quantity-controller-decrease').click(function() {
+      $('.quantity-number').val(Math.max(parseInt($('.quantity-number').val()) - 1, 1));
+      update_quantity_and_price();
+    });
+    $('.quantity-controller-increase').click(function() {
+      $('.quantity-number').val(Math.min(parseInt($('.quantity-number').val()) + 1, $('#quantity-limit-field').val()));
+      update_quantity_and_price();
+    });
+    $('.quantity-number').change(function() {
+        var quantity = parseInt($('.quantity-number').val());
+        if (isNaN(quantity)) {
+          quantity = 1;
+        }
+        quantity = Math.max(quantity, 1);
+        quantity = Math.min(quantity, $('#quantity-limit-field').val());
+        $('.quantity-number').val(quantity);
+        update_quantity_and_price();
+    });
+
+    $('.product-detail .purchase-button').click(function(event) {
+      event.preventDefault();
+      var link = $(this).closest('a');
+      window.location.href = link.attr('href') + '&quantity=' + $('.quantity-number').val();
+    });
+
   });
 })(this, jQuery);

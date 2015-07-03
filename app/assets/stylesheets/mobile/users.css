@@ -203,3 +203,61 @@
 .user-op-form .close-button {
   width: 235px;
 }
+
+.order_box .return_action {
+  position: relative;
+  text-align: center;
+}
+
+.order_box .return_action_link {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.update_action {
+  float: right;
+  margin-right: 10px;
+}
+
+.return_action {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #EEEEEE;
+}
+
+.user_info {
+  margin: 20px;
+}
+
+.user_info_box {
+  overflow: hidden;
+}
+
+.user_info_box ul li {
+  overflow: hidden;
+}
+
+.user_info_box {
+  overflow: hidden;
+  background-color: #F7F7F7;
+  padding: 6px;
+  margin: 10px 0;
+  display: none;
+}
+.change-personal-info {
+	width: 320px;
+}
+
+.order_box {
+  width: 320px;
+  min-height: 320px;
+  background-color: white;
+  margin: 0 auto;
+}
+.setting_container {
+  padding: 20px;
+  width: 280px;
+  overflow: hidden;
+  margin: 0 auto;
+}

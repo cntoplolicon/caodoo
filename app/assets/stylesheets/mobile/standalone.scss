@@ -1,0 +1,201 @@
+.banner {
+  position: relative;
+}
+
+.about_desc {
+  background-color: #F2F2F2;
+  padding-bottom: 20px;
+}
+
+.about_desc_box {}
+
+.about_desc_title {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.about_ts_name {
+  font-size: 16px;
+  color: #383838;
+}
+
+.about_desc_content {
+  width: 270px;
+  margin: 0 auto;
+  overflow: hidden;
+  color: #A3A3A3;
+  margin-top: 2px;
+}
+
+.about_desc_content ul {
+  overflow: hidden;
+}
+
+.about_desc_content img {
+  width: 50px;
+}
+
+.about_desc_content ul li {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.about_ts_title {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.about_ts_desc {
+  font-size: 16px;
+  color: #9F9F9F;
+  margin: 10px 0;
+}
+
+.about_ts_box {
+  width: 180px;
+  margin-left: 20px;
+  padding-top: 8px;
+}
+
+.about_team {
+  background-color: #000000;
+  position: relative;
+}
+
+.about_team_box {
+  position: absolute;
+  top: 6px;
+}
+
+.about_team_p {
+  width: 280px;
+  margin: 0 auto;
+  color: #ffffff;
+  margin-left: 20px;
+  line-height: 26px;
+  text-align: center;
+}
+
+.about_team_bg {
+  width: 320px;
+}
+
+.about_team_center {
+  width: 320px;
+  margin: 0 auto;
+  padding: 10px 0px;
+}
+
+.white {
+  color: #ffffff;
+}
+
+.about_contact {
+  overflow: hidden;
+  height: 245px;
+  position: relative;
+}
+
+.about_contact_center {
+  width: 320px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.about_conatact_bg {
+  width: 320px;
+}
+
+.about_contact_box {
+  position: absolute;
+  top: 15px;
+  width: 100%;
+}
+
+.about_contact_content {
+  width: 280px;
+  margin: 0 auto;
+}
+
+.about_contact_content li {
+  overflow: hidden;
+  margin: 10px 0px;
+  color: white;
+}
+
+.about__banner_img {
+  width: 100%;
+}
+
+.about_slogan_box {
+  width: 100%;
+  position: absolute;
+  bottom: 50px;
+}
+
+.about_slogan_title {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+.about_slogan_center {
+  width: 320px;
+  margin: 0 auto;
+}
+
+.about_slogan_desc_box {
+  overflow: hidden;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.about_slogan_desc_line {
+  margin-top: 8px;
+  float: left;
+  width: 48px;
+  border-bottom: 1px solid white;
+}
+
+.about_slogan_desc_text {
+  float: left;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+}
+
+.about_contact_bg {
+  width: 100%;
+  height: 245px;
+}
+
+.about_contact_name {
+  float: left;
+  width: 110px;
+  text-align: right;
+}
+
+.about_contact_value {
+  float: left;
+  margin-top: 1px;
+}
+
+.about_mail_icon {
+	width: 14px;
+	margin-right: 16px;
+	margin-top: 6px;
+	float: left;
+}
+
+.about_address_icon {
+  width: 12px;
+  margin-right: 16px;
+  float: left;
+}
+
+.service_container{
+  padding: 20px;
+  width: 280px;
+  overflow: hidden;
+  margin: 0 auto;
+}
