@@ -1,117 +1,228 @@
-<div class="order_box">
-  <div class="status_box">
-    <ul>
-      <li>
-        <a class="currnet_tab new_address_action">
-          添加收货地址
-        </a>
-        <%= hidden_field_tag :new_address_url, new_user_address_path(@user), class: 'new_address_url' %>
-      </li>
-    </ul>
+  <div class="container">
+    <div class="status_box">
+      <ul>
+        <li>
+          <a id="add_new_address" class="current_a">
+                添加收货地址
+            </a>
+        </li>
+      </ul>
+    </div>
     <div class="status_box_line">
     </div>
-  </div>
-  <div class="delivery_user">
-    <ul>
-      <% @addresses.each do |address| %>
-        <li class="user_address_li">
-          <%= hidden_field_tag :edit_address_url, edit_user_address_path(@user, address), class: 'edit_address_url' %>
-          <%= form_for([@user, address], html: {class: "delete_address_#{address.id}_form"}) do |f| %>
-            <%= f.hidden_field :deleted, value: true %>
-          <% end %>
-          <%= form_for([@user, address], html: {class: "update_default_address_#{address.id}_form"}) do |f| %>
-            <%= f.hidden_field :default, value: true %>
-          <% end %>
-          <input type="hidden" class="update_address_url" value="<%=user_address_path(@user, address)%>">
-          <ul>
+    <div class="delivery_user">
+      <ul>
+        <li>
+          <ul class="delivery_one_user_ul">
             <li>
-              <span class="address_span">
-                收件人：
-              </span>
-              <span>
-                <%= address.receiver %>
-              </span>
-              <% if address.default %>
-                <span class="default_address" style="float: right;margin-right: 20px;color: #3FB134">
-                  默认地址
-                </span>
-              <% end %>
+              <span class="address_span">收件人：</span>
+              <span>青云</span>
+              <span class="default_address" style="float: right;color: #3FB134">默认地址</span>
             </li>
             <li>
-              <span class="address_span">
-                所在地区：
-              </span>
-              <span>
-                <%= address.try(:province).try(:name) %><%= address.try(:city).try(:name) %><%= address.try(:district).try(:name) %>
-              </span>
+              <span class="address_span">所在地区：</span>
+              <span>北京市东城区王府井大街</span>
             </li>
             <li>
-              <span class="address_span">
-                地址：
-              </span>
-              <span>
-                <%= address.detailed_address %>
-              </span>
+              <span class="address_span">地址：</span>
+              <span>世纪大厦2134</span>
             </li>
             <li>
-              <span class="user_before address_span">
-                手机：
-              </span>
-              <span class="user_before">
-                <%= address.phone %>
-              </span>
-              <a class="user_after delete_address_action" data-address-id="<%=address.id%>">删除</a>
-              <a class="user_after edit_address_action" data-address-id="<%=address.id%>">修改</a>
-              <% if !address.default %>
-                <a class="set_address_default update_default_address_action" data-address-id="<%=address.id%>">设为默认地址</a>
-              <% end %>
+              <span class="user_before address_span">手机：</span>
+              <span class="user_before">15811628765</span>
+            </li>
+            <li>
+              <div class="address_action">
+                <a class="set_default_address">设为默认地址</a>
+                <a class="delete_order">删除</a>
+                <a class="update_address">修改</a>
+              </div>
             </li>
           </ul>
         </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<div id="edit_address_box" class="popup">
-</div>
-
-<div id="delete_address_box" class="popup">
-  <div class="confirm_popup_box">
-    <div class="confirm_title">
-      <%= image_tag "warning.png" %>
-      <span style="position: relative;top: -20px">
-        确定删除此收货地址吗？
-      </span>
-    </div>
-    <div class="confirm_action" >
-      <a class="cancel_delete_address_button">
-        取消
-      </a>
-      &nbsp;&nbsp;&nbsp;
-      <a class="confirm_delete_address_button">
-        确认删除
-      </a>
+      </ul>
     </div>
   </div>
-</div>
+  <!--设为默认地址 confirm-->
+  <div id="set_default_address_box" class="popup" style="display: none;">
+    <div class="confirm_popup_box">
+      <div class="confirm_title">
+        <span style="position: relative;top: 10px">
 
-<div id="update_default_address_box" class="popup">
-  <div class="confirm_popup_box">
-    <div class="confirm_title">
-      <%= image_tag "warning.png" %>
-      <span style="position: relative;top: -20px">
-        设置当前地址为默认地址吗？
-      </span>
-    </div>
-    <div class="confirm_action">
-      <a class="cancel_update_default_address_button">
-        取消
-      </a>
-      &nbsp;&nbsp;&nbsp;
-      <a class="confirm_update_default_address_button">
-        确认
-      </a>
+            确定要设为默认地址吗？
+
+                </span>
+      </div>
+      <div class="confirm_action">
+        <a class="close">
+                关闭窗口
+
+            </a> &nbsp;&nbsp;&nbsp;
+        <a onclick="del_address()">
+
+                取消订单
+
+            </a>
+      </div>
     </div>
   </div>
-</div>
+  <!--删除地址 confirm-->
+  <div id="delete_address_box" class="popup" style="display: none;">
+    <div class="confirm_popup_box">
+      <div class="confirm_title">
+        <%= image_tag "warning.png" %>
+        <span style="position: relative;top: -20px">
+
+            确定删除此收货地址吗？
+
+                </span>
+      </div>
+      <div class="confirm_action">
+        <a id="cancel_delete_address_box">
+                取消
+
+            </a> &nbsp;&nbsp;&nbsp;
+        <a>
+
+                确认删除
+
+            </a>
+      </div>
+    </div>
+  </div>
+  <!-- 录入新地址 -->
+  <div id="new_address_box" class="popup" style="display: none;">
+    <div class="popup_box">
+      <h1 style="text-align: center;font-size: 21px;margin-top: 20px;color: #3BAF47">
+
+            添加收货地址
+
+
+        </h1>
+      <form class="address_center">
+        <ul>
+          <li>
+            <div class="left">
+              <input class="cd_input" type="text" placeholder="收件人姓名">
+              <span class="error">收件人姓名不能为空</span>
+            </div>
+            <div class="right">
+              <input class="cd_input" type="text" placeholder="联系方式">
+              <span class="error">联系方式不能为空</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <select class="cd_select">
+                <option>请选择省份</option>
+                <option>河北</option>
+                <option>山西</option>
+                <option>湖北</option>
+              </select>
+              <select class="cd_select">
+                <option>请选择省份</option>
+                <option>北京</option>
+                <option>上海</option>
+                <option>重庆</option>
+              </select>
+              <select class="cd_select">
+                <option>请选择地区</option>
+                <option>大望路</option>
+                <option>国贸</option>
+                <option>望京西</option>
+              </select>
+            </div>
+            <span class="error">
+
+                        地区不能为空
+
+                    </span>
+          </li>
+          <li>
+            <input type="text" class="cd_input" placeholder="收货地址" style="width: 284px">
+            <span class="error">
+
+                        收货地址不能为空
+
+                    </span>
+          </li>
+          <li style="margin-top: 10px">
+            <input id="set_default" type="checkbox">
+            <label class="green_text" for="set_default">设置为默认地址</label>
+          </li>
+          <li>
+            <input id="cancel_new_address_box" type="reset" class="bt" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px" value="取消">
+            <input type="submit" class="bt_green" style="float: left;cursor: pointer;width: 114px;margin: 10px 0" value="保存">
+          </li>
+        </ul>
+    </form>
+    </div>
+  </div>
+  <!-- 修改收货地址 -->
+  <div id="update_address_box" class="popup" style="display: none;">
+    <div class="popup_box">
+      <h1 style="text-align: center;font-size: 21px;margin-top: 20px;color: #3BAF47">
+
+            修改收货地址
+
+
+        </h1>
+      <form class="address_center">
+        <ul>
+          <li>
+            <div class="left">
+              <input class="cd_input" type="text" placeholder="收件人姓名">
+              <span class="error">收件人姓名不能为空</span>
+            </div>
+            <div class="right">
+              <input class="cd_input" type="text" placeholder="联系方式">
+              <span class="error">联系方式不能为空</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <select class="cd_select">
+                <option>请选择省份</option>
+                <option>河北</option>
+                <option>山西</option>
+                <option>湖北</option>
+              </select>
+              <select class="cd_select">
+                <option>请选择省份</option>
+                <option>北京</option>
+                <option>上海</option>
+                <option>重庆</option>
+              </select>
+              <select class="cd_select">
+                <option>请选择地区</option>
+                <option>大望路</option>
+                <option>国贸</option>
+                <option>望京西</option>
+              </select>
+            </div>
+            <span class="error">
+
+                        地区不能为空
+
+                    </span>
+          </li>
+          <li>
+            <input type="text" class="cd_input" placeholder="收货地址" style="width: 284px">
+            <span class="error">
+
+                        收货地址不能为空
+
+                    </span>
+          </li>
+          <li style="margin-top: 10px">
+            <input id="set_default" type="checkbox">
+            <label class="green_text" for="set_default">设置为默认地址</label>
+          </li>
+          <li>
+            <input id="cancel_update_address_box" type="reset" class="bt" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px" value="取消">
+            <input type="submit" class="bt_green" style="float: left;cursor: pointer;width: 114px;margin: 10px 0" value="保存">
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
