@@ -3,8 +3,9 @@ class ContestProductsController < ApplicationController
     identify_contest_team
     record_team_id_and_page_view
     product_table = Product.arel_table
-    @products = Product.joins(:product_view)
-      .includes(:product_view)
+    @products = Product
+      .joins(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
+      .includes(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
       .where(product_table[:contest_level].gteq(@contest_team.level))
       .order(priority: :desc)
   end
@@ -12,8 +13,8 @@ class ContestProductsController < ApplicationController
   def show
     @product = Product
       .where(id: params[:id])
-      .joins(:product_view => [:product_detail_images, :product_carousel_images])
-      .includes(:product_view => [:product_detail_images, :product_carousel_images])
+      .joins(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
+      .includes(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
       .take
     identify_contest_team
     if @product.contest_level.nil? || @product.contest_level > @contest_team.level

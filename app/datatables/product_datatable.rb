@@ -1,6 +1,6 @@
 class ProductDatatable < Datatable
   delegate :edit_admin_product_path, :admin_product_product_carousel_images_path, 
-    :admin_product_product_detail_images_path, to: :@view
+    :admin_product_product_detail_images_path, :admin_product_product_sale_schedules_path, to: :@view
   
   def data
     raw_records.map do |product|
@@ -13,6 +13,7 @@ class ProductDatatable < Datatable
         "#{link_to('编辑', edit_admin_product_path(product), class: 'btn btn-default')} 
         #{link_to('查看缩略图', admin_product_product_carousel_images_path(product), class: 'btn btn-default')}
         #{link_to('查看详细图', admin_product_product_detail_images_path(product), class: 'btn btn-default')}
+        #{link_to('查看排期', admin_product_product_sale_schedules_path(product), class: 'btn btn-default')}
         "
       ]
     end
@@ -27,7 +28,7 @@ class ProductDatatable < Datatable
     records = records.order("#{sort_column} #{sort_direction}")
     records = records.page(page).per(per_page)
     if params[:sSearch].present?
-      records = products.where("products.name like :search or brands.name like :search", search: "%#{params[:sSearch]}%")
+      records = records.where("products.name like :search or brands.name like :search", search: "%#{params[:sSearch]}%")
     end
     records
   end

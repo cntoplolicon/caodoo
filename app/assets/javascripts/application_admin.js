@@ -14,4 +14,7 @@
 //= require bootstrap/dist/js/bootstrap
 //= require datatables
 //= require datatables-bootstrap3-plugin/media/js/datatables-bootstrap3
+//= require moment
+//= require moment/locale/zh-cn
+//= require eonasdan-bootstrap-datetimepicker
 //= require_tree ./admin
