@@ -1,0 +1,2 @@
+module Admin::ContestTeamsHelper
+end

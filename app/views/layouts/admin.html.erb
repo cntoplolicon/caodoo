@@ -29,6 +29,9 @@
             <li class="<%= controller.class == Admin::ProductsController ? 'active' : '' %>">
               <%= link_to "商品管理", admin_products_path %>
             </li>
+            <li class="<%= controller.class == Admin::ContestTeamsController ? 'active' : '' %>">
+              <%= link_to "比赛团队管理", admin_contest_teams_path %>
+            </li>
           </ul>
         </div>
       </div>

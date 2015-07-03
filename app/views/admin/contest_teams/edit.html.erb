@@ -1,0 +1,20 @@
+<% if @contest_team.errors.any? %>
+  <div class="container form-container">
+    <ul>
+      <% @contest_team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container form-container">
+  <%= form_for [:admin, @contest_team] do |f| %>
+    <div class="form-group">
+      <%= f.label :password, '密码' %>
+      <%= f.text_field :password, class: 'form-control' %>
+    </div>
+    <%= link_to "返回", admin_contest_teams_path, class: 'btn btn-default' %>
+    <%= f.submit '重置密码', :disable_with => '重置密码ing...', class: 'btn btn-primary' %>
+  <% end %>
+</div>

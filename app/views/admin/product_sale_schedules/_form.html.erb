@@ -1,3 +1,13 @@
+<% if @product_sale_schedule.errors.any? %>
+  <div class="container form-container">
+    <ul>
+      <% @product_sale_schedule.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for [:admin, @product, @product_sale_schedule] do |f| %>
   <div class="container form-container">
     <div class="form-group">

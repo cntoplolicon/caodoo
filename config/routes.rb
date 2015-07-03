@@ -118,5 +118,6 @@ Rails.application.routes.draw do
       resources :product_sale_schedules
     end
     resources :brands
+    resources :contest_teams
   end
 end
