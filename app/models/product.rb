@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  attr_accessor :quantity_delta
+
   belongs_to :brand
   has_many :product_sale_schedules
   has_one :product_view, autosave: true, validate: true

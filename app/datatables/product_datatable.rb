@@ -9,6 +9,7 @@ class ProductDatatable < Datatable
         product.brand.name,
         product.price,
         product.original_price,
+        product.quantity,
         product.contest_level,
         "#{link_to('编辑', edit_admin_product_path(product), class: 'btn btn-default')} 
         #{link_to('查看缩略图', admin_product_product_carousel_images_path(product), class: 'btn btn-default')}
