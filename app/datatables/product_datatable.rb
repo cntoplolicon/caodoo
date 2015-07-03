@@ -1,5 +1,5 @@
 class ProductDatatable < Datatable
-  delegate :admin_product_path, to: :@view
+  delegate :edit_admin_product_path, to: :@view
   
   def data
     raw_records.map do |product|
@@ -9,7 +9,7 @@ class ProductDatatable < Datatable
         product.price,
         product.original_price,
         product.contest_level,
-        link_to('查看', admin_product_path(product))
+        link_to('编辑', edit_admin_product_path(product), class: 'btn btn-default')
       ]
     end
   end

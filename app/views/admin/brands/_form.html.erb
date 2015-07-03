@@ -1,4 +1,4 @@
-<div class="container" style="max-width: 480px">
+<div class="container form-container">
   <%= form_for [:admin, @brand] do |f| %>
     <div class="form-group">
       <%= f.label :name, '名称' %>
@@ -8,6 +8,7 @@
       <%= f.label :logo_url, 'logo URL' %>
       <%= f.text_field :logo_url, class: 'form-control' %>
     </div>
-    <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-default' %>
+    <%= link_to "返回", admin_brands_path, class: 'btn btn-default' %>
+    <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-primary' %>
   <% end %>
 </div>

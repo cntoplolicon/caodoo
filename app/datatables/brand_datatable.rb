@@ -16,12 +16,12 @@ class BrandDatatable < Datatable
     records = records.order("#{sort_column} #{sort_direction}")
     records = records.page(page).per(per_page)
     if params[:sSearch].present?
-      records = products.where("brands.name like :search", search: "%#{params[:sSearch]}%")
+      records = records.where("brands.name like :search", search: "%#{params[:sSearch]}%")
     end
     records
   end
 
   def sortable_columns
-    @sortable_columns ||= ['brands.name']
+    @sortable_columns ||= ['brands.name', 'brands.logo_url']
   end
 end
