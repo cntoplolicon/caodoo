@@ -32,6 +32,9 @@
             <li class="<%= controller.class == Admin::ContestTeamsController ? 'active' : '' %>">
               <%= link_to "比赛团队管理", admin_contest_teams_path %>
             </li>
+            <li class="<%= controller.class == Admin::RefundRecordsController ? 'active' : '' %>">
+              <%= link_to "退货记录管理", admin_refund_records_path %>
+            </li>
           </ul>
         </div>
       </div>

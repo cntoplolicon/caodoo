@@ -30,6 +30,10 @@ class Datatable
     params[:sSortDir_0] == "desc" ? "desc" : "asc"
   end
 
+  def search_columns
+    sortable_columns[params[:iSortCol_0].to_i]
+  end
+
   def sort_column
     sortable_columns[params[:iSortCol_0].to_i]
   end
