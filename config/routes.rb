@@ -114,6 +114,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products do
       resource :product_carousel_images
+      resource :product_detail_images
     end
     resources :brands
   end

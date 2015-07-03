@@ -1,5 +1,5 @@
 <% if @product.errors.any? %>
-  <div class="container form-container">
+  <div class="form-container">
     <ul>
       <% @product.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
