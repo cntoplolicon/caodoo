@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require bootstrap/dist/js/bootstrap
+//= require datatables
+//= require datatables-bootstrap3-plugin/media/js/datatables-bootstrap3
 //= require_tree ./admin

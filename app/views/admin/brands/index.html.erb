@@ -1,0 +1,14 @@
+<div class="container">
+  <%= link_to "添加新品牌", new_admin_brand_path, class: 'btn btn-primary new-action' %>
+  <table id="brands-table", data-source="<%= admin_brands_path(format: :json) %>">
+    <thead>
+      <tr>
+        <th>名称</th>
+        <th>图片</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>

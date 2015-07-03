@@ -11,7 +11,14 @@
  * file per style scope.
  *
  *= require bootstrap/dist/css/bootstrap
+ *= require datatables
+ *= require datatables-bootstrap3-plugin/media/css/datatables-bootstrap3
+ *= require font-awesome
  *= require_tree ./admin
  *= require_self
  */
+
+.new-action {
+  margin-bottom: 16px;
+}
 

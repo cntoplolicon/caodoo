@@ -44,3 +44,7 @@ gem 'rails_config'
 gem 'alipay'
 gem 'wx_pay'
 gem 'crono'
+
+#admin dashboad dependencies
+gem "kaminari"
+gem "font-awesome-rails"

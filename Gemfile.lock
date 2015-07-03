@@ -53,6 +53,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.5.2)
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     http-cookie (1.0.2)
@@ -62,6 +64,9 @@ GEM
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -155,7 +160,9 @@ DEPENDENCIES
   bcrypt
   byebug
   crono
+  font-awesome-rails
   jbuilder (~> 2.0)
+  kaminari
   mysql2
   rails (= 4.2.1)
   rails_config
