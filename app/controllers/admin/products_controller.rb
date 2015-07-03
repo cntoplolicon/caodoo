@@ -26,11 +26,13 @@ class Admin::ProductsController < Admin::AdminController
   end
 
   def update
-    @product = Product.lock.find(params[:id])
-    if @product.update(product_params)
-      redirect_to action: :index
-    else
-      render 'edit'
+    Product.transaction do
+      @product = Product.lock.find(params[:id])
+      if @product.update(product_params)
+        redirect_to action: :index
+      else
+        render 'edit'
+      end
     end
   end
 

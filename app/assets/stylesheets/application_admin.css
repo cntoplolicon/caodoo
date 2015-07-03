@@ -40,3 +40,12 @@
   min-width: 72px !important; 
 }
 
+.carousel-image {
+  width: 144px;
+  height: 144px;
+  margin-right: 16px;
+}
+
+.large-text-area {
+  min-height: 600px;
+}

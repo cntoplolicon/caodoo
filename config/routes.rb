@@ -112,7 +112,9 @@ Rails.application.routes.draw do
   resources :contest_products
 
   namespace :admin do
-    resources :products
+    resources :products do
+      resource :product_carousel_images
+    end
     resources :brands
   end
 end

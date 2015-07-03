@@ -1,0 +1,10 @@
+<div class="container form-container">
+  <%= form_for @product.product_view.product_carousel_images.build, url: admin_product_product_carousel_images_path(@product) do |f| %>
+    <div class="form-group">
+      <%= label_tag '缩略图URL, 每个一行' %>
+      <%= text_area_tag 'images', @product.product_view.product_carousel_images.map {|i| i.url}.join("\n"), class: 'form-control large-text-area' %>
+    </div>
+    <%= link_to "返回", admin_product_product_carousel_images_path(@product), class: 'btn btn-default' %>
+    <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-primary' %>
+  <% end %>
+</div>

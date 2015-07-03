@@ -1,0 +1,9 @@
+<div class="container">
+  <%= link_to "返回", admin_products_path, class: 'btn btn-default' %>
+  <%= link_to "编辑", edit_admin_product_product_carousel_images_path(@product), class: 'btn btn-primary' %>
+  <ul class="list-group" style="margin-top: 16px">
+    <% @product.product_view.product_carousel_images.each do |image| %>
+      <li class="list-group-item"><%= image_tag image.url, class: 'carousel-image' %> <span><%= image.url %></span></li>
+    <% end %>
+  </ul>
+</div>
