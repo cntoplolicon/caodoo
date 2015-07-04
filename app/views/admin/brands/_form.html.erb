@@ -9,6 +9,6 @@
       <%= f.text_field :logo_url, class: 'form-control' %>
     </div>
     <%= link_to "返回", admin_brands_path, class: 'btn btn-default' %>
-    <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-primary' %>
+    <%= f.submit '提交', data: {disable_with: '正在提交'}, class: 'btn btn-primary' %>
   <% end %>
 </div>
