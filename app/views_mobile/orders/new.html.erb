@@ -1,3 +1,11 @@
+<% content_for :page_header do %>
+  <a onclick="goBack()" class="back">
+    <%= image_tag "back.png" %>
+  </a>
+  <div class="mobile-page-title">
+    提交订单
+  </div>
+<% end %>
 <%= form_for [@user, @order] do |f| %>
   <%= f.hidden_field :product_id %>
   <%= f.hidden_field :user_id %>

@@ -1,8 +1,8 @@
 <% content_for :page_header do %>
-  <a href="/" class="back">
+  <a onclick="goBack()" class="back">
     <%= image_tag "back.png" %>
   </a>
-  <div class="title">
+  <div class="mobile-page-title">
     <%= yield :page_header_title %>
   </div>
 <% end %>
