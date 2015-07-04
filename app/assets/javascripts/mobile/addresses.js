@@ -15,15 +15,15 @@ $(document).ready(function () {
   });
 
   $('.update_default_address_action').click(function() {
-    $('#update_default_address_box').data('addressId', $(this).data('addressId'));
-    $('#update_default_address_box').show();
+    $('#set_default_address_box').data('addressId', $(this).data('addressId'));
+    $('#set_default_address_box').show();
   });
 
   $('.cancel_update_default_address_button').click(function() {
-    $('#update_default_address_box').hide();
+    $('#set_default_address_box').hide();
   });
   $('.confirm_update_default_address_button').click(function() {
-    var address_id = $('#update_default_address_box').data('addressId');
+    var address_id = $('#set_default_address_box').data('addressId');
     $('.update_default_address_' + address_id + '_form').submit();
   });
 
@@ -31,16 +31,17 @@ $(document).ready(function () {
     $(this).prop('disabled', $(this).find('option').length <= 1);
   }
   var edit_address_box_ready = function() {
+  	console.log("show");
     $('#edit_address_box').show();
     toggle_region_selection.call($('#city_select'));
     toggle_region_selection.call($('#district_select'));
   }
 
   $('.new_address_action').click(function() {
-  	console.log('click');
     $('#edit_address_box').load($('.new_address_url').val(), edit_address_box_ready);
   });
   $('.edit_address_action').click(function() {
+  	console.log("edit");
     $('#edit_address_box').load($(this).closest('.user_address_li').find('.edit_address_url').val(), edit_address_box_ready);
   });
   $('#edit_address_box').on('click', '.cancel_edit_address_button', function() {

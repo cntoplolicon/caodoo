@@ -1,67 +1,50 @@
-  <div id="new_address_box" class="popup" style="display: none;">
+<%= form_for [@user, @address] do |f| %>
     <div class="popup_box">
       <h1 style="text-align: center;font-size: 21px;margin-top: 20px;color: #3BAF47">
-
-            添加收货地址
-
-
+      <% if @address.new_record? %>
+        添加收货地址
+      <% else %>
+        修改收货地址
+      <% end %>
         </h1>
       <form class="address_center">
         <ul>
           <li>
-            <div class="left">
-              <input class="cd_input" type="text" placeholder="收件人姓名">
-              <span class="error">收件人姓名不能为空</span>
-            </div>
-            <div class="right">
-              <input class="cd_input" type="text" placeholder="联系方式">
-              <span class="error">联系方式不能为空</span>
-            </div>
+          <div style="float: left">
+            <%= f.text_field :receiver, class: 'cd_input', placeholder: '收件人姓名' %>
+            <div class="error-message" id="username-error"><%= @address.errors.messages[:receiver].first if @address.errors[:receiver].any? %></div>
+          </div>
+          <div style="float: right">
+            <%= f.text_field :phone, class: 'cd_input', placeholder: '联系方式' %>
+            <div class="error-message" id="username-error"><%= @address.errors.messages[:phone].first if @address.errors[:phone].any? %></div>
+          </div>
           </li>
           <li>
             <div>
-              <select class="cd_select">
-                <option>请选择省份</option>
-                <option>河北</option>
-                <option>山西</option>
-                <option>湖北</option>
-              </select>
-              <select class="cd_select">
-                <option>请选择省份</option>
-                <option>北京</option>
-                <option>上海</option>
-                <option>重庆</option>
-              </select>
-              <select class="cd_select">
-                <option>请选择地区</option>
-                <option>大望路</option>
-                <option>国贸</option>
-                <option>望京西</option>
-              </select>
+             <%= f.collection_select(:province_code, @provinces, :code, :name, {prompt: '请选择省份'}, {class: 'cd_select', id: 'province_select'}) %>
+             <%= f.collection_select(:city_code, @cities, :code, :name, {prompt: '请选择城市'}, {class: 'cd_select', id: 'city_select'}) %>
+             <%= f.collection_select(:district_code, @districts, :code, :name, {prompt: '请选择地区'}, {class: 'cd_select', id: 'district_select'}) %>
             </div>
-            <span class="error">
-
-                        地区不能为空
-
-                    </span>
           </li>
           <li>
-            <input type="text" class="cd_input" placeholder="收货地址" style="width: 284px">
-            <span class="error">
-
-                        收货地址不能为空
-
-                    </span>
+            <%= f.text_field :detailed_address, class: 'cd_input', style:"width:284px", placeholder: '详细地址' %>
+            <div class="error-message" id="username-error"><%= @address.errors.messages[:detailed_address].first if @address.errors[:detailed_address].any? %></div>
+            <!-- <input type="text" class="cd_input" placeholder="收货地址" style="width: 284px">
+            <span class="error"></span> -->
           </li>
           <li style="margin-top: 10px">
-            <input id="set_default" type="checkbox">
+            <%= f.check_box :default, id: 'set_default' %>
             <label class="green_text" for="set_default">设置为默认地址</label>
+            <!-- <input id="set_default" type="checkbox">
+            <label class="green_text" for="set_default">设置为默认地址</label> -->
           </li>
           <li>
-            <input id="cancel_new_address_box" type="reset" class="bt" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px" value="取消">
-            <input type="submit" class="bt_green" style="float: left;cursor: pointer;width: 114px;margin: 10px 0" value="保存">
+          <a class="bt cancel_edit_address_button" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px">取消</a>
+          <a class="bt_green save_address_button" style="float: left;cursor: pointer;width: 114px;margin: 10px 0">保存</a>
+            <!-- <input id="cancel_new_address_box" type="reset" class="bt" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px" value="取消">
+            <input type="submit" class="bt_green" style="float: left;cursor: pointer;width: 114px;margin: 10px 0" value="保存"> -->
           </li>
         </ul>
     </form>
     </div>
-  </div>
+<% end %>

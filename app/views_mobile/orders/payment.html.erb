@@ -9,16 +9,10 @@
       <div class="payment-hint">订单提交成功，您的订单号为<span><%= @order.order_number %></span>，请尽快支付！</div>
       <div class="payment-choise">
         <div class="radio-icon">
-          <input type="radio" class="order-radio" name="order-radio">
+          <input type="radio" class="order-radion alipay-radio" name="order-radio">
         </div>
         <div class="payment-icon">
           <%= image_tag "alipay.png", class: 'payment-choise-icon'%>
-        </div>
-        <div class="radio-icon">
-          <input type="radio" class="order-radio wechat-radio" name="order-radio">
-        </div>
-        <div class="payment-icon">
-          <%= image_tag "micro-message.png", class: 'payment-choise-icon' %>
         </div>
       </div>
       <div class="flex-y"></div>
@@ -28,9 +22,6 @@
     </div>
   </div>
   <%= form_for @order, url: '/alipay/pay', method: :post, html: {class: 'alipay_submission_form', target: '_blank'} do |f| %>
-  <%= hidden_field_tag(:order_id, @order.id) %>
-<% end %>
-<%= form_for @order, url: '/wx_pay/pay', method: :post, html: {class: 'wechat_submission_form'} do |f| %>
   <%= hidden_field_tag(:order_id, @order.id) %>
 <% end %>
 <div id="alipay_confirm_box" class="popup">

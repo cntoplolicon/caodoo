@@ -261,3 +261,7 @@
   overflow: hidden;
   margin: 0 auto;
 }
+
+#username-input {
+	width: 220px;
+}
