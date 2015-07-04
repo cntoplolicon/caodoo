@@ -11,6 +11,6 @@ class RefundRecord < ActiveRecord::Base
   validates_presence_of :status
 
   PENDING = 0
-  REFUNDDED = 1
+  REFUNDED = 1
   CANCELLED = 10
 end

@@ -13,6 +13,7 @@ class RefundRecordDatatable < Datatable
         refund_record.tracking_number,
         refund_record_status_text(refund_record.status),
         refund_record.created_at.strftime('%Y/%m/%d %H:%M:%S'),
+        refund_record.remark,
         link_to('编辑', edit_admin_refund_record_path(refund_record), class: 'btn btn-default')
       ]
     end
@@ -29,6 +30,8 @@ class RefundRecordDatatable < Datatable
           range = filter.split('-yadcf_delim-')
           records = records.where("#{sortable_columns[i]} >= :search", search: Time.parse(range[0])) if range[0]
           records = records.where("#{sortable_columns[i]} < :search", search: Time.parse(range[1])) if range[1]
+        elsif sortable_columns[i].end_with?('status')
+          records = records.where("#{sortable_columns[i]} = #{filter}")
         else
           records = records.where("#{sortable_columns[i]} like '%#{filter}%'")
         end
@@ -42,6 +45,6 @@ class RefundRecordDatatable < Datatable
   def sortable_columns
     @sortable_columns ||= ['orders.order_number', 'products.name', 'orders.receiver', 'orders.phone',
                            'contest_teams.name', 'expresses.name', 'refund_records.tracking_number',
-                           'refund_records.status', 'refund_records.created_at']
+                           'refund_records.status', 'refund_records.created_at', 'refund_records.remark']
   end
 end

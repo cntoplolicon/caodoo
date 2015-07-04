@@ -3,24 +3,30 @@
 
 $(document).ready(function() {
   var filter_options = filter_columns(7);
-  filter_options.push({
-    column_number: 7,
-    data: [{
-      value: 0,
-      label: '正在处理'
+  filter_options.push(
+    {
+      column_number: 7,
+      data: [{
+        value: 0,
+        label: '正在处理'
+      }, {
+        value: 1,
+        label: '已退款'
+      }, {
+        value: 10,
+        label: '作废'
+      }],
     }, {
-      value: 1,
-      label: '已退款'
+      column_number: 8,
+      filter_type: 'range_date',
+      date_format: 'yyyy-mm-dd'
     }, {
-      value: 10,
-      label: '已作废'
-    }],
-  });
-  filter_options.push({
-    column_number: 8,
-    filter_type: 'range_date',
-    date_format: 'yyyy-mm-dd'
-  });
+      column_number: 9,
+      filter_delay: 1000,
+      filter_type: 'text',
+      data: []
+    }
+  );
   var dataTable = $('#refund_records-table').dataTable({
     processing: true,
     serverSide: true,

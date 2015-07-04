@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702121515) do
+ActiveRecord::Schema.define(version: 20150704021350) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -192,6 +192,7 @@ ActiveRecord::Schema.define(version: 20150702121515) do
     t.integer  "status",          limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "remark",          limit: 255
   end
 
   add_index "refund_records", ["express_id"], name: "index_refund_records_on_express_id", using: :btree

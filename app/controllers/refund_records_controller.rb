@@ -10,6 +10,9 @@ class RefundRecordsController < ApplicationController
       if @order.refund_records.any? { |r| r.status == RefundRecord::PENDING }
         @refund_record.errors.add(:order_number, '该订单已有正在处理的退货记录')
       end
+      if @order.status == Order::REFUNDED
+        @refund_record.errors.add(:order_number, '该订单已完成退货')
+      end
       if @order.contest_team_id != @contest_team.id
         @refund_record.errors.add(:order_number, '该订单并非由本小组推荐购买')
       end
