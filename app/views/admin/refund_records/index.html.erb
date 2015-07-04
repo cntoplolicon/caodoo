@@ -1,4 +1,7 @@
 <div class="container-fluid">
+  <div style="margin-bottom: 16px">
+    <%= link_to "导出CSV", admin_refund_records_path(format: :csv), class: 'refund_record_csv_link btn btn-primary' %>
+  </div>
   <table id="refund_records-table", data-source="<%= admin_refund_records_path(format: :json) %>">
     <thead>
       <tr>
