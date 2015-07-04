@@ -23,64 +23,65 @@ class OrdersController < ApplicationController
   end
 
   def create
-    Order.transaction do
-      @order = Order.new(order_params)
-      @order.build_payment_record(status: PaymentRecord::TO_PAY)
-      head :forbidden and return if @order.user_id != @user.id
-
-      @product = Product.where(id: @order.product_id).lock.joins(:product_sale_schedules, :product_view => :product_carousel_images)
-        .includes(:product_sale_schedules, :product_view => :product_carousel_images)
-        .take
-      @onsale = @product.product_sale_schedules.any? do |s|
-        s.sale_start < Time.now && s.sale_end > Time.now
-      end 
-      redirect_to action: :sold_out, controller: :standalone and return unless @onsale
-      redirect_to action: :sold_out, controller: :standalone and return if @product.quantity <= 0
-      if @order.quantity > @product.quantity
-        @order.errors.add(:quantity, "库存仅剩下#{@product.quantity}件")
-      end
-      render 'new' and return if @order.errors.any? || @order.invalid?
-
-      @address = @user.addresses.find(@order.address_id)
-
-      @order.order_number = '%010d' % @order.user_id + Time.now.to_i.to_s
-      @order.product_name = @product.name
-      @order.product_image_url = @product.product_view.product_carousel_images[0].url
-      @order.unit_price = @product.price
-      @order.total_price = @order.quantity * @product.price
-      @order.receiver = @address.receiver
-      @order.phone = @address.phone
-      @order.status = Order::TO_PAY
-      if @address.province.present?
-        @order.province_code = @address.province.code
-        @order.province_name = @address.province.name
-      end
-      if @address.city.present?
-        @order.city_code = @address.city.code
-        @order.city_name = @address.city.name
-      end
-      if @address.district.present?
-        @order.district_code = @address.district.code
-        @order.district_name = @address.district.name
-      end
-      @order.detailed_address = @address.detailed_address
-      if @product.contest_product?
-        if session[:contest_team_id].present?
-          @contest_team = ContestTeam.find(session[:contest_team_id])
-        else
-          @contest_team = ContestTeam.find_by_identifier(Settings.contest.default_team_identifier)
-        end
-        head :bad_request and return if  @product.contest_level > @contest_team.level
-        @order.contest_team_id = @contest_team.id
-      end
-
-      if @order.save
-        @product.update(quantity: @product.quantity - @order.quantity)
-        redirect_to user_order_payment_url(@user, @order)
+    @order = Order.new(order_params)
+    @address = @user.addresses.find(@order.address_id)
+    @product = Product.where(id: @order.product_id).joins(:product_sale_schedules, :product_view => :product_carousel_images)
+      .includes(:product_sale_schedules, :product_view => :product_carousel_images)
+      .take
+    @onsale = @product.product_sale_schedules.any? do |s|
+      s.sale_start < Time.now && s.sale_end > Time.now
+    end 
+    @order.build_payment_record(status: PaymentRecord::TO_PAY)
+    head :forbidden and return if @order.user_id != @user.id
+    @order.order_number = '%010d' % @order.user_id + Time.now.to_i.to_s
+    @order.product_name = @product.name
+    @order.product_image_url = @product.product_view.product_carousel_images[0].url
+    @order.unit_price = @product.price
+    @order.total_price = @order.quantity * @product.price
+    @order.receiver = @address.receiver
+    @order.phone = @address.phone
+    @order.status = Order::TO_PAY
+    if @address.province.present?
+      @order.province_code = @address.province.code
+      @order.province_name = @address.province.name
+    end
+    if @address.city.present?
+      @order.city_code = @address.city.code
+      @order.city_name = @address.city.name
+    end
+    if @address.district.present?
+      @order.district_code = @address.district.code
+      @order.district_name = @address.district.name
+    end
+    @order.detailed_address = @address.detailed_address
+    if @product.contest_product?
+      if session[:contest_team_id].present?
+        @contest_team = ContestTeam.find(session[:contest_team_id])
       else
-        render 'new'
+        @contest_team = ContestTeam.find_by_identifier(Settings.contest.default_team_identifier)
+      end
+      head :bad_request and return if  @product.contest_level > @contest_team.level
+      @order.contest_team_id = @contest_team.id
+    end
+
+    Order.transaction do
+      updated_record = Product.where(id: @order.product_id).where('quantity >= ?', @order.quantity).
+        update_all(['quantity = quantity - ?', @order.quantity])
+      if updated_record == 0
+        if @product.quantity <= 0
+          redirect_to action: :sold_out and return if @product.quantity <= 0
+        else
+          @order.errors.add(:quantity, "库存仅剩下#{@product.quantity}件")
+          render 'new' and return
+        end
+      end
+      if @order.save
+        redirect_to user_order_payment_url(@user, @order) and return
+      else
+        raise ActiveRecord::Rollback
       end
     end
+    render 'new'
   end
 
   def update

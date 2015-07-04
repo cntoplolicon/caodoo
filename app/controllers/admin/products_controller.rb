@@ -30,9 +30,9 @@ class Admin::ProductsController < Admin::AdminController
 
   def update
     Product.transaction do
-      @product = Product.lock.find(params[:id])
-      @product.quantity += params[:product][:quantity_delta].to_i
+      @product = Product.find(params[:id])
       if @product.update(product_params)
+        Product.where(id: params[:id]).update_all(['quantity = quantity + ?', params[:product][:quantity_delta]])
         redirect_to action: :index
       else
         render 'edit'
