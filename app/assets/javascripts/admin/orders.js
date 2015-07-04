@@ -43,7 +43,7 @@ $(document).ready(function() {
   );
 
   if ($('#orders-table').length > 0) {
-    $('#orders-table').dataTable({
+    var dataTable = $('#orders-table').dataTable({
       processing: true,
       serverSide: true,
       sDom: 'lrtip',
@@ -55,5 +55,12 @@ $(document).ready(function() {
     $('.yadcf-filter').addClass('form-control');
     $('.yadcf-filter-range-date').addClass('form-control');
     $('.yadcf-filter-range-number').addClass('form-control');
+
+    $('.order-csv-link').click(function(event) {
+      event.preventDefault();
+      var data = dataTable.oApi._fnAjaxParameters(dataTable.fnSettings());
+      var link = $(this).prop('href') + '?' + $.param(data);
+      window.location.href = link;
+    });
   }
 });

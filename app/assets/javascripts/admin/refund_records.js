@@ -27,12 +27,12 @@ $(document).ready(function() {
       data: []
     }
   );
-  if ($('#refund_records-table').length > 0) {
-    var dataTable = $('#refund_records-table').dataTable({
+  if ($('#refund-records-table').length > 0) {
+    var dataTable = $('#refund-records-table').dataTable({
       processing: true,
       serverSide: true,
       sDom: 'lrtip',
-      ajaxSource: $('#refund_records-table').data('source'),
+      ajaxSource: $('#refund-records-table').data('source'),
       pagingType: 'full_numbers',
       columnDefs: [
         {targets: -1, sortable: false}
@@ -42,9 +42,9 @@ $(document).ready(function() {
     $('.yadcf-filter').addClass('form-control');
     $('.yadcf-filter-range-date').addClass('form-control');
 
-    $('.refund_record_csv_link').click(function(event) {
+    $('.refund-record-csv-link').click(function(event) {
       event.preventDefault();
-      var data = dataTable.oApi._fnAjaxParameters(dataTable.dataTable().fnSettings());
+      var data = dataTable.oApi._fnAjaxParameters(dataTable.fnSettings());
       var link = $(this).prop('href') + '?' + $.param(data);
       window.location.href = link;
     });

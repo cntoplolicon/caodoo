@@ -1,4 +1,7 @@
-<div class="container">
+<div class="container-fluid">
+  <div style="margin-bottom: 16px">
+    <%= link_to "导出CSV", admin_orders_path(format: :csv), class: 'order-csv-link btn btn-primary' %>
+  </div>
   <table id="orders-table", data-source="<%= admin_orders_path(format: :json) %>">
     <thead>
       <tr>
