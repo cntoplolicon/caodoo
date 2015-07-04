@@ -1,8 +1,3 @@
-$(document).ready(function () {
-  $('.header_account_link').click(function() {
-    $('.cd_dropdown').toggle();
-  });
-});
 function showRemainTime(time) {
   if (typeof(time) !== 'number') {
     return '';

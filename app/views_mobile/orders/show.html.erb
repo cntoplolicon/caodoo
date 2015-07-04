@@ -1,118 +1,62 @@
 <div class="order_box">
-  <div class="return_action">
-    <%= link_to "返回订单列表", user_orders_path(@user) %>
-  </div>
-  <div>
-    <div class="order_process">
-      <% if @order.status == 0 %>
-        <%= image_tag "process_img1.png" %>
-      <% elsif @order.status == 1 %>
-        <%= image_tag "process_img2.png" %>
-      <% elsif @order.status == 2 %>
-        <%= image_tag "process_img3.png" %>
-      <% elsif @order.status == 3 %>
-        <%= image_tag "process_img4.png" %>
-      <% elsif @order.status == 4 %>
-        <%= image_tag "process_img5.png" %>
-      <% end %>
-    </div>
-    <div class="order_info">
+    <div class="order_product_info">
+      <!--title-->
+      <div class="order_product_title">
+        购买产品：
+      </div>
+      <!--product -->
       <div class="order_product">
-        <%= image_tag @order.product_image_url, class: 'order_product_thumbnail' %>
+        <%= image_tag @order.product_image_url, class: 'order_product_img' %>
+        <div class="order_product_name_price">
+          <div class="order_product_name">
+            Helaoam nnaoaom anndao anana
+          </div>
+          <div class="order_product_price">
+            产品单价:<strong> ¥<%= @order.unit_price %> </strong>
+          </div>
+        </div>
       </div>
-      <div class="order_product_info">
-        <ul>
-          <li class="order_product_name">
-            <%= @order.product_name %>
-          </li>
-          <li class="order_product_name">
-            来自亚马逊的推荐
-          </li>
-          <li>
-            产品单价:<span>¥<%= @order.unit_price %></span>
-          </li>
-          <li>
-            购买数量:<span><%= @order.quantity %>件</span>
-          </li>
-        </ul>
+      <div class="order_row">
+        <span class="col_name">购买数量:</span>
+        <strong class="strong_value right"><%= @order.quantity %>件</strong>
       </div>
-      <div class="order_product_price">
-        总金额:<span class="order_hight"> $241 </span>
+      <div class="order_row">
+        <span class="col_name">总计金额:</span>
+        <strong class="strong_value right">￥241</strong>
       </div>
     </div>
-    <div class="info_block">
-      <div class="order_info_block">
-        订单信息:
-        <ul style="margin-top: 10px">
-          <li>
-            订单编号:<span class="order_span"><%= @order.order_number %></span>
-          </li>
-          <li>
-            下单时间:<span class="order_span"><%= @order.created_at.in_time_zone.strftime('%Y-%m-%d') %></span>
-          </li>
-          <li>
-            快递方式:<span class="order_span">顺丰快递－运单号1029292929292 </span>
-          </li>
-        </ul>
+    <!--order info-->
+    <div class="order_product_info">
+      <!--title-->
+      <div class="order_product_title">
+        订单信息：
       </div>
-      <div class="order_info_block2">
-        收货地址:
-        <ul>
-          <li>
-            <%= @order.receiver %>  <%= @order.phone %>
-          </li>
-          <li>
-            <p>
-              <%= "#{@order.province_name}#{@order.city_name}#{@order.district_name}#{@order.detailed_address}" %>
-            </p>
-          </li>
-        </ul>
+      <div class="order_row">
+        <span class="col_name">订单编号:<%= @order.order_number %></span>
+      </div>
+      <div class="order_row">
+        <span class="col_name">下单时间:</span>
+        <strong class="strong_value left"><%= @order.created_at.in_time_zone.strftime('%Y-%m-%d') %></strong>
+      </div>
+      <div class="order_row">
+        <span class="col_name">订单状态:</span>
+        <strong class="strong_value left">未支付</strong>
       </div>
     </div>
-    <div>
-      <% if [2, 3].include?(@order.status)  %>
-        <a class="bt_green">查看物流</a>
-      <% end %>
-      <% if @order.status == 0  %>
-        <a class="bt cancel_order_action" data-order-id="<%= @order.id %>">取消订单</a>
-      <% end %>
-      <% if [4].include?(@order.status)  %>
-        <a class="bt return_application_action">申请退货</a>
-      <% end %>
+    <!--delivery info-->
+    <div class="order_product_info">
+      <!--title-->
+      <div class="order_product_title">
+        收货地址：
+      </div>
+      <div class="order_row">
+        <span class="col_name"><%= @order.receiver %></span>
+        <span class="col_name" style="margin-left:10px"><%= @order.phone %></span>
+      </div>
+      <div class="order_row">
+        <span class="col_name">
+        <%= "#{@order.province_name}#{@order.city_name}#{@order.district_name}#{@order.detailed_address}" %>
+        </span>
+      </div>
     </div>
-  </div>
-</div>
-<div id="cancel_order_box" class="popup">
-  <div class="confirm_popup_box">
-    <div class="confirm_title">
-      确定取消订单？
-    </div>
-    <div class="confirm_action">
-      <a class="cancel_cancel_order_button">
-        关闭窗口
-      </a>
-      &nbsp;&nbsp;&nbsp;
-      <a class="confirm_cancel_order_button">
-        取消订单
-      </a>
-    </div>
-  </div>
-</div>
-<div id="return_application_box" class="popup">
-  <div class="resales_popup_box">
-    <div class="customer_service_info">
-      <ul>
-        <li>请联系客服</li>
-        <li>
-          <span> 电话：</span>
-          <strong style="color: #333333">010-2453464</strong>
-          <span> QQ：</span>
-          <strong style="color: #333333">24141554656</strong>
-        </li>
-        <li style="text-align: right">
-          <a class="close_return_application_box_button">知道了</a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </div>

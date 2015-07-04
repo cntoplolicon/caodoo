@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
       .take
     @onsale = @product.product_sale_schedules.any? do |s|
       s.sale_start < Time.now && s.sale_end > Time.now
-    end 
+    end
     @order.build_payment_record(status: PaymentRecord::TO_PAY)
     head :forbidden and return if @order.user_id != @user.id
     @order.order_number = '%010d' % @order.user_id + Time.now.to_i.to_s

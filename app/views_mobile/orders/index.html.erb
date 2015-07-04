@@ -1,7 +1,7 @@
-<div class="order_box">
-  <div class="status_box">
-    <ul>
-      <li>
+  <div class="container">
+    <div class="status_box">
+      <ul>
+        <li>
         <%= link_to "全部订单", user_orders_path(@user), class: params[:status].blank? ? 'current_tab' : '' %>
       </li>
       <li>
@@ -13,79 +13,65 @@
       <li>
         <%= link_to "已完成", user_orders_path(@user, status: [3, 4]), class: params[:status] == ['3', '4'] ? 'current_tab' : '' %>
       </li>
-    </ul>
+      </ul>
+    </div>
     <div class="status_box_line">
     </div>
-  </div>
-  <div>
-    <ul>
-      <% @orders.each do |order| %>
+    <!--order list-->
+    <div class="order_lists">
+      <ul>
+        <% @orders.each do |order| %>
         <li>
-          <div class="order_row">
-            <div class="order_title">
-              <span style="float: left"> 订单号：<%= order.order_number %></span>
-              <%= link_to "查看订单", user_order_path(@user, order), style: 'float: right' %>
-            </div>
-            <ul class="order_infos">
+          <!--tips-->
+          <div class="order_tips">
+            <span class="order_number">订单号：<%= order.order_number %></span>
+            <%= link_to "查看订单", user_order_path(@user, order), class: 'order_detail' %>
+          </div>
+          <!--order infos-->
+          <div class="order_infos">
+            <ul>
               <li>
-                <%= image_tag order.product_image_url, class: 'order_product_thumbnail' %>
-              </li>
-              <li>
-                <div class="product_title">
-                  产品
-                </div>
-                <div class="product_tt ">
-                  <div class="product_text_color">
+                <%= image_tag order.product_image_url, class:'order_product_img'%>
+                <div class="order_product_name_price">
+                  <div class="order_product_name">
                     <%= order.product_name %>
                   </div>
-                  <div class="product_price">
-                    <span>¥<%= order.unit_price %></span>（单价）
+                  <div class="order_product_price">
+                    ¥<%= order.unit_price %>（单价）
                   </div>
                 </div>
               </li>
               <li>
-                <div class="product_title">
-                  购买数量
-                </div>
-                <div class="product_tt product_tt_40">
-                  x<span> <%= order.quantity %></span>
-                </div>
+                <span class="order_info_left">购买数量</span>
+                <span class="order_info_right">x <%= order.quantity %></span>
               </li>
               <li>
-                <div class="product_title">
-                  订单金额
-                </div>
-                <div class="product_tt product_tt_40 order_hight">
-                  ¥<%= order.total_price %>
-                </div>
+                <span class="order_info_left">订单金额</span>
+                <span class="order_info_right span_green">￥<%= order.total_price %></span>
               </li>
               <li>
-                <div class="product_title">
-                  订单状态
-                </div>
-                <div class="product_tt product_tt_40 order_hight">
-                  <%= order_status_text(order.status) %>
-                </div>
-              </li>
-              <li>
-                <div class="product_title">
-                  订单操作
-                </div>
-                <div class="order_action product_tt_40">
-                  <% if order.status == Order::TO_PAY %>
-                    <a href="" class="pay_order" data-order-id="<%= order.id %>"> 立即支付 </a>
-                    <a class="cancel_order cancel_order_action" data-order-id="<%= order.id %>"> 取消订单 </a>
-                  <% end %>
-                </div>
+                <span class="order_info_left">订单状态</span>
+                <span class="order_info_right span_green"><%= order_status_text(order.status) %></span>
               </li>
             </ul>
           </div>
+          <!--order action-->
+          <div class="order_action">
+            <%= form_for [@user, order], html: {class: "cancel_order_#{order.id}_form"} do |f| %>
+               <%= f.hidden_field :status, value: Order::CANCELLED %>
+               <% end %>
+          <div class="order_action product_tt_40">
+            <% if order.status == Order::TO_PAY %>
+               <%= link_to "立即支付", user_order_payment_path(@user, order), class: 'order_pay_bt a_bt_hight' %>
+               <a class="cancel_order_action order_cancel_bt a_bt" data-order-id="<%= order.id %>">取消订单</a>
+            <% end %>
+          </div>
         </li>
-      <% end %>
-    </ul>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
-<div id="cancel_order_box" class="popup">
+  <div id="cancel_order_box" class="popup">
   <div class="confirm_popup_box">
     <div class="confirm_title">
       确定取消订单？

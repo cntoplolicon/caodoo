@@ -1,0 +1,630 @@
+.submission-detail-container {
+  text-align: center;
+  background-color: #e8e8e8;
+  display: block;
+}
+
+.submission-detail {
+  width: 320px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #ffffff;
+  padding-top: 32px;
+  text-align: center;
+  padding-bottom: 16px;
+}
+
+.submission-deadline {
+  font-size: 14px;
+  height: 46px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.submission-step {
+  margin-top: 18px;
+}
+
+.product-information {
+  /*background-color: #f8f8f8;*/
+
+  margin-top: 12px;
+  padding: 12px 10px 18px 8px;
+  width: auto;
+}
+
+.product-information-top {
+  font-size: 16px;
+  color: #919191;
+  height: 40px;
+  text-align: left;
+  margin-top: 14px;
+}
+
+.product-information-middle {
+  height: 73px;
+  display: inline-block;
+}
+
+.product-information-image {
+  width: 73px;
+  float: left;
+}
+
+.product-information-text {
+  text-align: left;
+  float: left;
+  margin-left: 16px;
+}
+
+.product-information-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  width: 192px;
+  height: 48px;
+  line-height: 16px;
+}
+
+.product-information-price {
+  margin-top: 6px;
+  height: 16px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.product-information-price-tag {
+  float: left;
+  color: #6b6b6b;
+}
+
+.product-information-price-data {
+  float: left;
+  color: #3f3f3f;
+}
+
+.product-information-bottom {
+  margin-top: 30px;
+  display: inline-block;
+  width: 278px;
+}
+
+.product-information-quantity {
+  float: left;
+  color: #6b6b6b;
+  font-size: 16px;
+}
+
+.product-information-quantity-controller {
+  float: right;
+  border: solid 1px #000000;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+}
+
+.product-information-quantity-number {
+  margin: 0 7px;
+  background-color: #ececec;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  float: right;
+  text-align: center;
+}
+
+.order-address {
+  margin-top: 14px;
+  background-color: #f8f8f8;
+  height: 96px;
+  padding: 24px 20px;
+  width: auto;
+}
+
+.order-address-top {
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+}
+
+.order-address-tag {
+  float: left;
+  color: #919191;
+}
+
+.order-address-creation {
+  float: right;
+}
+
+.order-address-bottom {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.address-selection {
+  color: #626262;
+  width: 100%;
+  background-color: #ebebeb;
+  padding: 11px 13px;
+}
+
+.order-information {
+  background-color: #f8f8f8;
+  color: #6b6b6b;
+  font-size: 16px;
+  padding: 30px 25px;
+  text-align: left;
+  margin-top: 14px;
+}
+
+.order-information-top {
+  border-bottom: solid 1px #eaeaea;
+  line-height: 30px;
+}
+
+.order-information-bottom {
+  margin-top: 14px;
+}
+
+.order-submission {
+  width: 270px;
+  height: 36px;
+  color: #ffffff;
+  background-color: #d73131;
+  margin-top: 28px;
+}
+
+.quantity-number {
+  background-color: #ececec;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+}
+/*change the display.none to switch between game-page and original-page*/
+
+.product-information-team-name {
+  font-size: 14px;
+  color: #15ae10;
+  text-align: left;
+  display: none;
+}
+
+.submission-step .step-img {
+  width: 270px;
+}
+
+.order-product-thumbnail {
+  width: 75px;
+}
+
+.status_box {
+  overflow: hidden;
+  height: 44px;
+  line-height: 44px;
+}
+
+.status_box ul li {
+  float: left;
+  margin: 0 10px;
+}
+
+.status_box a {
+  color: #303030;
+  padding-bottom: 8px;
+}
+
+.current_tab {
+  border-bottom: 2px solid #3FB134;
+  position: relative;
+  z-index: 99;
+}
+
+.status_box_line {
+  border-bottom: 1px solid #EAEAEA;
+  position: relative;
+  top: -5px;
+  z-index: 88;
+  margin-bottom: 5px;
+}
+
+.order_tips {
+  /*text-align: right;*/
+
+  background-color: #E7E7E7;
+  height: 36px;
+  line-height: 36px;
+  padding: 0px 20px;
+}
+
+.order_number {
+  float: left;
+}
+
+.order_detail {
+  float: right;
+}
+
+.order_tips a {
+  color: #5C5C5C;
+}
+
+.order_lists ul {
+  background-color: #F8F8F8;
+}
+
+.order_lists ul li {
+  padding-bottom: 20px;
+  border-bottom: 12px solid white;
+}
+
+.order_infos {
+  background-color: #F8F8F8;
+}
+
+.order_infos ul li {
+  margin: 0 20px;
+  padding: 15px 0px;
+  overflow: hidden;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+.order_infos img {
+  width: 64px;
+}
+
+.order_product_img {
+  float: left;
+}
+
+.order_product_name_price {
+  float: left;
+  width: 185px;
+  margin-left: 20px;
+  margin-top: 6px;
+}
+
+.order_product_price {
+  margin-top: 8px;
+}
+
+.order_info_left {
+  float: left;
+  color: #6B6B6B;
+}
+
+.order_info_right {
+  float: right;
+  color: #303030;
+}
+
+.span_green {
+  color: #3FB134;
+}
+
+.order_lists {
+  background-color: white;
+}
+
+.order_action {
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.a_bt {
+  color: #717171;
+  padding: 10px 20px;
+}
+
+.a_bt_hight {
+  color: white;
+  background-color: #3FB134;
+  padding: 10px 20px;
+  border-radius: 2px;
+}
+
+.order_cancel_bt {
+  float: right;
+  margin-right: 20px;
+}
+
+.order_pay_bt {
+  float: right;
+  margin-right: 20px;
+}
+
+
+
+.order_product_info{
+
+    overflow: hidden;
+
+    background-color: #F8F8F8;
+
+    padding: 10px 10px;
+
+    border-bottom: 12px solid white;
+
+}
+
+.order_product_title{
+
+    color: #919191;
+
+    font-size: 16px;
+
+}
+
+
+.order_product_info img{
+
+    width: 64px;
+
+}
+
+.order_product_img{
+
+    float: left;
+
+}
+
+.order_product_name{
+
+    font-size: 16px;
+
+    height: 36px;
+
+    color: #3F3F3F;
+
+}
+
+.order_product_name_price{
+
+    width: 205px;
+
+    float: left;
+
+    margin-left: 20px;
+
+    position: relative;
+}
+
+.order_product{
+
+    overflow: hidden;
+
+    margin-top: 10px;
+
+    margin-bottom: 10px;
+
+}
+
+.order_product_price{
+
+    margin-top: 12px;
+
+}
+
+.col_name{
+
+    float: left;
+
+    font-size: 16px;
+
+    color: #6B6B6B;
+}
+
+
+
+.strong_value{
+
+    color: black;
+}
+
+.order_row{
+
+    overflow: hidden;
+
+    margin: 10px 0;
+
+}
+
+.one_order_action{
+
+    overflow: hidden;
+
+    margin-bottom: 10px;
+
+
+
+}
+
+.order_action{
+
+    overflow: hidden;
+
+    margin-top: 20px;
+
+}
+
+.a_bt{
+
+    color: #717171;
+
+    padding: 10px 20px;
+
+}
+
+.a_bt_hight{
+
+    color: white;
+
+    background-color: #3FB134;
+
+    padding: 10px 20px;
+
+    border-radius: 2px;
+
+}
+
+.order_cancel_bt{
+
+
+    float: right;
+
+    margin-right: 20px;
+
+    border: 1px solid #EAEAEA;
+
+}
+
+.order_pay_bt{
+
+    float: right;
+
+    margin-right: 20px;
+
+}
+
+.payment-detail-container {
+  text-align: center;
+  background-color: #e8e8e8;
+  display: block;
+}
+.payment-detail {
+  width: 320px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #ffffff;
+  padding-top: 32px;
+  height: 558px;
+}
+.payment-deadline {
+  font-size: 14px;
+  height: 44px;
+  width: 320px;
+  border-bottom: solid 1px #eaeaea;
+}
+.payment-progress {
+  margin-top: 40px;
+  width: 270px;
+}
+.payment-hint {
+  font-size: 14px;
+  margin-top: 32px;
+  width: 270px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.payment-choise {
+  margin-top: 102px;
+  display: inline-block;
+  position: relative;
+}
+.order-radio {
+  height: 16px;
+  width: 16px;
+}
+.radio-icon {
+  float: left;
+  padding-top: 12px;
+}
+.payment-icon {
+  float: left;
+}
+.payment-button {
+  width: 270px;
+  height: 36px;
+  background-color: #3baf47;
+  color: #ffffff;
+}
+.payment-choise-icon {
+  width: 120px;
+}
+.flex-y {
+  height: 72px;
+  display: block;
+}
+.payment-detail-container {
+  text-align: center;
+  background-color: #e8e8e8;
+  display: block;
+}
+.payment-detail {
+  width: 320px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #ffffff;
+  padding-top: 40px;
+  text-align: center;
+}
+.time-out-icon {
+  float: left;
+}
+.time-out-text {
+  float: left;
+  font-size: 16px;
+  margin-left: 24px;
+  margin-top: 17px;
+}
+.time-out-link {
+  float: left;
+  font-size: 16px;
+  margin-top: 17px;
+}
+.time-out-bottom {
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 340px;
+  width: 240px;
+}
+
+.payment-detail-container {
+  text-align: center;
+  background-color: #e8e8e8;
+  display: block;
+}
+
+.go-on-shopping {
+  width: 270px;
+  height: 36px;
+  color: #ffffff;
+  background-color: #3baf47;
+  font-size: 14px;
+  margin-top: 12px;
+}
+.text-bottom {
+  display: inline-block;
+  width: 288px;
+  font-size: 16px;
+  line-height: 35px;
+}
+.text-bottom-hint {
+  float: left;
+}
+.text-bottom-hint a {
+  color: #15ae10;
+}
+.text-top {
+  font-size: 16px;
+  line-height: 35px;
+}
+.step-three {
+  margin-top: 100px;
+  width: 270px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.succeed-icon {
+  margin-top: 68px;
+  width: 56px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-top {
+  margin-top: 16px;
+}
+
+.payment-step-png {
+	width : 255px;
+}

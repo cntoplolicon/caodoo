@@ -1,7 +1,7 @@
 <% content_for :content do %>
   <div class="container gray_bg">
     <div class="center order">
-      <div class="order_menu">
+<!--       <div class="order_menu">
         <ul>
           <li class="<%= controller.class == OrdersController && controller.action_name == 'index' ? 'li_current' : '' %>">
             <%= link_to "订单管理", user_orders_url(session[:login_user_id]) %>
@@ -16,7 +16,7 @@
             <%= link_to "个人设置", user_settings_user_url(session[:login_user_id]) %>
           </li>
         </ul>
-      </div>
+      </div> -->
       <%= yield %>
     </div>
   </div>

@@ -1,0 +1,82 @@
+<% content_for :body_style do %>
+  background-color: #000 !important;
+<% end %>
+
+<% content_for :page_header do %>
+  <a href="/" class="logo">
+    <%= image_tag "logo_mobile.png" %>
+  </a>
+<% end %>
+<!--container-->
+<div class="container">
+<div class="banner">
+  <a href="/">
+  <%= image_tag "banner_mobile.png", :class => "mwidth_center" %>
+  </a>
+</div>
+<!--now-->
+<div class="product_now">
+    <%= image_tag "now.png", :class => "mwidth_center" %>
+    <!-- <%= image_tag "products_img.png", :class => "mwidth_center"%> -->
+</div>
+<div class="on-sale-products">
+  <% @on_sale_products.each do |product| %>
+    <%= link_to product_path(product) do %>
+      <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
+        <%= image_tag product.product_view.sale_image_url %>
+        <div class="product-information">
+          <div class="product-name">
+            <%= product.name %>
+          </div>
+          <div class="product-price">
+            <div class="product-current-price">&#165;<%= product.price %></div>
+            <!-- <div class="product-original-price">原价&#165;<%= product.original_price %> </div> -->
+          </div>
+        </div>
+        <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %>">
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<!--soon-->
+<div class="product_soon">
+  <%= image_tag "soon.png", :class => "mwidth_center" %>
+  <!--soon products-->
+  <div class="mwidth_center">
+    <ul class="product_soon_ul">
+      <% @upcoming_products.each do |product| %>
+      <li>
+        <%= image_tag(product.product_view.trailer_image_url, class: "trailer-image") %>
+        <div class="product_bottom_black">
+        </div>
+        <div class="product_infos">
+          <div class="product_date">
+            <%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %>
+          </div>
+          <div class="product_title">
+            <%= product.product_view.trailer_description %>
+          </div>
+        </div>
+      </li>
+      <% end %>
+  </div>
+</div>
+<!--footer-->
+
+<div class="footer">
+  <!--our ts -->
+  <div class="ts">
+    <ul class="ts_ul">
+      <li>
+        <%= image_tag "zp_icon.png" %> 正品保证
+      </li>
+      <li>
+        <%= image_tag "qt_icon.png" %> 7天放心退
+      </li>
+      <li>
+        <%= image_tag "qy_icon.png" %> 全场包邮
+      </li>
+    </ul>
+  </div>
+</div>

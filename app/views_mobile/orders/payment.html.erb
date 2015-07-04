@@ -1,0 +1,52 @@
+  <div class="payment-detail-container">
+    <div class="payment-detail">
+      <div class="payment-deadline">支付结束时间：
+      <span class="payment-remain-time">
+      <%= hidden_field_tag('payment-remain-time-hidden-field', [0, (@order.created_at + Settings.payment.expired.to_i.minutes - Time.now).to_i].max) %>
+      </span>
+      </div>
+      <%= image_tag "payment-step-two.png", class: 'payment-progress' %>
+      <div class="payment-hint">订单提交成功，您的订单号为<span><%= @order.order_number %></span>，请尽快支付！</div>
+      <div class="payment-choise">
+        <div class="radio-icon">
+          <input type="radio" class="order-radion alipay-radio" name="order-radio">
+        </div>
+        <div class="payment-icon">
+          <%= image_tag "alipay.png", class: 'payment-choise-icon'%>
+        </div>
+      </div>
+      <div class="flex-y"></div>
+      <div>
+        <button type="button" class="payment-button">去支付</button>
+      </div>
+    </div>
+  </div>
+  <%= form_for @order, url: '/alipay/pay', method: :post, html: {class: 'alipay_submission_form', target: '_blank'} do |f| %>
+  <%= hidden_field_tag(:order_id, @order.id) %>
+<% end %>
+<div id="alipay_confirm_box" class="popup">
+  <div class="confirm_popup_box">
+    <div class="confirm_title">
+      支付成功？
+    </div>
+    <div class="confirm_action">
+      <a class="alipay_fail_button">
+        支付失败
+      </a>
+      &nbsp;&nbsp;&nbsp;
+      <%= link_to "支付成功", user_order_path(@user, @order), class: 'alipay_succeed_button' %>
+    </div>
+  </div>
+</div>
+<div id="payment_failure_box" class="popup">
+  <div class="confirm_popup_box">
+    <div class="confirm_title">
+      请选择另一种支付方式或联系客服
+    </div>
+    <div class="confirm_action">
+      <a class="close_button">
+        知道了
+      </a>
+    </div>
+  </div>
+</div>
