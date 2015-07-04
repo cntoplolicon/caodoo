@@ -31,7 +31,7 @@
           <div class="order_infos">
             <ul>
               <li>
-                <img class="order_product_img" src="img/order_product_img.png">
+                <%= image_tag order.product_image_url, class:'order_product_img'%>
                 <div class="order_product_name_price">
                   <div class="order_product_name">
                     <%= order.product_name %>
@@ -71,3 +71,19 @@
       </ul>
     </div>
   </div>
+  <div id="cancel_order_box" class="popup">
+  <div class="confirm_popup_box">
+    <div class="confirm_title">
+      确定取消订单？
+    </div>
+    <div class="confirm_action">
+      <a class="cancel_cancel_order_button">
+        关闭窗口
+      </a>
+      &nbsp;&nbsp;&nbsp;
+      <a class="confirm_cancel_order_button">
+        取消订单
+      </a>
+    </div>
+  </div>
+</div>
