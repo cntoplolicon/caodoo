@@ -1,13 +1,24 @@
+require 'csv'
+
 class Admin::RefundRecordsController < Admin::AdminController
   before_action :find_refund_record, only: [:edit, :update]
 
   include OrdersHelper
 
+  def to_csv(records)
+    CSV.generate do  |csv|
+      csv << ['订单号', '商品名称']
+      records.each do |r|
+        csv << [r.order.order_number, r.order.product.name]
+      end
+    end
+  end
+
   def index
     respond_to do |format|
       format.html
       format.json { render json: ::RefundRecordDatatable.new(view_context) }
-      format.csv { render text: ::RefundRecordDatatable.new(view_context).as_json }
+      format.csv { render text: to_csv(::RefundRecordDatatable.new(view_context).unpaged_records) }
     end
   end
 

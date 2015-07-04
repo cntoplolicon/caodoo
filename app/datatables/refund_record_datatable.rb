@@ -19,7 +19,7 @@ class RefundRecordDatatable < Datatable
     end
   end
 
-  def fetch_records
+  def unpaged_records
     records = RefundRecord.all
       .joins(:express, order: [:product, :contest_team])
       .includes(:express, order: [:product, :contest_team])
@@ -37,7 +37,11 @@ class RefundRecordDatatable < Datatable
         end
       end
     end
-    records = records.order("#{sort_column} #{sort_direction}")
+    records
+  end
+
+  def fetch_records
+    records = unpaged_records.order("#{sort_column} #{sort_direction}")
     records = records.page(page).per(per_page)
     records
   end
