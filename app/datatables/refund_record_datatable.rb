@@ -1,5 +1,5 @@
 class RefundRecordDatatable < Datatable
-  delegate :image_tag, :edit_admin_refund_record_path, :refund_record_status_text, to: :@view
+  delegate :edit_admin_refund_record_path, :refund_record_status_text, to: :@view
   
   def data
     raw_records.map do |refund_record|
@@ -28,8 +28,8 @@ class RefundRecordDatatable < Datatable
       if filter.present?
         if filter.include?('-yadcf_delim-')
           range = filter.split('-yadcf_delim-')
-          records = records.where("#{sortable_columns[i]} >= :search", search: Time.parse(range[0])) if range[0]
-          records = records.where("#{sortable_columns[i]} < :search", search: Time.parse(range[1])) if range[1]
+          records = records.where("#{sortable_columns[i]} >= :search", search: Time.parse(range[0])) if range[0].present?
+          records = records.where("#{sortable_columns[i]} < :search", search: Time.parse(range[1])) if range[1].present?
         elsif sortable_columns[i].end_with?('status')
           records = records.where("#{sortable_columns[i]} = #{filter}")
         else

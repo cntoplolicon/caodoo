@@ -120,5 +120,6 @@ Rails.application.routes.draw do
     resources :brands
     resources :contest_teams
     resources :refund_records
+    resources :orders
   end
 end

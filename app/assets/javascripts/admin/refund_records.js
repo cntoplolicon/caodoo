@@ -15,7 +15,7 @@ $(document).ready(function() {
       }, {
         value: 10,
         label: '作废'
-      }],
+      }]
     }, {
       column_number: 8,
       filter_type: 'range_date',
@@ -27,24 +27,27 @@ $(document).ready(function() {
       data: []
     }
   );
-  var dataTable = $('#refund_records-table').dataTable({
-    processing: true,
-    serverSide: true,
-    ajaxSource: $('#refund_records-table').data('source'),
-    pagingType: 'full_numbers',
-    columnDefs: [
-      {targets: -1, sortable: false}
-    ]
-  }).yadcf(filter_options);
-  $('.yadcf-filter-reset-button').hide();
-  $('.yadcf-filter').addClass('form-control');
-  $('.yadcf-filter-range-date').addClass('form-control');
+  if ($('#refund_records-table').length > 0) {
+    var dataTable = $('#refund_records-table').dataTable({
+      processing: true,
+      serverSide: true,
+      sDom: 'lrtip',
+      ajaxSource: $('#refund_records-table').data('source'),
+      pagingType: 'full_numbers',
+      columnDefs: [
+        {targets: -1, sortable: false}
+      ]
+    }).yadcf(filter_options);
+    $('.yadcf-filter-reset-button').hide();
+    $('.yadcf-filter').addClass('form-control');
+    $('.yadcf-filter-range-date').addClass('form-control');
 
-  $('.refund_record_csv_link').click(function(event) {
-    event.preventDefault();
-    var data = dataTable.oApi._fnAjaxParameters(dataTable.dataTable().fnSettings());
-    var link = $(this).prop('href') + '?' + $.param(data);
-    window.location.href = link;
-  });
+    $('.refund_record_csv_link').click(function(event) {
+      event.preventDefault();
+      var data = dataTable.oApi._fnAjaxParameters(dataTable.dataTable().fnSettings());
+      var link = $(this).prop('href') + '?' + $.param(data);
+      window.location.href = link;
+    });
+  }
 });
 

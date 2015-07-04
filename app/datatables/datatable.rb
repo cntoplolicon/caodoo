@@ -13,7 +13,7 @@ class Datatable
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: raw_records.total_count,
-      iTotalDisplayRecords: raw_records.count,
+      iTotalDisplayRecords: raw_records.total_count,
       aaData: data
     }
   end
