@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704021350) do
+ActiveRecord::Schema.define(version: 20150704092006) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -103,10 +103,13 @@ ActiveRecord::Schema.define(version: 20150704021350) do
     t.datetime "updated_at",                                               null: false
     t.integer  "address_id",        limit: 4
     t.integer  "contest_team_id",   limit: 4
+    t.integer  "express_id",        limit: 4
+    t.string   "tracking_number",   limit: 255
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree
   add_index "orders", ["contest_team_id"], name: "index_orders_on_contest_team_id", using: :btree
+  add_index "orders", ["express_id"], name: "index_orders_on_express_id", using: :btree
   add_index "orders", ["order_number"], name: "index_orders_on_order_number", unique: true, using: :btree
   add_index "orders", ["product_id"], name: "index_orders_on_product_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -218,6 +221,7 @@ ActiveRecord::Schema.define(version: 20150704021350) do
   add_foreign_key "addresses", "users"
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "contest_teams"
+  add_foreign_key "orders", "expresses"
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "payment_records", "orders"

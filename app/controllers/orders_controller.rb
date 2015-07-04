@@ -87,13 +87,20 @@ class OrdersController < ApplicationController
   def update
     Order.transaction do
       @order = @user.orders.lock.find(params[:id])
-      if params[:order][:status].to_i == Order::CANCELLED
+      status = params[:order][:status].to_i
+      if status == Order::CANCELLED
         if @order.status == Order::TO_PAY
           @order.status = Order::CANCELLED
           @order.payment_record.status = PaymentRecord::CANCELLED
           @order.save
-        elsif @order.status == Order::PAIED
+        elsif @order.status == Order::PAID
           @order.status = Order::CANCELLING
+          @order.save
+        end
+      elsif status == Order::COMPLETE
+        if @order.status == Order::DELIVERED
+          @order.status = Order::COMPLETE
+          @order.receive_time = Time.now
           @order.save
         end
       end
@@ -137,12 +144,6 @@ class OrdersController < ApplicationController
 
   def status
     render json: {status: @order.status}
-  end
-
-  def check_timeout_orders
-    p '------------------'
-    p 'fuck'
-    p '------------------'
   end
 
   private

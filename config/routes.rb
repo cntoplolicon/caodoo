@@ -120,6 +120,11 @@ Rails.application.routes.draw do
     resources :brands
     resources :contest_teams
     resources :refund_records
-    resources :orders
+    resources :orders do
+      collection do
+        get :upload_delivery
+        post :import_delivery
+      end
+    end
   end
 end

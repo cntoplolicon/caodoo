@@ -14,7 +14,8 @@
       <%= f.select :status, options_for_select([
         [refund_record_status_text(RefundRecord::PENDING), RefundRecord::PENDING], 
         [refund_record_status_text(RefundRecord::REFUNDED), RefundRecord::REFUNDED], 
-        [refund_record_status_text(RefundRecord::CANCELLED), RefundRecord::CANCELLED] ]), {}, class: 'form-control' %>
+        [refund_record_status_text(RefundRecord::CANCELLED), RefundRecord::CANCELLED]],
+                                              @refund_record.status), {}, class: 'form-control' %>
     </div>
     <div class="form-group">
       <%= label_tag '备注' %>

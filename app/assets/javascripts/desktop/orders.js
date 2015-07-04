@@ -56,6 +56,9 @@ $(document).ready(function() {
   $('.cancel_cancel_order_button').click(function() {
     $('#cancel_order_box').hide();
   });
+  $('.receive_order_action').click(function() {
+    $('.receive_order_' + orderId + '_form').submit();
+  });
   $('.confirm_cancel_order_button').click(function() {
     var orderId = $('#cancel_order_box').data('orderId');
     $('.cancel_order_' + orderId + '_form').submit();

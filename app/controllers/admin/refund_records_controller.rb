@@ -32,6 +32,7 @@ class Admin::RefundRecordsController < Admin::AdminController
         @order = Order.lock.find(@refund_record.order_id)
         if [Order::DELIVERED, Order::COMPLETE, Order::REFUNDED].include?(@order.status)
           @order.status = Order::REFUNDED
+          @order.payment_record.status = PaymentRecord::REFUNDED
           @refund_record.attributes = refund_record_params
         else
           @refund_record.errors.add(:status, "订单状态为#{order_status_text(@order.status)}")

@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :product
   belongs_to :contest_team
+  belongs_to :express
 
   validates :quantity, :inclusion => {:in => 1..10}
   validates_presence_of :address_id
