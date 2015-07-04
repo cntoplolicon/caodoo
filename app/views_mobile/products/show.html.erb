@@ -1,11 +1,12 @@
   <!--container-->
   <div class="product-detail-container">
     <div class="product-detail">
-      <div class="on-sale-time-left">距离抢购结束：(数据，时间)</div>
-      <div class="game-background">大学生营销策划赛活动产品</div>
+      <div class="on-sale-time-left"><%= hidden_field_tag('remain-time-hidden-field', [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max) %>
+    距离抢购结束还有 <span class="show-remain-time"></span></div>
+      <!-- <div class="game-background">大学生营销策划赛活动产品</div> -->
       <div class="product-detail-slider">
-        <img class="product-detail-sold-out" src="img/product-sold-out.png">
-        <img class="product-detail-time-out" src="img/product-time-out.png">
+        <!-- <img class="product-detail-sold-out" src="img/product-sold-out.png">
+        <img class="product-detail-time-out" src="img/product-time-out.png"> -->
         <a class="arrow-left">
           <%= image_tag("arrows-left.png", class: "arrow-left") %>
         </a>
@@ -14,18 +15,11 @@
         </a>
         <div class="swiper-container">
           <div class="swiper-wrapper">
+            <% @product.product_view.product_carousel_images.each do |image| %>
             <div class="swiper-slide">
-              <img class="product-detail-image" src="img/product-detatl-example.png">
+            	<%= image_tag(image.url, class: "product-detail-image") %>
             </div>
-            <div class="swiper-slide">
-              <img class="product-detail-image" src="img/product-detail-description.png">
-            </div>
-            <div class="swiper-slide">
-              <img class="product-detail-image" src="img/product-detatl-example.png">
-            </div>
-            <div class="swiper-slide">
-              <img class="product-detail-image" src="img/product-detail-description.png">
-            </div>
+            <% end %>
           </div>
         </div>
         <div class="pagination"></div>
@@ -69,17 +63,17 @@
       </div>
       <div class="product-detail-gurantee">
         <div class="product-detail-gurantee-image">
-          <img src="img/zhengping.png" class="product-detail-gurantee-image">
+          <%= image_tag("mobile_zhengping.png", class: "product-detail-gurantee-image") %>
         </div>
         <div class="product-detail-gurantee-text">正品保证</div>
         <div class="product-detail-gurantee-flex"></div>
         <div class="product-detail-gurantee-image">
-          <img src="img/qitian.png" class="product-detail-gurantee-image">
+          <%= image_tag("mobile_qitian.png", class: "product-detail-gurantee-image") %>
         </div>
         <div class="product-detail-gurantee-text">七天包退</div>
         <div class="product-detail-gurantee-flex"></div>
         <div class="product-detail-gurantee-image">
-          <img src="img/baoyou.png" class="product-detail-gurantee-image">
+          <%= image_tag("mobile_baoyou.png", class: "product-detail-gurantee-image") %>
         </div>
         <div class="product-detail-gurantee-text">全场包邮</div>
       </div>
@@ -108,35 +102,3 @@
       <%= image_tag(image.url, class: "product-detail-description") %>
       <% end %>
     </div>
-  <script>
-  var mySwiper = new Swiper('.swiper-container', {
-    pagination: '.pagination',
-    loop: true,
-    grabCursor: true,
-    paginationClickable: true
-  })
-  $('.arrow-left').on('click', function(e) {
-    e.preventDefault()
-    mySwiper.swipePrev()
-  })
-  $('.arrow-right').on('click', function(e) {
-    e.preventDefault()
-    mySwiper.swipeNext()
-  })
-
-  window._bd_share_config = {
-    common: {
-      bdText: '我们参加了青年创业创新大赛，向你推荐XXXXXXXX，来看看吧~',
-      bdDesc: '我们参加了青年创业创新大赛，向你推荐XXXXXXXX，来看看吧~',
-      bdUrl: 'http://192.168.1.114/mcaodoo/m-gamePage.html',
-      bdPic: 'http://192.168.1.114/mcaodoo/img/game_poster.png'
-    },
-    share: [{
-      "bdSize": 24
-    }]
-
-  }
-  with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-
-
-  </script>
