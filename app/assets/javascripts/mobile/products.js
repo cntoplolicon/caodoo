@@ -3,7 +3,7 @@
 
 (function(window, $) {
   $(document).ready(function() {
-    $('.on-sale-products').masonry({
+    new Masonry(document.querySelector('.on-sale-products'), {
       itemSelector: '.on-sale-product'
     });
 
@@ -39,7 +39,6 @@
     });
 
     $(".othmenu").click(function() {
-      console.log('click othmenu');
       $(".menu_list").toggle();
     });
 
@@ -110,4 +109,4 @@
     with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
 
   });
-})(this, jQuery);
+})(this, Zepto);
