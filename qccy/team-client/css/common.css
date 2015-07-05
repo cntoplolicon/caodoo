@@ -12,6 +12,11 @@ ol, ul, li, h1, h2, h3, h4, form, input, p, a, textarea {
 
 body {
   margin: 0;
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 
 a {

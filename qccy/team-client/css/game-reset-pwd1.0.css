@@ -1,7 +1,8 @@
-body {
+.team-client-reset-pwd {
   background-image: url("../img/bannerback.png");
   min-width: 1280px;
   text-align: center;
+  height: 100%;
 }
 .game-reset-pwd-dialog {
   width: 520px;
