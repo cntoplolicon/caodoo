@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>团队业绩</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/team-performance1.0.css">
+  <script type="text/javascript" src="js/jquery-1.8.0.js"></script>
+  <script type="text/javascript" src="./bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".team_performance_tab a").click(function(){
+        $(".team_performance_tab a").removeAttr("class");
+        $(this).attr("class","current_tab");
+        if ($(this).attr("id") === "team_performance_data_total") {
+          $("#team_performance_top_results_total").show();
+          $("#team_performance_top_results_today").hide();
+        } else {
+          $("#team_performance_top_results_total").hide();
+          $("#team_performance_top_results_today").show();
+        }
+      });
+      $(".team_performance_bottom_tab a").click(function(){
+        $(".team_performance_bottom_tab a").removeAttr("class");
+        $(this).attr("class","current_tab");
+        if ($(this).attr("id") === "team_performance_amounts_total") {
+          $("#team_performance_bottom_table_total").show();
+          $("#team_performance_bottom_table_today").hide();
+        } else {
+          $("#team_performance_bottom_table_total").hide();
+          $("#team_performance_bottom_table_today").show();
+        }
+      });
+    });
+  </script>
+  <style>
+  </style>
+</head>
+<body>
+<div class="game-header-container">
+  <div class="game-header">
+    <div class="game-header-logo">
+      <img src="img/game-header-logo.png">
+    </div>
+    <div class="game-header-system">营销大赛参赛管理系统</div>
+    <div class="game-header-service">客服咨询：<a>4006-518-459</a></div>
+    <div class="game-header-setting">
+      <div id="game_header_management_menu">
+        <div style="display: block">
+          <img src="img/line.png">
+        </div>
+        <div class="game_header_management_menu_text">
+          <a href="game-reset-pwd.html">重置密码</a>
+        </div>
+        <div class="game_header_management_menu_line"></div>
+        <div class="game_header_management_menu_text">
+          <a>退出账户</a>
+        </div>
+      </div>
+      <div class="game_header_team_name">
+        <a>xxxx团队</a>
+      </div>
+      <div class="game-header-setting-arrow">
+        <img src="img/game-header-setting-arrow.png">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="block_container">
+  <div class="block_container_detail">
+    <div class="block_container_menu">
+      <ul>
+        <li class="block_container_menu_current">
+          <a>团队业绩</a>
+        </li>
+        <li>
+          <a href="team-share-link.html">分享链接</a>
+        </li>
+        <li>
+          <a href="team-return-goods.html">退货管理</a>
+        </li>
+        <li>
+          <a href="team-notification.html">团队须知</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="detail_container">
+      <div class="team_performance_top">
+        <div class="team_performance_title">团队大赛业绩
+          <div class="team_performance_time_hint">数据每<a>5分钟</a>更新</div></div>
+        <div class="team_performance_tab">
+          <ul>
+            <li>
+              <a class="current_tab" id="team_performance_data_total">总体统计</a>
+            </li>
+            <li>
+              <a id="team_performance_data_today">今日统计</a>
+            </li>
+          </ul>
+          <div class="team_performance_line"></div>
+        </div>
+        <div class="team_performance_top_results" id="team_performance_top_results_total">
+          <div class="team_performance_top_results_top">
+            <div class="team_performance_top_results_top_number green">7654件</div>
+            <div class="team_performance_top_results_top_number green">￥12345</div>
+            <div class="team_performance_top_results_top_number red">124153</div>
+            <div class="team_performance_top_results_top_number red" style="border-right: none">124100</div>
+          </div>
+          <div class="team_performance_top_results_bottom">
+            <div class="team_performance_top_results_bottom_text">销量</div>
+            <div class="team_performance_top_results_bottom_text">销售额</div>
+            <div class="team_performance_top_results_bottom_text">浏览量</div>
+            <div class="team_performance_top_results_bottom_text">访问数</div>
+          </div>
+        </div>
+        <div class="team_performance_top_results" id="team_performance_top_results_today">
+          <div class="team_performance_top_results_top">
+            <div class="team_performance_top_results_top_number green">1234件</div>
+            <div class="team_performance_top_results_top_number green">￥12345</div>
+            <div class="team_performance_top_results_top_number red">124153</div>
+            <div class="team_performance_top_results_top_number red" style="border-right: none">124100</div>
+          </div>
+          <div class="team_performance_top_results_bottom">
+            <div class="team_performance_top_results_bottom_text">销量</div>
+            <div class="team_performance_top_results_bottom_text">销售额</div>
+            <div class="team_performance_top_results_bottom_text">浏览量</div>
+            <div class="team_performance_top_results_bottom_text">访问数</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team_performance_bottom">
+        <div class="team_performance_title">产品销售情况</div>
+        <div class="team_performance_bottom_tab">
+          <ul>
+            <li>
+              <a class="current_tab" id="team_performance_amounts_total">总销售</a>
+            </li>
+            <li>
+              <a id="team_performance_amounts_today">当日销售</a>
+            </li>
+          </ul>
+          <div class="team_performance_line"></div>
+        </div>
+        <div id="team_performance_bottom_table_total">
+          <table class="team_performance_bottom_table">
+            <tr class="title_black">
+              <td>编号</td>
+              <td>产品名</td>
+              <td>销售数量</td>
+              <td>销售金额(￥)</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>智能体脂</td>
+              <td>1</td>
+              <td>342</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>智能体脂</td>
+              <td>1</td>
+              <td>342</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>智能体脂</td>
+              <td>1</td>
+              <td>342</td>
+            </tr>
+            <tr>
+              <td>总计</td>
+              <td></td>
+              <td>4</td>
+              <td>1442</td>
+            </tr>
+          </table>
+        </div>
+        <div id="team_performance_bottom_table_today">
+          <table class="team_performance_bottom_table">
+            <tr class="title_black">
+              <td>编号</td>
+              <td>产品名</td>
+              <td>销售数量</td>
+              <td>销售金额(￥)</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>智能体脂</td>
+              <td>1</td>
+              <td>342</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>智能体脂</td>
+              <td>1</td>
+              <td>342</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>智能体脂</td>
+              <td>1</td>
+              <td>342</td>
+            </tr>
+            <tr>
+              <td>总计</td>
+              <td></td>
+              <td>4</td>
+              <td>5442</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
