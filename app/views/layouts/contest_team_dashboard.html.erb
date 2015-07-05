@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Caodoo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div>
+      <div class="game-header-container">
+        <div class="game-header">
+          <div class="game-header-logo">
+            <%= image_tag "game-header-logo.png" %>
+          </div>
+          <div class="game-header-system">营销大赛参赛管理系统</div>
+          <div class="game-header-service">客服咨询：<span class="custom-service-number">4006-518-459</span></div>
+          <div class="game-header-setting">
+            <div id="game_header_management_menu">
+              <div>
+                <%= image_tag "line.png" %>
+              </div>
+              <div class="game_header_management_menu_text">
+                <a href="game-reset-pwd.html">重置密码</a>
+              </div>
+              <div class="game_header_management_menu_line"></div>
+              <div class="game_header_management_menu_text">
+                <a>退出账户</a>
+              </div>
+            </div>
+            <div class="game_header_team_name">
+              <%= @contest_team.name %>
+            </div>
+            <div class="game-header-setting-arrow">
+              <%= image_tag "game-header-setting-arrow.png" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block_container">
+      <div class="block_container_detail">
+        <div class="block_container_menu" style="height: 945px;">
+          <ul>
+            <li class=<%=controller.class == ContestTeamsController && controller.action_name == 'show' ? 'block_container_menu_current' : '' %>>
+              <%= link_to "团队业绩", contest_team_path(@contest_team) %>
+            </li>
+            <li class=<%=controller.class == ContestTeamsController && controller.action_name == 'contest_product_links' ? 'block_container_menu_current' : '' %>>
+              <%= link_to "分享链接", contest_product_links_contest_team_path(@contest_team) %>
+            </li>
+            <li class=<%=controller.class == RefundRecordsController ? 'block_container_menu_current' : '' %>>
+              <%= link_to "退货管理", contest_team_refund_records_path(@contest_team) %>
+            </li>
+            <li class=<%=controller.class == ContestTeamsController && controller.action_name == 'notification' ? 'block_container_menu_current' : '' %>>
+              <%= link_to "团队须知", notification_contest_team_path(@contest_team) %>
+            </li>
+          </ul>
+        </div>
+        <div class="detail_container">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

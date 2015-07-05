@@ -1,0 +1,139 @@
+.green {
+  color: #0ca011;
+}
+.red {
+  color: #fe6a29;
+}
+
+.game-header-container {
+  background-color: #ffffff;
+  text-align: center;
+  height: 58px;
+  border-bottom: solid 1px #ebebeb;
+}
+.game-header {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+.game-header-logo {
+  float: left;
+  margin-top: 8px;
+}
+.game-header-system  {
+  float: left;
+  font-size: 16px;
+  color: #353535;
+  margin-left: 42px;
+  margin-top: 22px;
+}
+.game-header-service {
+  float: left;
+  margin-left: 20px;
+  font-size: 14px;
+  color: #757575;
+  margin-top: 22px;
+}
+.game-header-service span.custom-service-number {
+  color: #16b51b;
+}
+.game-header-setting {
+  font-size: 14px;
+  margin-top: 22px;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  float: right;
+  position: relative;
+}
+.game_header_team_name {
+  float: left;
+}
+.game-header-setting-arrow {
+  float: left;
+  margin-top: 2px;
+  margin-left: 4px;
+}
+
+.block_container {
+  text-align: center;
+  width: auto;
+  min-width: 960px;
+  background-color: #f7f7f7;
+}
+.block_container_detail {
+  width: 960px;
+  height: 100%;
+  display: inline-block;
+           *display: inline;
+           zoom: 1;
+           background-color: #ffffff;
+           margin-left: auto;
+           margin-right: auto;
+         }
+
+         li {
+           list-style: none;
+         }
+
+         .block_container_menu li a {
+           font-size: 16px;
+           color: #ffffff;
+         }
+         .block_container_menu li {
+           height: 30px;
+           width: 166px;
+           text-align: left;
+           padding-left: 20px;
+           padding-top: 12px;
+         }
+
+         .block_container_menu {
+           float: left;
+           background-color: #23205b;
+           width: 186px;
+           padding-top: 24px;
+           overflow: hidden;
+           min-height: 656px;
+         }
+
+         .block_container_menu_current {
+           background-color: #16b51b;
+         }
+         .current_tab {
+           border-bottom: 2px solid #3fb134;
+         }
+         #game_header_management_menu {
+           border-bottom: 1px solid #16b51b;
+           width: 152px;
+           position: absolute;
+           top: 20px;
+           right: -35px;
+           z-index: 100;
+           background-color: #ffffff;
+           display: none;
+         }
+         .game_header_management_menu_text {
+           border-left: 1px solid #16b51b;
+           border-right: 1px solid #16b51b;
+           width: 100%;
+           padding: 15px 0;
+           margin-top: -5px;
+         }
+         .game_header_management_menu_line {
+           background-color: #ebebeb;
+           width: 124px;
+           margin-left: auto;
+           margin-right: auto;
+           height: 1px;
+         }
+         .detail_container {
+           width: 720px;
+           padding: 24px 27px 40px 27px;
+           text-align: center;
+           float: left;
+           z-index: 50;
+         }

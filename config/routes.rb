@@ -104,6 +104,7 @@ Rails.application.routes.draw do
     end
     member do
       get :contest_product_links
+      get :notification
     end
     resources :refund_records
     resources :contest_products

@@ -1,6 +1,8 @@
 class RefundRecordsController < ApplicationController
   before_action :require_login
 
+  layout 'contest_team_dashboard'
+
   def create
     @refund_record = RefundRecord.new(create_params)
     @order = Order.where(order_number: @refund_record.order_number).includes(:refund_records).take
@@ -54,7 +56,7 @@ class RefundRecordsController < ApplicationController
   private
 
   def require_login
-    redirect_to login_contest_teams_path and return unless session[:login_contest_team_id].present?
+    redirect_to login_contest_teams_path and return if session[:login_contest_team_id].nil?
     head :forbidden if params[:contest_team_id].to_i != session[:login_contest_team_id]
     @contest_team = ContestTeam.find(session[:login_contest_team_id])
   end

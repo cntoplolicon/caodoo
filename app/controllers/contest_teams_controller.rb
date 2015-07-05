@@ -1,5 +1,7 @@
 class ContestTeamsController < ApplicationController
-  before_action :find_contest_team, only: [:edit, :update, :show, :contest_product_links]
+  before_action :find_contest_team, only: [:edit, :update, :show, :contest_product_links, :notification]
+
+  layout 'contest_team_dashboard'
 
   def login
     @contest_team = ContestTeam.new
@@ -20,6 +22,10 @@ class ContestTeamsController < ApplicationController
     end
     session[:login_contest_team_id] = @contest_team.id
     redirect_to contest_team_path(@contest_team)
+  end
+
+  def logout
+    session.delete(:login_contest_team_id)
   end
 
   def edit
@@ -70,9 +76,13 @@ class ContestTeamsController < ApplicationController
       .order(priority: :desc)
   end
 
+  def notification
+  end
+
   private
 
   def find_contest_team
+    redirect_to action: :login and return if session[:login_contest_team_id].nil?
     head :forbidden if params[:id].to_i != session[:login_contest_team_id]
     @contest_team = ContestTeam.find(params[:id])
   end
