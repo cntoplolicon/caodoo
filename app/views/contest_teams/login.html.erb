@@ -17,11 +17,15 @@
         <%= form_for @contest_team, url: {action: :do_login}, method: :post do |f| %>
           <div>
             <%= f.text_field :name, placeholder: '团队名称', class: 'login-team-input' %>
-            <div class="error-message"><%= @contest_team.errors.messages[:name].first if @contest_team.errors[:name].any? %></div>
+            <div class="error-message-container">
+              <div class="error-message"><%= @contest_team.errors.messages[:name].first if @contest_team.errors[:name].any? %></div>
+            </div>
           </div>
           <div>
             <%= f.password_field :password, placeholder: '密码', class: 'login-team-input' %>
-            <div class="error-message"><%= @contest_team.errors.messages[:password].first if @contest_team.errors[:password].any? %></div>
+            <div class="error-message-container">
+              <div class="error-message"><%= @contest_team.errors.messages[:password].first if @contest_team.errors[:password].any? %></div>
+            </div>
           </div>
           <div>
             <input type="submit" class="login-submit" value="登录" />

@@ -159,6 +159,24 @@
   padding: 50px 0 15px 0;
   margin: 0 40px 0 40px;
   border-bottom: 1px solid #DFDFDF;
+  //display: none;
+}
+
+.product-detail-countdown-expired {
+  text-align: center;
+  padding: 50px 0 15px 0;
+  margin: 0 40px 0 40px;
+  border-bottom: 1px solid #DFDFDF;
+  display: none;
+}
+
+.game-product-page-banner {
+  text-align: center;
+  font-size: 21px;
+  color: #ffffff;
+  padding: 29px 0;
+  background-image: image-url('banner-back-head.png');
+  display: none;
 }
 
 .product-detail-content {
@@ -194,8 +212,23 @@
   color: #6B6B6B;
 }
 
+.product-detail-flex-box-y {
+  height: 72px;
+  //display: none;
+}
+
+.product-detail-flex-box-team {
+  padding-top: 20px;
+  height: 52px;
+  font-size: 16px;
+  display: none;
+}
+
+.product-detail-flex-box-team span {
+  color: #15ae10;
+}
+
 .product-detail .product-name {
-  padding-top: 72px;
   color: #000;
   font-size: 21px;
 }
@@ -211,7 +244,8 @@
 }
 
 .product-detail .product-current-price,
-.product-detail .product-original-price {
+.product-detail .product-original-price,
+.product-detail .product-current-price-expired {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -221,6 +255,13 @@
 .product-detail .product-current-price {
   font-size: 24px;
   color: #D73131;
+  //display: none;
+}
+
+.product-detail .product-current-price-expired {
+  font-size: 24px;
+  color: #000000;
+  display: none;
 }
 
 .product-detail .product-original-price {
@@ -290,6 +331,21 @@
   height: 420px;
   margin-top: 18px;
   border: 1px solid #E6E6E6;
+  position: relative;
+}
+
+.product-detail-carousel-time-out {
+  position: absolute;
+  right: 24px;
+  top: 0;
+  display: none;
+}
+
+.product-detail-carousel-sold-out {
+  position: absolute;
+  right: 24px;
+  top: 0;
+  display: none;
 }
 
 .product-detail-thumbnail {
