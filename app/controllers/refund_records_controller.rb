@@ -28,12 +28,13 @@ class RefundRecordsController < ApplicationController
     if @refund_record.errors.empty? && @refund_record.save
       redirect_to action: :index
     else
-      render 'new'
+      render 'new', status: :bad_request, layout: false
     end
   end
 
   def edit
     @refund_record = RefundRecord.find(params[:id])
+    render layout: false
   end
 
   def update
@@ -41,16 +42,19 @@ class RefundRecordsController < ApplicationController
     if @refund_record.update(update_params)
       redirect_to action: :index
     else
-      render 'edit'
+      render 'edit', status: :bad_request, layout: false
     end
   end
 
   def new
     @refund_record = RefundRecord.new
+    render layout: false
   end
 
   def index
     @refund_records = RefundRecord.all.joins(:order, :express).includes(:order, :express).where(orders: {contest_team_id: @contest_team.id})
+    @total_orders_count = Order.where(contest_team_id: @contest_team.id, status: [Order::PAID, Order::DELIVERED, Order::COMPLETE]).count(:all)
+    @returned_orders_count = Order.where(contest_team_id: @contest_team.id, status: Order::REFUNDED).count(:all)
   end
 
   private
