@@ -1,0 +1,60 @@
+body {
+  background-image: url("../img/bannerback.png");
+  min-width: 1280px;
+  text-align: center;
+}
+.game-reset-pwd-dialog {
+  width: 520px;
+  background-color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 36px 0;
+  margin-top: -40px;
+}
+.game-reset-pwd-team-entrance {
+  font-size: 24px;
+  color: #2cba6b;
+}
+.game-reset-pwd-team-input {
+  width: 223px;
+  height: 28px;
+  font-size: 12px;
+  color: #6b6b6b;
+  margin-top: 24px;
+  background-color: #ebebeb;
+  text-align: left;
+  border: solid 1px #dedede;
+  padding: 4px 6px;
+  line-height: 36px;
+}
+.game-reset-pwd-submit {
+  width: 115px;
+  height: 36px;
+  text-align: center;
+  background-color: #15ae10;
+  color: #ffffff;
+  border: none;
+}
+.game-reset-pwd-back {
+  width: 115px;
+  height: 36px;
+  text-align: center;
+  background-color: #ffffff;
+  color: #757575;
+  border: 1px solid #eaeaea;
+}
+.game-reset-pwd-bottom {
+  margin-top: 24px;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+.game-reset-pwd-button {
+  float: left;
+}
+.game-reset-pwd-flex-x {
+  display: block;
+  float: left;
+  width: 5px;
+  height: 36px;
+}

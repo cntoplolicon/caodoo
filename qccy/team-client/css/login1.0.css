@@ -1,0 +1,37 @@
+body {
+  background-image: url("../img/bannerback.png");
+  min-width: 1280px;
+  text-align: center;
+}
+.login-bottom-dialog {
+  width: 520px;
+  background-color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 36px 0;
+  margin-top: -40px;
+}
+.login-team-entrance {
+  font-size: 24px;
+  color: #2cba6b;
+}
+.login-team-input {
+  width: 223px;
+  height: 28px;
+  font-size: 12px;
+  color: #6b6b6b;
+  margin-top: 30px;
+  background-color: #ebebeb;
+  border: solid 1px #dedede;
+  padding: 4px 6px;
+  line-height: 36px;
+}
+.login-submit {
+  width: 235px;
+  height: 36px;
+  text-align: center;
+  background-color: #15ae10;
+  color: #ffffff;
+  margin-top: 30px;
+  border: none;
+}

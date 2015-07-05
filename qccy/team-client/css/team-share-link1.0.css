@@ -1,0 +1,35 @@
+
+.team_share_link_product {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  border: 1px solid #ebebeb;
+  width: 660px;
+  padding: 30px;
+  height: 138px;
+}
+.team_share_link_product_qrcode {
+  float: left;
+}
+.team_share_link_detail {
+  float: left;
+  text-align: left;
+  margin-left: 30px;
+}
+.team_share_link_detail_name {
+  font-size: 16px;
+  height: 32px;
+  border-bottom: 1px solid #ebebeb;
+  width: 460px;
+  color: #212121;
+}
+.team_share_link_detail_url {
+  margin-top: 18px;
+}
+.team_share_link_detail_url a {
+  color: #0ca011;
+}
+.team_share_link_detail_share {
+  margin-left: 16px;
+  margin-top: 13px;
+}
