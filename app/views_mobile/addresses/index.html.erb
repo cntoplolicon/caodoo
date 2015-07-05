@@ -1,3 +1,11 @@
+<% content_for :page_header do %>
+  <a onclick="goBack()" class="back">
+    <%= image_tag "mobile_back.png" %>
+  </a>
+  <div class="mobile-page-title">
+    收货地址
+  </div>
+<% end %>
   <div class="container mobile_popup_box">
     <div class="status_box">
       <ul>
@@ -89,7 +97,7 @@
   <div id="delete_address_box" class="popup">
     <div class="confirm_popup_box">
       <div class="confirm_title">
-        <%= image_tag "warning.png" %>
+        <%= image_tag "mobile_warning.png" %>
         <span style="position: relative;top: -20px">
 
             确定删除此收货地址吗？

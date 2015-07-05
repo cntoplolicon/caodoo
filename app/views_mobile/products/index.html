@@ -4,20 +4,19 @@
 
 <% content_for :page_header do %>
   <a href="/" class="logo">
-    <%= image_tag "logo_mobile.png" %>
+    <%= image_tag "mobile_logo.png" %>
   </a>
 <% end %>
 <!--container-->
 <div class="container">
 <div class="banner">
   <a href="/">
-  <%= image_tag "banner_mobile.png", :class => "mwidth_center" %>
+  <%= image_tag "mobile_banner.png", :class => "mwidth_center" %>
   </a>
 </div>
 <!--now-->
 <div class="product_now">
-    <%= image_tag "now.png", :class => "mwidth_center" %>
-    <!-- <%= image_tag "products_img.png", :class => "mwidth_center"%> -->
+    <%= image_tag "mobile_product_now.png", :class => "mwidth_center" %>
 </div>
 <div class="on-sale-products">
   <% @on_sale_products.each do |product| %>
@@ -41,7 +40,7 @@
 </div>
 <!--soon-->
 <div class="product_soon">
-  <%= image_tag "soon.png", :class => "mwidth_center" %>
+  <%= image_tag "mobile_product_soon.png", :class => "mwidth_center" %>
   <!--soon products-->
   <div class="mwidth_center">
     <ul class="product_soon_ul">
@@ -69,13 +68,13 @@
   <div class="ts">
     <ul class="ts_ul">
       <li>
-        <%= image_tag "zp_icon.png" %> 正品保证
+        <%= image_tag "mobile_zp_icon.png" %> 正品保证
       </li>
       <li>
-        <%= image_tag "qt_icon.png" %> 7天放心退
+        <%= image_tag "mobile_qt_icon.png" %> 7天放心退
       </li>
       <li>
-        <%= image_tag "qy_icon.png" %> 全场包邮
+        <%= image_tag "mobile_qy_icon.png" %> 全场包邮
       </li>
     </ul>
   </div>

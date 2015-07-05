@@ -18,3 +18,7 @@ function showRemainTime(time) {
   }
   return hours + ':' + minutes + ':' + seconds;
 }
+
+function goBack() {
+  window.history.back();
+}

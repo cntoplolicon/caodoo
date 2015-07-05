@@ -11,7 +11,7 @@
     <div class="header">
       <%= yield :page_header %>
       <a class="othmenu">
-        <%= image_tag "menu.png" %>
+        <%= image_tag "mobile_menu.png" %>
       </a>
     </div>
     <div class="menu_list" style="display: none">
@@ -23,7 +23,7 @@
           <li>
             <a class="dropdown_action">
             <span>我的</span>
-            <%= image_tag "dropdown.png", :class => "dropdown" %>
+            <%= image_tag "mobile_dropdown.png", :class => "dropdown" %>
             </a>
           </li>
           <li style="padding: 0">
@@ -38,7 +38,7 @@
                 <%= link_to "客户服务", custom_service_url %>
               </li>
               <li>
-                <%= link_to "用户设置", user_settings_user_url(session[:login_user_id]) %>
+                <%= link_to "个人设置", user_settings_user_url(session[:login_user_id]) %>
               </li>
               <li>
                 <%= link_to "退出账户", logout_users_url %>
@@ -75,7 +75,7 @@
         京ICP备 15024750号
       </li>
       <li>
-        <a href="m-terms-of-privicy.html">
+        <a href="">
           隐私条款
         </a>
       </li>

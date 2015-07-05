@@ -1,8 +1,16 @@
+<% content_for :page_header do %>
+  <a onclick="goBack()" class="back">
+    <%= image_tag "mobile_back.png" %>
+  </a>
+  <div class="mobile-page-title">
+    提示
+  </div>
+<% end %>
 <div class="payment-detail-container">
   <div class="payment-detail">
     <div class="flex-top"></div>
     <div class="error-icon">
-      <%= image_tag "greengantanhao.png" %>
+      <%= image_tag "mobile_greengantanhao.png" %>
     </div>
     <div class="text-top">很抱歉，手慢了一点点～</div>
     <% if @onsale %>

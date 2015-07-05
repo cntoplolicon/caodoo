@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery-placeholder
-//= require masonry/jquery.masonry
+//= require masonry-legacy/jquery.masonry
 //= require jquery-qrcode
 //= require_tree ./common
 //= require_tree ./desktop

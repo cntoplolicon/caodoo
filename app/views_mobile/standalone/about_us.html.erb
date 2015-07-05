@@ -1,7 +1,15 @@
+<% content_for :page_header do %>
+  <a onclick="goBack()" class="back">
+    <%= image_tag "mobile_back.png" %>
+  </a>
+  <div class="mobile-page-title">
+    关于我们
+  </div>
+<% end %>
   <div class="container">
     <!--banner-->
     <div class="banner">
-      <%= image_tag "about_slogan_bg.png", :class => "about__banner_img" %>
+      <%= image_tag "mobile_about_slogan_bg.png", :class => "about__banner_img" %>
       <div class="about_slogan_box">
         <div class="about_slogan_center">
           <!-- title-->
@@ -31,7 +39,7 @@
         <div class="about_desc_content">
           <ul>
             <li>
-              <%= image_tag "10dian_icon.png", :class => "left" %>
+              <%= image_tag "mobile_10dian_icon.png", :class => "left" %>
               <div class="left about_ts_box">
                 <div class="about_ts_name">
                   每日10点
@@ -42,7 +50,7 @@
               </div>
             </li>
             <li>
-              <%= image_tag "product_icon.png", :class => "left" %>
+              <%= image_tag "mobile_product_icon.png", :class => "left" %>
               <div class="left about_ts_box">
                 <div class="about_ts_name">
                   智能产品
@@ -53,7 +61,7 @@
               </div>
             </li>
             <li>
-              <%= image_tag "price_icon.png", :class => "left" %>
+              <%= image_tag "mobile_price_icon.png", :class => "left" %>
               <div class="left about_ts_box">
                 <div class="about_ts_name">
                   最低价格
@@ -70,7 +78,7 @@
     <!--about team desc-->
     <div class="about_team">
       <div class="about_team_center">
-        <%= image_tag "about_team_bg.png", :class => "about_team_bg" %>
+        <%= image_tag "mobile_about_team_bg.png", :class => "about_team_bg" %>
         <div class="about_team_box">
           <!--title-->
           <div class="about_desc_title white">
@@ -88,7 +96,7 @@
     </div>
     <!--about contact desc-->
     <div class="about_contact">
-      <%= image_tag "about_contact_bg.png", :class => "about_contact_bg" %>
+      <%= image_tag "mobile_about_contact_bg.png", :class => "about_contact_bg" %>
       <div class="about_contact_box">
         <div class="about_desc_title white">
           联系方式
@@ -96,14 +104,14 @@
         <ul class="about_contact_content">
           <li>
             <span class="about_contact_name">
-            <%= image_tag "mail_icon.png", :class => "about_mail_icon" %>商务合作：</span> <span class="about_contact_value">bd@caodoo.com</span>
+            <%= image_tag "mobile_mail_icon.png", :class => "about_mail_icon" %>商务合作：</span> <span class="about_contact_value">bd@caodoo.com</span>
           </li>
           <li>
             <span class="about_contact_name">招聘邮箱：</span> <span class="about_contact_value">hr@caodoo.com</span>
           </li>
           <li style="margin-top: 20px">
             <span class="about_contact_name">
-            <%= image_tag "address_icon.png", :class => "about_address_icon" %>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</span>
+            <%= image_tag "mobile_address_icon.png", :class => "about_address_icon" %>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</span>
             <p class="about_contact_value" style="width: 160px;;">北京市朝阳区安立路56号九台2000 B座2503室</p>
           </li>
           <li>

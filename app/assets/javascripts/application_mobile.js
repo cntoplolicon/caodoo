@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require masonry/jquery.masonry
+//= require zepto
+//= require masonry/dist/masonry.pkgd.js
 //= require_tree ./common
 //= require_tree ./mobile
 
