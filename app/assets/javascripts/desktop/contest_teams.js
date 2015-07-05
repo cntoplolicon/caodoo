@@ -13,3 +13,27 @@ $(document).ready(function() {
   });
 });
 
+$(document).ready(function(){
+  $(".team_performance_tab a").click(function(){
+    $(".team_performance_tab a").removeAttr("class");
+    $(this).attr("class", "current_tab");
+    if ($(this).attr("id") === "team_performance_data_total") {
+      $("#team_performance_top_results_total").show();
+      $("#team_performance_top_results_today").hide();
+    } else {
+      $("#team_performance_top_results_total").hide();
+      $("#team_performance_top_results_today").show();
+    }
+  });
+  $(".team_performance_bottom_tab a").click(function(){
+    $(".team_performance_bottom_tab a").removeAttr("class");
+    $(this).attr("class", "current_tab");
+    if ($(this).attr("id") === "team_performance_amounts_total") {
+      $("#team_performance_bottom_table_total").show();
+      $("#team_performance_bottom_table_today").hide();
+    } else {
+      $("#team_performance_bottom_table_total").hide();
+      $("#team_performance_bottom_table_today").show();
+    }
+  });
+});

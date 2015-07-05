@@ -1,46 +1,98 @@
-总体统计
-<div>
-  <%= @total_statistics[:quantity] %>
-</div>
-<div>
-  <%= @total_statistics[:price] %>
-</div>
-<div>
-  <%= @total_statistics[:pv] %>
-</div>
-<div>
-  <%= @total_statistics[:uv] %>
+<div class="team_performance_top">
+  <div class="team_performance_title">团队大赛业绩
+    <div class="team_performance_time_hint">数据每<a>5分钟</a>更新</div></div>
+  <div class="team_performance_tab">
+    <ul>
+      <li>
+        <a class="current_tab" id="team_performance_data_total">总体统计</a>
+      </li>
+      <li>
+        <a id="team_performance_data_today">今日统计</a>
+      </li>
+    </ul>
+    <div class="team_performance_line"></div>
+  </div>
+  <div class="team_performance_top_results" id="team_performance_top_results_total">
+    <div class="team_performance_top_results_top">
+      <div class="team_performance_top_results_top_number green"><%= @total_statistics[:quantity] %>件</div>
+      <div class="team_performance_top_results_top_number green">￥<%= @total_statistics[:price] %></div>
+      <div class="team_performance_top_results_top_number red"><%= @total_statistics[:pv] %></div>
+      <div class="team_performance_top_results_top_number red" style="border-right: none"><%= @total_statistics[:uv] %></div>
+    </div>
+    <div class="team_performance_top_results_bottom">
+      <div class="team_performance_top_results_bottom_text">销量</div>
+      <div class="team_performance_top_results_bottom_text">销售额</div>
+      <div class="team_performance_top_results_bottom_text">浏览量</div>
+      <div class="team_performance_top_results_bottom_text">访问数</div>
+    </div>
+  </div>
+  <div class="team_performance_top_results" id="team_performance_top_results_today">
+    <div class="team_performance_top_results_top">
+      <div class="team_performance_top_results_top_number green"><%= @today_statistics[:quantity] %>件</div>
+      <div class="team_performance_top_results_top_number green">￥<%= @today_statistics[:price] %></div>
+      <div class="team_performance_top_results_top_number red"><%= @today_statistics[:pv] %></div>
+      <div class="team_performance_top_results_top_number red" style="border-right: none"><%= @today_statistics[:uv] %></div>
+    </div>
+    <div class="team_performance_top_results_bottom">
+      <div class="team_performance_top_results_bottom_text">销量</div>
+      <div class="team_performance_top_results_bottom_text">销售额</div>
+      <div class="team_performance_top_results_bottom_text">浏览量</div>
+      <div class="team_performance_top_results_bottom_text">访问数</div>
+    </div>
+  </div>
 </div>
 
-今日统计
-<div>
-  <%= @today_statistics[:quantity] %>
+<div class="team_performance_bottom">
+  <div class="team_performance_title">产品销售情况</div>
+  <div class="team_performance_bottom_tab">
+    <ul>
+      <li>
+        <a class="current_tab" id="team_performance_amounts_total">总销售</a>
+      </li>
+      <li>
+        <a id="team_performance_amounts_today">当日销售</a>
+      </li>
+    </ul>
+    <div class="team_performance_line"></div>
+  </div>
+  <div id="team_performance_bottom_table_total">
+    <table class="team_performance_bottom_table">
+      <tbody>
+        <tr class="title_black">
+          <td>编号</td>
+          <td>产品名</td>
+          <td>销售数量</td>
+          <td>销售金额(￥)</td>
+        </tr>
+        <% @total_orders.each_with_index do |order, index| %>
+          <tr>
+            <td><%= index %></td>
+            <td><%= order[:product_name] %></td>
+            <td><%= order[:quantity] %></td>
+            <td><%= order[:total_price] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div id="team_performance_bottom_table_today">
+    <table class="team_performance_bottom_table">
+      <tbody>
+        <tr class="title_black">
+          <td>编号</td>
+          <td>产品名</td>
+          <td>销售数量</td>
+          <td>销售金额(￥)</td>
+        </tr>
+        <% @today_orders.each_with_index do |order, index| %>
+          <tr>
+            <td><%= index %></td>
+            <td><%= order[:product_name] %></td>
+            <td><%= order[:quantity] %></td>
+            <td><%= order[:total_price] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-<div>
-  <%= @today_statistics[:price] %>
-</div>
-<div>
-  <%= @today_statistics[:pv] %>
-</div>
-<div>
-  <%= @today_statistics[:uv] %>
-</div>
-
-<table>
-<% @total_orders.each_with_index do |orders, index| %>
-  <tr>
-    <td>
-      <%= "#{index + 1}" %>
-    </td>
-    <td>
-      <%= orders[:quantity] %>
-    </td>
-    <td>
-      <%= orders[:total_price] %>
-    </td>
-    <td>
-      <%= orders[:product_name] %>
-    </td>
-  </tr>
-<% end %>
-</table>

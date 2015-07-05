@@ -78,7 +78,7 @@
                   <%= f.hidden_field :status, value: Order::COMPLETE %>
                 <% end %>
                 <div class="order_action product_tt_40">
-                  <% if [Order::TO_PAY, Order::PAID].include?(order.status) %>
+                  <% if [Order::TO_PAY].include?(order.status) %>
                     <%= link_to "立即支付", user_order_payment_path(@user, order), class: 'pay_order' %>
                     <a class="cancel_order cancel_order_action" data-order-id="<%= order.id %>">取消订单</a>
                   <% end %>
