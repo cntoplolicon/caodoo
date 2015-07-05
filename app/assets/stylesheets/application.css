@@ -34,6 +34,15 @@ body {
   color: #FFF;
   font-size: 14px;
   border: none;
+  /*display: none;*/
+}
+
+.btn-grey {
+  background-color: #d0d0d0;
+  color: #969696;
+  font-size: 14px;
+  border: none;
+  display: none;
 }
 
 .placeholder {

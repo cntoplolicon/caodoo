@@ -3,14 +3,31 @@
 <% end %>
 
 <div class="product-detail">
+
+
   <div class="product-detail-countdown">
     <%= hidden_field_tag('remain-time-hidden-field', [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max) %>
     距离抢购结束还有 <span class="show-remain-time"></span>
   </div>
+
+  <div class="product-detail-countdown-expired">
+    抢购已结束
+  </div>
+
+  <div class="game-product-page-banner">
+    大学生营销策划赛活动产品
+  </div>
+
   <div class="product-detail-content">
     <div class="product-detail-images-container">
       <div class="product-detail-carousel">
+
+
+        <%= image_tag("pc-time-out.png", class: "product-detail-carousel-time-out") %>
+        <%= image_tag("pc-sold-out.png", class: "product-detail-carousel-sold-out") %>
         <%= image_tag @product.product_view.product_carousel_images.first.url, class: "carousel-image" %>
+
+
       </div>
       <div class="product-detail-thumnail-panel">
         <% @product.product_view.product_carousel_images.each do |image| %>
@@ -19,6 +36,13 @@
       </div>
     </div>
     <div class="product-detail-text-container" style="float: right">
+
+
+      <div class="product-detail-flex-box-y"></div>
+
+      <div class="product-detail-flex-box-team"><span>adsfa队</span>向您推荐</div>
+
+
       <div class="product-name">
         <%= @product.name %>
       </div>
@@ -26,7 +50,13 @@
         <%= @product.product_view.detail_page_description %>
       </div>
       <div class="product-price">
+
+
         <div class="product-current-price">&#165;<%= @product.price %></div>
+        <div class="product-current-price-expired">&#165;<%= @product.price %></div>
+
+
+
         <div class="product-original-price">原价&#165;<%= @product.original_price %> </div>
       </div>
       <div class="product-quantity">
@@ -63,9 +93,17 @@
         </div>
       </div>
       <%= link_to new_user_order_path(session[:login_user_id] || 0, {product_id: @product.id}) do %>
+
+
         <button type="button" class="btn-red purchase-button">
           立即购买
         </button>
+
+        <button type="button" class="btn-grey purchase-button" disabled>
+          立即购买
+        </button>
+
+
       <% end %>
     </div>
   </div>
