@@ -1,22 +1,6 @@
 <% content_for :content do %>
   <div class="container gray_bg">
     <div class="center order">
-<!--       <div class="order_menu">
-        <ul>
-          <li class="<%= controller.class == OrdersController && controller.action_name == 'index' ? 'li_current' : '' %>">
-            <%= link_to "订单管理", user_orders_url(session[:login_user_id]) %>
-          </li>
-          <li class="<%= controller.class == AddressesController && controller.action_name == 'index' ? 'li_current' : '' %>">
-            <%= link_to "收货地址", user_addresses_url(session[:login_user_id]) %>
-          </li>
-          <li class="<%= controller.class == StandaloneController && controller.action_name == 'custom_service' ? 'li_current' : '' %>">
-            <%= link_to "客户服务", custom_service_url %>
-          </li>
-          <li class="<%= controller.class == UsersController && controller.action_name == 'user_settings' ? 'li_current' : '' %>">
-            <%= link_to "个人设置", user_settings_user_url(session[:login_user_id]) %>
-          </li>
-        </ul>
-      </div> -->
       <%= yield %>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <% content_for :page_header do %>
   <a onclick="goBack()" class="back">
-    <%= image_tag "back.png" %>
+    <%= image_tag "mobile_back.png" %>
   </a>
   <div class="mobile-page-title">
     <%= yield :page_header_title %>
@@ -13,7 +13,7 @@
         <%= yield %>
       </div>
     </div>
-    <%= image_tag("user-op-background-mobile.png", class: "center-block user-background-img") %>
+    <%= image_tag("mobile_user_op_background.png", class: "center-block user-background-img") %>
   </div>
 <% end %>
 <%= render template: "layouts/application" %>
