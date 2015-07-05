@@ -1,5 +1,14 @@
-<% @products.each do |product| %>
+<% @links.each do |link| %>
   <div>
-    <%= contest_team_contest_product_url(@contest_team.identifier, product) %>
+    <div class="team_share_link_product">
+      <div class="team_share_link_product_qrcode">
+        <%= image_tag "team-share-qrcode.png", :title => "title", :class => "class" %>
+      </div>
+      <div class="team_share_link_detail">
+        <div class="team_share_link_detail_name"><%= link[:title] %></div>
+        <div class="team_share_link_detail_url">营销链接： <%= link_to link[:url], link[:url] %></div>
+        <div class="team_share_link_detail_share">分享至：</div>
+      </div>
+    </div>
   </div>
 <% end %>
