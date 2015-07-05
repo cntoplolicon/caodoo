@@ -30,7 +30,9 @@ class OrdersController < ApplicationController
       .take
     @onsale = @product.product_sale_schedules.any? do |s|
       s.sale_start < Time.now && s.sale_end > Time.now
-    end
+    end 
+    redirect_to action: :sold_out, controller: :standalone and return unless @onsale
+
     @order.build_payment_record(status: PaymentRecord::TO_PAY)
     head :forbidden and return if @order.user_id != @user.id
     @order.order_number = '%010d' % @order.user_id + Time.now.to_i.to_s
@@ -69,7 +71,7 @@ class OrdersController < ApplicationController
         update_all(['quantity = quantity - ?', @order.quantity])
       if updated_record == 0
         if @product.quantity <= 0
-          redirect_to action: :sold_out and return if @product.quantity <= 0
+          render 'standalone/sold_out' and return if @product.quantity <= 0
         else
           @order.errors.add(:quantity, "库存仅剩下#{@product.quantity}件")
           render 'new' and return
