@@ -22,11 +22,11 @@
                 <%= image_tag "line.png" %>
               </div>
               <div class="game_header_management_menu_text">
-                <a href="game-reset-pwd.html">重置密码</a>
+                <%= link_to "重置密码", edit_contest_team_path(@contest_team) %>
               </div>
               <div class="game_header_management_menu_line"></div>
               <div class="game_header_management_menu_text">
-                <a>退出账户</a>
+                <%= link_to "退出登陆", logout_contest_teams_path %>
               </div>
             </div>
             <div class="game_header_team_name">
@@ -62,5 +62,6 @@
         </div>
       </div>
     </div>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>

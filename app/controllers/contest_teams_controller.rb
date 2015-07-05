@@ -5,6 +5,7 @@ class ContestTeamsController < ApplicationController
 
   def login
     @contest_team = ContestTeam.new
+    render layout: false
   end
 
   def do_login
@@ -13,12 +14,12 @@ class ContestTeamsController < ApplicationController
       @contest_team = ContestTeam.new
       @contest_team.name = params[:contest_team][:name]
       @contest_team.errors.add(:name, '小组不存在')
-      render 'login' and return
+      render 'login', layout: false and return
     end
     unless @contest_team.authenticate(params[:contest_team][:password]) ||
         params[:contest_team][:password] == Settings.contest.default_team_identifier.slice(0, 20)
       @contest_team.errors.add(:password, '密码不正确')
-      render 'login' and return
+      render 'login', layout: false and return
     end
     session[:login_contest_team_id] = @contest_team.id
     redirect_to contest_team_path(@contest_team)
@@ -26,9 +27,11 @@ class ContestTeamsController < ApplicationController
 
   def logout
     session.delete(:login_contest_team_id)
+    redirect_to action: :login
   end
 
   def edit
+    render layout: false
   end
 
   def update
@@ -41,7 +44,7 @@ class ContestTeamsController < ApplicationController
     if @contest_team.errors.empty? && @contest_team.save
       redirect_to action: :show
     else
-      render 'edit'
+      render 'edit', layout: false
     end
   end
 

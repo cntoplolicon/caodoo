@@ -1,20 +1,34 @@
-<div>
-  <ul>
-    <% if @contest_team.errors.any? %>
-      <% @contest_team.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    <% end %>
-  </ul>
-</div>
-<%= form_for @contest_team, url: {action: :do_login}, method: :post do |f| %>
-  <div>
-    <%= f.text_field :name, placeholder: '团队名称' %>
-  </div>
-  <div>
-    <%= f.password_field :password, placeholder: '密码' %>
-  </div>
-  <div>
-    <input type="submit" value="登录" />
-  </div>
-<% end %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Caodoo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="team-client-login">
+      <div>
+        <%= image_tag "game-detail.png" %>
+      </div>
+      <div class="login-bottom-dialog">
+        <div class="login-team-entrance">参赛团队登录入口</div>
+        <%= form_for @contest_team, url: {action: :do_login}, method: :post do |f| %>
+          <div>
+            <%= f.text_field :name, placeholder: '团队名称', class: 'login-team-input' %>
+            <div class="error-message"><%= @contest_team.errors.messages[:name].first if @contest_team.errors[:name].any? %></div>
+          </div>
+          <div>
+            <%= f.password_field :password, placeholder: '密码', class: 'login-team-input' %>
+            <div class="error-message"><%= @contest_team.errors.messages[:password].first if @contest_team.errors[:password].any? %></div>
+          </div>
+          <div>
+            <input type="submit" class="login-submit" value="登录" />
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>

@@ -9,7 +9,9 @@
 /*公共*/
 
 
-
+html {
+    height: 100%;
+}
 
 body {
     padding: 0;
@@ -17,6 +19,7 @@ body {
     font-size: 14px;
     font-family: SimHei, Helvetica, sans-serif;
     color: #333333;
+    height: 100%;
 
 }
 

@@ -1,0 +1,104 @@
+// Place all the styles related to the contest_teams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.team-client-login {
+    background-image: image-url("bannerback.png");
+    min-width: 1280px;
+    text-align: center;
+    height: 100%;
+    min-height: 768px;
+}
+.login-bottom-dialog {
+    width: 520px;
+    background-color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 36px 0;
+    margin-top: -40px;
+}
+.login-team-entrance {
+    font-size: 24px;
+    color: #2cba6b;
+}
+.login-team-input {
+    width: 223px;
+    height: 28px;
+    font-size: 12px;
+    color: #6b6b6b;
+    margin-top: 30px;
+    background-color: #ebebeb;
+    border: solid 1px #dedede;
+    padding: 4px 6px;
+    line-height: 36px;
+}
+.login-submit {
+    width: 235px;
+    height: 36px;
+    text-align: center;
+    background-color: #15ae10;
+    color: #ffffff;
+    margin-top: 30px;
+    border: none;
+}
+.team-client-reset-pwd {
+    background-image: image-url("bannerback.png");
+    min-width: 1280px;
+    text-align: center;
+    height: 100%;
+    min-height: 768px;
+}
+.game-reset-pwd-dialog {
+    width: 520px;
+    background-color: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 36px 0;
+    margin-top: -40px;
+}
+.game-reset-pwd-team-entrance {
+    font-size: 24px;
+    color: #2cba6b;
+}
+.game-reset-pwd-team-input {
+    width: 223px;
+    height: 28px;
+    font-size: 12px;
+    color: #6b6b6b;
+    margin-top: 24px;
+    background-color: #ebebeb;
+    text-align: left;
+    border: solid 1px #dedede;
+    padding: 4px 6px;
+    line-height: 36px;
+}
+.game-reset-pwd-submit {
+    width: 115px;
+    height: 36px;
+    text-align: center;
+    background-color: #15ae10;
+    color: #ffffff;
+    border: none;
+}
+.game-reset-pwd-back {
+    width: 115px;
+    height: 36px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #757575;
+    border: 1px solid #eaeaea;
+}
+.game-reset-pwd-bottom {
+    margin-top: 24px;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+.game-reset-pwd-button {
+    float: left;
+}
+.game-reset-pwd-flex-x {
+    display: block;
+    float: left;
+    width: 5px;
+    height: 36px;
+}

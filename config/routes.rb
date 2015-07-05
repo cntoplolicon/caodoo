@@ -101,6 +101,7 @@ Rails.application.routes.draw do
     collection do
       get :login
       post :do_login
+      get :logout
     end
     member do
       get :contest_product_links

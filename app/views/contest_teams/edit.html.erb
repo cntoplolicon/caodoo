@@ -1,23 +1,44 @@
-<div>
-  <ul>
-    <% if @contest_team.errors.any? %>
-      <% @contest_team.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Caodoo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="team-client-reset-pwd">
+      <%= form_for @contest_team do |f| %>
+        <div>
+          <%= image_tag "game-detail.png" %>
+        </div>
+        <div class="game-reset-pwd-dialog">
+          <div class="game-reset-pwd-team-entrance">设置登陆密码</div>
+          <div>
+            <%= password_field_tag :old_password, '', placeholder: '输入原密码', class: 'game-reset-pwd-team-input' %>
+            <div class="error-message"><%= @contest_team.errors.messages[:old_password].first if @contest_team.errors[:old_password].any? %></div>
+          </div>
+          <div>
+            <%= f.password_field :password, placeholder: '设置新密码', class: 'game-reset-pwd-team-input' %>
+            <div class="error-message"><%= @contest_team.errors.messages[:password].first if @contest_team.errors[:password].any? %></div>
+          </div>
+          <div>
+            <%= f.password_field :password_confirmation, placeholder: '再输一次新密码', class: 'game-reset-pwd-team-input' %>
+            <div class="error-message"><%= @contest_team.errors.messages[:password_confirmation].first if @contest_team.errors[:password_confirmation].any? %></div>
+          </div>
+          <div class="game-reset-pwd-bottom">
+            <div class="game-reset-pwd-button">
+              <%= link_to "返回系统", contest_team_path(@contest_team), class: 'game-reset-pwd-back' %>
+            </div>
+            <div class="game-reset-pwd-flex-x"></div>
+            <div class="game-reset-pwd-button">
+              <%= f.submit '提交修改', :disable_with => '正在提交修改...', class: 'game-reset-pwd-submit' %>
+            </div>
+          </div>
+        </div>
       <% end %>
-    <% end %>
-  </ul>
-</div>
-<%= form_for @contest_team do |f| %>
-  <div>
-    <%= text_field_tag :old_password, '', placeholder: '输入原密码' %>
-  </div>
-  <div>
-    <%= f.password_field :password, placeholder: '设置新密码' %>
-  </div>
-  <div>
-    <%= f.password_field :password_confirmation, placeholder: '再输一次新密码' %>
-  </div>
-  <div>
-    <%= f.submit '提交修改', :disable_with => '正在提交修改...'%>
-  </div>
-<% end %>
+    </div>
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>
