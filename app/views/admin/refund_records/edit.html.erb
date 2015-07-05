@@ -15,13 +15,23 @@
         [refund_record_status_text(RefundRecord::PENDING), RefundRecord::PENDING], 
         [refund_record_status_text(RefundRecord::REFUNDED), RefundRecord::REFUNDED], 
         [refund_record_status_text(RefundRecord::CANCELLED), RefundRecord::CANCELLED]],
-                                              @refund_record.status), {}, class: 'form-control' %>
+      @refund_record.status), {}, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag '备注' %>
+    <%= f.text_field :remark, class: 'form-control' %>
+  </div>
+  <% if @refund_record.order.contest_team.nil? %>
+    <div class="form-group">
+      <%= label_tag '快递公司' %>
+      <%= f.collection_select :express_id, Express.all, :id, :name, {}, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= label_tag '备注' %>
-      <%= f.text_field :remark, class: 'form-control' %>
+      <%= label_tag '运单号' %>
+      <%= f.text_field :tracking_number, class: 'form-control' %>
     </div>
-    <%= link_to "返回", admin_refund_records_path, class: 'btn btn-default' %>
-    <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-primary' %>
   <% end %>
+  <%= link_to "返回", admin_refund_records_path, class: 'btn btn-default' %>
+  <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-primary' %>
+<% end %>
 </div>

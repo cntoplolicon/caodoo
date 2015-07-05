@@ -15,23 +15,23 @@
       <%= f.text_field :name, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :name, '品牌' %>
+      <%= f.label :brand_id, '品牌' %>
       <%= f.collection_select :brand_id, Brand.all, :id, :name, {}, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :name, '价格' %>
+      <%= f.label :price, '价格' %>
       <%= f.number_field :price, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :name, '原价' %>
+      <%= f.label :original_price, '原价' %>
       <%= f.number_field :original_price, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :name, '显示优先级' %>
+      <%= f.label :priority, '显示优先级' %>
       <%= f.number_field :priority, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :name, '比赛商品等级（非比赛商品留空）' %>
+      <%= f.label :contest_level, '比赛商品等级（非比赛商品留空）' %>
       <%= f.number_field :contest_level, class: 'form-control' %>
     </div>
   </div>

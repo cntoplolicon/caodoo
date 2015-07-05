@@ -157,3 +157,15 @@ body {
 dd {
   margin: 4px 0;
 }
+
+.yadcf-filter-range-date.form-control {
+  width: 120px !important;
+}
+
+.yadcf-filter-range-number.form-control {
+  width: 60px !important;
+}
+
+.yadcf-filter.form-control {
+  width: 160px !important;
+}

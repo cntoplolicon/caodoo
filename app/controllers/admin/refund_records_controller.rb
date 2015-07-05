@@ -22,6 +22,36 @@ class Admin::RefundRecordsController < Admin::AdminController
     end
   end
 
+  def new
+    @refund_record = RefundRecord.new
+  end
+
+  def create
+    @refund_record = RefundRecord.new(create_params)
+    @order = Order.where(order_number: @refund_record.order_number).includes(:refund_records).take
+    @order = Order.fidn_by_order_number(@refund_record.order_number)
+    if @order.nil?
+      @refund_record.errors.add(:order_id, '订单号不存在')
+    else
+      if @order.refund_records.any? { |r| r.status == RefundRecord::PENDING }
+        @refund_record.errors.add(:order_number, '该订单已有正在处理的退货记录')
+      end
+      if @order.status == Order::REFUNDED
+        @refund_record.errors.add(:order_number, '该订单已完成退货')
+      end
+      if @order.contest_team.present?
+        @refund_record.errors.add(:order_number, '订单为比赛产品，应由比赛团队管理')
+      end
+      @refund_record.order_id = @order.id
+    end
+
+    if @orders.errors.empty? && @refund_record.save
+      redirect_to action: :index
+    else
+      render 'new'
+    end
+  end
+
   def edit
   end
 
@@ -39,7 +69,7 @@ class Admin::RefundRecordsController < Admin::AdminController
         end
       end
     else
-      @refund_record.attributes = refund_record_params
+      @refund_record.attributes = update_params
     end
     if @refund_record.errors.empty? && @refund_record.save
       redirect_to action: :index
@@ -54,7 +84,11 @@ class Admin::RefundRecordsController < Admin::AdminController
     @refund_record = RefundRecord.find(params[:id])
   end
 
-  def refund_record_params
+  def update_params
     params.require(:refund_record).permit(:status, :remark)
+  end
+
+  def create_params
+    params.require(:refund_record).permit(:status, :remark, :express_id, :tracking_number)
   end
 end

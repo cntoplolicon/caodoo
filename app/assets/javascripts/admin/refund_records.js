@@ -35,7 +35,8 @@ $(document).ready(function() {
       ajaxSource: $('#refund-records-table').data('source'),
       pagingType: 'full_numbers',
       columnDefs: [
-        {targets: -1, sortable: false}
+        {targets: -1, orderable: false},
+        {targets: 8, width: '100px'}
       ]
     }).yadcf(filter_options);
     $('.yadcf-filter-reset-button').hide();
