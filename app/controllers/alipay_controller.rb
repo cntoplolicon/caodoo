@@ -22,7 +22,7 @@ class AlipayController < ApplicationController
         subject: @order.product_name,
         price: '0.02',
         quantity: @order.quantity,
-        return_url: "http://localhost:3000/alipay/return",
+        return_url: "http://#{request.host_with_port}/alipay/return",
         #return_url: "http://www.caodoo.com:3000/alipay/return",
         #notify_url: "http://www.caodoo.com:3000/alipay/notify",
         it_b_pay: @order.payment_record.alipay_expire
