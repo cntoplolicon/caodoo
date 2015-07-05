@@ -57,9 +57,8 @@ a {
   color: #757575;
   margin-top: 22px;
 }
-.game-header-service a {
+.game-header-service span {
   color: #16b51b;
-  cursor: text;
 }
 .game-header-setting {
   font-size: 14px;
