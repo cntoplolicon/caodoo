@@ -24,5 +24,13 @@ class ProductsController < ApplicationController
       .joins(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
       .includes(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
       .take
+    if @product.contest_product?
+      if session[:contest_team_id].present?
+        @contest_team = ContestTeam.find(session[:contest_team_id])
+      else
+        @contest_team = ContestTeam.find_by_identifier(Settings.contest.default_team_identifier)
+      end
+    else
+    end
   end
 end

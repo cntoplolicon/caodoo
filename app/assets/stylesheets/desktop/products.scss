@@ -167,7 +167,6 @@
   padding: 50px 0 15px 0;
   margin: 0 40px 0 40px;
   border-bottom: 1px solid #DFDFDF;
-  display: none;
 }
 
 .game-product-page-banner {
@@ -176,7 +175,6 @@
   color: #ffffff;
   padding: 29px 0;
   background-image: image-url('banner-back-head.png');
-  display: none;
 }
 
 .product-detail-content {
@@ -214,14 +212,12 @@
 
 .product-detail-flex-box-y {
   height: 72px;
-  //display: none;
 }
 
 .product-detail-flex-box-team {
   padding-top: 20px;
   height: 52px;
   font-size: 16px;
-  display: none;
 }
 
 .product-detail-flex-box-team span {
@@ -255,13 +251,11 @@
 .product-detail .product-current-price {
   font-size: 24px;
   color: #D73131;
-  //display: none;
 }
 
 .product-detail .product-current-price-expired {
   font-size: 24px;
   color: #000000;
-  display: none;
 }
 
 .product-detail .product-original-price {
@@ -338,14 +332,12 @@
   position: absolute;
   right: 24px;
   top: 0;
-  display: none;
 }
 
 .product-detail-carousel-sold-out {
   position: absolute;
   right: 24px;
   top: 0;
-  display: none;
 }
 
 .product-detail-thumbnail {
