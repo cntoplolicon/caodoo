@@ -78,11 +78,11 @@
         <%= f.hidden_field :status, value: Order::CANCELLED %>
       <% end %>
       <% if [Order::DELIVERED].include?(@order.status)  %>
-        <a class="btn_green" href="http://www.kuaidi100.com">查看物流</a>
-        <a class="receive_order receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>
+        <a class="bt_green" href="http://www.kuaidi100.com">查看物流</a>
+        <a class="bt_green receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>
       <% end %>
       <% if [Order::TO_PAY].include?(@order.status)  %>
-        <%= link_to "立即支付", user_order_payment_path(@user, order), class: 'btn_green' %>
+        <%= link_to "立即支付", user_order_payment_path(@user, order), class: 'bt_green' %>
       <% end %>
       <% if [Order::TO_PAY, Order::PAID].include?(@order.status) %>
         <a class="bt cancel_order_action" data-order-id="<%= @order.id %>">取消订单</a>
@@ -115,10 +115,8 @@
       <ul>
         <li>请联系客服</li>
         <li>
-          <span> 电话：</span>
-          <strong style="color: #333333">010-2453464</strong>
-          <span> QQ：</span>
-          <strong style="color: #333333">24141554656</strong>
+          <p> 电话：<strong style="color: #333333">010-2453464</strong></p>
+          <p> QQ：<strong style="color: #333333">24141554656</strong></p>
         </li>
         <li style="text-align: right">
           <a class="close_return_application_box_button">知道了</a>
