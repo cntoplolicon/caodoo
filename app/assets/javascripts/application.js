@@ -14,5 +14,6 @@
 //= require jquery-placeholder
 //= require masonry-legacy/jquery.masonry
 //= require jquery-qrcode
+//= require jquery.debouncedresize
 //= require_tree ./common
 //= require_tree ./desktop

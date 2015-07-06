@@ -7,10 +7,12 @@ $(document).ready(function() {
   $(".game-header-setting").click(function(){
     $("#game_header_management_menu").toggle();
   });
-  $(window).resize(function() {
-    var resize_height = Math.max($(window).height(), $('.detail_container').height() + 64);
-    $('.block_container_menu').css('height', resize_height -24);
-  });
+  if ($('.team_client_block_container').length > 0) {
+    $(window).on("debouncedresize", function () {
+      var resize_height = Math.max($(window).height(), $('.team_client_detail_container').height() + 64);
+      $('.team_client_block_container_menu').css('height', resize_height - 24);
+    });
+  }
 });
 
 $(document).ready(function(){
