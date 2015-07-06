@@ -37,22 +37,68 @@ $(document).ready(function(){
       "text": $url
     });
 
+  });
+
+  //create share image
+
+  $shareText='我们参加了青年创业创新大赛，来围观吧~';
+
+  $shareDesc='我们参加了青年创业创新大赛，来围观吧~';
+
+  $shareUrl='http://192.168.1.114/mcaodoo/m-gamePage.html';
+
+  $shareImage='http://192.168.1.114/mcaodoo/img/game_poster.png';
 
 
+  //change each share url and content for share
+
+  $(".bdsharebuttonbox a").click(function(){
+
+    $shareText='Hello Wrold';
+
+    $shareDesc='Hello World Desc';
+
+    $shareUrl='www.baidu.com';
+
+    $shareImage='www.baidu.com';
+
+    //create social share links
+
+    window._bd_share_config = {
+      common : {
+        bdText : $shareText,
+        bdDesc : $shareDesc,
+        bdUrl : $shareUrl,
+        bdPic : $shareImage
+      },
+      share : [{
+        "bdSize" : 24
+      }]
+
+    }
+
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 
 
   });
 
 
+  //create social share links
 
+  window._bd_share_config = {
+    common : {
+      bdText : $shareText,
+      bdDesc : $shareDesc,
+      bdUrl : $shareUrl,
+      bdPic : $shareImage
+    },
+    share : [{
+      "bdSize" : 24
+    }]
 
+  }
 
-
-
-
-
-
-
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 
 
   //
