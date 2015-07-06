@@ -66,12 +66,48 @@ class Admin::OrdersController < Admin::AdminController
           if @order.status == Order::PAID
             @order.status = Order::DELIVERED
           end
-          @order.save
-          r[:message] = '更新成功'
+          if @order.save
+            r[:message] = '更新成功'
+          else
+            r[:message] = '未知错误'
+          end
         end
         r[:order_status] = @order && @order.status
       end
     end
     render 'upload_delivery'
+  end
+
+  def upload_payment
+  end
+
+  def import_payment
+    @results = CSV.parse(params[:file].read).map {|line| {order_number: line[0], payment_type: line[1].to_i, amount: line[2].to_f,
+                                                          payment_time: line[3].blank? ? nil : Time.parse(line[3])} }
+    @results.each do |r|
+      Order.transaction do
+        @order = Order.lock.find_by_order_number(r[:order_number])
+        if ![PaymentRecord::ALIPAY, PaymentRecord::WECHAT].include?(r[:payment_type])
+          r[:message] = '支付方式不正确'
+        elsif @order.nil?
+          r[:message] = '订单不存在'
+        elsif @order.status != Order::TO_PAY
+          r[:message] = '订单状态不正确'
+        else
+          @order.status = Order::PAID
+          @order.payment_record.status = PaymentRecord::PAID
+          @order.payment_record.amount = r[:amount]
+          @order.payment_record.payment_type = r[:payment_type]
+          @order.payment_record.payment_time = r[:payment_time] || Time.now
+          if @order.save
+            r[:message] = '更新成功'
+          else
+            r[:message] = '未知错误'
+          end
+        end
+        r[:order_status] = @order && @order.status
+      end
+    end
+    render 'upload_payment'
   end
 end

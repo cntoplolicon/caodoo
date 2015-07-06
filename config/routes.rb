@@ -114,6 +114,7 @@ Rails.application.routes.draw do
   resources :contest_products
 
   namespace :admin do
+    root 'orders#index'
     resources :products do
       resource :product_carousel_images
       resource :product_detail_images
@@ -126,6 +127,8 @@ Rails.application.routes.draw do
       collection do
         get :upload_delivery
         post :import_delivery
+        get :upload_payment
+        post :import_payment
       end
     end
   end

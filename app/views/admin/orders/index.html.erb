@@ -2,6 +2,7 @@
   <div style="margin-bottom: 16px">
     <%= link_to "导出CSV", admin_orders_path(format: :csv), class: 'order-csv-link btn btn-primary' %>
     <%= link_to "导入发货CSV", upload_delivery_admin_orders_path, class: 'order-csv-link btn btn-primary' %>
+    <%= link_to "导入支付CSV", upload_payment_admin_orders_path, class: 'order-csv-link btn btn-primary' %>
   </div>
   <table id="orders-table" class="table table-hover" data-source="<%= admin_orders_path(format: :json) %>">
     <thead>
