@@ -3,9 +3,11 @@
 
 (function(window, $) {
   $(document).ready(function() {
-    new Masonry(document.querySelector('.on-sale-products'), {
-      itemSelector: '.on-sale-product'
-    });
+  	if ($('.on-sale-products').length > 0) {
+  	  new Masonry(document.querySelector('.on-sale-products'), {
+  	    itemSelector: '.on-sale-product'
+  	  });
+  	}
 
     var countDown = function() {
       $('.product-sale-remain-time').each(function() {
@@ -34,9 +36,6 @@
       productDetailCountDown();
       window.setInterval(productDetailCountDown, 1000);
     };
-    $('.product-detail-thumbnail').click(function() {
-      $('.carousel-image').attr('src', $(this).attr('src'));
-    });
 
     $(".othmenu").click(function() {
       $(".menu_list").toggle();
@@ -81,7 +80,6 @@
     });
 
     var mySwiper = new Swiper('.swiper-container', {
-      pagination: '.pagination',
       loop: true,
       grabCursor: true,
       paginationClickable: true

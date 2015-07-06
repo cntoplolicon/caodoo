@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-placeholder
 //= require masonry-legacy/jquery.masonry
+//= require swiper
 //= require jquery-qrcode
 //= require jquery.debouncedresize
 //= require_tree ./common

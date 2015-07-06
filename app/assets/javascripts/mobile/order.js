@@ -52,6 +52,17 @@ $(document).ready(function() {
     var orderId = $('#cancel_order_box').data('orderId');
     $('.cancel_order_' + orderId + '_form').submit();
   });
+  $('.receive_order_action').click(function() {
+    $('#receive_order_box').data('orderId', $(this).data('orderId'));
+    $('#receive_order_box').show();
+  });
+  $('.cancel_receive_order_button').click(function() {
+    $('#receive_order_box').hide();
+  });
+  $('.confirm_receive_order_button').click(function() {
+    var orderId = $('#receive_order_box').data('orderId');
+    $('.receive_order_' + orderId + '_form').submit();
+  });
   $('.payment-button').click(function() {
     if ($('.alipay-radio').prop('checked')) {
       $('#alipay_confirm_box').show();
