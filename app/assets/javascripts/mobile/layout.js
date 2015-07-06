@@ -1,3 +1,9 @@
+$(document).ready(function () {
+  $('.mobile_go_back_button').click(function() {
+    window.history.back();
+  });
+});
+
 function showRemainTime(time) {
   if (typeof(time) !== 'number') {
     return '';
@@ -17,8 +23,4 @@ function showRemainTime(time) {
     seconds = '0' + seconds;
   }
   return hours + ':' + minutes + ':' + seconds;
-}
-
-function goBack() {
-  window.history.back();
 }
