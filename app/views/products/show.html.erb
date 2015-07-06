@@ -20,7 +20,21 @@
   <div class="product-detail-content">
     <div class="product-detail-images-container">
       <div class="product-detail-carousel">
-        <%= image_tag @product.product_view.product_carousel_images.first.url, class: "carousel-image" %>
+        <a class="arrow-left">
+          <%= image_tag("mobile_arrows_left.png", class: "arrow-left") %>
+        </a>
+        <a class="arrow-right">
+          <%= image_tag("mobile_arrows_right.png", class: "arrow-right") %>
+        </a>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <% @product.product_view.product_carousel_images.each do |image| %>
+              <div class="swiper-slide">
+        	    <%= image_tag(image.url, class: "product-detail-image carousel-image") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
         <% if @product.product_sale_schedules[0].sale_end < Time.now %>
           <%= image_tag("pc-time-out.png", class: "product-detail-carousel-time-out") %>
         <% elsif @product.quantity == 0%>

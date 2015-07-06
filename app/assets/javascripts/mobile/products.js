@@ -36,9 +36,6 @@
       productDetailCountDown();
       window.setInterval(productDetailCountDown, 1000);
     };
-    $('.product-detail-thumbnail').click(function() {
-      $('.carousel-image').attr('src', $(this).attr('src'));
-    });
 
     $(".othmenu").click(function() {
       $(".menu_list").toggle();
@@ -83,7 +80,6 @@
     });
 
     var mySwiper = new Swiper('.swiper-container', {
-      pagination: '.pagination',
       loop: true,
       grabCursor: true,
       paginationClickable: true
