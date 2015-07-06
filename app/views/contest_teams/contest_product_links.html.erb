@@ -2,13 +2,37 @@
   <div>
     <div class="team_share_link_product">
       <div class="team_share_link_product_qrcode">
-        <%= image_tag "team-share-qrcode.png", :title => "title", :class => "class" %>
+
+        <div class="team_share_link_product_qrcode_img">
+
+
+        </div>
+
       </div>
+
       <div class="team_share_link_detail">
         <div class="team_share_link_detail_name"><%= link[:title] %></div>
-        <div class="team_share_link_detail_url">营销链接： <%= link_to link[:url], link[:url] %></div>
-        <div class="team_share_link_detail_share">分享至：</div>
+        <div class="team_share_link_detail_url">营销链接：<p class="team_share_link_detail_p"><%= link_to link[:url], link[:url] %></p> </div>
+        <div class="team_share_link_detail_share">
+
+
+          <span class="team_share_link_detail_share_desc">分享至：</span>
+
+          <div class="bdsharebuttonbox" data-tag="share_1">
+
+            <a class="bds_tsina" data-cmd="tsina"></a>
+            <a class="bds_qzone" data-cmd="qzone"></a>
+            <a class="bds_renren" data-cmd="renren"></a>
+            <a class="bds_weixin" data-cmd="weixin"></a>
+
+
+          </div>
+
+
+        </div>
       </div>
     </div>
   </div>
 <% end %>
+
+

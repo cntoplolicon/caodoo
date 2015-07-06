@@ -16,6 +16,83 @@ $(document).ready(function() {
 });
 
 $(document).ready(function(){
+
+
+
+  //create qrCode links
+
+
+  $(".team_share_link_product").each(function(){
+
+    //get url link
+
+    $url=$(this).find(".team_share_link_detail_url a").text();
+
+    //gen url qrcode link to set image
+
+
+    $(this).find(".team_share_link_product_qrcode_img").qrcode({
+      "size": 140,
+      "color": "#3a3",
+      "text": $url
+    });
+
+  });
+
+  //global share infos
+
+  $shareText='';
+
+  $shareUrl='';
+
+
+  //change each share url and content for share
+
+
+  $(".team_share_link_product").mouseover(function(){
+
+
+    $shareText=$(this).find(".team_share_link_detail_name").text();
+
+    $shareUrl=$(this).find(".team_share_link_detail_p a").text();
+
+  });
+
+
+  //create social share links
+
+  window._bd_share_config = {
+    common : {
+
+      bdText : $shareText,
+      bdUrl : $shareUrl,
+
+      onBeforeClick:function(cmd,config){
+
+        return {
+
+          bdText:$shareText,
+
+          bdDesc:$shareText,
+
+          bdUrl:$shareUrl
+
+        };
+
+      }
+
+    },
+    share : [{
+      "bdSize" : 24
+    }]
+
+  }
+
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+
+
+  //
+
   $(".team_performance_tab a").click(function(){
     $(".team_performance_tab a").removeAttr("class");
     $(this).attr("class", "current_tab");
