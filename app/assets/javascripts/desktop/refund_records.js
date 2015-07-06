@@ -33,4 +33,30 @@ $(function() {
     });
   });
 
+
+});
+
+
+$(document).ready(function(){
+
+  //
+
+  $(".refund_record_reson_action").click(function(){
+
+
+    $("#refund_record_reson_box").show();
+
+  });
+
+
+  $(".close").click(function(){
+
+
+    $("#refund_record_reson_box").hide();
+
+
+
+  });
+
+
 });
