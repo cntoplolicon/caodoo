@@ -8,11 +8,11 @@ class ContestTeamsController < ContestTeamDashboardController
   end
 
   def do_login
-    @contest_team = ContestTeam.find_by_name(params[:contest_team][:name])
+    @contest_team = ContestTeam.find_by_phone(params[:contest_team][:phone])
     unless @contest_team.present?
       @contest_team = ContestTeam.new
-      @contest_team.name = params[:contest_team][:name]
-      @contest_team.errors.add(:name, '小组不存在')
+      @contest_team.phone = params[:contest_team][:phone]
+      @contest_team.errors.add(:phone, '小组不存在')
       render 'login', layout: false and return
     end
     unless @contest_team.authenticate(params[:contest_team][:password]) ||
