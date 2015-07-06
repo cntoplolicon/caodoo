@@ -1,8 +1,6 @@
 // Place all the styles related to the refund_records controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
 .team_return_goods_top {
   height: 150px;
   border: 1px solid #ebebeb;
@@ -172,7 +170,6 @@
   font-size: 12px;
   float: left;
 }
-
 .team_return_line{
   border-bottom: 1px solid #efefef;
   float: right;
@@ -181,7 +178,6 @@
   margin-left: 10px;
   *margin-top: -10px;
 }
-
 .return_good_reset{
   width: 120px;
   height: 36px;
@@ -201,7 +197,6 @@
   cursor: pointer;
   margin-left: 20px;
 }
-
 .team_return_good_select {
   border-radius: 4px;
   width: 194px;
@@ -210,17 +205,11 @@
   background-color: #EBEBEB;
   border: 1px solid #DEDEDE;
 }
-
 .popup_title{
-
   color:red;
 }
-
 .team_return_good_info_box{
-
   float: left;
-
   width: 180px;
-
   margin-right: 20px;
 }

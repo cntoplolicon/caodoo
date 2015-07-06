@@ -1,6 +1,5 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-
 $(function() {
   $('.refund_record_new_action, .refund_record_edit_action').click(function(event) {
     event.preventDefault();
@@ -8,7 +7,6 @@ $(function() {
       $('#team_return_goods_popup').show();
     });
   });
-
   $('#team_return_goods_popup').on('click', '.return_good_reset', function() {
       $('#team_return_goods_popup').hide();
   });
@@ -32,31 +30,13 @@ $(function() {
       }
     });
   });
-
-
 });
-
-
 $(document).ready(function(){
-
-  //
-
-  $(".refund_record_reson_action").click(function(){
-
-
-    $("#refund_record_reson_box").show();
-
+  $(".refund_record_remark_action").click(function(){
+    $(".refund_record_remark_message").text($(this).data('message'));
+    $("#refund_record_remark_box").show();
   });
-
-
-  $(".close").click(function(){
-
-
-    $("#refund_record_reson_box").hide();
-
-
-
+  $(".close_refund_record_remark_button").click(function(){
+    $("#refund_record_remark_box").hide();
   });
-
-
 });
