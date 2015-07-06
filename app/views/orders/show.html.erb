@@ -84,7 +84,7 @@
         <a class="bt_green receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>
       <% end %>
       <% if [Order::TO_PAY].include?(@order.status)  %>
-        <%= link_to "立即支付", user_order_payment_path(@user, order), class: 'bt_green' %>
+        <%= link_to "立即支付", user_order_payment_path(@user, @order), class: 'bt_green' %>
       <% end %>
       <% if [Order::TO_PAY, Order::PAID].include?(@order.status) %>
         <a class="bt cancel_order_action" data-order-id="<%= @order.id %>">取消订单</a>
