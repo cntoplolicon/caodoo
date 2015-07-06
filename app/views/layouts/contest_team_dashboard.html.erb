@@ -39,25 +39,25 @@
         </div>
       </div>
     </div>
-    <div class="block_container">
-      <div class="block_container_detail">
-        <div class="block_container_menu" style="height: 945px;">
+    <div class="team_client_block_container">
+      <div class="team_client_block_container_detail">
+        <div class="team_client_block_container_menu" style="height: 945px;">
           <ul>
-            <li class=<%=controller.class == ContestTeamsController && controller.action_name == 'show' ? 'block_container_menu_current' : '' %>>
+            <li class=<%=controller.class == ContestTeamsController && controller.action_name == 'show' ? 'team_client_block_container_menu_current' : '' %>>
               <%= link_to "团队业绩", contest_team_path(@contest_team) %>
             </li>
-            <li class=<%=controller.class == ContestTeamsController && controller.action_name == 'contest_product_links' ? 'block_container_menu_current' : '' %>>
+            <li class=<%=controller.class == ContestTeamsController && controller.action_name == 'contest_product_links' ? 'team_client_block_container_menu_current' : '' %>>
               <%= link_to "分享链接", contest_product_links_contest_team_path(@contest_team) %>
             </li>
-            <li class=<%=controller.class == RefundRecordsController ? 'block_container_menu_current' : '' %>>
+            <li class=<%=controller.class == RefundRecordsController ? 'team_client_block_container_menu_current' : '' %>>
               <%= link_to "退货管理", contest_team_refund_records_path(@contest_team) %>
             </li>
-            <li class=<%=controller.class == ContestTeamsController && controller.action_name == 'notification' ? 'block_container_menu_current' : '' %>>
+            <li class=<%=controller.class == ContestTeamsController && controller.action_name == 'notification' ? 'team_client_block_container_menu_current' : '' %>>
               <%= link_to "团队须知", notification_contest_team_path(@contest_team) %>
             </li>
           </ul>
         </div>
-        <div class="detail_container">
+        <div class="team_client_detail_container">
           <%= yield %>
         </div>
       </div>

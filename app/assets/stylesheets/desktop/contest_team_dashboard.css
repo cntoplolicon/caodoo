@@ -59,13 +59,13 @@
   margin-left: 4px;
 }
 
-.block_container {
+.team_client_block_container {
   text-align: center;
   width: auto;
   min-width: 960px;
   background-color: #f7f7f7;
 }
-.block_container_detail {
+.team_client_block_container_detail {
   width: 960px;
   height: 100%;
   display: inline-block;
@@ -80,11 +80,11 @@ li {
   list-style: none;
 }
 
-.block_container_menu li a {
+.team_client_block_container_menu li a {
   font-size: 16px;
   color: #ffffff;
 }
-.block_container_menu li {
+.team_client_block_container_menu li {
   height: 30px;
   width: 166px;
   text-align: left;
@@ -92,7 +92,7 @@ li {
   padding-top: 12px;
 }
 
-.block_container_menu {
+.team_client_block_container_menu {
   float: left;
   background-color: #23205b;
   width: 186px;
@@ -101,7 +101,7 @@ li {
   min-height: 656px;
 }
 
-.block_container_menu_current {
+.team_client_block_container_menu_current {
   background-color: #16b51b;
 }
 .current_tab {
@@ -131,7 +131,7 @@ li {
   margin-right: auto;
   height: 1px;
 }
-.detail_container {
+.team_client_detail_container {
   width: 720px;
   padding: 24px 27px 40px 27px;
   text-align: center;
