@@ -51,9 +51,11 @@
           <li>
             下单时间:<span class="order_span"><%= @order.created_at.in_time_zone.strftime('%Y-%m-%d') %></span>
           </li>
+          <% if @order.express_id.present? && @order.tracking_number.present? %>
           <li>
-            快递方式:<span class="order_span">顺丰快递－运单号1029292929292 </span>
+            快递方式:<span class="order_span"><%= @order.express.name %>－运单号<%= @order.tracking_number %> </span>
           </li>
+          <% end %>
         </ul>
       </div>
       <div class="order_info_block2">
