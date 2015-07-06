@@ -16,6 +16,47 @@ $(document).ready(function() {
 });
 
 $(document).ready(function(){
+
+
+
+  //create qrCode links
+
+
+  $(".team_share_link_product").each(function(){
+
+    //get url link
+
+    $url=$(this).find(".team_share_link_detail_url a").text();
+
+    //gen url qrcode link to set image
+
+
+    $(this).find(".team_share_link_product_qrcode_img").qrcode({
+      "size": 140,
+      "color": "#3a3",
+      "text": $url
+    });
+
+
+
+
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //
+
   $(".team_performance_tab a").click(function(){
     $(".team_performance_tab a").removeAttr("class");
     $(this).attr("class", "current_tab");
