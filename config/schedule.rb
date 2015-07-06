@@ -19,9 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-
-every 5.seconds do
-  p '----------------'
-  p 'fuskfjasldfjsaldf'
-  p '----------------'
+every 2.minutes do
+  rake "orders:clean_timeout_orders"
 end
+

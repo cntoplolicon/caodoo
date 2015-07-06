@@ -43,7 +43,7 @@ gem 'bcrypt'
 gem 'rails_config'
 gem 'alipay'
 gem 'wx_pay'
-gem 'crono'
+gem 'whenever'
 
 #admin dashboad dependencies
 gem "kaminari"

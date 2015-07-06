@@ -1,5 +1,5 @@
-class CleanTimeoutOrdersJob < ActiveJob::Base
-  def perform
+namespace :orders do
+  task clean_timeout_orders: :environment do
     order_table = Order.arel_table
     Order.transaction do
       timeout_orders = Order.lock.where(status: Order::TO_PAY).where(order_table[:created_at].lt(Time.now - Settings.payment.expired.minutes))
