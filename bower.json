@@ -24,6 +24,7 @@
     "yadcf": "~0.8.8",
     "jquery-ui": "~1.11.4",
     "zepto": "~1.1.6",
-    "swiper": "2.1"
+    "swiper": "2.1",
+    "datatables-bootstrap3-plugin": "~0.4.0"
   }
 }
