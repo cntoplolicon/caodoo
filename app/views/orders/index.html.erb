@@ -80,9 +80,12 @@
                 <div class="order_action product_tt_40">
                   <% if [Order::TO_PAY].include?(order.status) %>
                     <%= link_to "立即支付", user_order_payment_path(@user, order), class: 'pay_order' %>
+                  <% end %>
+                  <% if [Order::TO_PAY, Order::PAID].include?(order.status) %>
                     <a class="cancel_order cancel_order_action" data-order-id="<%= order.id %>">取消订单</a>
                   <% end %>
                   <% if [Order::DELIVERED].include?(order.status) %>
+                    <a href="http://www.kuaidi100.com">查看物流</a>
                     <a class="receive_order receive_order_action" data-order-id="<%= order.id %>">确认收货</a>
                   <% end %>
                 </div>
@@ -106,6 +109,22 @@
       &nbsp;&nbsp;&nbsp;
       <a class="confirm_cancel_order_button">
         取消订单
+      </a>
+    </div>
+  </div>
+</div>
+<div id="receive_order_box" class="popup">
+  <div class="confirm_popup_box">
+    <div class="confirm_title">
+      确认收货?
+    </div>
+    <div class="confirm_action">
+      <a class="cancel_receive_order_button">
+        关闭窗口
+      </a>
+      &nbsp;&nbsp;&nbsp;
+      <a class="confirm_receive_order_button">
+        确认收货
       </a>
     </div>
   </div>

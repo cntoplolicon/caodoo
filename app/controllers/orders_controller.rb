@@ -106,7 +106,7 @@ class OrdersController < ApplicationController
           @order.save
         end
       end
-      redirect_to action: :index
+      redirect_to user_order_path(@user, @order)
     end
   end
 

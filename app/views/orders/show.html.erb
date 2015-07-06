@@ -71,16 +71,23 @@
       </div>
     </div>
     <div>
-      <% if [2, 3].include?(@order.status)  %>
-        <a class="bt_green">查看物流</a>
+      <%= form_for [@user, @order], html: {class: "receive_order_#{@order.id}_form"} do |f| %>
+        <%= f.hidden_field :status, value: Order::COMPLETE %>
       <% end %>
-      <% if @order.status == 0  %>
-        <%= form_for [@user, @order], html: {class: "cancel_order_#{@order.id}_form"} do |f| %>
-          <%= f.hidden_field :status, value: Order::CANCELLED %>
-        <% end %>
+      <%= form_for [@user, @order], html: {class: "cancel_order_#{@order.id}_form"} do |f| %>
+        <%= f.hidden_field :status, value: Order::CANCELLED %>
+      <% end %>
+      <% if [Order::DELIVERED].include?(@order.status)  %>
+        <a class="btn_green" href="http://www.kuaidi100.com">查看物流</a>
+        <a class="receive_order receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>
+      <% end %>
+      <% if [Order::TO_PAY].include?(@order.status)  %>
+        <%= link_to "立即支付", user_order_payment_path(@user, order), class: 'btn_green' %>
+      <% end %>
+      <% if [Order::TO_PAY, Order::PAID].include?(@order.status) %>
         <a class="bt cancel_order_action" data-order-id="<%= @order.id %>">取消订单</a>
       <% end %>
-      <% if [4].include?(@order.status)  %>
+      <% if [Order::COMPLETE].include?(@order.status)  %>
         <a class="bt return_application_action">申请退货</a>
       <% end %>
     </div>
@@ -117,6 +124,22 @@
           <a class="close_return_application_box_button">知道了</a>
         </li>
       </ul>
+    </div>
+  </div>
+</div>
+<div id="receive_order_box" class="popup">
+  <div class="confirm_popup_box">
+    <div class="confirm_title">
+      确认收货?
+    </div>
+    <div class="confirm_action">
+      <a class="cancel_receive_order_button">
+        关闭窗口
+      </a>
+      &nbsp;&nbsp;&nbsp;
+      <a class="confirm_receive_order_button">
+        确认收货
+      </a>
     </div>
   </div>
 </div>
