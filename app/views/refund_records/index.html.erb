@@ -21,41 +21,41 @@
   <div class="team_return_goods_middle_title">退货联系方式</div>
   <table>
     <tbody>
-      <tr class="team_return_goods_table_title">
-        <td>产品名</td>
-        <td>收件人</td>
-        <td>电话</td>
-        <td>公司</td>
-        <td>收件地址</td>
-      </tr>
-      <tr>
-        <td>1号产品</td>
-        <td>1号收件人</td>
-        <td>1号电话</td>
-        <td>1号公司</td>
-        <td>1号地址</td>
-      </tr>
-      <tr>
-        <td>2号产品</td>
-        <td>2号收件人</td>
-        <td>2号电话</td>
-        <td>2号公司</td>
-        <td>2号地址</td>
-      </tr>
-      <tr>
-        <td>3号产品</td>
-        <td>3号收件人</td>
-        <td>3号电话</td>
-        <td>3号公司</td>
-        <td>3号地址</td>
-      </tr>
-      <tr>
-        <td>4号产品</td>
-        <td>4号收件人</td>
-        <td>4号电话</td>
-        <td>4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司</td>
-        <td>4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址</td>
-      </tr>
+    <tr class="team_return_goods_table_title">
+      <td>产品名</td>
+      <td>收件人</td>
+      <td>电话</td>
+      <td>公司</td>
+      <td>收件地址</td>
+    </tr>
+    <tr>
+      <td>1号产品</td>
+      <td>1号收件人</td>
+      <td>1号电话</td>
+      <td>1号公司</td>
+      <td>1号地址</td>
+    </tr>
+    <tr>
+      <td>2号产品</td>
+      <td>2号收件人</td>
+      <td>2号电话</td>
+      <td>2号公司</td>
+      <td>2号地址</td>
+    </tr>
+    <tr>
+      <td>3号产品</td>
+      <td>3号收件人</td>
+      <td>3号电话</td>
+      <td>3号公司</td>
+      <td>3号地址</td>
+    </tr>
+    <tr>
+      <td>4号产品</td>
+      <td>4号收件人</td>
+      <td>4号电话</td>
+      <td>4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司4号公司</td>
+      <td>4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址4号地址</td>
+    </tr>
     </tbody>
   </table>
 </div>
@@ -63,30 +63,94 @@
   <div class="team_return_goods_bottom_title">退货单</div>
   <div class="team_return_goods_bottom_add">
     <%= link_to "添加新退货单", new_contest_team_refund_record_path(@contest_team), class: 'refund_record_new_action' %>
-  </div>
-  <table>
-    <tbody>
-      <tr class="team_return_goods_table_title">
-        <td>订单号</td>
-        <td>收件人</td>
-        <td>退货物流</td>
-        <td>退货运单号</td>
-        <td>退货状态</td>
-        <td>操作</td>
-      </tr>
-      <% @refund_records.each do |r| %>
-        <tr>
-          <td><%= r.order.order_number %></td>
-          <td><%= r.order.receiver %></td>
-          <td><%= r.express.name %></td>
-          <td><%= r.tracking_number %></td>
-          <td><%= refund_record_status_text(r.status) %></td>
-          <td><%= link_to '编辑', edit_contest_team_refund_record_path(@contest_team, r), class: 'refund_record_edit_action' %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+        </div>
+        <table>
+          <tbody>
+          <tr class="team_return_goods_table_title">
+            <td>订单号</td>
+            <td>收件人</td>
+            <td>退货物流</td>
+            <td>退货运单号</td>
+            <td>退货状态</td>
+            <td>操作</td>
+          </tr>
+          <% @refund_records.each do |r| %>
+              <tr>
+                <td><%= r.order.order_number %></td>
+                <td><%= r.order.receiver %></td>
+                <td><%= r.express.name %></td>
+                <td><%= r.tracking_number %></td>
 
-<div class="team_return_goods_popup" id="team_return_goods_popup">
-</div>
+                <!--<td><%= refund_record_status_text(r.status) %></td>-->
+
+                <td><a class="a_live refund_record_reson_action"><%= refund_record_status_text(r.status) %></td>
+
+                <td><%= link_to '编辑', edit_contest_team_refund_record_path(@contest_team, r), class: 'refund_record_edit_action' %></td>
+
+                      </tr>
+                  <% end %>
+                  </tbody>
+                  </table>
+                  </div>
+
+
+
+
+                  <div class="team_return_goods_popup" id="team_return_goods_popup">
+
+
+                  </div>
+
+
+                  <div id="refund_record_reson_box" class="popup" style="display: none;">
+
+
+
+                    <div class="resales_popup_box">
+
+
+
+                      <div class="customer_service_info">
+
+
+
+                        <ul>
+
+
+                          <li><span style="color: black;">订单备注:</span></li>
+
+                          <li>
+
+
+                            货发错了
+
+
+                          </li>
+
+
+                          <li style="text-align: right">
+
+
+                            <a class="close">知道了</a>
+
+                          </li>
+
+
+
+                        </ul>
+
+
+
+
+
+                      </div>
+
+
+
+
+
+                    </div>
+
+
+
+                  </div>
