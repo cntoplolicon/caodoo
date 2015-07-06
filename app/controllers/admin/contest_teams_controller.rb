@@ -26,6 +26,6 @@ class Admin::ContestTeamsController < Admin::AdminController
   end
 
   def contest_team_params
-    params.require(:contest_team).permit(:password)
+    params.require(:contest_team).permit(:password, :password_updated)
   end
 end

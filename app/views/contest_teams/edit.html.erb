@@ -28,9 +28,11 @@
             <div class="error-message"><%= @contest_team.errors.messages[:password_confirmation].first if @contest_team.errors[:password_confirmation].any? %></div>
           </div>
           <div class="game-reset-pwd-bottom">
-            <div class="game-reset-pwd-button">
-            <%= link_to "返回系统", contest_team_path(@contest_team), class: 'game-reset-pwd-back' %>
-            </div>
+            <% if @contest_team.password_updated %>
+              <div class="game-reset-pwd-button">
+                <%= link_to "返回系统", contest_team_path(@contest_team), class: 'game-reset-pwd-back' %>
+              </div>
+            <% end %>
             <div class="game-reset-pwd-flex-x"></div>
             <div class="game-reset-pwd-button">
               <%= f.submit '提交修改', :disable_with => '正在提交修改...', class: 'game-reset-pwd-submit' %>

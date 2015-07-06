@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704092006) do
+ActiveRecord::Schema.define(version: 20150706031911) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -49,11 +49,12 @@ ActiveRecord::Schema.define(version: 20150704092006) do
     t.string   "password_digest",          limit: 255
     t.string   "university",               limit: 48
     t.string   "area",                     limit: 48
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.integer  "sales_quantity",           limit: 4,   default: 0
     t.integer  "sales_price",              limit: 4,   default: 0
     t.integer  "sales_or_return_quantity", limit: 4,   default: 0
+    t.boolean  "password_updated",         limit: 1,   default: false
   end
 
   add_index "contest_teams", ["area"], name: "index_contest_teams_on_area", using: :btree

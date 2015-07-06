@@ -10,6 +10,7 @@
 
 <div class="container form-container">
   <%= form_for [:admin, @contest_team] do |f| %>
+    <%= f.hidden_field :password_updated, value: false %>
     <div class="form-group">
       <%= f.label :password, '密码' %>
       <%= f.text_field :password, class: 'form-control' %>

@@ -1,7 +1,6 @@
-class ContestTeamsController < ApplicationController
-  before_action :find_contest_team, only: [:edit, :update, :show, :contest_product_links, :notification]
-
-  layout 'contest_team_dashboard'
+class ContestTeamsController < ContestTeamDashboardController
+  before_action :require_login_and_reset_password, only: [:edit, :show, :contest_product_links, :notification]
+  before_action :require_login, only: [:update]
 
   def login
     @contest_team = ContestTeam.new
@@ -40,6 +39,7 @@ class ContestTeamsController < ApplicationController
     else
       @contest_team.password = params[:contest_team][:password]
       @contest_team.password_confirmation = params[:contest_team][:password_confirmation]
+      @contest_team.password_updated = true
     end
     if @contest_team.errors.empty? && @contest_team.save
       redirect_to action: :show
@@ -82,13 +82,5 @@ class ContestTeamsController < ApplicationController
   end
 
   def notification
-  end
-
-  private
-
-  def find_contest_team
-    redirect_to action: :login and return if session[:login_contest_team_id].nil?
-    head :forbidden if params[:id].to_i != session[:login_contest_team_id]
-    @contest_team = ContestTeam.find(params[:id])
   end
 end

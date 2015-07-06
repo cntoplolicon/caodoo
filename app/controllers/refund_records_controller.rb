@@ -1,7 +1,5 @@
-class RefundRecordsController < ApplicationController
-  before_action :require_login
-
-  layout 'contest_team_dashboard'
+class RefundRecordsController < ContestTeamDashboardController
+  before_action :require_login_and_reset_password
 
   def create
     @refund_record = RefundRecord.new(create_params)
@@ -59,11 +57,6 @@ class RefundRecordsController < ApplicationController
 
   private
 
-  def require_login
-    redirect_to login_contest_teams_path and return if session[:login_contest_team_id].nil?
-    head :forbidden if params[:contest_team_id].to_i != session[:login_contest_team_id]
-    @contest_team = ContestTeam.find(session[:login_contest_team_id])
-  end
 
   def create_params
     params.require(:refund_record).permit(:order_number, :receiver, :express_id, :tracking_number)
