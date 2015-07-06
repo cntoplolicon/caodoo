@@ -3,6 +3,12 @@ $(document).ready(function () {
     $('.cd_dropdown').toggle();
   });
   $('input, textarea').placeholder();
+  $('#open_privicy_box').click(function() {
+    $('#terms_of_privicy_container').show();
+  });
+  $('.terms_of_privicy_close_button').click(function() {
+    $('#terms_of_privicy_container').hide();
+  });
 });
 function showRemainTime(time) {
   if (typeof(time) !== 'number') {
