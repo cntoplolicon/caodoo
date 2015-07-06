@@ -66,12 +66,21 @@
           <!--order action-->
           <div class="order_action">
             <%= form_for [@user, order], html: {class: "cancel_order_#{order.id}_form"} do |f| %>
-               <%= f.hidden_field :status, value: Order::CANCELLED %>
-               <% end %>
-          <div class="order_action product_tt_40">
-            <% if order.status == Order::TO_PAY %>
+              <%= f.hidden_field :status, value: Order::CANCELLED %>
+              <% end %>
+            <%= form_for [@user, order], html: {class: "receive_order_#{order.id}_form"} do |f| %>
+              <%= f.hidden_field :status, value: Order::COMPLETE %>
+            <% end %>
+            <div class="order_action product_tt_40">
+            <% if [Order::TO_PAY].include?(order.status) %>
                <%= link_to "立即支付", user_order_payment_path(@user, order), class: 'order_pay_bt a_bt_hight' %>
+            <% end %>
+            <% if [Order::TO_PAY, Order::PAID].include?(order.status) %>
                <a class="cancel_order_action order_cancel_bt a_bt" data-order-id="<%= order.id %>">取消订单</a>
+            <% end %>
+            <% if [Order::DELIVERED].include?(order.status) %>
+              <a class="pay_order" href="http://www.kuaidi100.com">查看物流</a>
+              <a class="pay_order receive_order_action" data-order-id="<%= order.id %>">确认收货</a>
             <% end %>
           </div>
         </li>
@@ -80,18 +89,34 @@
     </div>
   </div>
   <div id="cancel_order_box" class="popup">
-  <div class="confirm_popup_box">
+    <div class="confirm_popup_box">
     <div class="confirm_title">
       确定取消订单？
     </div>
+      <div class="confirm_action">
+        <a class="cancel_cancel_order_button">
+          关闭窗口
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a class="confirm_cancel_order_button">
+          取消订单
+        </a>
+      </div>
+    </div>
+  </div>
+  <div id="receive_order_box" class="popup">
+    <div class="confirm_popup_box">
+      <div class="confirm_title">
+        确认收货?
+      </div>
     <div class="confirm_action">
-      <a class="cancel_cancel_order_button">
+      <a class="cancel_receive_order_button">
         关闭窗口
       </a>
       &nbsp;&nbsp;&nbsp;
-      <a class="confirm_cancel_order_button">
-        取消订单
+      <a class="confirm_receive_order_button">
+        确认收货
       </a>
     </div>
+    </div>
   </div>
-</div>

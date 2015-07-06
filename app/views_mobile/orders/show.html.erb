@@ -48,7 +48,7 @@
       </div>
       <div class="order_row">
         <span class="col_name">订单状态:</span>
-        <strong class="strong_value left">未支付</strong>
+        <strong class="strong_value left"><%= order_status_text(@order.status) %></strong>
       </div>
     </div>
     <!--delivery info-->
@@ -66,5 +66,65 @@
         <%= "#{@order.province_name}#{@order.city_name}#{@order.district_name}#{@order.detailed_address}" %>
         </span>
       </div>
+      <div class="order_row">
+        <span class="col_name">快递方式:</span>
+        <span><%= @order.express.name %>－运单号<%= @order.tracking_number %></span>
+      </div>
+    </div>
+    <div class="one_order_action">
+      <%= form_for [@user, @order], html: {class: "receive_order_#{@order.id}_form"} do |f| %>
+        <%= f.hidden_field :status, value: Order::COMPLETE %>
+      <% end %>
+      <%= form_for [@user, @order], html: {class: "cancel_order_#{@order.id}_form"} do |f| %>
+        <%= f.hidden_field :status, value: Order::CANCELLED %>
+      <% end %>
+      <% if [Order::DELIVERED].include?(@order.status)  %>
+        <a class="order_pay_bt a_bt_hight" href="http://www.kuaidi100.com">查看物流</a>
+        <a class="order_pay_bt a_bt_hight receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>
+      <% end %>
+      <% if [Order::TO_PAY].include?(@order.status)  %>
+        <%= link_to "立即支付", user_order_payment_path(@user, @order), class: 'order_pay_bt a_bt_hight' %>
+      <% end %>
+      <% if [Order::TO_PAY, Order::PAID].include?(@order.status) %>
+        <a class="order_cancel_bt a_bt cancel_order_action" data-order-id="<%= @order.id %>">取消订单</a>
+      <% end %>
+      <% if [Order::COMPLETE].include?(@order.status)  %>
+        <a class="order_cancel_bt a_bt return_application_action">申请退货</a>
+      <% end %>
     </div>
 </div>
+
+  <div id="return_application_box" class="popup">
+  <div class="resales_popup_box">
+    <div class="customer_service_info">
+      <ul>
+        <li>请联系客服</li>
+        <li>
+          <p> 电话：<strong style="color: #333333">010-2453464</strong></p>
+          <p> QQ：<strong style="color: #333333">24141554656</strong></p>
+        </li>
+        <li style="text-align: right">
+          <a class="close_return_application_box_button">知道了</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <!--取消订单 confirm-->
+  <div id="cancel_order_box" class="popup">
+    <div class="confirm_popup_box">
+      <div class="confirm_title">
+        <span style="position: relative;top: 10px">
+            确定取消订单吗？
+                </span>
+      </div>
+      <div class="confirm_action">
+        <a class="cancel_cancel_order_button">
+          关闭窗口
+        </a> &nbsp;&nbsp;&nbsp;
+        <a class="confirm_cancel_order_button">
+          取消订单
+        </a>
+      </div>
+    </div>
+  </div>
