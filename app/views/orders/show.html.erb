@@ -27,8 +27,12 @@
             <%= @order.product_name %>
           </li>
           <li class="order_product_name">
-            来自亚马逊的推荐
-          </li>
+            <% if @order.contest_team.present? %>
+              来自<%= @order.contest_team.name %>的推荐
+            <% else %>
+              &nbsp
+            <% end %>
+            </li>
           <li>
             产品单价:<span>¥<%= @order.unit_price %></span>
           </li>
@@ -117,8 +121,12 @@
       <ul>
         <li>请联系客服</li>
         <li>
-          <p> 电话：<strong style="color: #333333">010-2453464</strong></p>
-          <p> QQ：<strong style="color: #333333">24141554656</strong></p>
+          <% if @order.contest_team.present? %>
+            <p> 电话：<strong style="color: #333333"><%= @order.contest_team.name %></strong></p>
+          <% else %>
+            <p> 电话：<strong style="color: #333333"><%= Settings.contact.telephone %></strong></p>
+            <p> 微信：<strong style="color: #333333"><%= Settings.contact.wechat %></strong></p>
+          <% end %>
         </li>
         <li style="text-align: right">
           <a class="close_return_application_box_button">知道了</a>

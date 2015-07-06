@@ -3,18 +3,26 @@
     <div class="center order">
       <div class="order_menu">
         <ul>
-          <li class="<%= controller.class == OrdersController && controller.action_name == 'index' ? 'li_current' : '' %>">
-            <%= link_to "订单管理", user_orders_url(session[:login_user_id]) %>
-          </li>
-          <li class="<%= controller.class == AddressesController && controller.action_name == 'index' ? 'li_current' : '' %>">
-            <%= link_to "收货地址", user_addresses_url(session[:login_user_id]) %>
-          </li>
-          <li class="<%= controller.class == StandaloneController && controller.action_name == 'custom_service' ? 'li_current' : '' %>">
-            <%= link_to "客户服务", custom_service_url %>
-          </li>
-          <li class="<%= controller.class == UsersController && controller.action_name == 'user_settings' ? 'li_current' : '' %>">
-            <%= link_to "个人设置", user_settings_user_url(session[:login_user_id]) %>
-          </li>
+          <%= link_to user_orders_url(session[:login_user_id]) do %>
+            <li class="<%= controller.class == OrdersController && controller.action_name == 'index' ? 'li_current' : '' %>">
+              订单管理
+            </li>
+          <% end %>
+          <%= link_to user_addresses_url(session[:login_user_id]) do %>
+            <li class="<%= controller.class == AddressesController && controller.action_name == 'index' ? 'li_current' : '' %>">
+              收货地址
+            </li>
+          <% end %>
+          <%= link_to custom_service_url do %>
+            <li class="<%= controller.class == StandaloneController && controller.action_name == 'custom_service' ? 'li_current' : '' %>">
+              客户服务
+            </li>
+          <% end %>
+          <%= link_to user_settings_user_url(session[:login_user_id]) do %>
+            <li class="<%= controller.class == UsersController && controller.action_name == 'user_settings' ? 'li_current' : '' %>">
+              个人设置
+            </li>
+          <% end %>
         </ul>
       </div>
       <%= yield %>
