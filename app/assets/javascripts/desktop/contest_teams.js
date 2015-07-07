@@ -30,7 +30,7 @@ $(document).ready(function(){
 
       //get url link
 
-      $url=$(this).find(".team_share_link_detail_url a").text();
+     var url=$(this).find(".team_share_link_detail_url a").text();
 
       //gen url qrcode link to set image
 
@@ -38,16 +38,16 @@ $(document).ready(function(){
       $(this).find(".team_share_link_product_qrcode_img").qrcode({
         "size": 140,
         "color": "#3a3",
-        "text": $url
+        "text": url
       });
 
     });
 
     //global share infos
 
-    $shareText='';
+    var shareText='';
 
-    $shareUrl='';
+    var shareUrl='';
 
 
     //change each share url and content for share
@@ -56,9 +56,9 @@ $(document).ready(function(){
     $(".team_share_link_product").mouseover(function(){
 
 
-      $shareText=$(this).find(".team_share_link_detail_name").text();
+      shareText=$(this).find(".team_share_link_detail_name").text();
 
-      $shareUrl=$(this).find(".team_share_link_detail_p a").text();
+      shareUrl=$(this).find(".team_share_link_detail_p a").text();
 
     });
 
@@ -68,18 +68,15 @@ $(document).ready(function(){
     window._bd_share_config = {
       common : {
 
-        bdText : $shareText,
-        bdUrl : $shareUrl,
-
         onBeforeClick:function(cmd,config){
 
           return {
 
-            bdText:$shareText,
+            bdText: shareText,
 
-            bdDesc:$shareText,
+            bdDesc: shareText,
 
-            bdUrl:$shareUrl
+            bdUrl: shareUrl
 
           };
 
