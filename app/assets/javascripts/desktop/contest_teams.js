@@ -52,13 +52,24 @@ $(document).ready(function(){
 
     //change each share url and content for share
 
+    //
+    //$(".team_share_link_product").mouseover(function(){
+    //
+    //
+    //  shareText=$(this).find(".team_share_link_detail_name").text();
+    //
+    //  shareUrl=$(this).find(".team_share_link_detail_p a").text();
+    //
+    //});
 
-    $(".team_share_link_product").mouseover(function(){
 
 
-      shareText=$(this).find(".team_share_link_detail_name").text();
 
-      shareUrl=$(this).find(".team_share_link_detail_p a").text();
+    $(".bdsharebuttonbox a").click(function(){
+
+      shareText=$(this).parents().children(".team_share_link_detail_name").text();
+
+      shareUrl=$(this).parents().children(".team_share_link_detail_url").find("a").text();
 
     });
 
