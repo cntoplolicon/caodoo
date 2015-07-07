@@ -3,7 +3,7 @@ sms:
   password: Tch123456
 
 security_code:
-  disabled: true
+  disabled: false
   sms_template: "您的验证码是%{security_code}, 请在三分钟内输入"
   expired: 180
 

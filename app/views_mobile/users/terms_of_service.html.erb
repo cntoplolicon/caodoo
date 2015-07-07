@@ -322,6 +322,7 @@
     <BR>
   </P>
 </div>
-<div>
-  <input type="submit" class="close-button center-block" value="关闭">
+<%= form_tag new_user_path, method: :get do %>
+  <%= submit_tag '关闭', class: 'close-button center-block' %>
+<% end %>
 </div>
