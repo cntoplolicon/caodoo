@@ -2,10 +2,13 @@
   <%= link_to "去登录", action: :login %>
 </div>
 <div class="user-op-form-panel center-block register-box">
-  <div class="user-op-form-header">
-    注册
+  <div class="submit-panel input-panel">
+    <%= f.submit "注册", data: {disable_with: '正在提交'}%>
   </div>
   <%= form_for @user, url: users_path do |f| %>
+    <div class="submit-panel input-panel">
+      <%= f.submit "注册" %>
+    </div>
     <div class="username-panel input-panel">
       <%= f.text_field :username, placeholder: "输入您的手机号", id: 'username-input' %>
       <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first if @user.errors[:username].any? %></div>
@@ -24,9 +27,6 @@
       同意
       <%= link_to "服务条款", action: :terms_of_service %>
       <span class="error-message"><%= @user.errors.messages[:terms_of_service].first if @user.errors[:terms_of_service].any? %></span>
-    </div>
-    <div class="submit-panel input-panel">
-      <%= f.submit "注册", data: {disable_with: '正在提交'}%>
     </div>
   <% end %>
 </div>

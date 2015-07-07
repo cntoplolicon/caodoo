@@ -21,7 +21,7 @@ class ContestProductsController < ApplicationController
       redirect_to action: :index and return
     end
     record_team_id_and_page_view
-    redirect_to product_path(@product)
+    render 'products/show'
   end
 
   private

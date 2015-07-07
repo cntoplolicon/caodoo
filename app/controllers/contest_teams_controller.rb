@@ -78,7 +78,7 @@ class ContestTeamsController < ContestTeamDashboardController
       .where(product_table[:contest_level].gteq(@contest_team.level))
       .order(priority: :desc)
     @links = @products.map { |product| {title: product.name, url: contest_team_contest_product_url(@contest_team.identifier, product)} }
-    @links.unshift({title: '大赛活动页', url: contest_team_contest_products_url(@contest_team)})
+    @links.unshift({title: '大赛活动页', url: contest_team_contest_products_url(@contest_team.identifier)})
   end
 
   def notification

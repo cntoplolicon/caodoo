@@ -113,6 +113,8 @@ Rails.application.routes.draw do
 
   resources :contest_products
 
+  get 'qccy/login', to: 'contest_teams#login'
+
   namespace :admin do
     root 'orders#index'
     resources :products do

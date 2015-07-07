@@ -4,14 +4,8 @@ class OrdersController < ApplicationController
   before_action :find_user_or_login, only: [:new]
 
   def new
-    @addresses = @user.addresses.where(deleted: false).order(created_at: :desc)
     @order = @user.orders.build
-    default_address = @addresses.find(&:default)
-    if default_address.present?
-      @order.address_id = default_address.id
-    elsif @addresses.any?
-      @order.address_id = @addresses[0].id
-    end
+    load_order_addresses
 
     quantity = params[:quantity].to_i
     quantity = [quantity, 1].max
@@ -24,10 +18,15 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @address = @user.addresses.find(@order.address_id)
     @product = Product.where(id: @order.product_id).joins(:product_sale_schedules, :product_view => :product_carousel_images)
       .includes(:product_sale_schedules, :product_view => :product_carousel_images)
       .take
+    @address = @user.addresses.find(@order.address_id) if @order.address_id.present?
+    unless @address.present?
+      @order.errors.add(:address_id, '请选择收货地址')
+      render 'new' and return
+    end
+
     @onsale = @product.product_sale_schedules.any? do |s|
       s.sale_start < Time.now && s.sale_end > Time.now
     end 
@@ -40,9 +39,9 @@ class OrdersController < ApplicationController
     @order.product_image_url = @product.product_view.product_carousel_images[0].url
     @order.unit_price = @product.price
     @order.total_price = @order.quantity * @product.price
+    @order.status = Order::TO_PAY
     @order.receiver = @address.receiver
     @order.phone = @address.phone
-    @order.status = Order::TO_PAY
     if @address.province.present?
       @order.province_code = @address.province.code
       @order.province_name = @address.province.name
@@ -181,6 +180,16 @@ class OrdersController < ApplicationController
       @order.status = Order::TIMEOUT
       @order.payment_record.status = PaymentRecord::TIMEOUT
       @order.save
+    end
+  end
+
+  def load_order_addresses
+    @addresses = @user.addresses.where(deleted: false).order(created_at: :desc)
+    default_address = @addresses.find(&:default)
+    if default_address.present?
+      @order.address_id = default_address.id
+    elsif @addresses.any?
+      @order.address_id = @addresses[0].id
     end
   end
 
