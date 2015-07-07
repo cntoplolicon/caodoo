@@ -17,13 +17,13 @@
         <%= form_for @contest_team, url: {action: :do_login}, method: :post do |f| %>
           <div>
             <%= f.text_field :phone, placeholder: '团队联系方式', class: 'login-team-input' %>
-            <div class="error-message-container">
+            <div class="error-message-container team_login_error_box">
               <div class="error-message"><%= @contest_team.errors.messages[:phone].first if @contest_team.errors[:phone].any? %></div>
             </div>
           </div>
           <div>
             <%= f.password_field :password, placeholder: '密码', class: 'login-team-input' %>
-            <div class="error-message-container">
+            <div class="error-message-container team_login_error_box">
               <div class="error-message"><%= @contest_team.errors.messages[:password].first if @contest_team.errors[:password].any? %></div>
             </div>
           </div>
