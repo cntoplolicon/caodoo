@@ -15,6 +15,15 @@
         <%= image_tag "process_img4.png" %>
       <% elsif @order.status == 4 %>
         <%= image_tag "process_img5.png" %>
+      <% else %>
+      <div class="order_status_text_container">
+        <div class="order_status_text_icon_area">
+          <%= image_tag "warning.png", class: 'order_status_text_icon' %>
+        </div>
+        <div class="order_status_text_warning">
+          <%= order_status_text(@order.status) %>
+        </div>
+      </div>
       <% end %>
     </div>
     <div class="order_info">

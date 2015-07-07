@@ -58,7 +58,7 @@ $(document).ready(function() {
   });
   $('.confirm_cancel_order_button').click(function() {
     var orderId = $('#cancel_order_box').data('orderId');
-    $('.confirm_cancel_order_button').attr('disabled','disabled');
+    $('.confirm_cancel_order_button').prop('disabled', true);
     $('.cancel_order_' + orderId + '_form').submit();
   });
   $('.receive_order_action').click(function() {
@@ -70,7 +70,7 @@ $(document).ready(function() {
   });
   $('.confirm_receive_order_button').click(function() {
     var orderId = $('#receive_order_box').data('orderId');
-    $('.confirm_receive_order_button').attr('disabled','disabled');
+    $('.confirm_receive_order_button').prop('disabled', true);
     $('.receive_order_' + orderId + '_form').submit();
   });
 

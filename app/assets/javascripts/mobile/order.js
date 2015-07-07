@@ -14,7 +14,7 @@ $(document).ready(function() {
     }
   };
   $('.order-submission').click(function() {
-    $(this).prop('disabled',true);
+    $(this).prop('disabled', true);
     $(this).closest('form').submit();
   });
   function orderRemainTime(time) {
