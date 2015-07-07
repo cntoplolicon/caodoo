@@ -15,6 +15,15 @@
         <%= image_tag "process_img4.png" %>
       <% elsif @order.status == 4 %>
         <%= image_tag "process_img5.png" %>
+      <% else %>
+      <div class="order_status_text_container">
+        <div class="order_status_text_icon_area">
+          <%= image_tag "warning.png", class: 'order_status_text_icon' %>
+        </div>
+        <div class="order_status_text_warning">
+          <%= order_status_text(@order.status) %>
+        </div>
+      </div>
       <% end %>
     </div>
     <div class="order_info">
@@ -109,9 +118,9 @@
         关闭窗口
       </a>
       &nbsp;&nbsp;&nbsp;
-      <a class="confirm_cancel_order_button">
+      <button type="button" class="confirm_cancel_order_button">
         取消订单
-      </a>
+      </button>
     </div>
   </div>
 </div>
@@ -145,9 +154,9 @@
         关闭窗口
       </a>
       &nbsp;&nbsp;&nbsp;
-      <a class="confirm_receive_order_button">
+      <button type="button" class="confirm_receive_order_button">
         确认收货
-      </a>
+      </button>
     </div>
   </div>
 </div>

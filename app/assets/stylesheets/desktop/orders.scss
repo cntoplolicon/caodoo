@@ -463,6 +463,8 @@
 .payment-choise {
     margin-top: 112px;
     display: inline-block;
+    *display: inline;
+    zoom: 1;
     height: 58px;
     position: relative;
 }
@@ -633,4 +635,36 @@
 .qrcode {
     display: inline-block;
 }
+.confirm_cancel_order_button {
+    color: #909090;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
 
+.confirm_receive_order_button {
+    color: #909090;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.order_status_text_container {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.order_status_text_icon {
+    width: 35px;
+}
+
+.order_status_text_icon_area {
+    float: left;
+    margin-left: 30px;
+}
+
+.order_status_text_warning {
+    color: green;
+    float: left;
+    margin-top: 8px;
+    margin-left: 20px;
+}

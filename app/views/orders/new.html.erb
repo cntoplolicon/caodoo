@@ -67,7 +67,7 @@
           <div class="error-message" id="username-error"><%= @order.errors.messages[:address_id].first if @order.errors[:address_id].any? %></div>
         </div>
       </div>
-      <%= f.submit '提交订单', :disable_with => '正在提交订单ing', class: 'order-submission' %>
+      <%= f.submit '提交订单', data: {disable_with: '正在提交订单'}, class: 'order-submission' %>
     </div>
   </div>
 <% end %>

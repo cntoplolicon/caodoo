@@ -13,6 +13,10 @@ $(document).ready(function() {
       window.location.reload();
     }
   };
+  $('.order-submission').click(function() {
+    $(this).prop('disabled', true);
+    $(this).closest('form').submit();
+  });
   function orderRemainTime(time) {
     if (typeof(time) !== 'number') {
       return '00分00秒';

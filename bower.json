@@ -20,7 +20,7 @@
     "bootstrap": "~3.3.5",
     "datatables": "~1.10.7",
     "eonasdan-bootstrap-datetimepicker": "~4.14.30",
-    "jquery-ujs": "~1.0.4",
+    "jquery-ujs": "cntoplolicon/jquery-ujs#master",
     "yadcf": "~0.8.8",
     "jquery-ui": "~1.11.4",
     "zepto": "~1.1.6",
