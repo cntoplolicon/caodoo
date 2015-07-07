@@ -102,7 +102,112 @@
     <%= content_for?(:content) ? yield(:content) : yield %>
     <%= javascript_include_tag 'application' %>
     <div class="our_ts">
-      <%= image_tag "ts.png" %>
+     
+      
+      <ul class="our_ts_center">
+        
+        
+        <li class="our_ts_li">
+
+
+          <%= image_tag "zhengpin.png",:class => "our_ts_img"%>
+
+          <div class="our_ts_one_content">
+
+            <div class="our_ts_one_title">
+
+              正品保证
+
+            </div>
+
+            <div class="our_ts_one_desc">
+
+              100%优质
+
+            </div>
+
+          </div>
+          
+          
+        </li>
+
+
+        <li class="our_ts_li">
+
+
+          <%= image_tag "tuihuo.png",:class => "our_ts_img"%>
+
+          <div class="our_ts_one_content">
+
+            <div class="our_ts_one_title">
+
+              7天放心退
+
+            </div>
+
+            <div class="our_ts_one_desc">
+
+              满意的服务
+
+            </div>
+
+          </div>
+
+
+        </li>
+
+
+        <li class="our_ts_li">
+
+
+          <%= image_tag "baoyou.png",:class => "our_ts_img"%>
+
+          <div class="our_ts_one_content">
+
+            <div class="our_ts_one_title">
+
+              全场包邮
+
+            </div>
+
+            <div class="our_ts_one_desc">
+
+              抢购更低价
+
+            </div>
+
+          </div>
+
+
+        </li>
+
+
+        <li class="our_ts_li our_ts_one_left_border">
+
+          <div class="our_ts_one_content ">
+
+            <div class="our_ts_one_desc_contact ">
+
+              客服微信：<%= Settings.contact.wechat %>
+
+            </div>
+
+            <div class="our_ts_one_desc_contact">
+
+              客服电话：<%= Settings.contact.telephone %>
+
+            </div>
+
+          </div>
+
+
+        </li>
+        
+        
+        
+      </ul>
+      
+      
     </div>
     <div class="footer">
       <ul class="footer_ul">
