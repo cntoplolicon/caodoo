@@ -72,6 +72,7 @@
   right: 0;
   width: 235px;
   min-width: 235px;
+  white-space: nowrap;
 }
 
 .login-box .username-panel {

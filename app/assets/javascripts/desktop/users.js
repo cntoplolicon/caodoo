@@ -8,7 +8,7 @@ $(document).ready(function () {
       var username = $('#username-input').val();
       var xhr = $.post(url, {username: username, authenticity_token: $('meta[name=csrf-token]').attr('content')})
       .fail(function() {
-        var response = JSON.parse(xhr.responseText);
+        var response = $.parseJSON(xhr.responseText);
         $('#username-error').text(response.error);
       })
       .done(function() {

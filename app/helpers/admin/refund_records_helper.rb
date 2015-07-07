@@ -4,7 +4,7 @@ module Admin::RefundRecordsHelper
     when RefundRecord::PENDING
       '正在处理'
     when RefundRecord::REFUNDED
-      '已退款'
+      '退货成功'
     when RefundRecord::CANCELLED
       '作废'
     end
