@@ -3,7 +3,15 @@
 <% end %>
 
 <div class="container-fluid">
-  <%= image_tag("banner.jpg", class: "center-block app-banner") %>
+  <div class="center-block products_banner_container">
+    <%= image_tag("banner.jpg", class: "center-block app-banner") %>
+    <%= link_to contest_products_path do%>
+      <div class="products_banner_contest_entry">进入大赛</div>
+    <% end %>
+    <%= link_to login_contest_teams_url do%>
+      <div class="products_banner_contest_team_entry">大赛团队登陆</div>
+    <% end %>
+  </div>
   <%= image_tag("onsale.png", class: "center-block on-sale-notification") %>
   <div class="on-sale-products">
     <% @on_sale_products.each do |product| %>
