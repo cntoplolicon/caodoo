@@ -164,7 +164,8 @@ input {
 
 .header_logo{
 
-
+    width : 57px;
+    height : 43px;
     margin-top: 4px;
 
 }
@@ -447,7 +448,7 @@ input {
     background-size: cover;
 
     background-position: center center;
-    
+
     background-image:image-url("about_contact.png");
 
     height: 300px;
@@ -511,7 +512,7 @@ input {
     height: 90px;
 
     background-color: black;
-    
+
 }
 .footer_ul{
 
@@ -537,9 +538,11 @@ input {
 
 }
 
-.footer_ul li a{
+.footer_ul li a, button{
 
-    color: white;
+    color: #8A9195;
+
+    font-size: 12px;
 
 }
 
@@ -1454,7 +1457,6 @@ input {
 
 #open_privicy_box {
     background-color: #000000;
-    color: #FFFFFF;
     border: none;
     cursor: pointer;
 }
