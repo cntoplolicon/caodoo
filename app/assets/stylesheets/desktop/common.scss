@@ -999,23 +999,76 @@ input {
 
 .our_ts{
 
-    background-color: black;
+    background-color: #031522;
+
+    overflow: hidden;
+
+    padding: 25px 0;
+
+}
+
+.our_ts_center{
+
+    width: 780px;
+
+    margin: 0 auto;
 
     overflow: hidden;
 
 }
 
-.our_ts img{
+.our_ts_li{
 
-    display: block;
+    float: left;
 
-    width: 930px;
-
-    margin: 0 auto;
-
-    margin-top: 30px;
-
+    padding: 0 30px;
+    
 }
+
+.our_ts_img{
+
+    float: left;
+    
+}
+
+.our_ts_one_content{
+
+    float: left;
+
+    margin-left: 20px;
+    
+}
+
+.our_ts_one_left_border{
+
+    border-left:1px solid #44515B;
+
+    padding-left: 10px;
+}
+
+
+.our_ts_one_title{
+
+    color: #DEE0E2;
+
+    font-size: 16px;
+    
+}
+
+.our_ts_one_desc{
+
+    color: #909090;
+
+    padding: 6px 0;
+}
+
+.our_ts_one_desc_contact{
+
+    color: #909090;
+
+    padding: 2px 0;
+}
+
 
 .service_box{
 
