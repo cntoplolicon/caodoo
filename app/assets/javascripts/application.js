@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery-placeholder
+//= require jquery-ujs
 //= require masonry-legacy/jquery.masonry
 //= require swiper
 //= require jquery-qrcode

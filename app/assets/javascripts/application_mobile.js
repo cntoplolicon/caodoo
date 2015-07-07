@@ -12,6 +12,7 @@
 //
 //= require zepto
 //= require masonry/dist/masonry.pkgd.js
+//= require jquery-ujs
 //= require swiper
 //= require_tree ./common
 //= require_tree ./mobile

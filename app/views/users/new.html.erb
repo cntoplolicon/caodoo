@@ -26,7 +26,7 @@
       <span class="error-message"><%= @user.errors.messages[:terms_of_service].first if @user.errors[:terms_of_service].any? %></span>
     </div>
     <div class="submit-panel input-panel">
-      <%= f.submit "注册" %>
+      <%= f.submit "注册", data: {disable_with: '正在提交'}%>
     </div>
   <% end %>
 </div>
