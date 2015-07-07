@@ -29,7 +29,7 @@ class Admin::RefundRecordsController < Admin::AdminController
   def create
     @refund_record = RefundRecord.new(create_params)
     @order = Order.where(order_number: @refund_record.order_number).includes(:refund_records).take
-    @order = Order.fidn_by_order_number(@refund_record.order_number)
+    @order = Order.find_by_order_number(@refund_record.order_number)
     if @order.nil?
       @refund_record.errors.add(:order_id, '订单号不存在')
     else
@@ -45,7 +45,7 @@ class Admin::RefundRecordsController < Admin::AdminController
       @refund_record.order_id = @order.id
     end
 
-    if @orders.errors.empty? && @refund_record.save
+    if @refund_record.errors.empty? && @refund_record.save
       redirect_to action: :index
     else
       render 'new'
@@ -57,25 +57,21 @@ class Admin::RefundRecordsController < Admin::AdminController
 
   def update
     status = params[:refund_record][:status].to_i
-    if status == RefundRecord::REFUNDED
-      Order.transaction do
+    Order.transaction do
+      render 'edit' and return unless @refund_record.update(update_params)
+      if status == RefundRecord::REFUNDED
         @order = Order.lock.find(@refund_record.order_id)
         if [Order::DELIVERED, Order::COMPLETE, Order::REFUNDED].include?(@order.status)
           @order.status = Order::REFUNDED
           @order.payment_record.status = PaymentRecord::REFUNDED
-          @refund_record.attributes = refund_record_params
+          raise ActiveRecord::Rollback unless @order.save
         else
           @refund_record.errors.add(:status, "订单状态为#{order_status_text(@order.status)}")
+          render 'edit' and return
         end
       end
-    else
-      @refund_record.attributes = update_params
     end
-    if @refund_record.errors.empty? && @refund_record.save
-      redirect_to action: :index
-    else
-      render 'edit'
-    end
+    redirect_to action: :index
   end
 
   private
@@ -89,6 +85,6 @@ class Admin::RefundRecordsController < Admin::AdminController
   end
 
   def create_params
-    params.require(:refund_record).permit(:status, :remark, :express_id, :tracking_number)
+    params.require(:refund_record).permit(:order_number, :status, :remark, :express_id, :tracking_number)
   end
 end

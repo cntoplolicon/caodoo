@@ -8,7 +8,7 @@
     <div class="team_return_goods_top_data_text">退货量</div>
   </div>
   <div class="team_return_goods_top_data" style="margin-top: 39px">
-    <div class="team_return_goods_top_data_number red"><%= number_to_percentage(@returned_orders_count / @total_orders_count) %></div>
+    <div class="team_return_goods_top_data_number red"><%= number_to_percentage(@returned_orders_count.to_f / (@returned_orders_count + @total_orders_count) * 100) %></div>
     <div class="team_return_goods_top_data_text">退货率</div>
   </div>
   <div class="team_return_goods_top_text">

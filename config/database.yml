@@ -13,7 +13,7 @@ default: &default
 
 development:
   <<: *default
-  host: localhost
+  host: 192.168.1.187
 
 test:
   <<: *default

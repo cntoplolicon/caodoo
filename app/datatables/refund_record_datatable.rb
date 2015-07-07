@@ -21,7 +21,7 @@ class RefundRecordDatatable < Datatable
 
   def unpaged_records
     records = RefundRecord.all
-      .joins(:express, order: [:product, :contest_team])
+      .joins(:express, order: [:product])
       .includes(:express, order: [:product, :contest_team])
     for i in 0..params[:iColumns].to_i do
       filter = params["sSearch_#{i}"]

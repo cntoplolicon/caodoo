@@ -27,6 +27,7 @@ $(document).ready(function() {
       data: []
     }
   );
+  filter_options[4].data = {};
   if ($('#refund-records-table').length > 0) {
     var dataTable = $('#refund-records-table').dataTable({
       processing: true,

@@ -11,26 +11,14 @@
         </ul>
       <% end %>
       <%= link_to "返回", admin_orders_path, class: 'btn btn-default' %>
-      <% if [Order::COMPLETE, Order::DELIVERED].include?(@order.status) %>
-        <%= form_for @order do |f| %>
-          <%= hidden_field_tag :status, Order::REFUNDED  %>
-          <%= f.submit '确认退款退货', data: {disable_with: '正在提交', confirm: '确定更改订单状态？'}, class: 'btn btn-primary' %>
-        <% end %>
-      <% end %>
-      <% if [Order::TO_PAY].include?(@order.status) %>
-        <%= form_for @order do |f| %>
-          <%= hidden_field_tag :status, Order::PAID  %>
-          <%= f.submit '确认支付到账', data: {disable_with: '正在提交', confirm: '确定更改订单状态？'}, class: 'btn btn-primary' %>
-        <% end %>
-      <% end %>
       <% if [Order::CANCELLING].include?(@order.status) %>
-        <%= form_for @order do |f| %>
+        <%= form_for [:admin, @order] do |f| %>
           <%= hidden_field_tag :status, Order::CANCELLED  %>
           <%= f.submit '确认退款取消', data: {disable_with: '正在提交', confirm: '确定更改订单状态？'}, class: 'btn btn-primary' %>
         <% end %>
       <% end %>
       <% if [Order::DELIVERED].include?(@order.status) %>
-        <%= form_for @order do |f| %>
+        <%= form_for [:admin, @order] do |f| %>
           <%= hidden_field_tag :status, Order::COMPLETE  %>
           <%= f.submit '确认收货', data: {disable_with: '正在提交', confirm: '确定更改订单状态？'}, class: 'btn btn-primary' %>
         <% end %>

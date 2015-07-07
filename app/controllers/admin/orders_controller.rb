@@ -28,13 +28,10 @@ class Admin::OrdersController < Admin::AdminController
         @order.update(status: Order::REFUNDED)
         @order.payment_record.update(status: PaymentRecord::REFUNDED)
         @order.refund_records.find_by_status(RefundRecord::PENDING).update(status: RefundRecord::REFUNDED)
-      elsif [Order::TO_PAY].include?(@order.status) && status == Order::PAID
-        @order.update(status: Order::TO_PAY)
-        @order.payment_record.update(status: PaymentRecord::PAID)
-      elsif [Order::CANCELLING].include?(@order.status) && status == Order.CANCELLED
+      elsif [Order::CANCELLING].include?(@order.status) && status == Order::CANCELLED
         @order.update(status: Order::CANCELLED)
         @order.payment_record.update(status: PaymentRecord::REFUNDED)
-      elsif [Order::DELIVERED].include?(@order.status) && status == Order.COMPLETE
+      elsif [Order::DELIVERED].include?(@order.status) && status == Order::COMPLETE
         @order.update(status: Order::COMPLETE, receive_time: Time.now)
       else
         @order.errors.add(:status, '订单状态不正确，不能进行该操作')
