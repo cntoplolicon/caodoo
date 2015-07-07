@@ -92,19 +92,18 @@
       e.preventDefault()
       mySwiper.swipeNext()
     })
-    window._bd_share_config = {
-      common: {
-        bdText: '我们参加了青年创业创新大赛，向你推荐XXXXXXXX，来看看吧~',
-        bdDesc: '我们参加了青年创业创新大赛，向你推荐XXXXXXXX，来看看吧~',
-        bdUrl: 'http://192.168.1.114/mcaodoo/m-gamePage.html',
-        bdPic: 'http://192.168.1.114/mcaodoo/img/game_poster.png'
-      },
-      share: [{
-        "bdSize": 24
-      }]
-
+    if($('.product-detail-share').length > 0){
+      window._bd_share_config = {
+        common: {
+          bdText: '我们参加了青年创业创新大赛，向你推荐'+ $('.product-detail-text-head').text() +', 来看看吧~',
+          bdDesc: '我们参加了青年创业创新大赛，向你推荐'+ $('.product-detail-text-head').text() +', 来看看吧~',
+          bdPic: $('.swiper-slide-visible .product-detail-image')[0].src
+        },
+        share: [{
+          "bdSize": 24
+        }]
+      }
+      with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
     }
-    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-
   });
 })(this, Zepto);
