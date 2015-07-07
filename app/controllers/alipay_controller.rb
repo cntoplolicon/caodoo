@@ -14,7 +14,6 @@ class AlipayController < ApplicationController
       payment_submitted = @order.payment_record.alipay_expire.present?
       unless payment_submitted
         @order.payment_record.alipay_expire = "#{diff}m"
-        head :unprocessable_entity and return unless @order.save
       end
 
       uri = URI(Alipay::Service.create_direct_pay_by_user_url(
@@ -35,6 +34,9 @@ class AlipayController < ApplicationController
         end
       end
 
+      unless payment_submitted
+        head :unprocessable_entity and return unless @order.save
+      end
       redirect_to(uri.to_s)
     end
   end

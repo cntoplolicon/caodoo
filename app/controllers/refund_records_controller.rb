@@ -53,6 +53,11 @@ class RefundRecordsController < ContestTeamDashboardController
     @refund_records = RefundRecord.all.joins(:order, :express).includes(:order, :express).where(orders: {contest_team_id: @contest_team.id})
     @total_orders_count = Order.where(contest_team_id: @contest_team.id, status: [Order::PAID, Order::DELIVERED, Order::COMPLETE]).count(:all)
     @returned_orders_count = Order.where(contest_team_id: @contest_team.id, status: Order::REFUNDED).count(:all)
+    if @total_orders_count == 0 && @returned_orders_count == 0 then
+      @return_ratio = 0
+    else
+      @return_ratio = @returned_orders_count.to_f / (@returned_orders_count + @total_orders_count) * 100
+    end
   end
 
   private
