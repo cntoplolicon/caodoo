@@ -89,7 +89,7 @@
   top: 24px;
   right: 24px;
   color: #212121;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .upcoming-products {
@@ -488,4 +488,32 @@
   width: 12px;
   height: 20px;
   z-index: 3000;
+}
+
+.products_banner_contest_entry, .products_banner_contest_team_entry{
+  position: absolute;
+  text-align: center;
+  line-height: 34px;
+  color: white;
+  border-radius:4px;
+  font-size: 16px;
+  width: 99px;
+  height: 34px;
+  bottom:60px;
+}
+
+.products_banner_contest_entry {
+  left: 170px;
+  color: white;
+  background-color: #E14747;
+}
+
+.products_banner_container {
+  width: 960px;
+  position: relative;
+}
+
+.products_banner_contest_team_entry {
+  left: 290px;
+  color: #0FC01C;
 }

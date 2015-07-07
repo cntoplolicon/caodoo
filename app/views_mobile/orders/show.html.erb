@@ -67,8 +67,10 @@
         </span>
       </div>
       <div class="order_row">
+        <% if @order.express_id.present? && @order.tracking_number.present? %>
         <span class="col_name">快递方式:</span>
         <span><%= @order.express.name %>－运单号<%= @order.tracking_number %></span>
+        <% end %>
       </div>
     </div>
     <div class="one_order_action">

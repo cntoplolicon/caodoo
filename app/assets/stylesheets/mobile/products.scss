@@ -451,20 +451,25 @@
 
 .product-detail .arrow-left {
   position: absolute;
+  margin-left: -20px;
   left: 10px;
   top: 50%;
-  margin-top: -15px;
-  width: 12px;
-  height: 20px;
+  width: 50px;
+  height: 100px;
   z-index: 3000;
 }
 
 .product-detail .arrow-right {
   position: absolute;
+  margin-right: -20px;
   right: 10px;
   top: 50%;
-  margin-top: -15px;
+  width: 50px;
+  height: 100px;
+  z-index: 3000;
+}
+
+.arrow-left-img, .arrow-right-img {
   width: 12px;
   height: 20px;
-  z-index: 3000;
 }
