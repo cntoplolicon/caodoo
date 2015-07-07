@@ -56,4 +56,11 @@
       </ul>
     <% end %>
   </div>
+  <div>
+    <% if flash[:notice] %>
+      <li>
+        <%= flash[:notice] %>
+      </li>
+    <% end %>
+  </div>
 </div>

@@ -107,6 +107,7 @@ class UsersController < ApplicationController
       user_valid = @user.valid?
       @user.errors.add(:old_password, '密码不正确') unless old_password_valid
       if old_password_valid && user_valid && @user.save
+        flash[:notice] = '密码修改成功'
         redirect_to action: :user_settings
       else
         @page_status = 'editing_password'
