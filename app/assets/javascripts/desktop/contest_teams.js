@@ -52,18 +52,6 @@ $(document).ready(function(){
 
     //change each share url and content for share
 
-    //
-    //$(".team_share_link_product").mouseover(function(){
-    //
-    //
-    //  shareText=$(this).find(".team_share_link_detail_name").text();
-    //
-    //  shareUrl=$(this).find(".team_share_link_detail_p a").text();
-    //
-    //});
-
-
-
 
     $(".bdsharebuttonbox a").click(function(){
 
@@ -128,4 +116,45 @@ $(document).ready(function(){
       $("#team_performance_bottom_table_today").show();
     }
   });
+
+
+//login user validate
+
+  $("#new_contest_team").submit(function(){
+
+    var b=true;
+
+    //product is remove
+
+    //if(!$("#contest_team_phone").val().match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
+    //
+    //  $("#contest_team_phone_error").text("请输入正确手机号");
+    //
+    //  b=false;
+    //
+    //}else{
+    //
+    //  $("#contest_team_phone_error").text("");
+    //
+    //}
+
+    if(!$("#contest_team_password").val().match(/^[ -~]{6,20}$/)){
+
+      $("#contest_team_password_error").text("密码6-20数字或字母");
+
+      b=false;
+
+    }else{
+
+      $("#contest_team_password_error").text("");
+
+    }
+
+    return b;
+
+  });
+
+
+
+
 });

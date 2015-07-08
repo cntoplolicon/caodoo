@@ -1,7 +1,13 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+
 $(document).ready(function () {
+
+  //add user address validate
+
+
+
   $('.delete_address_action').click(function() {
     $('#delete_address_box').data('addressId', $(this).data('addressId'));
     $('#delete_address_box').show();
@@ -46,24 +52,29 @@ $(document).ready(function () {
     $('#edit_address_box').hide();
   });
   $('#edit_address_box').on('click', '.save_address_button', function() {
-    var form = $(this).closest('form');
-    $.ajax({
-      url: form.attr('action'),
-      data: form.serializeArray(),
-      type: 'POST',
-      statusCode: {
-        400: function(xhr) {
-          $('#edit_address_box').html(xhr.responseText);
-          edit_address_box_ready();
-        },
-        302: function() {
-          window.location.reload();
-        },
-        200: function() {
-          window.location.reload();
+
+    if(validate_address()){
+
+      var form = $(this).closest('form');
+      $.ajax({
+        url: form.attr('action'),
+        data: form.serializeArray(),
+        type: 'POST',
+        statusCode: {
+          400: function(xhr) {
+            $('#edit_address_box').html(xhr.responseText);
+            edit_address_box_ready();
+          },
+          302: function() {
+            window.location.reload();
+          },
+          200: function() {
+            window.location.reload();
+          }
         }
-      }
-    });
+      });
+
+    }
   });
 
   $('#edit_address_box').on('change', '#province_select', function() {
@@ -79,4 +90,66 @@ $(document).ready(function () {
       $('#district_select').load('/cities/' + $(this).val() + '/districts', toggle_region_selection);
     }
   });
+
+
 });
+
+
+function validate_address(){
+
+    var b=true;
+
+    if($("#address_receiver").val()==""){
+
+
+      $("#address-receiver-error").text("收件人姓名不能为空");
+
+      b=false;
+
+    }else{
+
+      $("#address-receiver-error").text("");
+
+    }
+
+    if(!$("#address_phone").val().match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
+
+      $("#address-phone-error").text("请输入正确手机号");
+
+      b=false;
+
+    }else{
+
+      $("#address-phone-error").text("");
+
+    }
+
+
+  if($("#province_select").val()==""){
+
+    $("#address-area-error").text("省份不能为空");
+
+    b=false;
+
+  }else{
+
+    $("#address-area-error").text("");
+
+  }
+
+  if($("#address_detailed_address").val()==""){
+
+    $("#address-detail-error").text("详细地址不能为空");
+
+    b=false;
+
+  }else{
+
+    $("#address-detail-error").text("");
+
+  }
+
+    return b;
+
+
+}

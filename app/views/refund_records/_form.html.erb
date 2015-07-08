@@ -15,7 +15,7 @@
           value: @refund_record.order_number || @refund_record.try(:order).try(:order_number),
           disabled: !@refund_record.new_record?, class: 'team_return_good_input' %>
 
-            <div class="error-message"><%= @refund_record.errors.messages[:order_number].first if @refund_record.errors[:order_number].any? %></div>
+            <div class="error-message" id="refund_record_order_number_error"><%= @refund_record.errors.messages[:order_number].first if @refund_record.errors[:order_number].any? %></div>
 
 
               </div>
@@ -27,7 +27,7 @@
           value: @refund_record.receiver || @refund_record.try(:order).try(:receiver),
           disabled: !@refund_record.new_record?, class: 'team_return_good_input' %>
 
-            <div class="error-message"><%= @refund_record.errors.messages[:receiver].first if @refund_record.errors[:receiver].any? %></div>
+            <div class="error-message" id="refund_record_receiver_error"><%= @refund_record.errors.messages[:receiver].first if @refund_record.errors[:receiver].any? %></div>
 
                     </div>
 
@@ -45,7 +45,7 @@
         <div class="team_return_good_info_box">
 
         <%= f.collection_select :express_id, Express.all, :id, :name, {prompt: '请选择快递公司'}, class: 'team_return_good_select' %>
-            <div class="error-message"><%= @refund_record.errors.messages[:express_id].first if @refund_record.errors[:express_id].any? %></div>
+            <div class="error-message" id="refund_record_express_error"><%= @refund_record.errors.messages[:express_id].first if @refund_record.errors[:express_id].any? %></div>
 
               </div>
 
@@ -54,7 +54,7 @@
 
         <%= f.text_field :tracking_number, placeholder: '运单号', class: 'team_return_good_input' %>
 
-        <div class="error-message"><%= @refund_record.errors.messages[:tracking_number].first if @refund_record.errors[:tracking_number].any? %></div>
+        <div class="error-message" id="refund_record_tracking_number_error"><%= @refund_record.errors.messages[:tracking_number].first if @refund_record.errors[:tracking_number].any? %></div>
 
                     </div>
 

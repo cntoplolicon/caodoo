@@ -9,7 +9,7 @@
   <div class="user_info">
     用户注册手机号：<span> <%= session[:login_username] %> </span>
     <div class="user_info_box username-box">
-      <%= form_for @user do |f| %>
+      <%= form_for @user , html: {id: 'update-phone'} do |f| %>
         <ul>
           <li>
             <%= f.text_field :username, placeholder: "请输入新手机号", id: 'username-input', class: 'cd_input', value: '' %>
@@ -18,7 +18,7 @@
           <li>
             <%= f.text_field :security_code, placeholder: "验证码", class: 'cd_input', style: 'width: 120px; display: inline-block; *display: inline; zoom: 1' %>
             <a class="bt security-code-button" style="display: inline-block; *display: inline; zoom: 1; color: #3FB134; float: none">获取验证码</a>
-            <div class="error-message"><%= @user.errors.messages[:security_code].first if @user.errors[:security_code].any? %></div>
+            <div class="error-message" id="security-code-error"><%= @user.errors.messages[:security_code].first if @user.errors[:security_code].any? %></div>
           </li>
           <li>
             <%= f.submit '保存', data: {disable_with: '正在保存'}, class: 'bt_green', style: 'float: left'%>
@@ -35,19 +35,19 @@
     </a>
   </div>
   <div class="user_info_box password-box">
-    <%= form_for @user do |f| %>
+    <%= form_for @user , html: {id: 'update-pwd'} do |f| %>
       <ul>
         <li>
           <%= password_field_tag :'user[old_password]', '', class: 'cd_input', placeholder: "旧密码" %>
-          <div class="error-message"><%= @user.errors.messages[:old_password].first if @user.errors[:old_password].any? %></div>
+          <div class="error-message" id="user_old_password-error"><%= @user.errors.messages[:old_password].first if @user.errors[:old_password].any? %></div>
         </li>
         <li>
           <%= f.password_field :password, placeholder: '新密码', class: 'cd_input' %>
-          <div class="error-message"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
+          <div class="error-message" id="user_new_password-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
         </li>
         <li>
           <%= f.password_field :password_confirmation, placeholder: '再输一遍新密码', class: 'cd_input' %>
-          <div class="error-message"><%= @user.errors.messages[:password_confirmation].first if @user.errors[:password_confirmation].any? %></div>
+          <div class="error-message" id="user_new_password2-error"><%= @user.errors.messages[:password_confirmation].first if @user.errors[:password_confirmation].any? %></div>
         </li>
         <li>
           <%= f.submit '保存', data: {disable_with: '正在保存'}, class: 'bt_green', style: 'float: left'%>

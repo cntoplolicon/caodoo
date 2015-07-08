@@ -2,6 +2,7 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function () {
+
   var initSecurityCodeButton = function(button, url) {
     $(button).click(function (event) {
       event.preventDefault();
@@ -61,5 +62,223 @@ $(document).ready(function () {
   initSecurityCodeButton('.register-box .security-code-button', '/users/get_security_code_for_new_user');
   initSecurityCodeButton('.forget-password-box .security-code-button', '/users/get_security_code_for_password');
   initSecurityCodeButton('.username-box .security-code-button', '/users/get_security_code_for_new_user');
+
+  //new user validate
+
+  $("#new-user").submit(function(){
+
+    var b=true;
+
+    if(!$("#username-input").val().match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
+
+      $("#username-error").text("请输入正确手机号");
+
+      b=false;
+
+    }else{
+
+      $("#username-error").text("");
+
+    }
+
+
+    if(!$("#user_security_code").val().match(/\d{6}/)){
+
+      $("#security-code-error").text("验证码6位数字");
+
+      b=false;
+
+    }else{
+
+      $("#security-code-error").text("");
+
+    }
+
+    if(!$("#user_password").val().match(/^[ -~]{6,20}$/)){
+
+      $("#userpwd-error").text("密码6-20数字或字母");
+
+      b=false;
+
+    }else{
+
+      $("#userpwd-error").text("");
+
+    }
+
+    return b;
+
+  });
+
+  //login user validate
+
+  $("#login-user").submit(function(){
+
+    var b=true;
+
+    if(!$("#user_username").val().match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
+
+      $("#username-error").text("请输入正确手机号");
+
+      b=false;
+
+    }else{
+
+      $("#username-error").text("");
+
+    }
+
+    if(!$("#user_password").val().match(/^[ -~]{6,20}$/)){
+
+      $("#userpwd-error").text("密码6-20数字或字母");
+
+      b=false;
+
+    }else{
+
+      $("#userpwd-error").text("");
+
+    }
+
+    return b;
+
+  });
+
+  //forget pwd validate
+
+  $("#forget-password").submit(function(){
+
+    var b=true;
+
+
+    if(!$("#username-input").val().match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
+
+      $("#username-error").text("请输入正确手机号");
+
+      b=false;
+
+    }else{
+
+      $("#username-error").text("");
+
+    }
+
+    if(!$("#user_security_code").val().match(/\d{6}/)){
+
+      $("#security-code-error").text("验证码6位数字");
+
+      b=false;
+
+    }else{
+
+      $("#security-code-error").text("");
+
+    }
+
+    return b;
+
+
+  });
+
+  //update phone validate
+
+  $("#update-phone").submit(function(){
+
+    var b=true;
+
+    if(!$("#username-input").val().match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
+
+      $("#username-error").text("请输入正确手机号");
+
+      b=false;
+
+    }else{
+
+      $("#username-error").text("");
+
+    }
+
+
+    if(!$("#user_security_code").val().match(/\d{6}/)){
+
+      $("#security-code-error").text("验证码6位数字");
+
+      b=false;
+
+    }else{
+
+      $("#security-code-error").text("");
+
+    }
+
+    return b;
+
+
+  });
+
+
+  //update pwd validate
+
+  $("#update-pwd").submit(function() {
+
+    var b=true;
+
+    if (!$("#user_old_password").val().match(/^[ -~]{6,20}$/)) {
+
+      $("#user_old_password-error").text("密码6-20数字或字母");
+
+      b=false;
+
+    }else{
+
+      $("#user_old_password-error").text("");
+
+    }
+
+    if (!$("#user_password").val().match(/^[ -~]{6,20}$/)) {
+
+      $("#user_new_password-error").text("密码6-20数字或字母");
+
+      b=false;
+
+    }else{
+
+      $("#user_new_password-error").text("");
+
+    }
+
+
+    if (!$("#user_password_confirmation").val().match(/^[ -~]{6,20}$/)) {
+
+      $("#user_new_password2-error").text("密码6-20数字或字母");
+
+      b=false;
+
+    }else{
+
+      $("#user_new_password2-error").text("");
+
+    }
+
+    // compare
+
+    if (!($("#user_password_confirmation").val()==$("#user_password").val())) {
+
+      $("#user_new_password2-error").text("两次密码不一致");
+
+      b=false;
+
+    }else{
+
+      $("#user_new_password2-error").text("");
+
+    }
+
+    return b;
+
+  });
+
+
+
 })
 
