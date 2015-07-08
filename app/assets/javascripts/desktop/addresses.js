@@ -80,9 +80,13 @@ $(document).ready(function() {
     $('#edit_address_box').hide();
   });
   $('#edit_address_box').on('click', '.save_address_button', function() {
-    var onSucceed = function() {
+    var onSucceed = function(xhr) {
       if ($('.new_order_refresh_url').length > 0) {
-        window.location.href = $('.new_order_refresh_url').val() + '?product_id=' + $('#order_product_id').val() + '&quantity=' + $('#order_quantity').val();
+        var address_id = $.parseJSON(xhr.responseText).address_id;
+        window.location.href = $('.new_order_refresh_url').val() +
+          '?product_id=' + $('#order_product_id').val() +
+          '&quantity=' + $('#order_quantity').val() +
+          '&address=' + address_id;
       } else {
         window.location.reload();
       }
@@ -93,13 +97,13 @@ $(document).ready(function() {
         url: form.attr('action'),
         data: form.serializeArray(),
         type: 'POST',
-        statusCode: {
-          400: function(xhr) {
+        complete: function(xhr) {
+          if (xhr.status === 400) {
             $('#edit_address_box').html(xhr.responseText);
             edit_address_box_ready();
-          },
-          302: onSucceed,
-          200: onSucceed
+          } else if (xhr.status === 302 || xhr.status === 200) {
+            onSucceed(xhr);
+          }
         }
       });
 

@@ -17,7 +17,7 @@ class AddressesController < ApplicationController
     Address.transaction do
       if @address.save
         @user.addresses.where(deleted: false).where.not(id: @address.id).update_all(default: false)
-        head :ok
+        render status: :ok, json: {address_id: @address.id}
       else
         load_regions_for_address
         render 'new', layout: false, status: :bad_request
