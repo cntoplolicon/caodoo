@@ -11,7 +11,7 @@ $(document).ready(function() {
     } else {
       $("#address-receiver-error").text("");
     }
-    if (!$("#address_phone").val() == "") {
+    if ($("#address_phone").val() == "") {
       $("#address-phone-error").text(validate_message.phone.invalid);
       b = false;
     } else {
