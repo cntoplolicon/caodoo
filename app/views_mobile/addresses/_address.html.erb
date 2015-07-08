@@ -25,24 +25,23 @@
              <%= f.collection_select(:city_code, @cities, :code, :name, {prompt: '请选择城市'}, {class: 'cd_select', id: 'city_select'}) %>
              <%= f.collection_select(:district_code, @districts, :code, :name, {prompt: '请选择地区'}, {class: 'cd_select', id: 'district_select'}) %>
             </div>
+            <div class="error-message" id="username-error">
+            <%= @address.errors.messages[:province_code].first if @address.errors[:province_code].any? %>
+            <%= @address.errors.messages[:city_code].first if @address.errors[:city_code].any? %>
+            <%= @address.errors.messages[:district_code].first if @address.errors[:district_code].any? %>
+          </div>
           </li>
           <li>
             <%= f.text_field :detailed_address, class: 'cd_input', style:"width:284px", placeholder: '详细地址' %>
             <div class="error-message" id="username-error"><%= @address.errors.messages[:detailed_address].first if @address.errors[:detailed_address].any? %></div>
-            <!-- <input type="text" class="cd_input" placeholder="收货地址" style="width: 284px">
-            <span class="error"></span> -->
           </li>
           <li style="margin-top: 10px">
             <%= f.check_box :default, id: 'set_default' %>
             <label class="green_text" for="set_default">设置为默认地址</label>
-            <!-- <input id="set_default" type="checkbox">
-            <label class="green_text" for="set_default">设置为默认地址</label> -->
           </li>
           <li>
-          <a class="bt cancel_edit_address_button" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px">取消</a>
-          <a class="bt_green save_address_button" style="float: left;cursor: pointer;width: 114px;margin: 10px 0">保存</a>
-            <!-- <input id="cancel_new_address_box" type="reset" class="bt" style="float: left;cursor: pointer;width: 114px;margin: 10px 0;margin-right: 20px" value="取消">
-            <input type="submit" class="bt_green" style="float: left;cursor: pointer;width: 114px;margin: 10px 0" value="保存"> -->
+          <a class="bt cancel_edit_address_button" style="float: left;cursor: pointer;width: 100px;margin: 10px 0;margin-right: 20px">取消</a>
+          <a class="bt_green save_address_button" style="float: left;cursor: pointer;width: 100px;margin: 10px 0">保存</a>
           </li>
         </ul>
     </form>

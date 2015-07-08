@@ -266,3 +266,12 @@
 #username-input {
 	width: 220px;
 }
+
+.password-box .cd_input {
+	width: 200px;
+	padding: 4px 6px;
+}
+
+.password-box {
+	margin: 20px;
+}

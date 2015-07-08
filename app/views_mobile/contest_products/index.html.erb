@@ -4,40 +4,37 @@
   </a>
 <% end %>
 <div class="game_container">
-    <div class="game_poster_content">
-        <%= image_tag "mobile_game_poster.jpg", class: "game_poster" %>
+  <div class="game_poster_content">
+    <%= image_tag "mobile_game_poster.jpg", class: "game_poster" %>
+  </div>
+  <div class="game_recommend_content">
+    <div class="game_recommend_title">
+      <h3><%= @contest_team.name %>团队向你推荐</h3>
     </div>
-    <div class="game_recommend_content">
-        <div class="game_recommend_title">
-            <h3><%= @contest_team.name %>团队向你推荐</h3>
+    <div class="game_share_content">
+      <div class="game_share_title">为TA推广: </div>
+      <div class="game_share_icons">
+        <div class="bdsharebuttonbox" data-tag="share_1">
+          <a class="bds_tsina" data-cmd="tsina"></a>
+          <a class="bds_qzone" data-cmd="qzone"></a>
+          <a class="bds_renren" data-cmd="renren"></a>
+          <a class="bds_weixin" data-cmd="weixin"></a>
         </div>
-        <div class="game_share_content">
-            <div class="game_share_title">为TA推广: </div>
-            <div class="game_share_icons">
-                <div class="bdsharebuttonbox" data-tag="share_1">
-
-                    <a class="bds_tsina" data-cmd="tsina"></a>
-                    <a class="bds_qzone" data-cmd="qzone"></a>
-                    <a class="bds_renren" data-cmd="renren"></a>
-                    <a class="bds_weixin" data-cmd="weixin"></a>
-
-
-                </div>
-            </div>
-        </div>
-        <ul class="game_recommend_product_container">
+      </div>
+    </div>
+    <ul class="game_recommend_product_container">
       <% @products.each do |product| %>
         <%= link_to product_path(product) do %>
-        <li class="game_recommend_product_content">
-          <%= image_tag product.product_view.sale_image_url, class:'game_recommend_product_img' %>
-          <div class="game_recommend_product_detail">
-            <p><%=product.name %></p>
-            <p class="recommend_product_price">￥<%=product.price %></p>
-          </div>
-        </li>
+          <li class="game_recommend_product_content">
+            <%= image_tag product.product_view.sale_image_url, class:'game_recommend_product_img' %>
+            <div class="game_recommend_product_detail">
+              <p><%=product.name %></p>
+              <p class="recommend_product_price">￥<%=product.price %></p>
+            </div>
+          </li>
         <% end %>
       <% end %>
     </ul>
-    </div>
-    <div style="height:20px;"></div>
+  </div>
+  <div style="height:20px;"></div>
 </div>

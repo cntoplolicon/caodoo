@@ -358,8 +358,7 @@
   font-size: 16px;
   color: #000000;
   background-color: #f3f3f3;
-  padding: 8px 8px;
-  /*display: none;*/
+  padding: 8px 0px 8px 8px;
 }
 
 .product-detail-text-team {
@@ -381,7 +380,7 @@
 }
 
 .bdsharebuttonbox {
-  float: right;
+  margin-left: 150px;
 }
 
 .bdsharebuttonbox a {

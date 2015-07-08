@@ -1,5 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
 $(document).ready(function() {
   if ($('.game_share_content').length > 0) {
     window._bd_share_config = {
