@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   $('.header_account_link').click(function() {
     $('.cd_dropdown').toggle();
   });
@@ -10,6 +10,7 @@ $(document).ready(function () {
     $('#terms_of_privicy_container').hide();
   });
 });
+
 function showRemainTime(time) {
   if (typeof(time) !== 'number') {
     return '';
@@ -22,7 +23,7 @@ function showRemainTime(time) {
   var hours = Math.floor((time % _day) / _hour);
   var minutes = Math.floor((time % _hour) / _minute);
   var seconds = Math.floor((time % _minute));
-  if(days > 0 ) {
+  if (days > 0) {
     result += days + '天';
   }
   if (hours < 10) {
@@ -34,5 +35,5 @@ function showRemainTime(time) {
   if (seconds < 10) {
     seconds = '0' + seconds;
   }
-  return result + hours + '时' + minutes + '分' + seconds + '秒' ;
+  return result + hours + '时' + minutes + '分' + seconds + '秒';
 }

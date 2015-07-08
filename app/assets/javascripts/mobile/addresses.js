@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-$(document).ready(function () {
+$(document).ready(function() {
   $('.delete_address_action').click(function() {
     $('#delete_address_box').data('addressId', $(this).data('addressId'));
     $('#delete_address_box').show();
@@ -52,14 +52,11 @@ $(document).ready(function () {
       data: form.serializeArray(),
       type: 'POST',
       complete: function(xhr) {
-        if(xhr.status == 400) {
+        if (xhr.status === 400) {
           $('#edit_address_box').html(xhr.responseText);
           edit_address_box_ready();
         }
-        if(xhr.status == 302) {
-          window.location.reload();
-        }
-        if(xhr.status == 200) {
+        if (xhr.status === 302 || xhr.status === 200) {
           window.location.reload();
         }
       }
