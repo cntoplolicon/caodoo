@@ -485,7 +485,14 @@
     background-color: #3baf47;
     color: #ffffff;
     cursor: pointer;
-
+    display: none;
+}
+#payment-before-choose {
+    width: 300px;
+    height: 36px;
+    background-color: #d0d0d0;
+    color: #969696;
+    cursor: pointer;
 }
 .order-detail {
     display: inline-block;
@@ -639,6 +646,7 @@
     color: #909090;
     background-color: #FFFFFF;
     cursor: pointer;
+    font-size: 14px;
 }
 
 .confirm_receive_order_button {
@@ -669,6 +677,15 @@
     margin-left: 20px;
 }
 
+.order_empty_hint_text {
+    font-size: 16px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.order_empty_hint_text a {
+    color: #15ae10;
+}
 #return_application_box .contest-team-name {
     color: #3FB134;
 }

@@ -30,6 +30,17 @@ $(document).ready(function() {
     return minutes + '分' + seconds + '秒';
   };
 
+  $('input[name = "order_radio"]').change(function() {
+    $('#payment-before-choose').hide();
+    $('.payment-button').show();
+  });
+
+  if ($('.wechat-radio').prop('checked') || $('.alipay-radio').prop('checked')) {
+    $('#payment-before-choose').hide();
+    $('.payment-button').show();
+  }
+
+
   if ($('.payment-deadline').length > 0) {
     var time = $('#payment-remain-time-hidden-field').val();
     paymentTimeCountDown();

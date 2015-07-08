@@ -18,6 +18,9 @@
     </div>
   </div>
   <div>
+    <% if @order_count == 0 %>
+      <div class="order_empty_hint_text">暂时还没有订单，去<a href="/">草垛网</a>看看吧</div>
+    <% else %>
     <ul>
       <% @orders.each do |order| %>
         <li>
@@ -97,6 +100,7 @@
         </li>
       <% end %>
     </ul>
+    <% end %>
   </div>
 </div>
 <div id="cancel_order_box" class="popup">
