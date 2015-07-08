@@ -2,6 +2,12 @@ $(document).ready(function () {
   $('.mobile_go_back_button').click(function() {
     window.history.back();
   });
+  $('#open_privicy_box').click(function() {
+    $('#terms_of_privicy_container').show();
+  });
+  $('.terms_of_privicy_close_button').click(function() {
+    $('#terms_of_privicy_container').hide();
+  });
 });
 
 function showRemainTime(time) {
