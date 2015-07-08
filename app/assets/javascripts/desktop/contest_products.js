@@ -4,9 +4,9 @@ $(document).ready(function() {
   if ($('.game_share_content').length > 0) {
     window._bd_share_config = {
       common: {
-        bdText: '我们参加了青年创业创新大赛，向你推荐' + $('.product-detail-text-head').text() + ', 来看看吧~',
-        bdDesc: '我们参加了青年创业创新大赛，向你推荐' + $('.product-detail-text-head').text() + ', 来看看吧~',
-        bdPic: $('.game_recommend_product_img')[0].src
+        bdText: '我们参加了青年创业创新大赛，来围观吧~',
+        bdDesc: '我们参加了青年创业创新大赛，来围观吧~',
+        bdPic: $('.game_poster')[0].src
       },
       share: [{
         "bdSize": 24
