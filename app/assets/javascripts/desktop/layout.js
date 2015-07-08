@@ -23,7 +23,7 @@ function showRemainTime(time) {
   var minutes = Math.floor((time % _hour) / _minute);
   var seconds = Math.floor((time % _minute));
   if(days > 0 ) {
-  	result += days + '天 ';
+    result += days + '天';
   }
   if (hours < 10) {
     hours = '0' + hours;
@@ -34,5 +34,5 @@ function showRemainTime(time) {
   if (seconds < 10) {
     seconds = '0' + seconds;
   }
-  return result + hours + '小时 ' + minutes + ':' + seconds ;
+  return result + hours + '时' + minutes + '分' + seconds + '秒' ;
 }
