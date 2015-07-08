@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706221559) do
+ActiveRecord::Schema.define(version: 20150707143914) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -91,12 +91,13 @@ ActiveRecord::Schema.define(version: 20150706221559) do
     t.string   "district_name",     limit: 255
     t.integer  "status",            limit: 4
     t.datetime "receive_time"
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
     t.integer  "address_id",        limit: 4
     t.integer  "contest_team_id",   limit: 4
     t.integer  "express_id",        limit: 4
     t.string   "tracking_number",   limit: 255
+    t.boolean  "delivery_exported", limit: 1,                              default: false
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree

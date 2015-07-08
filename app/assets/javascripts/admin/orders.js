@@ -59,7 +59,9 @@ $(document).ready(function() {
     $('.order-csv-link').click(function(event) {
       event.preventDefault();
       var data = dataTable.oApi._fnAjaxParameters(dataTable.fnSettings());
-      var link = $(this).prop('href') + '?' + $.param(data);
+      var originalLink = $(this).prop('href');
+      var delimiter = originalLink.indexOf('?') === -1 ? '?' : '&';
+      var link = originalLink + delimiter + $.param(data);
       window.location.href = link;
     });
   }
