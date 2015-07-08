@@ -3,6 +3,37 @@
 
 $(document).ready(function() {
 
+  function validate_address() {
+    var b = true;
+    if ($("#address_receiver").val() == "") {
+      $("#address-receiver-error").text(validate_message.address.receiver.blank);
+      b = false;
+    } else {
+      $("#address-receiver-error").text("");
+    }
+    if (!$("#address_phone").val() == "") {
+      $("#address-phone-error").text(validate_message.phone.invalid);
+      b = false;
+    } else {
+      $("#address-phone-error").text("");
+    }
+
+    if ($("#province_select").val() == "") {
+      $("#address-area-error").text(validate_message.province_code.blank);
+      b = false;
+    } else {
+      $("#address-area-error").text("");
+    }
+    if ($("#address_detailed_address").val() == "") {
+      $("#address-detail-error").text(validate_message.detailed_address.blank);
+      b = false;
+    } else {
+      $("#address-detail-error").text("");
+    }
+    return b;
+
+  }
+
   //add user address validate
 
   $('.delete_address_action').click(function() {
@@ -90,33 +121,4 @@ $(document).ready(function() {
 
 });
 
-function validate_address() {
-  var b = true;
-  if ($("#address_receiver").val() == "") {
-    $("#address-receiver-error").text(validate_message.address.receiver);
-    b = false;
-  } else {
-    $("#address-receiver-error").text("");
-  }
-  if (!$("#address_phone").val() == "") {
-    $("#address-phone-error").text(validate_message.phone.invalid);
-    b = false;
-  } else {
-    $("#address-phone-error").text("");
-  }
 
-  if ($("#province_select").val() == "") {
-    $("#address-area-error").text(validate_message.province_code.blank);
-    b = false;
-  } else {
-    $("#address-area-error").text("");
-  }
-  if ($("#address_detailed_address").val() == "") {
-    $("#address-detail-error").text(validate_message.detailed_address.blank);
-    b = false;
-  } else {
-    $("#address-detail-error").text("");
-  }
-  return b;
-
-}
