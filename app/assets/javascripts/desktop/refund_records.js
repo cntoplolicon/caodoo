@@ -4,6 +4,7 @@ $(function() {
   $('.refund_record_new_action, .refund_record_edit_action').click(function(event) {
     event.preventDefault();
     $('#team_return_goods_popup').load($(this).attr('href'), function() {
+      $('input, textarea').placeholder();
       $('#team_return_goods_popup').show();
       $('input').placeholder();
     });
@@ -13,9 +14,7 @@ $(function() {
   });
   $('#team_return_goods_popup').on('click', '.return_good_submit', function(event) {
     event.preventDefault();
-
     if (validate_address()) {
-
       var form = $(this).closest('form');
       $.ajax({
         url: form.attr('action'),
@@ -34,9 +33,7 @@ $(function() {
           }
         }
       });
-
     }
-
   });
 });
 $(document).ready(function() {
