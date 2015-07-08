@@ -115,6 +115,7 @@ class OrdersController < ApplicationController
     else
       @orders = @user.orders.order(created_at: :desc)
     end
+    @order_count = @user.orders.count
     render layout: 'account_setting'
   end
 
