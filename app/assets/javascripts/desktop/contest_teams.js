@@ -1,10 +1,10 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-$(document).ready(function() {
+$(document).ready(function () {
   var adapt_height = Math.max($(window).height(), $('.detail_container').height() + 64);
   $('.block_container_menu').css('height', adapt_height - 24);
-  $(".game-header-setting").click(function(){
+  $(".game-header-setting").click(function () {
     $("#game_header_management_menu").toggle();
   });
   if ($('.team_client_block_container').length > 0) {
@@ -15,25 +15,22 @@ $(document).ready(function() {
   }
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
 
 
   //if page has share
 
-
-  if($(".team_share_link_product").length>0){
+  if ($(".team_share_link_product").length > 0) {
 
     //create qrCode links
 
-
-    $(".team_share_link_product").each(function(){
+    $(".team_share_link_product").each(function () {
 
       //get url link
 
-     var url=$(this).find(".team_share_link_detail_url a").text();
+      var url = $(this).find(".team_share_link_detail_url a").text();
 
       //gen url qrcode link to set image
-
 
       $(this).find(".team_share_link_product_qrcode_img").qrcode({
         "size": 140,
@@ -45,29 +42,26 @@ $(document).ready(function(){
 
     //global share infos
 
-    var shareText='';
+    var shareText = '';
 
-    var shareUrl='';
-
+    var shareUrl = '';
 
     //change each share url and content for share
 
+    $(".bdsharebuttonbox a").click(function () {
 
-    $(".bdsharebuttonbox a").click(function(){
+      shareText = $(this).parents().children(".team_share_link_detail_name").text();
 
-      shareText=$(this).parents().children(".team_share_link_detail_name").text();
-
-      shareUrl=$(this).parents().children(".team_share_link_detail_url").find("a").text();
+      shareUrl = $(this).parents().children(".team_share_link_detail_url").find("a").text();
 
     });
-
 
     //create social share links
 
     window._bd_share_config = {
-      common : {
+      common: {
 
-        onBeforeClick:function(cmd,config){
+        onBeforeClick: function (cmd, config) {
 
           return {
 
@@ -82,19 +76,19 @@ $(document).ready(function(){
         }
 
       },
-      share : [{
-        "bdSize" : 24
+      share: [{
+        "bdSize": 24
       }]
 
     }
 
-    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
 
   }
 
   //
 
-  $(".team_performance_tab a").click(function(){
+  $(".team_performance_tab a").click(function () {
     $(".team_performance_tab a").removeAttr("class");
     $(this).attr("class", "current_tab");
     if ($(this).attr("id") === "team_performance_data_total") {
@@ -105,7 +99,7 @@ $(document).ready(function(){
       $("#team_performance_top_results_today").show();
     }
   });
-  $(".team_performance_bottom_tab a").click(function(){
+  $(".team_performance_bottom_tab a").click(function () {
     $(".team_performance_bottom_tab a").removeAttr("class");
     $(this).attr("class", "current_tab");
     if ($(this).attr("id") === "team_performance_amounts_total") {
@@ -117,44 +111,25 @@ $(document).ready(function(){
     }
   });
 
-
 //login user validate
 
-  $("#new_contest_team").submit(function(){
+  $("#new_contest_team").submit(function () {
 
-    var b=true;
-
-    //product is remove
-
-    //if(!$("#contest_team_phone").val().match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
-    //
-    //  $("#contest_team_phone_error").text("请输入正确手机号");
-    //
-    //  b=false;
-    //
-    //}else{
-    //
-    //  $("#contest_team_phone_error").text("");
-    //
-    //}
-
-    if(!$("#contest_team_password").val().match(/^[ -~]{6,20}$/)){
-
-      $("#contest_team_password_error").text("密码6-20数字或字母");
-
-      b=false;
-
-    }else{
-
-      $("#contest_team_password_error").text("");
-
+    var b = true;
+    if (!$("#contest_team_phone").val().match(validate_regex.username)) {
+      $("#contest_team_phone_error").text(validate_message.username.invalid);
+      b = false;
+    } else {
+      $("#contest_team_phone_error").text("");
     }
 
+    if (!$("#contest_team_password").val().match(validate_regex.password)) {
+      $("#contest_team_password_error").text(validate_message.password.invalid);
+      b = false;
+    } else {
+      $("#contest_team_password_error").text("");
+    }
     return b;
-
   });
-
-
-
 
 });
