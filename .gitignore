@@ -36,6 +36,9 @@ pickle-email-*.html
 # # Ignore pow environment settings
 # .powenv
 
+config/database.yml
+config/secrets.yml
+
 #vim noise
 *.swp
 

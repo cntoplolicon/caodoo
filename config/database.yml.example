@@ -13,12 +13,12 @@ default: &default
 
 development:
   <<: *default
-  host: 192.168.1.187
+  host: localhost
 
 test:
   <<: *default
 
 production:
   <<: *default
-  host: 192.168.1.187
+  host: localhost
 
