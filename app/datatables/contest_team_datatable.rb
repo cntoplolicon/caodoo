@@ -7,6 +7,7 @@ class ContestTeamDatatable < Datatable
         contest_team.name,
         contest_team.phone,
         contest_team.identifier,
+        contest_team.sales_quantity,
         link_to('重置密码', edit_admin_contest_team_path(contest_team), class: 'btn btn-default')
       ]
     end
@@ -23,6 +24,6 @@ class ContestTeamDatatable < Datatable
   end
 
   def sortable_columns
-    @sortable_columns ||= ['name', 'phone', 'identifier']
+    @sortable_columns ||= ['name', 'phone', 'sales_quantity', 'identifier']
   end
 end
