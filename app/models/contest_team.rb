@@ -5,7 +5,7 @@ class ContestTeam < ActiveRecord::Base
 
   def level
     Settings.contest.level_exp.each_with_index do |exp, i|
-      return i - 1 if sales_or_return_quantity < exp
+      return i - 1 if sales_quantity < exp
     end
     Settings.contest.level_exp.length - 1
   end

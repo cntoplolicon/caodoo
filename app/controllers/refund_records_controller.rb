@@ -50,7 +50,7 @@ class RefundRecordsController < ContestTeamDashboardController
   end
 
   def index
-    @refund_records = RefundRecord.all.joins(:order, :express).includes(:order, :express).where(orders: {contest_team_id: @contest_team.id})
+    @refund_records = RefundRecord.all.order(created_at: :desc).joins(:order, :express).includes(:order, :express).where(orders: {contest_team_id: @contest_team.id})
     @total_orders_count = Order.where(contest_team_id: @contest_team.id, status: [Order::PAID, Order::DELIVERED, Order::COMPLETE]).count(:all)
     @returned_orders_count = Order.where(contest_team_id: @contest_team.id, status: Order::REFUNDED).count(:all)
     if @total_orders_count == 0 && @returned_orders_count == 0 then

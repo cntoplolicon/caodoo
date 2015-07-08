@@ -37,6 +37,16 @@ $(document).ready(function() {
     }, {
       column_number: 12,
       filter_delay: 1000,
+      filter_type: 'text',
+      data: {}
+    }, {
+      column_number: 13,
+      filter_delay: 1000,
+      filter_type: 'text',
+      data: {}
+    }, {
+      column_number: 14,
+      filter_delay: 1000,
       filter_type: 'range_date',
       date_format: 'yyyy-mm-dd'
     }

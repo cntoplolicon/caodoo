@@ -2,7 +2,7 @@ class AddressesController < ApplicationController
   before_action :find_user
 
   def index
-    @addresses = @user.addresses.where(deleted: false).order(created_at: :desc)
+    @addresses = @user.addresses.where(deleted: false).order(updated_at: :desc)
     render layout: 'account_setting'
   end
 
@@ -17,7 +17,7 @@ class AddressesController < ApplicationController
     Address.transaction do
       if @address.save
         @user.addresses.where(deleted: false).where.not(id: @address.id).update_all(default: false)
-        redirect_to action: :index
+        head :ok
       else
         load_regions_for_address
         render 'new', layout: false, status: :bad_request
@@ -66,8 +66,8 @@ class AddressesController < ApplicationController
   end
 
   def load_regions_for_address
-    @provinces = Region.where(parent: nil)
-    @cities = @address.province.nil? ? [] : Region.where(parent: @address.province.code)
-    @districts = @address.province.nil? || @address.city.nil? ? [] : Region.where(parent: @address.city.code)
+    @provinces = Region.where(parent: nil, disabled: false)
+    @cities = @address.province.nil? ? [] : Region.where(parent: @address.province.code, disabled: false)
+    @districts = @address.province.nil? || @address.city.nil? ? [] : Region.where(parent: @address.city.code, disabled: false)
   end
 end

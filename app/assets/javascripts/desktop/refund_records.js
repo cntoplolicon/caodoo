@@ -5,6 +5,7 @@ $(function() {
     event.preventDefault();
     $('#team_return_goods_popup').load($(this).attr('href'), function() {
       $('#team_return_goods_popup').show();
+      $('input').placeholder();
     });
   });
   $('#team_return_goods_popup').on('click', '.return_good_reset', function() {
@@ -23,6 +24,7 @@ $(function() {
         statusCode: {
           400: function(xhr) {
             $('#team_return_goods_popup').html(xhr.responseText);
+            $('input').placeholder();
           },
           302: function() {
             window.location.reload();

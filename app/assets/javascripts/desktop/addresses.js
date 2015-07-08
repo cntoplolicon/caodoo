@@ -80,9 +80,14 @@ $(document).ready(function() {
     $('#edit_address_box').hide();
   });
   $('#edit_address_box').on('click', '.save_address_button', function() {
-
+    var onSucceed = function() {
+      if ($('.new_order_refresh_url').length > 0) {
+        window.location.href = $('.new_order_refresh_url').val() + '?product_id=' + $('#order_product_id').val() + '&quantity=' + $('#order_quantity').val();
+      } else {
+        window.location.reload();
+      }
+    }
     if (validate_address()) {
-
       var form = $(this).closest('form');
       $.ajax({
         url: form.attr('action'),
@@ -93,12 +98,8 @@ $(document).ready(function() {
             $('#edit_address_box').html(xhr.responseText);
             edit_address_box_ready();
           },
-          302: function() {
-            window.location.reload();
-          },
-          200: function() {
-            window.location.reload();
-          }
+          302: onSucceed,
+          200: onSucceed
         }
       });
 
@@ -120,5 +121,4 @@ $(document).ready(function() {
   });
 
 });
-
 

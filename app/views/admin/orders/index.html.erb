@@ -1,7 +1,8 @@
 <div class="container-fluid">
   <div style="margin-bottom: 16px">
     <%= link_to "导出搜索结果", admin_orders_path(format: :csv), class: 'order-csv-link btn btn-primary' %>
-    <%= link_to "导出发货CSV", admin_orders_path(format: :csv, update_delivery_exported: true), class: 'order-csv-link btn btn-primary' %>
+    <%= link_to "导出发货CSV", admin_orders_path(format: :csv, update_delivery_exported: true),
+      data: {confirm: '发货CSV无法重复导出，确认导出？'}, class: 'order-csv-link btn btn-primary' %>
     <%= link_to "导入发货CSV", upload_delivery_admin_orders_path, class: 'order-csv-link btn btn-primary' %>
     <%= link_to "导入支付CSV", upload_payment_admin_orders_path, class: 'order-csv-link btn btn-primary' %>
   </div>
@@ -20,6 +21,8 @@
         <th>地区</th>
         <th>详细地址</th>
         <th>状态</th>
+        <th>推荐团队名称</th>
+        <th>推荐团队联系方式</th>
         <th>下单时间</th>
       </tr>
     </thead>

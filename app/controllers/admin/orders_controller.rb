@@ -64,7 +64,7 @@ class Admin::OrdersController < Admin::AdminController
           r[:message] = '快递公司不存在'
         elsif r[:tracking_number].blank?
           r[:message] = '快递单号不能为空'
-        elsif [Order::TO_PAY, Order::CANCELLED, Order::CANCELLED, Order::TIMEOUT].include?(@order.status)
+        elsif ![Order::PAID, Order::DELIVERED].include?(@order.status)
           r[:message] = '订单状态不正确'
         else
           @order.tracking_number = r[:tracking_number]
@@ -105,9 +105,11 @@ class Admin::OrdersController < Admin::AdminController
           @order.payment_record.amount = r[:amount]
           @order.payment_record.payment_type = r[:payment_type]
           @order.payment_record.payment_time = r[:payment_time] || Time.now
+          ContestTeam.where(id: @order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', @order.quantity]) if @order.contest_team_id.present?
           if @order.save
             r[:message] = '更新成功'
           else
+            raise ActiveRecord::Rollback
             r[:message] = '未知错误'
           end
         end

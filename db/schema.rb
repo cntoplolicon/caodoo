@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707143914) do
+ActiveRecord::Schema.define(version: 20150708125205) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -44,24 +44,23 @@ ActiveRecord::Schema.define(version: 20150707143914) do
   end
 
   create_table "contest_teams", force: :cascade do |t|
-    t.string   "identifier",               limit: 48
-    t.string   "name",                     limit: 48
-    t.string   "password_digest",          limit: 255
-    t.string   "university",               limit: 48
-    t.string   "area",                     limit: 48
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
-    t.integer  "sales_quantity",           limit: 4,   default: 0
-    t.integer  "sales_price",              limit: 4,   default: 0
-    t.integer  "sales_or_return_quantity", limit: 4,   default: 0
-    t.boolean  "password_updated",         limit: 1,   default: false
-    t.string   "phone",                    limit: 255
-    t.string   "email",                    limit: 255
+    t.string   "identifier",       limit: 48
+    t.string   "name",             limit: 48
+    t.string   "password_digest",  limit: 255
+    t.string   "university",       limit: 48
+    t.string   "area",             limit: 48
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "sales_quantity",   limit: 4,   default: 0
+    t.boolean  "password_updated", limit: 1,   default: false
+    t.string   "phone",            limit: 48
+    t.string   "email",            limit: 255
   end
 
   add_index "contest_teams", ["area"], name: "index_contest_teams_on_area", using: :btree
   add_index "contest_teams", ["identifier"], name: "index_contest_teams_on_identifier", unique: true, using: :btree
   add_index "contest_teams", ["name"], name: "index_contest_teams_on_name", unique: true, using: :btree
+  add_index "contest_teams", ["phone"], name: "index_contest_teams_on_phone", unique: true, using: :btree
   add_index "contest_teams", ["university"], name: "index_contest_teams_on_university", using: :btree
 
   create_table "expresses", force: :cascade do |t|
@@ -198,8 +197,9 @@ ActiveRecord::Schema.define(version: 20150707143914) do
     t.integer  "code",       limit: 4
     t.string   "name",       limit: 255
     t.string   "parent",     limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "disabled",   limit: 1,   default: false
   end
 
   add_index "regions", ["code"], name: "index_regions_on_code", using: :btree

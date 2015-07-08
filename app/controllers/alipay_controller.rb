@@ -78,6 +78,7 @@ class AlipayController < ApplicationController
       @order.status = Order::PAID
       @order.payment_record.payment_type = PaymentRecord::ALIPAY
       @order.payment_record.status = PaymentRecord::PAID
+      ContestTeam.where(id: @order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', @order.quantity]) if @order.contest_team_id.present?
       if params[:total_fee].present?
         @order.payment_record.amount = params[:total_fee].to_f
       elsif params[:price].present? && params[:quantity].present?

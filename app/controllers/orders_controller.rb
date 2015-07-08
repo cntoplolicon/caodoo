@@ -120,10 +120,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = @user.orders.find(params[:id])
-    Order.transaction do
-      if time_out?(@order)
-        try_cancel_timeout_order(@order.id)
-      end
+    if time_out?(@order)
+      try_cancel_timeout_order(@order.id)
     end
     render layout: 'account_setting'
   end
@@ -135,9 +133,7 @@ class OrdersController < ApplicationController
   end
 
   def payment_timeout
-    Order.transaction do
-      try_cancel_timeout_order(params[:order_id])
-    end
+    try_cancel_timeout_order(params[:order_id])
   end
 
   def payment_succeed
@@ -175,16 +171,19 @@ class OrdersController < ApplicationController
   end
 
   def try_cancel_timeout_order(order_id)
-    @order = @user.orders.lock.find(order_id)
-    if @order.status == Order::TO_PAY && Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
-      @order.status = Order::TIMEOUT
-      @order.payment_record.status = PaymentRecord::TIMEOUT
-      @order.save
+    Order.transaction do
+      @order = @user.orders.lock.find(order_id)
+      if @order.status == Order::TO_PAY && Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
+        @order.status = Order::TIMEOUT
+        @order.payment_record.status = PaymentRecord::TIMEOUT
+        @order.save
+        Product.where(id: @order.product_id).update_all(["quantity = quantity + ?", @order.quantity])
+      end
     end
   end
 
   def load_order_addresses
-    @addresses = @user.addresses.where(deleted: false).order(created_at: :desc)
+    @addresses = @user.addresses.where(deleted: false).order(updated_at: :desc)
     default_address = @addresses.find(&:default)
     if default_address.present?
       @order.address_id = default_address.id

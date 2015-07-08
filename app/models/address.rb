@@ -22,6 +22,6 @@ class Address < ActiveRecord::Base
   end
 
   def to_text
-    "#{self.try(:province).try(:name)}#{self.try(:city).try(:name)}#{self.try(:district).try(:name)}"
+    "#{self.try(:province).try(:name)}#{self.try(:city).try(:name)}#{self.try(:district).try(:name)}#{self.detailed_address}"
   end
 end

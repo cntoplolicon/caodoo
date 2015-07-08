@@ -5,6 +5,7 @@ class ContestTeamDatatable < Datatable
     raw_records.map do |contest_team|
       [
         contest_team.name,
+        contest_team.phone,
         contest_team.identifier,
         link_to('重置密码', edit_admin_contest_team_path(contest_team), class: 'btn btn-default')
       ]
@@ -16,12 +17,12 @@ class ContestTeamDatatable < Datatable
     records = records.order("#{sort_column} #{sort_direction}")
     records = records.page(page).per(per_page)
     if params[:sSearch].present?
-      records = records.where("name like :search or identifier like :search", search: "%#{params[:sSearch]}%")
+      records = records.where("name like :search or phone like :search", search: "%#{params[:sSearch]}%")
     end
     records
   end
 
   def sortable_columns
-    @sortable_columns ||= ['name', 'identifier']
+    @sortable_columns ||= ['name', 'phone', 'identifier']
   end
 end

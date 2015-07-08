@@ -1,6 +1,7 @@
 <%= form_for [@user, @order] do |f| %>
   <%= f.hidden_field :product_id %>
   <%= f.hidden_field :user_id %>
+  <%= hidden_field_tag :new_order_refresh_url, new_user_order_path(@user, @order), class: 'new_order_refresh_url'  %>
   <%= hidden_field_tag :new_address_url, new_user_address_path(@user), class: 'new_address_url' %>
   <div class="submission-detail-container">
     <div class="submission-detail">

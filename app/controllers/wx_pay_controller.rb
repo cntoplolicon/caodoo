@@ -48,6 +48,7 @@ class WxPayController < ApplicationController
         order.payment_record.status = PaymentRecord::PAID
         order.payment_record.amount = r[:total_fee].to_f / 100
         order.payment_record.payment_time = Time.now
+        ContestTeam.where(id: order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', order.quantity]) if order.contest_team_id.present?
         head :unprocessable_entity and return unless order.save
       end
       render :xml => {return_code: 'SUCCESS', return_msg: 'OK'}.to_xml(root: 'xml', dasherize: false)

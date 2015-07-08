@@ -97,8 +97,10 @@
       <%= form_for [@user, @order], html: {class: "cancel_order_#{@order.id}_form"} do |f| %>
         <%= f.hidden_field :status, value: Order::CANCELLED %>
       <% end %>
+      <% if [Order::DELIVERED, Order::COMPLETE].include?(@order.status)  %>
+        <a class="bt_green" href="http://www.kuaidi100.com" target="_blank">查看物流</a>
+      <% end %>
       <% if [Order::DELIVERED].include?(@order.status)  %>
-        <a class="bt_green" href="http://www.kuaidi100.com">查看物流</a>
         <a class="bt_green receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>
       <% end %>
       <% if [Order::TO_PAY].include?(@order.status)  %>
@@ -133,10 +135,14 @@
   <div class="resales_popup_box">
     <div class="customer_service_info">
       <ul>
-        <li>请联系客服</li>
+        <% if @order.contest_team.present? %>
+          <li>请联系大赛团队<span class="contest-team-name"><%= @order.contest_team.name %></span>协助您退货</li>
+        <% else %>
+          <li>请联系客服</li>
+        <% end %>
         <li>
           <% if @order.contest_team.present? %>
-            <p> 电话：<strong style="color: #333333"><%= @order.contest_team.name %></strong></p>
+            <p> 电话：<strong style="color: #333333"><%= @order.contest_team.phone %></strong></p>
           <% else %>
             <p> 电话：<strong style="color: #333333"><%= Settings.contact.telephone %></strong></p>
             <p> 微信：<strong style="color: #333333"><%= Settings.contact.wechat %></strong></p>

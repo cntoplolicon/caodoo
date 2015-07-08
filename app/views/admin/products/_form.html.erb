@@ -55,7 +55,7 @@
       </div>
       <div class="form-group">
         <%= v.label :sale_image_type, '主页图片类型(高：宽)' %>
-        <%= v.select :sale_image_type, options_for_select([['2 : 1', 0], ['1 : 1', 1], ['1 : 2', 2]], @product.product_view.sale_image_type), {}, class: 'form-control' %>
+        <%= v.select :sale_image_type, options_for_select([['2 : 1', 0], ['1 : 1', 1], ['1 : 2', 2]], @product.product_view.sale_image_type || 1), {}, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= v.label :sale_image_url, '主页图片url' %>
