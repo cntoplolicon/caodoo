@@ -485,7 +485,14 @@
     background-color: #3baf47;
     color: #ffffff;
     cursor: pointer;
-
+    display: none;
+}
+#payment-before-choose {
+    width: 300px;
+    height: 36px;
+    background-color: #d0d0d0;
+    color: #969696;
+    cursor: pointer;
 }
 .order-detail {
     display: inline-block;

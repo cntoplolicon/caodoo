@@ -12,13 +12,13 @@
     <div class="payment-hint">订单提交成功，您的订单号为<span><%= @order.order_number %></span>，请尽快支付！</div>
     <div class="payment-choise">
       <div class="radio-icon">
-        <input type="radio" class="order-radio alipay-radio" name="order-radio">
+        <input type="radio" class="order-radio alipay-radio" name="order_radio">
       </div>
       <div class="payment-icon">
         <%= image_tag "alipay.png" %>
       </div>
       <div class="radio-icon">
-        <input type="radio" class="order-radio wechat-radio" name="order-radio">
+        <input type="radio" class="order-radio wechat-radio" name="order_radio">
       </div>
       <div class="payment-icon">
         <%= image_tag "wechat.png" %>
@@ -26,6 +26,7 @@
     </div>
     <div class="flex-y"></div>
     <div>
+      <button type="button" id="payment-before-choose" disabled>请选择支付方式</button>
       <button type="button" class="payment-button">去支付</button>
     </div>
     <div class="order-detail">
