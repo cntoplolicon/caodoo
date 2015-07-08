@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	console.log("1");
   if ($('.game_share_content').length > 0) {
     window._bd_share_config = {
       common: {
