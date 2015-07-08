@@ -30,7 +30,7 @@ $(document).ready(function() {
     return minutes + '分' + seconds + '秒';
   };
 
-  $('input[name = "order_radio"]').click(function() {
+  $('input[name = "order_radio"]').change(function() {
     $('#payment-before-choose').hide();
     $('.payment-button').show();
   });
