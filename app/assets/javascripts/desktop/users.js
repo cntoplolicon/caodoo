@@ -1,24 +1,24 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-$(document).ready(function () {
+$(document).ready(function() {
 
-  var initSecurityCodeButton = function (button, url) {
-    $(button).click(function (event) {
+  var initSecurityCodeButton = function(button, url) {
+    $(button).click(function(event) {
       event.preventDefault();
       var username = $('#username-input').val();
       var xhr = $.post(url, {username: username, authenticity_token: $('meta[name=csrf-token]').attr('content')})
-        .fail(function () {
+        .fail(function() {
           var response = $.parseJSON(xhr.responseText);
           $('#username-error').text(response.error);
         })
-        .done(function () {
+        .done(function() {
           var time = 60;
           $('#username-error').text('');
           $('.security-code-button').prop('disabled', true);
           $('.security-code-button').css('color', 'grey');
           $('.security-code-button').text(time + 's重新发送');
-          var timecounter = window.setInterval(function () {
+          var timecounter = window.setInterval(function() {
             if (time-- > 0) {
               $('.security-code-button').text(time + 's重新发送');
             } else {
@@ -36,11 +36,11 @@ $(document).ready(function () {
     });
   };
 
-  $('.update_username_action').click(function () {
+  $('.update_username_action').click(function() {
     $('.username-box').show();
     $('.password-box').hide();
   });
-  $('.update_password_action').click(function () {
+  $('.update_password_action').click(function() {
     $('.username-box').hide();
     $('.password-box').show();
   });
@@ -50,12 +50,12 @@ $(document).ready(function () {
     $('.password-box').show();
   }
 
-  $('.user_info_box .cancel_button').click(function () {
+  $('.user_info_box .cancel_button').click(function() {
     $(this).closest('.user_info_box').hide();
   });
 
   if ($('.reset-password-to-login-link').attr('href')) {
-    window.setTimeout(function () {
+    window.setTimeout(function() {
       window.location.href = $('.reset-password-to-login-link').attr('href');
     }, 2000);
   }
@@ -66,7 +66,7 @@ $(document).ready(function () {
 
   //new user validate
 
-  $("#new-user").submit(function () {
+  $("#new-user").submit(function() {
 
     var b = true;
     if (!$("#username-input").val().match(validate_regex.username)) {
@@ -96,7 +96,7 @@ $(document).ready(function () {
 
   //login user validate
 
-  $("#login-user").submit(function () {
+  $("#login-user").submit(function() {
 
     var b = true;
     if (!$("#user_username").val().match(validate_regex.username)) {
@@ -119,7 +119,7 @@ $(document).ready(function () {
 
   //forget pwd validate
 
-  $("#forget-password").submit(function () {
+  $("#forget-password").submit(function() {
     var b = true;
     if (!$("#username-input").val().match(validate_regex.username)) {
       $("#username-error").text(validate_message.username.invalid);
@@ -140,7 +140,7 @@ $(document).ready(function () {
 
   //update phone validate
 
-  $("#update-phone").submit(function () {
+  $("#update-phone").submit(function() {
     var b = true;
     if (!$("#username-input").val().match(validate_regex.username)) {
       $("#username-error").text(validate_message.username.invalid);
@@ -161,7 +161,7 @@ $(document).ready(function () {
 
   //update pwd validate
 
-  $("#update-pwd").submit(function () {
+  $("#update-pwd").submit(function() {
     var b = true;
     if (!$("#user_old_password").val().match(validate_regex.captch)) {
       $("#user_old_password-error").text(validate_message.password.invalid);

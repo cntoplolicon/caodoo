@@ -1,21 +1,21 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-$(document).ready(function () {
+$(document).ready(function() {
   var adapt_height = Math.max($(window).height(), $('.detail_container').height() + 64);
   $('.block_container_menu').css('height', adapt_height - 24);
-  $(".game-header-setting").click(function () {
+  $(".game-header-setting").click(function() {
     $("#game_header_management_menu").toggle();
   });
   if ($('.team_client_block_container').length > 0) {
-    $(window).on("debouncedresize", function () {
+    $(window).on("debouncedresize", function() {
       var resize_height = Math.max($(window).height(), $('.team_client_detail_container').height() + 64);
       $('.team_client_block_container_menu').css('height', resize_height - 24);
     });
   }
 });
 
-$(document).ready(function () {
+$(document).ready(function() {
 
 
   //if page has share
@@ -24,7 +24,7 @@ $(document).ready(function () {
 
     //create qrCode links
 
-    $(".team_share_link_product").each(function () {
+    $(".team_share_link_product").each(function() {
 
       //get url link
 
@@ -48,7 +48,7 @@ $(document).ready(function () {
 
     //change each share url and content for share
 
-    $(".bdsharebuttonbox a").click(function () {
+    $(".bdsharebuttonbox a").click(function() {
 
       shareText = $(this).parents().children(".team_share_link_detail_name").text();
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
     window._bd_share_config = {
       common: {
 
-        onBeforeClick: function (cmd, config) {
+        onBeforeClick: function(cmd, config) {
 
           return {
 
@@ -88,7 +88,7 @@ $(document).ready(function () {
 
   //
 
-  $(".team_performance_tab a").click(function () {
+  $(".team_performance_tab a").click(function() {
     $(".team_performance_tab a").removeAttr("class");
     $(this).attr("class", "current_tab");
     if ($(this).attr("id") === "team_performance_data_total") {
@@ -99,7 +99,7 @@ $(document).ready(function () {
       $("#team_performance_top_results_today").show();
     }
   });
-  $(".team_performance_bottom_tab a").click(function () {
+  $(".team_performance_bottom_tab a").click(function() {
     $(".team_performance_bottom_tab a").removeAttr("class");
     $(this).attr("class", "current_tab");
     if ($(this).attr("id") === "team_performance_amounts_total") {
@@ -113,8 +113,7 @@ $(document).ready(function () {
 
 //login user validate
 
-  $("#new_contest_team").submit(function () {
-
+  $("#new_contest_team").submit(function() {
     var b = true;
     if (!$("#contest_team_phone").val().match(validate_regex.username)) {
       $("#contest_team_phone_error").text(validate_message.username.invalid);
