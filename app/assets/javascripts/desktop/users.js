@@ -180,7 +180,6 @@ $(document).ready(function() {
   });
 
   //update pwd validate
-
   $("#update-pwd").submit(function() {
     var b = true;
     if (!$("#user_old_password").val().match(validate_regex.captch)) {
@@ -214,6 +213,7 @@ $(document).ready(function() {
     return b;
   });
 
+  // terms service checkbox
   $("#user_terms_of_service").click(function() {
     if (!$(this).attr("checked")) {
       $(this).attr("checked", "checked");

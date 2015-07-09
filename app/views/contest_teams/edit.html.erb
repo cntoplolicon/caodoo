@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="team-client-reset-pwd">
-      <%= form_for @contest_team do |f| %>
+      <%= form_for @contest_team , html: {id: 'team-client-reset-pwd'} do |f| %>
         <div>
           <%= image_tag "game-detail.png" %>
         </div>
@@ -17,15 +17,15 @@
           <div class="game-reset-pwd-team-entrance">设置登陆密码</div>
           <div>
             <%= password_field_tag :old_password, '', placeholder: '输入原密码', class: 'game-reset-pwd-team-input' %>
-            <div class="error-message"><%= @contest_team.errors.messages[:old_password].first if @contest_team.errors[:old_password].any? %></div>
+            <div class="error-message" id="old_password_error"><%= @contest_team.errors.messages[:old_password].first if @contest_team.errors[:old_password].any? %></div>
           </div>
           <div>
             <%= f.password_field :password, placeholder: '设置新密码', class: 'game-reset-pwd-team-input' %>
-            <div class="error-message"><%= @contest_team.errors.messages[:password].first if @contest_team.errors[:password].any? %></div>
+            <div class="error-message" id="contest_team_password_error"><%= @contest_team.errors.messages[:password].first if @contest_team.errors[:password].any? %></div>
           </div>
           <div>
             <%= f.password_field :password_confirmation, placeholder: '再输一次新密码', class: 'game-reset-pwd-team-input' %>
-            <div class="error-message"><%= @contest_team.errors.messages[:password_confirmation].first if @contest_team.errors[:password_confirmation].any? %></div>
+            <div class="error-message" id="contest_team_password_confirmation_error"><%= @contest_team.errors.messages[:password_confirmation].first if @contest_team.errors[:password_confirmation].any? %></div>
           </div>
           <div class="game-reset-pwd-bottom">
             <% if @contest_team.password_updated %>
