@@ -6,7 +6,7 @@ class ContestProductsController < ApplicationController
     @products = Product
       .joins(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
       .includes(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
-      .where(product_table[:contest_level].gteq(@contest_team.level))
+      .where(product_table[:contest_level].lteq(@contest_team.level))
       .order(priority: :desc)
   end
 

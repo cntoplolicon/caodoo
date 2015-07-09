@@ -15,9 +15,12 @@ sale:
 
 contest:
   default_team_identifier: '85ab5238f634ae970da47c3863921e6c'
-  level_exp: [0, 3, 5, 8]
+  level_exp: [0, 9, 13, 16]
 
 contact:
   telephone: '400-6518-459'
   wechat: 'caodoo2015'
+
+
+
 
