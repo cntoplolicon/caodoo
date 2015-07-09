@@ -9,6 +9,7 @@
 <%= form_for [@user, @order] do |f| %>
   <%= f.hidden_field :product_id %>
   <%= f.hidden_field :user_id %>
+  <%= hidden_field_tag :new_order_refresh_url, new_user_order_path(@user, @order), class: 'new_order_refresh_url'  %>
   <%= hidden_field_tag :new_address_url, new_user_address_path(@user), class: 'new_address_url' %>
   <div class="submission-detail-container">
     <div class="submission-detail">
@@ -53,14 +54,13 @@
         <div class="order-address-top">
           <div class="order-address-tag">收货地址：</div>
           <div class="order-address-creation">
-            <!-- <a class="add_new_address" style="color: #15ae10">+添加收货地址</a> -->
             <a href="#" class="new_address_action" style="color: #15ae10">+添加收货地址</a>
           </div>
         </div>
         <div class="order-address-bottom">
-        <%= f.collection_select :address_id, @addresses || @user.addresses.where(deleted: false).order(created_at: :desc),
+          <%= f.collection_select :address_id, @addresses || @user.addresses.where(deleted: false).order(created_at: :desc),
             :id, :to_text, {prompt: '请选择收货地址'}, {class: 'address-selection'} %>
-            <div class="error-message" id="username-error"><%= @order.errors.messages[:address_id].first if @order.errors[:address_id].any? %></div>
+          <div class="error-message" id="username-error"><%= @order.errors.messages[:address_id].first if @order.errors[:address_id].any? %></div>
         </div>
       </div>
       <div class="order-information">

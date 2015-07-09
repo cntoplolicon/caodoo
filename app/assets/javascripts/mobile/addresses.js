@@ -46,6 +46,17 @@ $(document).ready(function() {
     $('#edit_address_box').hide();
   });
   $('#edit_address_box').on('click', '.save_address_button', function() {
+    var onSucceed = function(xhr) {
+      if ($('.new_order_refresh_url').length > 0) {
+        var address_id = $.parseJSON(xhr.responseText).address_id;
+        window.location.href = $('.new_order_refresh_url').val() +
+          '?product_id=' + $('#order_product_id').val() +
+          '&quantity=' + $('#order_quantity').val() +
+          '&address=' + address_id;
+      } else {
+        window.location.reload();
+      }
+    }
     var form = $(this).closest('form');
     $.ajax({
       url: form.attr('action'),
@@ -57,7 +68,7 @@ $(document).ready(function() {
           edit_address_box_ready();
         }
         if (xhr.status === 302 || xhr.status === 200) {
-          window.location.reload();
+          onSucceed(xhr);
         }
       }
     });
