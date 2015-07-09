@@ -3,36 +3,50 @@
 
 $(document).ready(function() {
 
+  function validate_phone() {
+    var b = true;
+    if (!$("#username-input").val().match(validate_regex.username)) {
+      $("#username-error").text(validate_message.username.invalid);
+      b = false;
+    } else {
+      $("#username-error").text("");
+    }
+    return b;
+  }
+
   var initSecurityCodeButton = function(button, url) {
     $(button).click(function(event) {
       event.preventDefault();
-      var username = $('#username-input').val();
-      var xhr = $.post(url, {username: username, authenticity_token: $('meta[name=csrf-token]').attr('content')})
-        .fail(function() {
-          var response = $.parseJSON(xhr.responseText);
-          $('#username-error').text(response.error);
-        })
-        .done(function() {
-          var time = 60;
-          $('#username-error').text('');
-          $('.security-code-button').prop('disabled', true);
-          $('.security-code-button').css('color', 'grey');
-          $('.security-code-button').text(time + 's重新发送');
-          var timecounter = window.setInterval(function() {
-            if (time-- > 0) {
-              $('.security-code-button').text(time + 's重新发送');
-            } else {
-              myStopFunction();
-            }
-          }, 1000);
+      if (validate_phone()) {
+        var username = $('#username-input').val();
+        var xhr = $.post(url, {username: username, authenticity_token: $('meta[name=csrf-token]').attr('content')})
+          .fail(function() {
+            var response = $.parseJSON(xhr.responseText);
+            $('#username-error').text(response.error);
+          })
+          .done(function() {
+            var time = 60;
+            $('#username-error').text('');
+            $('.security-code-button').prop('disabled', true);
+            $('.security-code-button').css('color', 'grey');
+            $('.security-code-button').text(time + 's重新发送');
+            var timecounter = window.setInterval(function() {
+              if (time-- > 0) {
+                $('.security-code-button').text(time + 's重新发送');
+              } else {
+                myStopFunction();
+              }
+            }, 1000);
 
-          function myStopFunction() {
-            window.clearInterval(timecounter);
-            $('.security-code-button').prop('disabled', false);
-            $('.security-code-button').text('重新发送');
-            $('.security-code-button').css('color', '');
-          }
-        });
+            function myStopFunction() {
+              window.clearInterval(timecounter);
+              $('.security-code-button').prop('disabled', false);
+              $('.security-code-button').text('重新发送');
+              $('.security-code-button').css('color', '');
+            }
+          });
+
+      }
     });
   };
 
