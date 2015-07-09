@@ -26,7 +26,7 @@
       <%= f.check_box :terms_of_service %>
       同意
       <%= link_to "服务条款", action: :terms_of_service %>
-      <span class="error-message"><%= @user.errors.messages[:terms_of_service].first if @user.errors[:terms_of_service].any? %></span>
+      <span class="error-message" id="terms_of_service_error"><%= @user.errors.messages[:terms_of_service].first if @user.errors[:terms_of_service].any? %></span>
     </div>
   <% end %>
 </div>

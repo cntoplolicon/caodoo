@@ -81,7 +81,6 @@ $(document).ready(function() {
   //new user validate
 
   $("#new-user").submit(function() {
-
     var b = true;
     if (!$("#username-input").val().match(validate_regex.username)) {
       $("#username-error").text(validate_message.username.invalid);
@@ -104,6 +103,15 @@ $(document).ready(function() {
     } else {
       $("#userpwd-error").text("");
     }
+
+
+    if (!$("#user_terms_of_service").attr("checked")) {
+      $("#terms_of_service_error").text(validate_message.service.blank);
+      b = false;
+    } else {
+      $("#terms_of_service_error").text("");
+    }
+
     return b;
 
   });
@@ -206,6 +214,14 @@ $(document).ready(function() {
       $("#user_new_password2-error").text("");
     }
     return b;
+  });
+
+  $("#user_terms_of_service").click(function(){
+    if(!$(this).attr("checked")){
+      $(this).attr("checked","checked");
+    }else{
+    $(this).removeAttr("checked");
+    }
   });
 
 })
