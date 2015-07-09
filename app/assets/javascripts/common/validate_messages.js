@@ -60,6 +60,10 @@ var validate_message = {
   order_number: {
     blank: '订单号不能为空'
 
+  },
+  service: {
+    blank: '同意服务条款才可以注册'
+
   }
 
 }

@@ -111,7 +111,7 @@ $(document).ready(function() {
     }
   });
 
-//login user validate
+  //login team  validate
 
   $("#new_contest_team").submit(function() {
     var b = true;
@@ -130,5 +130,41 @@ $(document).ready(function() {
     }
     return b;
   });
+
+  //update team pwd validate
+  $("#team-client-reset-pwd").submit(function() {
+    var b = true;
+    if (!$("#old_password").val().match(validate_regex.password)) {
+      $("#old_password_error").text(validate_message.password.invalid);
+      b = false;
+    } else {
+      $("#old_password_error").text("");
+    }
+
+    if (!$("#contest_team_password").val().match(validate_regex.password)) {
+      $("#contest_team_password_error").text(validate_message.password.invalid);
+      b = false;
+    } else {
+      $("#contest_team_password_error").text("");
+    }
+
+    if (!$("#contest_team_password_confirmation").val().match(validate_regex.password)) {
+      $("#contest_team_password_confirmation_error").text(validate_message.password.invalid);
+      b = false;
+    } else {
+      $("#contest_team_password_confirmation_error").text("");
+    }
+
+    // compare
+    if (!($("#contest_team_password").val() == $("#contest_team_password_confirmation").val())) {
+      $("#contest_team_password_confirmation_error").text(validate_message.password.password_confirmation.confirmation);
+      b = false;
+    } else {
+      $("#contest_team_password_confirmation_error").text("");
+    }
+    return b;
+  });
+
+
 
 });
