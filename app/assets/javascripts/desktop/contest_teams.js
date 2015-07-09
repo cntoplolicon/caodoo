@@ -133,7 +133,7 @@ $(document).ready(function() {
 
   //update team pwd validate
   $("#team-client-reset-pwd").submit(function() {
-    var b = false;
+    var b = true;
     if (!$("#old_password").val().match(validate_regex.password)) {
       $("#old_password_error").text(validate_message.password.invalid);
       b = false;
