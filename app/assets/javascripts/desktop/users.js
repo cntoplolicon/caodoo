@@ -104,7 +104,6 @@ $(document).ready(function() {
       $("#userpwd-error").text("");
     }
 
-
     if (!$("#user_terms_of_service").attr("checked")) {
       $("#terms_of_service_error").text(validate_message.service.blank);
       b = false;
@@ -134,7 +133,6 @@ $(document).ready(function() {
     } else {
       $("#userpwd-error").text("");
     }
-
     return b;
 
   });
@@ -216,11 +214,11 @@ $(document).ready(function() {
     return b;
   });
 
-  $("#user_terms_of_service").click(function(){
-    if(!$(this).attr("checked")){
-      $(this).attr("checked","checked");
-    }else{
-    $(this).removeAttr("checked");
+  $("#user_terms_of_service").click(function() {
+    if (!$(this).attr("checked")) {
+      $(this).attr("checked", "checked");
+    } else {
+      $(this).removeAttr("checked");
     }
   });
 

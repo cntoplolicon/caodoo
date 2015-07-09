@@ -19,7 +19,7 @@
   color: #898989;
   position: relative;
   border-radius: 2px;
-  box-shadow: 0px 2px 4px 0px rgba(162,162,162,0.5);
+  box-shadow: 0px 2px 4px 0px rgba(162, 162, 162, 0.5);
 }
 
 .user-op-form-panel {
@@ -57,10 +57,9 @@
   background-color: #15AE10;
   border: none;
   font-size: 14px;
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.26);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.26);
   cursor: pointer;
 }
-
 
 .user-op-form .input-panel {
   position: absolute;
@@ -201,7 +200,7 @@
   width: 235px;
 }
 
-#terms_of_service_error{
+#terms_of_service_error {
 
   margin-left: 20px;;
 

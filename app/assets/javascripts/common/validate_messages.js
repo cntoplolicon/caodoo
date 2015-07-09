@@ -62,7 +62,7 @@ var validate_message = {
 
   },
   service: {
-    blank: '    同意服务条款才可以注册'
+    blank: '同意服务条款才可以注册'
 
   }
 
