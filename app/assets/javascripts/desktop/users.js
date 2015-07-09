@@ -182,7 +182,7 @@ $(document).ready(function() {
   //update pwd validate
   $("#update-pwd").submit(function() {
     var b = true;
-    if (!$("#user_old_password").val().match(validate_regex.captch)) {
+    if (!$("#user_old_password").val().match(validate_regex.password)) {
       $("#user_old_password-error").text(validate_message.password.invalid);
       b = false;
     } else {

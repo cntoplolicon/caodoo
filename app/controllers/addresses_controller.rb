@@ -41,7 +41,6 @@ class AddressesController < ApplicationController
         end
         redirect_to action: :index 
       else
-        debugger
         load_regions_for_address
         render 'edit', layout: false, status: :bad_request
       end
