@@ -68,6 +68,7 @@
     <tbody>
       <tr class="team_return_goods_table_title">
         <td>订单号</td>
+        <td>数量</td>
         <td>收件人</td>
         <td>退货物流</td>
         <td>退货运单号</td>
@@ -77,6 +78,7 @@
       <% @refund_records.each do |r| %>
         <tr>
           <td><%= r.order.order_number %></td>
+          <td class="team_return_goods_count">12</td>
           <td><%= r.order.receiver %></td>
           <td><%= r.express.name %></td>
           <td><%= r.tracking_number %></td>

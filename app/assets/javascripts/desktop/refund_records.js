@@ -86,7 +86,8 @@ function validate_address() {
     $("#refund_record_receiver_error").text("");
   }
 
-  if ($("#refund_record_express_id").val() == "") {
+
+  if ($("input[name='refund_record[express_id]']").val() == "") {
     $("#refund_record_express_error").text(validate_message.express_id.blank);
     b = false;
   } else {
