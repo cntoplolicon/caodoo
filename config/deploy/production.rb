@@ -43,9 +43,9 @@
 # --------------
 set :ssh_options, {
   user: 'ubuntu', # overrides user setting above
-  keys: %w(/home/rlisowski/.ssh/id_rsa),
   forward_agent: true,
-  auth_methods: %w(publickey)
+  auth_methods: %w(publickey),
+  keys: %w(/home/cntoplolicon/workspace/delpoyment/WebServer.pem),
 }
 #
 # The server-based syntax can be used to override options:
@@ -53,6 +53,9 @@ set :ssh_options, {
 server '54.223.186.67',
   user: 'ubuntu',
   roles: %w{web app db},
-  ssh_options: {
-    keys: %w(/home/cntoplolicon/workspace/delpoyment/WebServer1.pem),
-  }
+  ssh_options: {}
+
+server '54.223.172.128',
+  user: 'ubuntu',
+  roles: %w{web app},
+  ssh_options: {}

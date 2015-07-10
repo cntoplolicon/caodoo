@@ -35,6 +35,16 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # set :keep_releases, 5
 
 namespace :deploy do
+  desc "reload the database with seed data"
+  task :seed do
+    on primary fetch(:migration_role) do
+      within release_path do
+        with rails_env: fetch(:rails_env)  do
+          execute :rake, 'db:seed'
+        end
+      end
+    end
+  end
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
@@ -44,5 +54,4 @@ namespace :deploy do
       # end
     end
   end
-
 end
