@@ -64,9 +64,9 @@
           <li>
             下单时间:<span class="order_span"><%= @order.created_at.in_time_zone.strftime('%Y-%m-%d') %></span>
           </li>
-          <% if @order.payment_record.payment_type %>
+          <% if @order.payment_record.payment_type.present? %>
           <li>
-            支付方式:<span class="order_span"><%= payment_type_text(@order.payment_record.status) %></span>
+            支付方式:<span class="order_span"><%= payment_type_text(@order.payment_record.payment_type) %></span>
           </li>
           <% end %>
           <% if @order.express_id.present? && @order.tracking_number.present? %>
