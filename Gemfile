@@ -48,3 +48,10 @@ gem 'whenever'
 #admin dashboad dependencies
 gem "kaminari"
 gem "font-awesome-rails"
+
+#deployment
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
+gem 'capistrano-passenger'
+gem 'capistrano-bower'

@@ -3584,3 +3584,7 @@ Express.create([
   {code:"shentong",name:"申通快递"},
   {code:"shunfen",name:"顺丰快递"}
 ])
+
+ContestTeam.create([
+  {identifier: Digest::MD5.hexdigest('15221746710'), name: '草垛网', phone: '15221746710', password: 'caodoo', university: nil, area: nil }
+])
