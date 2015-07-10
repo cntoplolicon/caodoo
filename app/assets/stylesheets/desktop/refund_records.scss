@@ -134,11 +134,10 @@
   margin: 0 auto;
   margin-top: 120px;
   background-color: white;
-  overflow: hidden;
   box-shadow: 3px 3px 3px #666;
   z-index: 99;
   padding-top: 60px;
-  padding-bottom: 270px;
+  height: 520px;
 }
 .team_return_goods_popup_title {
   font-size: 16px;
@@ -154,8 +153,9 @@
 }
 .team_return_goods_popup_row {
   display: block;
-  overflow: hidden;
+  //overflow: hidden;
   margin:20px 0;
+  height: 42px;
 }
 .team_return_good_input{
   width: 186px;
