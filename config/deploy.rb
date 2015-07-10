@@ -6,9 +6,10 @@ set :repo_url, 'git@github.com:cntoplolicon/caodoo.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, :release
 
 # Default deploy_to directory is /var/www/my_app_name
- set :deploy_to, '/var/www/caodoo'
+set :deploy_to, '/var/www/caodoo'
 
 # Default value for :scm is :git
 # set :scm, :git

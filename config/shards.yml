@@ -1,3 +1,14 @@
+default: &default
+  adapter: mysql2
+  database: caodoo
+  username: caodoo
+  pool: 25
+  timeout: 5000
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  port: 3306
+
 octopus:
   replicated: true
   environments:
@@ -5,5 +16,6 @@ octopus:
 
   production:
     slave1:
-      database: caodoodbslave1.chhqxoiimdiw.rds.cn-north-1.amazonaws.com.cn
+      host: caodoodbslave1.chhqxoiimdiw.rds.cn-north-1.amazonaws.com.cn
+      password: Passw0rd
       <<: *default
