@@ -17,7 +17,7 @@
           </li>
           <li>
             <%= f.text_field :security_code, placeholder: "验证码", class: 'cd_input', style: 'width: 120px; display: inline-block; *display: inline; zoom: 1' %>
-            <a class="bt security-code-button" style="display: inline-block; *display: inline; zoom: 1; color: #3FB134; float: none">获取验证码</a>
+            <button class="bt security-code-button" style="display: inline-block; *display: inline; zoom: 1; color: #3FB134; float: none">获取验证码</button>
             <div class="error-message" id="security-code-error"><%= @user.errors.messages[:security_code].first if @user.errors[:security_code].any? %></div>
           </li>
           <li>
