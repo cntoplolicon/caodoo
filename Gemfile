@@ -1,6 +1,5 @@
 source 'http://ruby.taobao.org/'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
@@ -44,6 +43,7 @@ gem 'rails_config'
 gem 'alipay'
 gem 'wx_pay'
 gem 'whenever'
+gem 'ar-octopus'
 
 #admin dashboad dependencies
 gem "kaminari"

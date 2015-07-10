@@ -1,0 +1,9 @@
+octopus:
+  replicated: true
+  environments:
+    - production
+
+  production:
+    slave1:
+      database: caodoodbslave1.chhqxoiimdiw.rds.cn-north-1.amazonaws.com.cn
+      <<: *default
