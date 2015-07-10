@@ -76,6 +76,13 @@ function validate_address() {
   } else {
     $("#refund_record_tracking_number_error").text("");
   }
+
+  if (!$("#refund_record_order_count").val().match(validate_regex.number)) {
+    $("#refund_record_order_count_error").text(validate_message.refund_record_order_count.invalid);
+    b = false;
+  } else {
+    $("#refund_record_order_count_error").text("");
+  }
   return b;
 
 }
