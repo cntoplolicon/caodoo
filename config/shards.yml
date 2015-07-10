@@ -1,4 +1,4 @@
-default: &default
+mysql: &mysql
   adapter: mysql2
   database: caodoo
   username: caodoo
@@ -9,7 +9,7 @@ default: &default
   collation: utf8mb4_general_ci
   port: 3306
 
-octopus:
+octopus: &octopus
   replicated: true
   environments:
     - production
@@ -18,4 +18,4 @@ octopus:
     slave1:
       host: caodoodbslave1.chhqxoiimdiw.rds.cn-north-1.amazonaws.com.cn
       password: Passw0rd
-      <<: *default
+      <<: *mysql
