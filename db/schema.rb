@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150711150441) do
+ActiveRecord::Schema.define(version: 20150711155713) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20150711150441) do
 
   add_index "contest_teams", ["area"], name: "index_contest_teams_on_area", using: :btree
   add_index "contest_teams", ["identifier"], name: "index_contest_teams_on_identifier", unique: true, using: :btree
-  add_index "contest_teams", ["name"], name: "index_contest_teams_on_name", unique: true, using: :btree
   add_index "contest_teams", ["phone"], name: "index_contest_teams_on_phone", unique: true, using: :btree
   add_index "contest_teams", ["university"], name: "index_contest_teams_on_university", using: :btree
 
