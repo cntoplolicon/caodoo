@@ -78,16 +78,20 @@
       <% @refund_records.each do |r| %>
         <tr>
           <td><%= r.order.order_number %></td>
-          <td class="team_return_goods_count">12</td>
+          <td class="team_return_goods_count"><%= r.quantity %></td>
           <td><%= r.order.receiver %></td>
           <td><%= r.express.name %></td>
           <td><%= r.tracking_number %></td>
-          <% if r.remark.nil? %>
+          <% if r.remark.blank? %>
             <td><%= refund_record_status_text(r.status) %></td>
           <% else %>
             <td><a class="a_live refund_record_remark_action" data-message="<%= r.remark %>"><%= refund_record_status_text(r.status) %></td>
             <% end %>
-          <td><%= link_to '编辑', edit_contest_team_refund_record_path(@contest_team, r), class: 'refund_record_edit_action' %></td>
+            <td>
+              <% if r.status == RefundRecord::PENDING %>
+                <%= link_to '编辑', edit_contest_team_refund_record_path(@contest_team, r), class: 'refund_record_edit_action' %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

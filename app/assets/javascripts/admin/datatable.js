@@ -4,7 +4,8 @@ function filter_columns(number) {
     r.push({
       column_number: i,
       filter_type: 'text',
-      filter_delay: 1000
+      filter_delay: 1000,
+      data: {}
     });
   }
   return r;

@@ -6,6 +6,7 @@ class RefundRecordDatatable < Datatable
       [
         refund_record.order.order_number,
         refund_record.order.product.name,
+        refund_record.quantity,
         refund_record.order.receiver,
         refund_record.order.phone,
         refund_record.order.try(:contest_team).try(:name),
@@ -23,10 +24,16 @@ class RefundRecordDatatable < Datatable
     records = RefundRecord.all
       .joins(:express, order: [:product])
       .includes(:express, order: [:product, :contest_team])
+      .references(:express, order: [:product, :contest_team])
     for i in 0..params[:iColumns].to_i do
       filter = params["sSearch_#{i}"]
+      column = sortable_columns[i]
       if filter.present?
-        if filter.include?('-yadcf_delim-')
+        if column.end_with?('quantity')
+          range = filter.split('-yadcf_delim-')
+          records = records.where("#{column} >= :search", search: range[0]) if range[0].present?
+          records = records.where("#{column} < :search", search: range[1]) if range[1].present?
+        elsif column.end_with?('created_at')
           range = filter.split('-yadcf_delim-')
           records = records.where("#{sortable_columns[i]} >= :search", search: Time.parse(range[0])) if range[0].present?
           records = records.where("#{sortable_columns[i]} < :search", search: Time.parse(range[1])) if range[1].present?
@@ -47,7 +54,7 @@ class RefundRecordDatatable < Datatable
   end
 
   def sortable_columns
-    @sortable_columns ||= ['orders.order_number', 'products.name', 'orders.receiver', 'orders.phone',
+    @sortable_columns ||= ['orders.order_number', 'products.name', 'refund_records.quantity', 'orders.receiver', 'orders.phone',
                            'contest_teams.name', 'expresses.name', 'refund_records.tracking_number',
                            'refund_records.status', 'refund_records.created_at', 'refund_records.remark']
   end

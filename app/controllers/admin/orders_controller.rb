@@ -33,11 +33,7 @@ class Admin::OrdersController < Admin::AdminController
     Order.transaction do
       @order = Order.lock.find(params[:id])
       status = params[:status].to_i
-      if [Order::DELIVERED, Order::COMPLETE].include?(@order.status) && status == Order::REFUNDED
-        @order.update(status: Order::REFUNDED)
-        @order.payment_record.update(status: PaymentRecord::REFUNDED)
-        @order.refund_records.find_by_status(RefundRecord::PENDING).update(status: RefundRecord::REFUNDED)
-      elsif [Order::CANCELLING].include?(@order.status) && status == Order::CANCELLED
+      if [Order::CANCELLING].include?(@order.status) && status == Order::CANCELLED
         @order.update(status: Order::CANCELLED)
         @order.payment_record.update(status: PaymentRecord::REFUNDED)
       elsif [Order::DELIVERED].include?(@order.status) && status == Order::COMPLETE

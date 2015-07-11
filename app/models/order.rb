@@ -16,7 +16,6 @@ class Order < ActiveRecord::Base
   PAID = 1
   DELIVERED = 2
   COMPLETE = 3
-  REFUNDED = 4
   CANCELLING = 9
   CANCELLED = 10
   TIMEOUT = 11

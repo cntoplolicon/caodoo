@@ -17,7 +17,10 @@
         <%= @refund_record.order.order_number %>
       <% end %>
     </div>
-    <%= f.hidden_field :status, value: RefundRecord::PENDING %>
+    <div class="form-group">
+      <%= label_tag '退货数量' %>
+      <%= f.number_field :quantity, min: 1, max: 10, value: 1, class: 'form-control' %>
+    </div>
     <div class="form-group">
       <%= label_tag '快递公司' %>
       <%= f.collection_select :express_id, Express.all, :id, :name, {}, class: 'form-control' %>

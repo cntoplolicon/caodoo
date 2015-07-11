@@ -2,26 +2,27 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
-  var filter_options = filter_columns(7);
+  var filter_options = filter_columns(8);
+  filter_options[2].filter_type = 'range_number';
   filter_options.push(
     {
-      column_number: 7,
+      column_number: 8,
       data: [{
         value: 0,
         label: '正在处理'
       }, {
         value: 1,
-        label: '已退款'
+        label: '退货成功'
       }, {
         value: 10,
         label: '作废'
       }]
     }, {
-      column_number: 8,
+      column_number: 9,
       filter_type: 'range_date',
       date_format: 'yyyy-mm-dd'
     }, {
-      column_number: 9,
+      column_number: 10,
       filter_delay: 1000,
       filter_type: 'text',
       data: []
@@ -43,6 +44,7 @@ $(document).ready(function() {
     $('.yadcf-filter-reset-button').hide();
     $('.yadcf-filter').addClass('form-control');
     $('.yadcf-filter-range-date').addClass('form-control');
+    $('.yadcf-filter-range-number').addClass('form-control');
 
     $('.refund-record-csv-link').click(function(event) {
       event.preventDefault();

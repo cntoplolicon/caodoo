@@ -9,8 +9,9 @@ class RefundRecord < ActiveRecord::Base
   validates_presence_of :order_id
   validates_presence_of :tracking_number
   validates_presence_of :status
+  validates :quantity, numericality: {greater_than: 0}
 
   PENDING = 0
-  REFUNDED = 1
+  COMPLETE = 1
   CANCELLED = 10
 end

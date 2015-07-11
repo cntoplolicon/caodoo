@@ -3,7 +3,7 @@ module Admin::RefundRecordsHelper
     case status
     when RefundRecord::PENDING
       '正在处理'
-    when RefundRecord::REFUNDED
+    when RefundRecord::COMPLETE
       '退货成功'
     when RefundRecord::CANCELLED
       '作废'

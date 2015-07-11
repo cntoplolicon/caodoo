@@ -4,6 +4,7 @@ class Admin::RefundRecordsController < Admin::AdminController
   before_action :find_refund_record, only: [:edit, :update]
 
   include OrdersHelper
+  include RefundRecords
 
   def to_csv(records)
     CSV.generate do  |csv|
@@ -27,28 +28,13 @@ class Admin::RefundRecordsController < Admin::AdminController
   end
 
   def create
-    @refund_record = RefundRecord.new(create_params)
-    @order = Order.where(order_number: @refund_record.order_number).includes(:refund_records).take
-    @order = Order.find_by_order_number(@refund_record.order_number)
-    if @order.nil?
-      @refund_record.errors.add(:order_id, '订单号不存在')
-    else
-      if @order.refund_records.any? { |r| r.status == RefundRecord::PENDING }
-        @refund_record.errors.add(:order_number, '该订单已有正在处理的退货记录')
+    Order.transaction do
+      create_new_refund_record
+      if @refund_record.errors.empty? && @refund_record.save
+        redirect_to action: :index
+      else
+        render 'new'
       end
-      if @order.status == Order::REFUNDED
-        @refund_record.errors.add(:order_number, '该订单已完成退货')
-      end
-      if @order.contest_team.present?
-        @refund_record.errors.add(:order_number, '订单为比赛产品，应由比赛团队管理')
-      end
-      @refund_record.order_id = @order.id
-    end
-
-    if @refund_record.errors.empty? && @refund_record.save
-      redirect_to action: :index
-    else
-      render 'new'
     end
   end
 
@@ -56,22 +42,14 @@ class Admin::RefundRecordsController < Admin::AdminController
   end
 
   def update
-    status = params[:refund_record][:status].to_i
     Order.transaction do
-      render 'edit' and return unless @refund_record.update(update_params)
-      if status == RefundRecord::REFUNDED
-        @order = Order.lock.find(@refund_record.order_id)
-        if [Order::DELIVERED, Order::COMPLETE, Order::REFUNDED].include?(@order.status)
-          @order.status = Order::REFUNDED
-          @order.payment_record.status = PaymentRecord::REFUNDED
-          raise ActiveRecord::Rollback unless @order.save
-        else
-          @refund_record.errors.add(:status, "订单状态为#{order_status_text(@order.status)}")
-          render 'edit' and return
-        end
+      update_refund_record
+      if @refund_record.errors.empty? && @refund_record.save
+        redirect_to action: :index
+      else
+        render 'edit', status: :bad_request, layout: false
       end
     end
-    redirect_to action: :index
   end
 
   private
@@ -81,10 +59,10 @@ class Admin::RefundRecordsController < Admin::AdminController
   end
 
   def update_params
-    params.require(:refund_record).permit(:status, :remark)
+    params.require(:refund_record).permit(:status, :remark, :quantity)
   end
 
   def create_params
-    params.require(:refund_record).permit(:order_number, :status, :remark, :express_id, :tracking_number)
+    params.require(:refund_record).permit(:order_number, :quantity, :remark, :express_id, :tracking_number)
   end
 end

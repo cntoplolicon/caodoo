@@ -9,8 +9,6 @@ module OrdersHelper
       '已发货'
     when Order::COMPLETE
       '交易完成'
-    when Order::REFUNDED
-      '已退款'
     when Order::CANCELLING
       '正在取消'
     when Order::CANCELLED

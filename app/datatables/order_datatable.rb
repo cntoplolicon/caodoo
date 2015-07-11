@@ -24,7 +24,7 @@ class OrderDatatable < Datatable
   end
 
   def unpaged_records
-    records = Order.all.includes(:contest_team)
+    records = Order.all.includes(:contest_team).references(:contest_team)
     for i in 0..params[:iColumns].to_i do
       filter = params["sSearch_#{i}"]
       column = sortable_columns[i]

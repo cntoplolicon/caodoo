@@ -1,5 +1,5 @@
 <%= form_for [@contest_team, @refund_record] do |f| %>
-<div class="team_return_goods_popup_box">
+  <div class="team_return_goods_popup_box">
     <div class="team_return_goods_popup_title">退货申请</div>
     <div class="team_return_goods_popup_detail">
       <div class="team_return_goods_popup_title_row">
@@ -8,75 +8,48 @@
         </div>
       </div>
       <div class="team_return_goods_popup_row">
-
         <div class="team_return_good_info_box">
-
-        <%= f.text_field :order_number, placeholder: '订单号',
-          value: @refund_record.order_number || @refund_record.try(:order).try(:order_number),
-          disabled: !@refund_record.new_record?, class: 'team_return_good_input' %>
-
-            <div class="error-message" id="refund_record_order_number_error"><%= @refund_record.errors.messages[:order_number].first if @refund_record.errors[:order_number].any? %></div>
-
-
-              </div>
-
-
-              <div class="team_return_good_info_box">
-
-        <%= f.text_field :receiver, placeholder: '收件人',
-          value: @refund_record.receiver || @refund_record.try(:order).try(:receiver),
-          disabled: !@refund_record.new_record?, class: 'team_return_good_input' %>
-
-            <div class="error-message" id="refund_record_receiver_error"><%= @refund_record.errors.messages[:receiver].first if @refund_record.errors[:receiver].any? %></div>
-
-                    </div>
-
-                </div>
-
-
-                  <div class="team_return_goods_popup_title_row">
-                    <span class="team_return_name">退货数量</span>
-                    <div class="team_return_line">
-                    </div>
-                  </div>
-                  <div class="team_return_goods_popup_row">
-
-                    <div class="team_return_good_info_box">
-
-                      <%= f.text_field :order_number, placeholder: '请输入数字',
-                          value: @refund_record.order_number || @refund_record.try(:order).try(:order_number),
-                          disabled: !@refund_record.new_record?, class: 'team_return_good_input',id:'refund_record_order_count' %>
-
-                        <div class="error-message" id="refund_record_order_count_error"><%= @refund_record.errors.messages[:order_number].first if @refund_record.errors[:order_number].any? %></div>
-
-
-                        </div>
-
-                            </div>
-
+          <%= f.text_field :order_number, placeholder: '订单号',
+            value: @refund_record.order_number || @refund_record.try(:order).try(:order_number),
+            disabled: !@refund_record.new_record?, class: 'team_return_good_input' %>
+          <div class="error-message" id="refund_record_order_number_error"><%= @refund_record.errors.messages[:order_number].first if @refund_record.errors[:order_number].any? %></div>
+        </div>
+        <div class="team_return_good_info_box">
+          <%= f.text_field :receiver, placeholder: '收件人',
+            value: @refund_record.new_record? ? @refund_record.receiver : @refund_record.try(:order).try(:receiver),
+            disabled: !@refund_record.new_record?, class: 'team_return_good_input' %>
+          <div class="error-message" id="refund_record_receiver_error"><%= @refund_record.errors.messages[:receiver].first if @refund_record.errors[:receiver].any? %></div>
+        </div>
+      </div>
       <div class="team_return_goods_popup_title_row">
-        <span class="team_return_name">物流信息</span>
-
+        <span class="team_return_name">退货数量</span>
         <div class="team_return_line">
         </div>
-
       </div>
       <div class="team_return_goods_popup_row">
-
         <div class="team_return_good_info_box">
-
-        <%= f.collection_select :express_id, Express.all, :id, :name, {prompt: '请选择快递公司'}, class: 'team_return_good_select' %>
-            <div class="error-message" id="refund_record_express_error"><%= @refund_record.errors.messages[:express_id].first if @refund_record.errors[:express_id].any? %></div>
-
-              </div>
-
-              <div class="team_return_good_info_box">
-
-        <%= f.text_field :tracking_number, placeholder: '运单号', class: 'team_return_good_input' %>
-
-        <div class="error-message" id="refund_record_tracking_number_error"><%= @refund_record.errors.messages[:tracking_number].first if @refund_record.errors[:tracking_number].any? %></div>
-
-                    </div>
+          <%= f.text_field :quantity, placeholder: '请输入数字',
+            value: @refund_record.quantity || @refund_record.try(:order).try(:quantity),
+            disabled: !@refund_record.new_record?, class: 'team_return_good_input',id:'refund_record_order_count' %>
+          <div class="error-message" id="refund_record_order_count_error"><%= @refund_record.errors.messages[:quantity].first if @refund_record.errors[:quantity].any? %></div>
+        </div>
+      </div>
+      <div class="team_return_goods_popup_title_row">
+        <span class="team_return_name">物流信息</span>
+        <div class="team_return_line">
+        </div>
+      </div>
+      <div class="team_return_goods_popup_row">
+        <div class="team_return_good_info_box">
+          <%= f.collection_select :express_id, Express.all, :id, :name, {prompt: '请选择快递公司'}, class: 'team_return_good_select' %>
+          <div class="error-message" id="refund_record_express_error"><%= @refund_record.errors.messages[:express_id].first if @refund_record.errors[:express_id].any? %></div>
+        </div>
+        <div class="team_return_good_info_box">
+          <%= f.text_field :tracking_number, placeholder: '运单号', class: 'team_return_good_input' %>
+          <div class="error-message" id="refund_record_tracking_number_error">
+            <%= @refund_record.errors.messages[:tracking_number].first if @refund_record.errors[:tracking_number].any? %>
+          </div>
+        </div>
       </div>
       <div class="team_return_goods_popup_row" style="margin-top: 50px">
         <input type="reset" class="return_good_reset" value="取消">
