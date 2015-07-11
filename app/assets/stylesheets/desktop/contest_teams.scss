@@ -289,3 +289,22 @@
     margin-left: 16px;
     margin-top: 13px;
 }
+.team-notification-detail {
+  text-align: left;
+  font-size: 16px;
+  line-height: 25px;
+}
+.team-notification-detail ol {
+  padding-left: 20px;
+}
+.team-notification-detail ol li {
+  list-style-type: decimal;
+  margin-top: 10px;
+}
+.team-notification-detail ol li ol li {
+  list-style-type: lower-roman;
+  margin-top: 0;
+}
+.team-notification-title {
+  font-size: 18px;
+}

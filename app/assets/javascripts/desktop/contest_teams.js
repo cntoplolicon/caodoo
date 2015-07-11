@@ -2,8 +2,8 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
-  var adapt_height = Math.max($(window).height(), $('.detail_container').height() + 64);
-  $('.block_container_menu').css('height', adapt_height - 24);
+  var adapt_height = Math.max($(window).height(), $('.team_client_detail_container').height() + 64);
+  $('.team_client_block_container_menu').css('height', adapt_height - 24);
   $(".game-header-setting").click(function() {
     $("#game_header_management_menu").toggle();
   });
