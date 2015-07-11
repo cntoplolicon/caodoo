@@ -58,10 +58,9 @@
 
 .product-information-name {
   overflow: hidden;
-  text-overflow: ellipsis;
   font-size: 16px;
   width: 192px;
-  height: 48px;
+  height: 32px;
   line-height: 16px;
 }
 
@@ -146,6 +145,7 @@
   width: 100%;
   background-color: #ebebeb;
   padding: 11px 13px;
+  border: 1px solid #cccccc;
 }
 
 .order-information {
@@ -349,8 +349,9 @@
 
 .order_product_name {
   font-size: 16px;
-  height: 36px;
+  height: 40px;
   color: #3F3F3F;
+  overflow-y: hidden;
 }
 
 .order_product_name_price {
@@ -367,7 +368,6 @@
 }
 
 .order_product_price {
-  margin-top: 12px;
 }
 
 .col_name {
@@ -538,4 +538,8 @@
 
 .payment-step-png {
   width: 255px;
+}
+
+.close_return_application_box_button {
+  margin-right: 20px;
 }

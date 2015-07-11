@@ -30,7 +30,7 @@
 .user-op-form-header {
   text-align: center;
   color: #3BAF47;
-  font-size: 21px;
+  font-size: 18px;
   padding-top: 40px;
 }
 
@@ -202,4 +202,8 @@
 
 #terms_of_service_error {
   margin-left: 20px;;
+}
+
+#login-user .error-message {
+  margin: 0;
 }

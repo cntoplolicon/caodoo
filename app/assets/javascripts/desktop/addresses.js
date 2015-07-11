@@ -65,6 +65,7 @@ $(document).ready(function() {
     $(this).prop('disabled', $(this).find('option').length <= 1);
   }
   var edit_address_box_ready = function() {
+    $('input, textarea').placeholder();
     $('#edit_address_box').show();
     toggle_region_selection.call($('#city_select'));
     toggle_region_selection.call($('#district_select'));

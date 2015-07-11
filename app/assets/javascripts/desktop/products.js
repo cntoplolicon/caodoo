@@ -89,8 +89,8 @@
     if ($('.product-detail-share').length > 0) {
       window._bd_share_config = {
         common: {
-          bdText: '我们参加了大学生营销策划赛，向你推荐' + $('.product-detail-text-head').text() + ', 来看看吧~',
-          bdDesc: '我们参加了大学生营销策划赛，向你推荐' + $('.product-detail-text-head').text() + ', 来看看吧~',
+          bdText: '我们参加了大学生营销策划赛，向你推荐' + $('.product-name').text() + ', 来看看吧~',
+          bdDesc: '我们参加了大学生营销策划赛，向你推荐' + $('.product-name').text() + ', 来看看吧~',
           bdPic: $('.swiper-slide-visible .product-detail-image')[0].src
         },
         share: [{

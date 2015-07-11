@@ -46,7 +46,7 @@
 
     height: 32px;
 
-    border-bottom: 1px solid rgba(0, 0, 0, 10);
+    border-bottom: 1px solid #e5e5e5;
 
     width: 880px;
 
@@ -138,7 +138,7 @@
 
 .product-display-flex-y {
 
-    height: 44px;
+    height: 20px;
 
     display: block;
 
@@ -208,7 +208,7 @@
 
     width: 208px;
 
-    border-bottom: solid 1px rgba(0, 0, 0, 10);
+    border-bottom: solid 1px #e5e5e5;
 
     margin-left: 48px;
 
@@ -217,6 +217,7 @@
 .order-information-text {
 
     line-height: 30px;
+    color: #6b6b6b;
 
 }
 
@@ -355,8 +356,8 @@
 }
 
 .submission-detail .order-product-thumbnail {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 }
 
 .submission-detail .error-message {
@@ -447,12 +448,6 @@
     width: 240px;
 }
 
-.payment-deadline {
-    font-size: 14px;
-    height: 44px;
-    width: 880px;
-    border-bottom: solid 1px rgba(0, 0, 0, 10);
-}
 .payment-progress {
     margin-top: 40px;
 }
@@ -486,6 +481,10 @@
     color: #ffffff;
     cursor: pointer;
     display: none;
+    border: 1px solid #289033;
+}
+.payment-button:focus {
+    background-color: #289033;
 }
 #payment-before-choose {
     width: 300px;
@@ -520,7 +519,7 @@
 }
 .order-summary {
     height: 48px;
-    border-right: 1px solid rgba(0, 0, 0, 10);
+    border-right: 1px solid #e5e5e5;
     margin-top: 16px;
 }
 .product-in-order {
@@ -600,7 +599,7 @@
     font-size: 14px;
     height: 30px;
     width: 880px;
-    border-bottom: solid 1px rgba(0, 0, 0, 10);
+    border-bottom: solid 1px #e5e5e5;
     margin-left: auto;
     margin-right: auto;
 }
@@ -626,12 +625,14 @@
     width: 452px;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 10px;
+    color: #979797;
 }
 .micro-message {
     font-size: 21px;
     margin-top: 90px;
     height: 38px;
-    border-bottom: solid 1px #979797;
+    border-bottom: solid 1px #e5e5e5;
     width: 452px;
     margin-left: auto;
     margin-right: auto;
@@ -671,7 +672,7 @@
 }
 
 .order_status_text_warning {
-    color: green;
+    color: #15ae10;
     float: left;
     margin-top: 8px;
     margin-left: 20px;

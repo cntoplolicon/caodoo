@@ -43,41 +43,41 @@
             <% end %>
             </li>
           <li>
-            产品单价:<span>¥<%= @order.unit_price %></span>
+            产品单价：<span>¥<%= @order.unit_price %></span>
           </li>
           <li>
-            购买数量:<span><%= @order.quantity %>件</span>
+            购买数量：<span><%= @order.quantity %>件</span>
           </li>
         </ul>
       </div>
       <div class="order_product_price">
-        总金额:<span class="order_hight">¥<%= @order.total_price %></span>
+        总金额：<span class="order_hight">¥<%= @order.total_price %></span>
       </div>
     </div>
     <div class="info_block">
       <div class="order_info_block">
-        订单信息:
+        订单信息
         <ul style="margin-top: 10px">
           <li>
-            订单编号:<span class="order_span"><%= @order.order_number %></span>
+            订单编号：<span class="order_span"><%= @order.order_number %></span>
           </li>
           <li>
-            下单时间:<span class="order_span"><%= @order.created_at.in_time_zone.strftime('%Y-%m-%d') %></span>
+            下单时间：<span class="order_span"><%= @order.created_at.in_time_zone.strftime('%Y-%m-%d') %></span>
           </li>
           <% if @order.payment_record.payment_type.present? %>
           <li>
-            支付方式:<span class="order_span"><%= payment_type_text(@order.payment_record.payment_type) %></span>
+            支付方式：<span class="order_span"><%= payment_type_text(@order.payment_record.payment_type) %></span>
           </li>
           <% end %>
           <% if @order.express_id.present? && @order.tracking_number.present? %>
           <li>
-            快递方式:<span class="order_span"><%= @order.express.name %>－运单号<%= @order.tracking_number %> </span>
+            快递方式：<span class="order_span"><%= @order.express.name %>－运单号<%= @order.tracking_number %> </span>
           </li>
           <% end %>
         </ul>
       </div>
       <div class="order_info_block2">
-        收货地址:
+        收货地址
         <ul>
           <li>
             <%= @order.receiver %>  <%= @order.phone %>
@@ -135,13 +135,13 @@
   <div class="resales_popup_box">
     <div class="customer_service_info">
       <ul>
-        <% if @order.contest_team.present? && @order.contest_team.identifier != Settings.contest.default_identifier%>
+        <% if @order.contest_team.present? && @order.contest_team.identifier != Settings.contest.default_team_identifier%>
           <li>请联系大赛团队<span class="contest-team-name"><%= @order.contest_team.name %></span>协助您退货</li>
         <% else %>
           <li>请联系客服</li>
         <% end %>
         <li>
-          <% if @order.contest_team.present? && @order.contest_team.identifier != Settings.contest.default_identifier%>
+          <% if @order.contest_team.present? && @order.contest_team.identifier != Settings.contest.default_team_identifier%>
             <p> 电话：<strong style="color: #333333"><%= @order.contest_team.phone %></strong></p>
           <% else %>
             <p> 电话：<strong style="color: #333333"><%= Settings.contact.telephone %></strong></p>
