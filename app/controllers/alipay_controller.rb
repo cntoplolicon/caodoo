@@ -16,16 +16,21 @@ class AlipayController < ApplicationController
         @order.payment_record.alipay_expire = "#{diff}m"
       end
 
-      uri = URI(Alipay::Service.create_direct_pay_by_user_url(
+      options = {
         out_trade_no: @order.order_number,
         subject: @order.product_name,
-        price: '0.02',
         quantity: @order.quantity,
-        return_url: "http://#{request.host_with_port}/alipay/return",
-        #return_url: "http://www.caodoo.com:3000/alipay/return",
-        #notify_url: "http://www.caodoo.com:3000/alipay/notify",
         it_b_pay: @order.payment_record.alipay_expire
-      ))
+      }
+      if Rails.env.production? then
+        options[:return_url] = "http://www.caodoo.com/alipay/return"
+        options[:notify_url] = "http://www.caodoo.com/alipay/notify"
+        options[:price] = "%.2f" % @order.unit_price
+      else
+        options[:return_url] = "http://#{request.host_with_port}/alipay/return"
+        options[:price] = '0.01'
+      end
+      uri = URI(Alipay::Service.create_direct_pay_by_user_url(options))
 
       unless payment_submitted
         Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
