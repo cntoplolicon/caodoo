@@ -27,7 +27,7 @@ class WxPayController < ApplicationController
           time_start: payment_created_at.localtime.strftime('%Y%m%d%H%M%S'),
           time_expire: wx_payment_expire_at.localtime.strftime('%Y%m%d%H%M%S'),
           trade_type: 'NATIVE',
-          notify_url: 'http://www.caodoo.com:3000/wx_pay/notify',
+          notify_url: 'https://www.caodoo.com/wx_pay/notify'
         }
         if Rails.env.production? then
           options[:total_fee] = (@order.total_price * 100).round
