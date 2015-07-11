@@ -157,7 +157,6 @@ $(document).ready(function() {
       $("#security-code-error").text("");
     }
     return b;
-
   });
 
   //update phone validate
