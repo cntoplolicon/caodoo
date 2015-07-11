@@ -16,28 +16,24 @@
     <div class="team_performance_top_results_top">
       <div class="team_performance_top_results_top_number green"><%= @total_statistics[:quantity] %>件</div>
       <div class="team_performance_top_results_top_number green">￥<%= @total_statistics[:price] %></div>
-      <div class="team_performance_top_results_top_number red"><%= @total_statistics[:pv] %></div>
-      <div class="team_performance_top_results_top_number red" style="border-right: none"><%= @total_statistics[:uv] %></div>
+      <div class="team_performance_top_results_top_number red team_performance_top_results_top_number_last"><%= @total_statistics[:pv] %></div>
     </div>
     <div class="team_performance_top_results_bottom">
       <div class="team_performance_top_results_bottom_text">销量</div>
       <div class="team_performance_top_results_bottom_text">销售额</div>
       <div class="team_performance_top_results_bottom_text">浏览量</div>
-      <div class="team_performance_top_results_bottom_text">访问数</div>
     </div>
   </div>
   <div class="team_performance_top_results" id="team_performance_top_results_today">
     <div class="team_performance_top_results_top">
       <div class="team_performance_top_results_top_number green"><%= @today_statistics[:quantity] %>件</div>
       <div class="team_performance_top_results_top_number green">￥<%= @today_statistics[:price] %></div>
-      <div class="team_performance_top_results_top_number red"><%= @today_statistics[:pv] %></div>
-      <div class="team_performance_top_results_top_number red" style="border-right: none"><%= @today_statistics[:uv] %></div>
+      <div class="team_performance_top_results_top_number red team_performance_top_results_top_number_last"><%= @today_statistics[:pv] %></div>
     </div>
     <div class="team_performance_top_results_bottom">
       <div class="team_performance_top_results_bottom_text">销量</div>
       <div class="team_performance_top_results_bottom_text">销售额</div>
       <div class="team_performance_top_results_bottom_text">浏览量</div>
-      <div class="team_performance_top_results_bottom_text">访问数</div>
     </div>
   </div>
 </div>
