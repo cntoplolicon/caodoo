@@ -36,7 +36,9 @@
       <% end %>
     <% end %>
   </div>
-  <%= image_tag("upcoming.png", class: "center-block upcoming-notification") %>
+  <% if @upcoming_products.any? %>
+    <%= image_tag("upcoming.png", class: "center-block upcoming-notification") %>
+  <% end %>
 </div>
 <div class="container">
   <div class="upcoming-products">
