@@ -22,7 +22,6 @@ class WxPayController < ApplicationController
         options = {
           body: @order.product_name,
           out_trade_no: @order.order_number,
-          total_fee: 2,
           spbill_create_ip: remote_ip,
           time_start: payment_created_at.localtime.strftime('%Y%m%d%H%M%S'),
           time_expire: wx_payment_expire_at.localtime.strftime('%Y%m%d%H%M%S'),
@@ -46,15 +45,17 @@ class WxPayController < ApplicationController
   def notify
     r = Hash.from_xml(request.body.read)['xml'].symbolize_keys
     if WxPay::Sign.verify?(r)
-      order = Order.lock.find_by_order_number(r[:out_trade_no])
-      if order.status == Order::TO_PAY
-        order.status = Order::PAID
-        order.payment_record.payment_type = PaymentRecord::WECHAT
-        order.payment_record.status = PaymentRecord::PAID
-        order.payment_record.amount = r[:total_fee].to_f / 100
-        order.payment_record.payment_time = Time.now
-        ContestTeam.where(id: order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', order.quantity]) if order.contest_team_id.present?
-        head :unprocessable_entity and return unless order.save
+      Order.transaction do
+        order = Order.lock.find_by_order_number(r[:out_trade_no])
+        if order.status == Order::TO_PAY
+          order.status = Order::PAID
+          order.payment_record.payment_type = PaymentRecord::WECHAT
+          order.payment_record.status = PaymentRecord::PAID
+          order.payment_record.amount = r[:total_fee].to_f / 100
+          order.payment_record.payment_time = Time.now
+          ContestTeam.where(id: order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', order.quantity]) if order.contest_team_id.present?
+          head :unprocessable_entity and return unless order.save
+        end
       end
       render :xml => {return_code: 'SUCCESS', return_msg: 'OK'}.to_xml(root: 'xml', dasherize: false)
     else
