@@ -14,7 +14,7 @@
           <%= image_tag "game-detail.png" %>
         </div>
         <div class="game-reset-pwd-dialog">
-          <div class="game-reset-pwd-team-entrance">设置登陆密码</div>
+          <div class="game-reset-pwd-team-entrance">设置登录密码</div>
           <div>
             <%= password_field_tag :old_password, '', placeholder: '输入原密码', class: 'game-reset-pwd-team-input' %>
             <div class="error-message" id="old_password_error"><%= @contest_team.errors.messages[:old_password].first if @contest_team.errors[:old_password].any? %></div>

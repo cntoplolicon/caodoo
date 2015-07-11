@@ -68,11 +68,23 @@ $(document).ready(function() {
 
     $('.order-csv-link').click(function(event) {
       event.preventDefault();
+      exportOrderCsv.call(this);
+    });
+
+    $('.order-delivered-csv-link').click(function(event) {
+      event.preventDefault();
+      if (confirm('发货CSV无法重复导出，确认导出？')) {
+        exportOrderCsv.call(this);
+      }
+    });
+
+    function exportOrderCsv() {
+      event.preventDefault();
       var data = dataTable.oApi._fnAjaxParameters(dataTable.fnSettings());
       var originalLink = $(this).prop('href');
       var delimiter = originalLink.indexOf('?') === -1 ? '?' : '&';
       var link = originalLink + delimiter + $.param(data);
       window.location.href = link;
-    });
+    }
   }
 });
