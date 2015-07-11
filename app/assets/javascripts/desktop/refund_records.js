@@ -7,6 +7,15 @@ $(function() {
       $('input, textarea').placeholder();
       $('#team_return_goods_popup').show();
       $('input').placeholder();
+
+      $('#refund_record_express_id').selectlist({
+        zIndex:20,
+        width:180,
+        height:32,
+        onChange:function(){
+        }
+      })
+
     });
   });
   $('#team_return_goods_popup').on('click', '.return_good_reset', function() {
@@ -44,7 +53,6 @@ $(document).ready(function() {
   $(".close_refund_record_remark_button").click(function() {
     $("#refund_record_remark_box").hide();
   });
-
 });
 
 function validate_address() {
@@ -63,7 +71,8 @@ function validate_address() {
     $("#refund_record_receiver_error").text("");
   }
 
-  if ($("#refund_record_express_id").val() == "") {
+
+  if ($("input[name='refund_record[express_id]']").val() == "") {
     $("#refund_record_express_error").text(validate_message.express_id.blank);
     b = false;
   } else {
@@ -75,6 +84,13 @@ function validate_address() {
     b = false;
   } else {
     $("#refund_record_tracking_number_error").text("");
+  }
+
+  if (!$("#refund_record_order_count").val().match(validate_regex.number)) {
+    $("#refund_record_order_count_error").text(validate_message.refund_record_order_count.invalid);
+    b = false;
+  } else {
+    $("#refund_record_order_count_error").text("");
   }
   return b;
 

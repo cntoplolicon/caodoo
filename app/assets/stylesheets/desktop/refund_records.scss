@@ -131,14 +131,13 @@
 }
 .team_return_goods_popup_box {
   width: 640px;
-  height: 350px;
   margin: 0 auto;
   margin-top: 120px;
   background-color: white;
-  overflow: hidden;
   box-shadow: 3px 3px 3px #666;
   z-index: 99;
   padding-top: 60px;
+  height: 460px;
 }
 .team_return_goods_popup_title {
   font-size: 16px;
@@ -152,10 +151,17 @@
   margin-right: auto;
   margin-top: 36px;
 }
+.team_return_goods_popup_title_row{
+  display: block;
+  height: 20px;
+  margin-bottom: 10px;
+  margin-top: 22px;
+}
+
 .team_return_goods_popup_row {
   display: block;
-  overflow: hidden;
-  margin:20px 0;
+  height: 38px;
+  padding-bottom: 2px;
 }
 .team_return_good_input{
   width: 186px;
@@ -174,9 +180,8 @@
   border-bottom: 1px solid #efefef;
   float: right;
   width: 340px;
-  margin-top: 8px;
-  margin-left: 10px;
-  *margin-top: -10px;
+  margin-top: 9px;
+  *margin-top: -8px;
 }
 .return_good_reset{
   width: 120px;
@@ -212,4 +217,8 @@
   float: left;
   width: 180px;
   margin-right: 20px;
+}
+
+.team_return_goods_count{
+  color: #fe6a29;
 }

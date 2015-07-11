@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require selectlist/css/jquery.selectlist
  *= require_tree ./common
  *= require_tree ./desktop
  *= require_self

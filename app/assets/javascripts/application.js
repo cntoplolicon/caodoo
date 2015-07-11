@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require selectlist/js/jquery.selectlist
 //= require jquery-placeholder
 //= require jquery-ujs
 //= require masonry-legacy/jquery.masonry

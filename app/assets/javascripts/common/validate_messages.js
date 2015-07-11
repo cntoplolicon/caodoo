@@ -64,6 +64,10 @@ var validate_message = {
   service: {
     blank: '同意服务条款才可以注册'
 
+  },
+  refund_record_order_count: {
+    blank: '退货数量不能为空',
+    invalid: '请输入合法的退货数量'
   }
 
 }
