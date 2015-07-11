@@ -19,7 +19,10 @@ $(document).ready(function() {
       event.preventDefault();
       if (validate_phone()) {
         var username = $('#username-input').val();
-        var xhr = $.post(url, {username: username, authenticity_token: $('meta[name=csrf-token]').attr('content')})
+        var xhr = $.post(url, {
+            username: username,
+            authenticity_token: $('meta[name=csrf-token]').attr('content')
+          })
           .fail(function() {
             var response = $.parseJSON(xhr.responseText);
             $('#username-error').text(response.error);
@@ -104,7 +107,7 @@ $(document).ready(function() {
       $("#userpwd-error").text("");
     }
 
-    if (!$("#user_terms_of_service").attr("checked")) {
+    if (!$("#user_terms_of_service").prop("checked")) {
       $("#terms_of_service_error").text(validate_message.service.blank);
       b = false;
     } else {
@@ -211,15 +214,6 @@ $(document).ready(function() {
       $("#user_new_password2-error").text("");
     }
     return b;
-  });
-
-  // terms service checkbox
-  $("#user_terms_of_service").click(function() {
-    if (!$(this).attr("checked")) {
-      $(this).attr("checked", "checked");
-    } else {
-      $(this).removeAttr("checked");
-    }
   });
 
 })

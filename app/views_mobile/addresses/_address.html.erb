@@ -12,11 +12,11 @@
           <li>
           <div style="float: left">
             <%= f.text_field :receiver, class: 'cd_input', placeholder: '收件人姓名' %>
-            <div class="error-message" id="username-error"><%= @address.errors.messages[:receiver].first if @address.errors[:receiver].any? %></div>
+            <div class="error-message" id="address-receiver-error"><%= @address.errors.messages[:receiver].first if @address.errors[:receiver].any? %></div>
           </div>
           <div style="float: right">
             <%= f.text_field :phone, class: 'cd_input', placeholder: '联系方式' %>
-            <div class="error-message" id="username-error"><%= @address.errors.messages[:phone].first if @address.errors[:phone].any? %></div>
+            <div class="error-message" id="address-phone-error"><%= @address.errors.messages[:phone].first if @address.errors[:phone].any? %></div>
           </div>
           </li>
           <li>
@@ -25,7 +25,7 @@
              <%= f.collection_select(:city_code, @cities, :code, :name, {prompt: '请选择城市'}, {class: 'cd_select', id: 'city_select'}) %>
              <%= f.collection_select(:district_code, @districts, :code, :name, {prompt: '请选择地区'}, {class: 'cd_select', id: 'district_select'}) %>
             </div>
-            <div class="error-message" id="username-error">
+            <div class="error-message" id="address-area-error">
             <%= @address.errors.messages[:province_code].first if @address.errors[:province_code].any? %>
             <%= @address.errors.messages[:city_code].first if @address.errors[:city_code].any? %>
             <%= @address.errors.messages[:district_code].first if @address.errors[:district_code].any? %>
@@ -33,7 +33,7 @@
           </li>
           <li>
             <%= f.text_field :detailed_address, class: 'cd_input', style:"width:284px", placeholder: '详细地址' %>
-            <div class="error-message" id="username-error"><%= @address.errors.messages[:detailed_address].first if @address.errors[:detailed_address].any? %></div>
+            <div class="error-message" id="address-detail-error"><%= @address.errors.messages[:detailed_address].first if @address.errors[:detailed_address].any? %></div>
           </li>
           <li style="margin-top: 10px">
             <%= f.check_box :default, id: 'set_default' %>

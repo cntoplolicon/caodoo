@@ -1,7 +1,6 @@
 <% content_for :body_style do %>
   background-color: #E8E8E8;
 <% end %>
-
 <div class="product-detail">
   <% if @contest_team %>
     <div class="game-product-page-banner">
@@ -30,7 +29,7 @@
           <div class="swiper-wrapper">
             <% @product.product_view.product_carousel_images.each do |image| %>
               <div class="swiper-slide">
-        	    <%= image_tag(image.url, class: "product-detail-image carousel-image") %>
+                <%= image_tag(image.url, class: "product-detail-image carousel-image") %>
               </div>
             <% end %>
           </div>
@@ -49,9 +48,9 @@
     </div>
     <div class="product-detail-text-container" style="float: right">
       <% if @contest_team %>
-      <div class="product-detail-flex-box-team"><span><%= @contest_team.name %></span>向您推荐</div>
+        <div class="product-detail-flex-box-team"><span><%= @contest_team.name %></span>向您推荐</div>
       <% else %>
-      <div class="product-detail-flex-box-y"></div>
+        <div class="product-detail-flex-box-y"></div>
       <% end %>
       <div class="product-name">
         <%= @product.name %>
@@ -72,7 +71,7 @@
         <%= hidden_field_tag('quantity-limit-field', Settings.sale.max_quantity) %>
         <div class="product-quantity-panel">
           <a class="quantity-controller quantity-controller-decrease">-</a>
-          <input class="quantity-input" type="text" value="1"></input>
+          <input class="quantity-input" type="text" value="1">
           <a class="quantity-controller quantity-controller-increase">+</a>
         </div>
       </div>
@@ -106,6 +105,17 @@
         <% else %>
           <button type="button" class="btn-red purchase-button">立即购买</button>
         <% end %>
+      <% end %>
+      <% if @contest_team %>
+        <div class="product-detail-share">
+          <span class="share_title">为TA推广:</span>
+          <div class="bdsharebuttonbox" data-tag="share_1">
+            <a class="bds_tsina" data-cmd="tsina"></a>
+            <a class="bds_qzone" data-cmd="qzone"></a>
+            <a class="bds_renren" data-cmd="renren"></a>
+            <a class="bds_weixin" data-cmd="weixin"></a>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
@@ -162,7 +172,6 @@
     <p align="LEFT" style="margin-right: 0.23in; margin-bottom: 0in; widows: 2; orphans: 2">
       <font face="Heiti SC Light, serif"><font size="2"><b>6</b></font></font><font face="Arial"><span lang="zh-CN"><font face="Heiti SC Light"><font size="2"><b>、订单已提交成功，如何付款？</b></font></font></span></font></p>
     <p align="LEFT" style="margin-right: 0.23in; margin-bottom: 0in; widows: 2; orphans: 2"><a name="_GoBack"></a>
-
       <font face="Arial"><span lang="zh-CN"><font face="Heiti SC Light"><font size="2">目前我们支持的支付方式分为：微信支付、支付宝，请在订单提交后</font></font></span></font><font face="Heiti SC Light, serif"><font size="2">30</font></font><font face="Arial"><span lang="zh-CN"><font face="Heiti SC Light"><font size="2">分钟内完成付款。您可以进入“我的订单”中点击付款按钮进行付款。</font></font></span></font></p>
     <p align="LEFT" style="margin-right: 0.23in; margin-bottom: 0in; widows: 2; orphans: 2">
       <br>
@@ -179,7 +188,6 @@
     <p align="LEFT" style="margin-right: 0.23in; margin-bottom: 0in; widows: 2; orphans: 2">
       <font face="Heiti SC Light, serif"><font size="2"><b>8</b></font></font><font face="Arial"><span lang="zh-CN"><font face="Heiti SC Light"><font size="2"><b>、订单发货后，还可以改送到其他地方吗？</b></font></font></span></font></p>
     <p align="LEFT" style="margin-right: 0.23in; margin-bottom: 0in; widows: 2; orphans: 2">
-
       <font face="Arial"><span lang="zh-CN"><font face="Heiti SC Light"><font size="2">订单一旦提交成功，将无法修改。如果您需要修改收货信息，您可以进入“我的订单”中点击退货按钮进行退货，退货后再重新购买产品并填写新的收货信息。</font></font></span></font></p>
     <p align="LEFT" style="margin-right: 0.23in; margin-bottom: 0in; widows: 2; orphans: 2">
       <br>
@@ -192,6 +200,5 @@
     </p>
     <p style="margin-bottom: 0in"><br>
     </p>
-
   </div>
 </div>

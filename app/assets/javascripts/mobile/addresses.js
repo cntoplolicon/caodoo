@@ -2,6 +2,37 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
+
+  function validate_address() {
+    var b = true;
+    if ($("#address_receiver").val() == "") {
+      $("#address-receiver-error").text(validate_message.address.receiver.blank);
+      b = false;
+    } else {
+      $("#address-receiver-error").text("");
+    }
+    if ($("#address_phone").val() == "") {
+      $("#address-phone-error").text(validate_message.phone.invalid);
+      b = false;
+    } else {
+      $("#address-phone-error").text("");
+    }
+
+    if ($("#province_select").val() == "") {
+      $("#address-area-error").text(validate_message.province_code.blank);
+      b = false;
+    } else {
+      $("#address-area-error").text("");
+    }
+    if ($("#address_detailed_address").val() == "") {
+      $("#address-detail-error").text(validate_message.detailed_address.blank);
+      b = false;
+    } else {
+      $("#address-detail-error").text("");
+    }
+    return b;
+  }
+
   $('.delete_address_action').click(function() {
     $('#delete_address_box').data('addressId', $(this).data('addressId'));
     $('#delete_address_box').show();
@@ -57,21 +88,23 @@ $(document).ready(function() {
         window.location.reload();
       }
     }
-    var form = $(this).closest('form');
-    $.ajax({
-      url: form.attr('action'),
-      data: form.serializeArray(),
-      type: 'POST',
-      complete: function(xhr) {
-        if (xhr.status === 400) {
-          $('#edit_address_box').html(xhr.responseText);
-          edit_address_box_ready();
+    if (validate_address()) {
+      var form = $(this).closest('form');
+      $.ajax({
+        url: form.attr('action'),
+        data: form.serializeArray(),
+        type: 'POST',
+        complete: function(xhr) {
+          if (xhr.status === 400) {
+            $('#edit_address_box').html(xhr.responseText);
+            edit_address_box_ready();
+          }
+          if (xhr.status === 302 || xhr.status === 200) {
+            onSucceed(xhr);
+          }
         }
-        if (xhr.status === 302 || xhr.status === 200) {
-          onSucceed(xhr);
-        }
-      }
-    });
+      });
+    }
   });
 
   $('#edit_address_box').on('change', '#province_select', function() {

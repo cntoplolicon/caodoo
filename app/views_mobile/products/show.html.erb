@@ -7,116 +7,116 @@
   </div>
 <% end %>
 <div class="product-detail-container">
-<div class="product-detail">
-  <% if @contest_team %>
-  <div class="game-background">大学生营销策划赛活动产品</div>
-  <% else %>
-  <div class="on-sale-time-left"><%= hidden_field_tag('remain-time-hidden-field', [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max) %>
-距离抢购结束还有 <span class="show-remain-time"></span></div>
-  <% end %>
-  <div class="product-detail-slider">
-    <% if @product.product_sale_schedules[0].sale_end < Time.now %>
-    <%= image_tag("mobile_product-time-out.png", class: "product-detail-time-out") %>
-    <% elsif @product.quantity == 0%>
-    <%= image_tag("mobile_product-sold-out.png", class: "product-detail-sold-out") %>
-    <% end %>
-    <a class="arrow-left">
-      <%= image_tag("mobile_arrows_left.png", class: "arrow-left-img") %>
-    </a>
-    <a class="arrow-right">
-      <%= image_tag("mobile_arrows_right.png", class: "arrow-right-img") %>
-    </a>
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <% @product.product_view.product_carousel_images.each do |image| %>
-        <div class="swiper-slide">
-          <%= image_tag(image.url, class: "product-detail-image") %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="pagination"></div>
-  </div>
-  <div class="product-detail-text">
+  <div class="product-detail">
     <% if @contest_team %>
-    <div class="product-detail-text-team">
-      <div class="product-detail-text-name"><%= @contest_team.name%></div>
-      <div style="float: left; font-size: 16px">向您推荐</div>
-    </div>
-    <% end %>
-    <div class="product-detail-text-head"><%= @product.name %></div>
-    <div class="product-detail-text-content">
-      <%= @product.product_view.detail_page_description %>
-    </div>
-  </div>
-  <div class="product-detail-cost">
-    <div class="product-detail-price">
-    <% if @product.product_sale_schedules[0].sale_end < Time.now || @product.quantity == 0 %>
-      <div class="product-detail-price-expired">&#165;<%= @product.price %></div>
+      <div class="game-background">大学生营销策划赛活动产品</div>
     <% else %>
-      <div class="product-detail-price-now">&#165;<%= @product.price %></div>
+      <div class="on-sale-time-left"><%= hidden_field_tag('remain-time-hidden-field', [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max) %>
+        距离抢购结束还有 <span class="show-remain-time"></span></div>
     <% end %>
-      <div class="product-detail-price-original">
-        <del>原价&#165;<%= @product.original_price %></del>
+    <div class="product-detail-slider">
+      <% if @product.product_sale_schedules[0].sale_end < Time.now %>
+        <%= image_tag("mobile_product-time-out.png", class: "product-detail-time-out") %>
+      <% elsif @product.quantity == 0%>
+        <%= image_tag("mobile_product-sold-out.png", class: "product-detail-sold-out") %>
+      <% end %>
+      <a class="arrow-left">
+        <%= image_tag("mobile_arrows_left.png", class: "arrow-left-img") %>
+      </a>
+      <a class="arrow-right">
+        <%= image_tag("mobile_arrows_right.png", class: "arrow-right-img") %>
+      </a>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <% @product.product_view.product_carousel_images.each do |image| %>
+            <div class="swiper-slide">
+              <%= image_tag(image.url, class: "product-detail-image") %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="pagination"></div>
+    </div>
+    <div class="product-detail-text">
+      <% if @contest_team %>
+        <div class="product-detail-text-team">
+          <div class="product-detail-text-name"><%= @contest_team.name%></div>
+          <div style="float: left; font-size: 16px">向您推荐</div>
+        </div>
+      <% end %>
+      <div class="product-detail-text-head"><%= @product.name %></div>
+      <div class="product-detail-text-content">
+        <%= @product.product_view.detail_page_description %>
       </div>
     </div>
-    <div class="product-detail-quantity">
-      <div class="product-detail-quantity-text">数量：(单次限购10个)</div>
-       <%= hidden_field_tag('quantity-limit-field', Settings.sale.max_quantity) %>
-    <div class="product-quantity-panel">
-    </div>
-      <div class="product-detail-quantity-controller">
-        <a class="quantity-controller-increase">
-          <span>+</span>
-        </a>
+    <div class="product-detail-cost">
+      <div class="product-detail-price">
+        <% if @product.product_sale_schedules[0].sale_end < Time.now || @product.quantity == 0 %>
+          <div class="product-detail-price-expired">&#165;<%= @product.price %></div>
+        <% else %>
+          <div class="product-detail-price-now">&#165;<%= @product.price %></div>
+        <% end %>
+        <div class="product-detail-price-original">
+          <del>原价&#165;<%= @product.original_price %></del>
+        </div>
       </div>
-      <div class="product-detail-quantity-number">
-        <input class="quantity-number" type="text" value="1"></input>
+      <div class="product-detail-quantity">
+        <div class="product-detail-quantity-text">数量：(单次限购10个)</div>
+        <%= hidden_field_tag('quantity-limit-field', Settings.sale.max_quantity) %>
+        <div class="product-quantity-panel">
+        </div>
+        <div class="product-detail-quantity-controller">
+          <a class="quantity-controller-increase">
+            <span>+</span>
+          </a>
+        </div>
+        <div class="product-detail-quantity-number">
+          <input class="quantity-number" type="text" value="1">
+        </div>
+        <div class="product-detail-quantity-controller">
+          <a class="quantity-controller-decrease">
+            <span>-</span>
+          </a>
+        </div>
       </div>
-      <div class="product-detail-quantity-controller">
-        <a class="quantity-controller-decrease">
-          <span>-</span>
-        </a>
+    </div>
+    <div class="product-detail-gurantee">
+      <div class="product-detail-gurantee-image">
+        <%= image_tag("mobile_zhengping.png", class: "product-detail-gurantee-image") %>
       </div>
+      <div class="product-detail-gurantee-text">正品保证</div>
+      <div class="product-detail-gurantee-flex"></div>
+      <div class="product-detail-gurantee-image">
+        <%= image_tag("mobile_qitian.png", class: "product-detail-gurantee-image") %>
+      </div>
+      <div class="product-detail-gurantee-text">七天包退</div>
+      <div class="product-detail-gurantee-flex"></div>
+      <div class="product-detail-gurantee-image">
+        <%= image_tag("mobile_baoyou.png", class: "product-detail-gurantee-image") %>
+      </div>
+      <div class="product-detail-gurantee-text">全场包邮</div>
     </div>
-  </div>
-  <div class="product-detail-gurantee">
-    <div class="product-detail-gurantee-image">
-      <%= image_tag("mobile_zhengping.png", class: "product-detail-gurantee-image") %>
-    </div>
-    <div class="product-detail-gurantee-text">正品保证</div>
-    <div class="product-detail-gurantee-flex"></div>
-    <div class="product-detail-gurantee-image">
-      <%= image_tag("mobile_qitian.png", class: "product-detail-gurantee-image") %>
-    </div>
-    <div class="product-detail-gurantee-text">七天包退</div>
-    <div class="product-detail-gurantee-flex"></div>
-    <div class="product-detail-gurantee-image">
-      <%= image_tag("mobile_baoyou.png", class: "product-detail-gurantee-image") %>
-    </div>
-    <div class="product-detail-gurantee-text">全场包邮</div>
-  </div>
-   <%= link_to new_user_order_path(session[:login_user_id] || 0, {product_id: @product.id}) do %>
-    <% if @product.product_sale_schedules[0].sale_end < Time.now || @product.quantity == 0 %>
-      <button disabled type="button" class="product-detail-submit-fade purchase-button">立即购买</button>
-    <% else %>
-      <button type="button" class="product-detail-submit purchase-button">立即购买</button>
+    <%= link_to new_user_order_path(session[:login_user_id] || 0, {product_id: @product.id}) do %>
+      <% if @product.product_sale_schedules[0].sale_end < Time.now || @product.quantity == 0 %>
+        <button disabled type="button" class="product-detail-submit-fade purchase-button">立即购买</button>
+      <% else %>
+        <button type="button" class="product-detail-submit purchase-button">立即购买</button>
+      <% end %>
     <% end %>
-  <% end %>
-  <div class="product-detail-flex-y"></div>
-  <% if @contest_team %>
-  <div class="product-detail-share">
-    <span class="share_title">为TA推广</span>
-    <div class="bdsharebuttonbox" data-tag="share_1">
-      <a class="bds_tsina" data-cmd="tsina"></a>
-      <a class="bds_qzone" data-cmd="qzone"></a>
-      <a class="bds_renren" data-cmd="renren"></a>
-      <a class="bds_weixin" data-cmd="weixin"></a>
-    </div>
+    <div class="product-detail-flex-y"></div>
+    <% if @contest_team %>
+      <div class="product-detail-share">
+        <span class="share_title">为TA推广</span>
+        <div class="bdsharebuttonbox" data-tag="share_1">
+          <a class="bds_tsina" data-cmd="tsina"></a>
+          <a class="bds_qzone" data-cmd="qzone"></a>
+          <a class="bds_renren" data-cmd="renren"></a>
+          <a class="bds_weixin" data-cmd="weixin"></a>
+        </div>
+      </div>
+    <% end %>
+    <div class="product-detail-middle-block">产品详情</div>
+    <% @product.product_view.product_detail_images.each do |image| %>
+      <%= image_tag(image.url, class: "product-detail-description") %>
+    <% end %>
   </div>
-  <% end %>
-  <div class="product-detail-middle-block">产品详情</div>
-  <% @product.product_view.product_detail_images.each do |image| %>
-  <%= image_tag(image.url, class: "product-detail-description") %>
-  <% end %>
-</div>
