@@ -52,7 +52,7 @@ set :ssh_options, {
 # ------------------------------------
 server '54.223.186.67',
   user: 'ubuntu',
-  roles: %w{web app db},
+  roles: %w{web app db batch},
   ssh_options: {}
 
 server '54.223.172.128',
