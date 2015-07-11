@@ -1,5 +1,5 @@
 <div class="order_box">
-  <div class="return_action">
+  <div class="account_setting_return_action">
     默认手机号
     <a class="update_action update_username_action">
       修改
@@ -21,14 +21,14 @@
             <div class="error-message" id="security-code-error"><%= @user.errors.messages[:security_code].first if @user.errors[:security_code].any? %></div>
           </li>
           <li>
-            <%= f.submit '保存', data: {disable_with: '正在保存'}, class: 'bt_green', style: 'float: left'%>
-            <a class="bt cancel_button" style="float: left">取消</a>
+            <%= f.submit '保存', data: {disable_with: '正在保存'}, class: 'bt_green', style: "float: left; margin-right: 5px; width: 115px"%>
+            <a class="bt cancel_button" style="float: left; margin-left: 5px; width: 83px">取消</a>
           </li>
         </ul>
       <% end %>
     </div>
   </div>
-  <div class="return_action">
+  <div class="account_setting_return_action">
     修改密码
     <a class="update_action update_password_action">
       修改
@@ -50,8 +50,8 @@
           <div class="error-message" id="user_new_password2-error"><%= @user.errors.messages[:password_confirmation].first if @user.errors[:password_confirmation].any? %></div>
         </li>
         <li>
-          <%= f.submit '保存', data: {disable_with: '正在保存'}, class: 'bt_green', style: 'float: left'%>
-          <a class="bt cancel_button" style="float: left">取消</a>
+          <%= f.submit '保存', data: {disable_with: '正在保存'}, class: 'bt_green', style: "float: left; margin-right: 5px; width: 115px"%>
+          <a class="bt cancel_button" style="float: left; margin-left: 5px; width: 83px">取消</a>
         </li>
       </ul>
     <% end %>

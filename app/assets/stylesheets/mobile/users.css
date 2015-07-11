@@ -200,20 +200,26 @@
   margin-bottom: 44px;
   overflow: auto;
 }
-
 .user-op-form .close-button {
   width: 235px;
 }
-
 .order_box .return_action {
   position: relative;
   text-align: center;
 }
-
 .order_box .return_action_link {
   position: absolute;
   left: 0;
   top: 0;
+}
+.order_box .account_setting_return_action {
+  position: relative;
+  text-align: left;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #EEEEEE;
+  padding-left: 20px;
+  color: #979797;
 }
 
 .update_action {
@@ -228,7 +234,7 @@
 }
 
 .user_info {
-  margin: 20px;
+  margin: 10px 20px 20px 20px;
 }
 
 .user_info_box {
@@ -255,6 +261,8 @@
   min-height: 320px;
   background-color: white;
   margin: 0 auto;
+  padding-top: 5px;
+  padding-bottom: 20px;
 }
 .setting_container {
   padding: 20px;
@@ -274,4 +282,28 @@
 
 .password-box {
 	margin: 20px;
+}
+
+#update-phone {
+  padding-left: 10px;
+}
+#update-pwd {
+  padding-left: 10px;
+}
+#update-phone .bt_green {
+  margin-left: 0;
+  width: 70px;
+}
+#update-pwd .bt_green {
+  margin-left: 0;
+  width: 70px;
+}
+#update-phone .cancel_button{
+  width: 40px;
+}
+#update-pwd .cancel_button{
+  width: 40px;
+}
+.user_info_box .password-box {
+  margin-bottom: 0;
 }

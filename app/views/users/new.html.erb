@@ -6,9 +6,6 @@
       注册
     </div>
   <%= form_for @user, url: users_path  , html: {id: 'new-user'} do |f| %>
-    <div class="submit-panel input-panel">
-      <%= f.submit "注册", data: {disable_with: '正在提交'} %>
-    </div>
     <div class="username-panel input-panel">
       <%= f.text_field :username, placeholder: "输入您的手机号", id: 'username-input' %>
       <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first if @user.errors[:username].any? %></div>
@@ -24,9 +21,12 @@
     </div>
     <div class="terms-of-service-panel input-panel">
       <%= f.check_box :terms_of_service %>
-      同意
+        同意
       <%= link_to "服务条款", action: :terms_of_service %>
       <span class="error-message" id="terms_of_service_error"><%= @user.errors.messages[:terms_of_service].first if @user.errors[:terms_of_service].any? %></span>
+    </div>
+    <div class="submit-panel input-panel">
+      <%= f.submit "注册", data: {disable_with: '正在提交'} %>
     </div>
   <% end %>
 </div>
