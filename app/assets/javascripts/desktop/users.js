@@ -113,7 +113,6 @@ $(document).ready(function() {
     } else {
       $("#terms_of_service_error").text("");
     }
-
     return b;
 
   });
@@ -215,5 +214,5 @@ $(document).ready(function() {
     }
     return b;
   });
-
 })
+
