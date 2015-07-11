@@ -3,9 +3,6 @@ sms:
   password: Tch123456
 
 security_code:
-  disabled: true
-  sms_template: "您的验证码是%{security_code}, 请在三分钟内输入"
-  expired: 180
 
 payment:
   expired: 30
@@ -13,10 +10,10 @@ payment:
 sale:
   max_quantity: 10
 
-contest:
-  default_team_identifier: '16c7cd1b9df7a2bc840ec02f7d8d4a7b'
-  level_exp: [0, 9, 13, 16]
-
 contact:
   telephone: '400-6518-459'
   wechat: 'caodoo2015'
+
+security_code:
+  sms_template: "您的验证码是%{security_code}, 请在三分钟内输入"
+  expired: 180

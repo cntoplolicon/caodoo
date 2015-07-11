@@ -62,7 +62,7 @@
         </tr>
         <% @total_orders.each_with_index do |order, index| %>
           <tr>
-            <td><%= index %></td>
+            <td><%= "#{index + 1}" %></td>
             <td><%= order[:product_name] %></td>
             <td><%= order[:quantity] %></td>
             <td><%= order[:total_price] %></td>
