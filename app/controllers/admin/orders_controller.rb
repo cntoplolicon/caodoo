@@ -53,7 +53,7 @@ class Admin::OrdersController < Admin::AdminController
   end
 
   def import_delivery
-    @results = CSV.parse(params[:file].read).map {|line| {order_number: line[0], express: line[1], tracking_number: line[2]} }
+    @results = CSV.parse(params[:file].read.to_s.force_encoding("UTF-8")).map {|line| {order_number: line[0], express: line[1], tracking_number: line[2]} }
     @results.each do |r|
       Order.transaction do
         @order = Order.lock.find_by_order_number(r[:order_number])
