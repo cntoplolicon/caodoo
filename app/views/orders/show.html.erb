@@ -135,13 +135,13 @@
   <div class="resales_popup_box">
     <div class="customer_service_info">
       <ul>
-        <% if @order.contest_team.present? && @order.contest_team.identifier != Settings.contest.default_identifier%>
+        <% if @order.contest_team.present? && @order.contest_team.identifier != Settings.contest.default_team_identifier%>
           <li>请联系大赛团队<span class="contest-team-name"><%= @order.contest_team.name %></span>协助您退货</li>
         <% else %>
           <li>请联系客服</li>
         <% end %>
         <li>
-          <% if @order.contest_team.present? && @order.contest_team.identifier != Settings.contest.default_identifier%>
+          <% if @order.contest_team.present? && @order.contest_team.identifier != Settings.contest.default_team_identifier%>
             <p> 电话：<strong style="color: #333333"><%= @order.contest_team.phone %></strong></p>
           <% else %>
             <p> 电话：<strong style="color: #333333"><%= Settings.contact.telephone %></strong></p>
