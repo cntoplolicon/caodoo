@@ -52,22 +52,20 @@ class ContestTeamsController < ContestTeamDashboardController
     today = [Time.zone.now.beginning_of_day..Time.zone.now.end_of_day]
     @total_orders = Order.where(contest_team_id: @contest_team.id, status: [Order::PAID, Order::DELIVERED, Order::COMPLETE])
       .joins(:product).includes(:product).group(:product_id)
-      .pluck('count(orders.id)', 'sum(orders.total_price)', 'products.name').map{|r| {quantity: r[0], total_price: r[1], product_name: r[2]} }
+      .pluck('sum(orders.quantity)', 'sum(orders.total_price)', 'products.name').map{|r| {quantity: r[0], total_price: r[1], product_name: r[2]} }
     @today_orders = Order.where(contest_team_id: @contest_team.id, status: [Order::PAID, Order::DELIVERED, Order::COMPLETE], created_at: today)
       .joins(:product).includes(:product).group(:product_id)
-      .pluck('count(orders.id)', 'sum(orders.total_price)', 'products.name').map{|r| {quantity: r[0], total_price: r[1], product_name: r[2]} }
+      .pluck('sum(orders.quantity)', 'sum(orders.total_price)', 'products.name').map{|r| {quantity: r[0], total_price: r[1], product_name: r[2]} }
 
     @total_statistics = {
       quantity: @total_orders.inject(0) { |sum, orders| sum + orders[:quantity] },
       price: @total_orders.inject(0) { |sum, orders| sum + orders[:total_price] },
       pv: ContestPageView.where(contest_team_id: @contest_team.id).count(:all),
-      uv: ContestPageView.where(contest_team_id: @contest_team.id).distinct.count(:request_ip)
     }
     @today_statistics = {
       quantity: @today_orders.inject(0) { |sum, orders| sum + orders[:quantity] },
       price: @today_orders.inject(0) { |sum, orders| sum + orders[:total_price] },
       pv: ContestPageView.where(contest_team_id: @contest_team.id, created_at: today).count(:all),
-      uv: ContestPageView.where(contest_team_id: @contest_team.id, created_at: today).distinct.count(:request_ip)
     }
   end
 
