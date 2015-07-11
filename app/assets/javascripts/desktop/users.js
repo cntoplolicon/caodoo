@@ -120,7 +120,6 @@ $(document).ready(function() {
   //login user validate
 
   $("#login-user").submit(function() {
-
     var b = true;
     if (!$("#user_username").val().match(validate_regex.username)) {
       $("#username-error").text(validate_message.username.invalid);
@@ -136,7 +135,6 @@ $(document).ready(function() {
       $("#userpwd-error").text("");
     }
     return b;
-
   });
 
   //forget pwd validate
@@ -177,7 +175,6 @@ $(document).ready(function() {
       $("#security-code-error").text("");
     }
     return b;
-
   });
 
   //update pwd validate
