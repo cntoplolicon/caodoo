@@ -8,9 +8,9 @@ class Admin::RefundRecordsController < Admin::AdminController
 
   def to_csv(records)
     CSV.generate do  |csv|
-      csv << ['订单号', '商品名称']
+      csv << ['订单号', '商品名称', '商品数量', '收货人姓名', '收货人电话', '省', '市', '区', '详细地址', '发货物流公司', '发货运单号', '团队名', '退货物流公司', '退货物流运单号', '退货单创建时间', '退货单状态', '退货单备注']
       records.each do |r|
-        csv << [r.order.order_number, r.order.product.name]
+        csv << [r.order.order_number, r.order.product.name, r.order.quantity, r.order.receiver, r.order.phone, r.order.province_name, r.order.city_name, r.order.district_name, r.order.detailed_address, r.order.try(:express).try(:name), r.order.tracking_number, r.order.try(:contest_team).try(:name), r.express.name, r.tracking_number, r.created_at.strftime('%Y/%m/%d %H:%M:%S'), view_context.refund_record_status_text(r.status), r.remark]
       end
     end
   end

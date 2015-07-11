@@ -18,9 +18,9 @@ class Admin::OrdersController < Admin::AdminController
 
   def to_csv(records)
     CSV.generate do |csv|
-      csv << ['订单号', '商品名称']
+      csv << ['订单号', '商品名称', '商品数量', '收件人姓名', '收件人联系方式', '省', '市', '区', '详细地址', '订单状态', '下单时间']
       records.each do |r|
-        csv << [r.order_number, r.product.name]
+        csv << [r.order_number, r.product_name, r.quantity, r.receiver, r.phone, r.province_name, r.city_name, r.district_name, r.detailed_address, view_context.order_status_text(r.status), r.created_at.strftime('%Y/%m/%d %H:%M:%S')]
       end
     end
   end
@@ -49,7 +49,7 @@ class Admin::OrdersController < Admin::AdminController
   end
 
   def import_delivery
-    @results = CSV.parse(params[:file].read).map {|line| {order_number: line[0], express: line[1], tracking_number: line[2]} }
+    @results = CSV.parse(params[:file].read.to_s.force_encoding("UTF-8")).map {|line| {order_number: line[0], express: line[1], tracking_number: line[2]} }
     @results.each do |r|
       Order.transaction do
         @order = Order.lock.find_by_order_number(r[:order_number])
