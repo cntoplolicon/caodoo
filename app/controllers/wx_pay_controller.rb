@@ -28,7 +28,7 @@ class WxPayController < ApplicationController
           trade_type: 'NATIVE'
         }
         if Rails.env.production? then
-          options[:notify_url] = '#{root_url}/wx_pay/notify'
+          options[:notify_url] = "#{root_url}/wx_pay/notify"
           options[:total_fee] = (@order.total_price * 100).round
         else
           options[:total_fee] = @order.quantity
