@@ -25,10 +25,10 @@ class WxPayController < ApplicationController
           spbill_create_ip: remote_ip,
           time_start: payment_created_at.localtime.strftime('%Y%m%d%H%M%S'),
           time_expire: wx_payment_expire_at.localtime.strftime('%Y%m%d%H%M%S'),
-          trade_type: 'NATIVE',
-          notify_url: 'https://www.caodoo.com/wx_pay/notify'
+          trade_type: 'NATIVE'
         }
         if Rails.env.production? then
+          options[:notify_url] = '#{root_url}/wx_pay/notify'
           options[:total_fee] = (@order.total_price * 100).round
         else
           options[:total_fee] = @order.quantity

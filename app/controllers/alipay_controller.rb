@@ -23,11 +23,11 @@ class AlipayController < ApplicationController
         it_b_pay: @order.payment_record.alipay_expire
       }
       if Rails.env.production? then
-        options[:return_url] = "https://www.caodoo.com/alipay/return"
-        options[:notify_url] = "https://www.caodoo.com/alipay/notify"
+        options[:return_url] = "#{root_url}/alipay/return"
+        options[:notify_url] = "#{root_url}/alipay/notify"
         options[:price] = "%.2f" % @order.unit_price
       else
-        options[:return_url] = "http://#{request.host_with_port}/alipay/return"
+        options[:return_url] = "#{root_url}/alipay/return"
         options[:price] = '0.01'
       end
       uri = URI(Alipay::Service.create_direct_pay_by_user_url(options))
