@@ -47,24 +47,24 @@
           <li style="padding: 0">
             <ul class="children_list" style="display: none">
               <li>
-                <%= link_to "订单管理", user_orders_url(session[:login_user_id]) %>
+                <%= link_to "订单管理", user_orders_path(session[:login_user_id]) %>
               </li>
               <li>
-                <%= link_to "收货地址", user_addresses_url(session[:login_user_id]) %>
+                <%= link_to "收货地址", user_addresses_path(session[:login_user_id]) %>
               </li>
               <li>
-                <%= link_to "客户服务", custom_service_url %>
+                <%= link_to "客户服务", custom_service_path %>
               </li>
               <li>
-                <%= link_to "个人设置", user_settings_user_url(session[:login_user_id]) %>
+                <%= link_to "个人设置", user_settings_user_path(session[:login_user_id]) %>
               </li>
               <li>
-                <%= link_to "退出账户", logout_users_url %>
+                <%= link_to "退出账户", logout_users_path %>
               </li>
             </ul>
           </li>
           <li>
-            <%= link_to "关于我们", about_us_url %>
+            <%= link_to "关于我们", about_us_path %>
           </li>
         <% else %>
           <li>
@@ -77,14 +77,12 @@
             <%= link_to "注册", controller: :users, action: :new %>
           </li>
           <li>
-            <%= link_to "关于我们", about_us_url %>
+            <%= link_to "关于我们", about_us_path %>
           </li>
         <% end %>
       </ul>
     </div>
     <%= content_for?(:content) ? yield(:content) : yield %>
-    <%= javascript_include_tag 'application_mobile' %>
-    <!--copyright-->
     <ul class="footer_links">
       <li>
         <a>&nbsp;&nbsp;©2015 CAODOO</a>
@@ -98,5 +96,6 @@
         </a>
       </li>
     </ul>
+    <%= javascript_include_tag 'application_mobile' %>
   </body>
 </html>
