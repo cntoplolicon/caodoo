@@ -14,6 +14,13 @@ class OrdersController < ApplicationController
 
     @product = Product.find(params[:product_id])
     @order.product_id = @product.id
+    if @product.contest_product?
+      if session[:contest_team_id].present?
+        @contest_team = ContestTeam.find(session[:contest_team_id])
+      else
+        @contest_team = ContestTeam.find_by_identifier(Settings.contest.default_team_identifier)
+      end
+    end
   end
 
   def create
@@ -29,7 +36,7 @@ class OrdersController < ApplicationController
 
     @onsale = @product.product_sale_schedules.any? do |s|
       s.sale_start < Time.now && s.sale_end > Time.now
-    end 
+    end
     redirect_to action: :sold_out, controller: :standalone and return unless @onsale
 
     @order.build_payment_record(status: PaymentRecord::TO_PAY)

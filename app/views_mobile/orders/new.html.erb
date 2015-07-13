@@ -18,7 +18,9 @@
         <%= image_tag "mobile_payment_step_one.png", class: 'step-img' %>
       </div>
       <div class="product-information">
-        <div class="product-information-team-name">来自某个省某个把自己名字起了两公里长的队伍推荐</div>
+        <% if @contest_team %>
+          <div class="product-information-team-name">来自<%= @contest_team.name%>的推荐</div>
+        <% end %>
         <div class="product-information-top">购买产品：</div>
         <div class="product-information-middle">
           <div class="product-information-image">
