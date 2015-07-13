@@ -101,6 +101,7 @@ class OrdersController < ApplicationController
           @order.status = Order::CANCELLED
           @order.payment_record.status = PaymentRecord::CANCELLED
           @order.save
+          Product.where(id: @order.product_id).update_all(['quantity = quantity + ?', @order.quantity])
         elsif @order.status == Order::PAID
           @order.status = Order::CANCELLING
           @order.save

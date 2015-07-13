@@ -36,6 +36,7 @@ class Admin::OrdersController < Admin::AdminController
       if [Order::CANCELLING].include?(@order.status) && status == Order::CANCELLED
         @order.update(status: Order::CANCELLED)
         @order.payment_record.update(status: PaymentRecord::REFUNDED)
+        Product.where(id: @order.product_id).update_all(['quantity = quantity + ?', @order.quantity])
       elsif [Order::DELIVERED].include?(@order.status) && status == Order::COMPLETE
         @order.update(status: Order::COMPLETE, receive_time: Time.now)
       else
