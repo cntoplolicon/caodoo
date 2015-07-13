@@ -47,9 +47,10 @@
 }
 
 .user-op-form input[type="checkbox"] {
-  vertical-align: top;
   width: 14px;
   height: 14px;
+  border: 1px solid #ebebeb;
+  padding: 0;
 }
 
 .user-op-form input[type='submit'] {
