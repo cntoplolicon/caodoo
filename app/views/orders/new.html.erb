@@ -19,7 +19,11 @@
               </div>
               <div class="product-display-text">
                 <div class="product-display-name black"> <%= @product.name %></div>
-                <div class="product-display-flex-y"></div>
+                <div class="product-display-flex-y">
+                  <% if @contest_team %>
+                    <div class="product-information-team-name">来自<%= @contest_team.name%>的推荐</div>
+                  <% end %>
+                </div>
                 <div class="product-display-price">
                   <div class="product-display-price-tag">产品单价：</div>
                   <div class="product-display-price-number">￥<%= "#{'%.2f' % @product.price}" %></div>
@@ -72,6 +76,5 @@
     </div>
   </div>
 <% end %>
-
 <div id="edit_address_box" class="popup">
 </div>
