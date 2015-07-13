@@ -2,9 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
-  $('.go-on-shopping').click(function() {
-    location.href = '/';
-  });
   var paymentTimeCountDown = function() {
     if (time > 0) {
       time = Math.max(time - 1, 0);

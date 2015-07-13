@@ -15,8 +15,8 @@
   <%= image_tag("onsale.png", class: "center-block on-sale-notification") %>
   <div class="on-sale-products">
     <% @on_sale_products.each do |product| %>
-      <%= link_to product_path(product) do %>
-        <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
+      <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
+        <%= link_to product_path(product) do %>
           <%= image_tag product.product_view.sale_image_url %>
           <div class="product-information">
             <div class="product-name">
@@ -32,8 +32,8 @@
           </div>
           <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %>">
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <% if @upcoming_products.any? %>
