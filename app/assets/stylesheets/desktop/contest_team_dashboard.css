@@ -83,6 +83,9 @@ li {
 .team_client_block_container_menu li a {
   font-size: 16px;
   color: #ffffff;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 .team_client_block_container_menu li {
   height: 30px;
