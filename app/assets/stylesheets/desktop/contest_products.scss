@@ -61,7 +61,7 @@
 
 .game_recommend_product_img {
   width: 240px;
-  height: 200px;
+  height: 240px;
 }
 
 .game_share_title {
@@ -74,26 +74,27 @@
   margin-left: 10px
 }
 
-.team_share_link_detail_p{
-
+.team_share_link_detail_p {
   width: 450px;
-
   word-break: break-all;
 }
 
-.team_share_link_detail_share_desc{
-
+.team_share_link_detail_share_desc {
   float: left;
   margin-top: 10px;
 }
 
-.bdsharebuttonbox{
-
+.bdsharebuttonbox {
   float: left;
 }
 
-.bdsharebuttonbox a{
-
+.bdsharebuttonbox a {
   padding: 0 10px;
-
 }
+
+.game_recommend_product_name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
