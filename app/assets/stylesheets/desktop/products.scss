@@ -153,7 +153,6 @@
 .product-detail {
   margin: 0 auto;
   background-color: #FFF;
-  width: 960px;
 }
 
 .product-detail-countdown {
@@ -161,7 +160,6 @@
   padding: 50px 0 15px 0;
   margin: 0 40px 0 40px;
   border-bottom: 1px solid #DFDFDF;
-  //display: none;
 }
 
 .product-detail-countdown-expired {
@@ -183,6 +181,7 @@
   position: relative;
   padding: 0 44px;
   height: 560px;
+  width: 960px;
 }
 
 .product-detail-images-container {
