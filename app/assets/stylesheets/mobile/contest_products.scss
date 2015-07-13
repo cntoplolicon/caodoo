@@ -51,6 +51,7 @@
 
 .game_recommend_product_content img {
   width: 158px;
+  height: 158px;
 }
 
 .game_recommend_product_container {
@@ -68,4 +69,10 @@
 
 .recommend_product_price {
   color: #FB3127;
+}
+
+.game_recommend_product_name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
