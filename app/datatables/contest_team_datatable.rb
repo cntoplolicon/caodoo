@@ -6,24 +6,38 @@ class ContestTeamDatatable < Datatable
       [
         contest_team.name,
         contest_team.phone,
-        contest_team.identifier,
         contest_team.sales_quantity,
-        link_to('重置密码', edit_admin_contest_team_path(contest_team), class: 'btn btn-default')
+        contest_team.password_updated,
+        link_to('重置密码', edit_admin_contest_team_path(contest_team), class: 'btn btn-default'),
       ]
     end
   end
 
-  def fetch_records
+  def unpaged_records
     records = ContestTeam.all
-    records = records.order("#{sort_column} #{sort_direction}")
-    records = records.page(page).per(per_page)
-    if params[:sSearch].present?
-      records = records.where("name like :search or phone like :search", search: "%#{params[:sSearch]}%")
+    for i in 0..params[:iColumns].to_i do
+        filter = params["sSearch_#{i}"]
+        column = sortable_columns[i]
+        if filter.present?
+          if column.end_with?('quantity')
+            range = filter.split('-yadcf_delim-')
+            records = records.where("#{column} >= :search", search: range[0]) if range[0].present?
+            records = records.where("#{column} < :search", search: range[1]) if range[1].present?
+          else
+            records = records.where("#{column} like '%#{filter}%'")
+          end
+        end
+      end
+      records
     end
-    records
-  end
 
-  def sortable_columns
-    @sortable_columns ||= ['name', 'phone', 'sales_quantity', 'identifier']
+    def fetch_records
+      records = unpaged_records.order("#{sort_column} #{sort_direction}")
+      records = records.page(page).per(per_page)
+      records
+    end
+
+    def sortable_columns
+      @sortable_columns ||= ['name', 'phone', 'sales_quantity', 'password_updated']
+    end
   end
-end
