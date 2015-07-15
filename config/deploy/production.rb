@@ -50,12 +50,32 @@ set :ssh_options, {
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server '54.223.186.67',
+server '54.223.140.135',
   user: 'ubuntu',
   roles: %w{web app db batch},
   ssh_options: {}
 
-server '54.223.172.128',
+#server '54.223.190.117',
+#  user: 'ubuntu',
+#  roles: %w{web app},
+#  ssh_options: {}
+
+set :password, ask('Server password: ', nil)
+
+server '123.59.53.54',
   user: 'ubuntu',
   roles: %w{web app},
-  ssh_options: {}
+  ssh_options: {
+    forward_agent: false,
+    auth_methods: %w(password),
+    password: fetch(:password)
+  }
+
+server '120.132.57.121',
+  user: 'ubuntu',
+  roles: %w{web app},
+  ssh_options: {
+    forward_agent: false,
+    auth_methods: %w(password),
+    password: fetch(:password)
+  }
