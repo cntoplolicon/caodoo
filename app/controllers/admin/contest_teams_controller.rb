@@ -1,3 +1,5 @@
+require 'digest'
+
 class Admin::ContestTeamsController < Admin::AdminController
   before_action :find_contest_team, only: [:edit, :update, :reset_password, :do_reset_password]
 
@@ -6,6 +8,28 @@ class Admin::ContestTeamsController < Admin::AdminController
       format.html
       format.json { render json: ::ContestTeamDatatable.new(view_context) }
     end
+  end
+
+  def new
+  end
+
+  def create
+    @results = CSV.parse(params[:file].read.to_s.force_encoding("UTF-8")).map do |line|
+      {university: line[0], province: line[1], name: line[2], contacts: line[3], phone: line[4], email: line[5], password: '123456'}
+    end
+    @results.each do |r|
+      r[:identifier] = Digest::MD5.hexdigest(r[:phone])
+      if ContestTeam.exists?(phone: r[:phone])
+        r[:message] = '联系方式与其他团队重复 '
+      else
+        team = ContestTeam.new(r)
+        unless team.save
+          r[:message] = team.errors.full_messages.first
+        end
+      end
+      r[:message] ||= '添加成功'
+    end
+    render 'new'
   end
 
   def edit
