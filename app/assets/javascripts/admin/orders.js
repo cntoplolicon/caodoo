@@ -32,8 +32,7 @@ $(document).ready(function() {
       }, {
         value: 11,
         label: '交易超时'
-      }
-      ]
+      }]
     }, {
       column_number: 12,
       filter_delay: 1000,

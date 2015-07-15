@@ -7,7 +7,7 @@ class ContestTeamDatatable < Datatable
         contest_team.name,
         contest_team.phone,
         contest_team.sales_quantity,
-        contest_team.password_updated,
+        contest_team.password_updated ? '是' : '否',
         link_to('重置密码', edit_admin_contest_team_path(contest_team), class: 'btn btn-default'),
       ]
     end
@@ -16,28 +16,30 @@ class ContestTeamDatatable < Datatable
   def unpaged_records
     records = ContestTeam.all
     for i in 0..params[:iColumns].to_i do
-        filter = params["sSearch_#{i}"]
-        column = sortable_columns[i]
-        if filter.present?
-          if column.end_with?('quantity')
-            range = filter.split('-yadcf_delim-')
-            records = records.where("#{column} >= :search", search: range[0]) if range[0].present?
-            records = records.where("#{column} < :search", search: range[1]) if range[1].present?
-          else
-            records = records.where("#{column} like '%#{filter}%'")
-          end
+      filter = params["sSearch_#{i}"]
+      column = sortable_columns[i]
+      if filter.present?
+        if column.end_with?('sales_quantity')
+          range = filter.split('-yadcf_delim-')
+          records = records.where("#{column} >= :search", search: range[0]) if range[0].present?
+          records = records.where("#{column} < :search", search: range[1]) if range[1].present?
+        elsif column.end_with?('password_updated')
+          records = records.where("#{column} = ?", filter)
+        else
+          records = records.where("#{column} like '%#{filter}%'")
         end
       end
-      records
     end
-
-    def fetch_records
-      records = unpaged_records.order("#{sort_column} #{sort_direction}")
-      records = records.page(page).per(per_page)
-      records
-    end
-
-    def sortable_columns
-      @sortable_columns ||= ['name', 'phone', 'sales_quantity', 'password_updated']
-    end
+    records
   end
+
+  def fetch_records
+    records = unpaged_records.order("#{sort_column} #{sort_direction}")
+    records = records.page(page).per(per_page)
+    records
+  end
+
+  def sortable_columns
+    @sortable_columns ||= ['name', 'phone', 'sales_quantity', 'password_updated']
+  end
+end
