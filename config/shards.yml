@@ -16,6 +16,6 @@ octopus: &octopus
 
   production:
     slave1:
-      host: caodoodbslave1.chhqxoiimdiw.rds.cn-north-1.amazonaws.com.cn
+      host: caodoodbslave.chhqxoiimdiw.rds.cn-north-1.amazonaws.com.cn
       password: Passw0rd
       <<: *mysql
