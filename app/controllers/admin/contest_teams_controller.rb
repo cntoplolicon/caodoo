@@ -1,4 +1,5 @@
 require 'digest'
+require 'csv'
 
 class Admin::ContestTeamsController < Admin::AdminController
   before_action :find_contest_team, only: [:edit, :update, :reset_password, :do_reset_password]
@@ -7,6 +8,20 @@ class Admin::ContestTeamsController < Admin::AdminController
     respond_to do |format|
       format.html
       format.json { render json: ::ContestTeamDatatable.new(view_context) }
+      format.csv do
+        records = ContestTeamDatatable.new(view_context).unpaged_records
+        bom = "\xEF\xBB\xBF".encode("UTF-8")
+        send_data bom + to_csv(records).encode("UTF-8"), filename: "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')}.csv", type: 'text/csv'
+      end
+    end
+  end
+
+  def to_csv(records)
+    CSV.generate do  |csv|
+      csv << ['学校', '省份', '队名', '联系人', '联系方式', '邮箱', '是否更新密码']
+      records.each do |r|
+        csv << [r.university, r.province, r.name, r.contacts, r.phone, r.email, view_context.boolean_text(r.password_updated)]
+      end
     end
   end
 

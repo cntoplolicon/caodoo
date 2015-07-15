@@ -1,5 +1,5 @@
 class ContestTeamDatatable < Datatable
-  delegate :edit_admin_contest_team_path, :reset_password_admin_contest_team_path, to: :@view
+  delegate :boolean_text, :edit_admin_contest_team_path, :reset_password_admin_contest_team_path, to: :@view
 
   def data
     raw_records.map do |contest_team|
@@ -11,7 +11,7 @@ class ContestTeamDatatable < Datatable
         contest_team.province,
         contest_team.email,
         contest_team.sales_quantity,
-        contest_team.password_updated ? '是' : '否',
+        boolean_text(contest_team.password_updated),
         "#{link_to('编辑', edit_admin_contest_team_path(contest_team), class: 'btn btn-default')}
         #{link_to('重置密码', reset_password_admin_contest_team_path(contest_team), class: 'btn btn-default')}"
       ]

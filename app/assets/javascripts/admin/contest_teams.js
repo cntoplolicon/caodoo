@@ -8,7 +8,7 @@ $(document).ready(function() {
   filter_options[7].filter_type = 'select';
   filter_options[7].data = [{value: 1, label: '是'}, {value: 0, label: '否'}]
   if ($('#contest-teams-table').length > 0) {
-    $('#contest-teams-table').dataTable({
+    var dataTable = $('#contest-teams-table').dataTable({
       processing: true,
       serverSide: true,
       sDom: 'lrtip',
@@ -23,5 +23,12 @@ $(document).ready(function() {
     $('.yadcf-filter-reset-button').hide();
     $('.yadcf-filter').addClass('form-control');
     $('.yadcf-filter-range-number').addClass('form-control');
+
+    $('.contest-team-csv-link').click(function(event) {
+      event.preventDefault();
+      var data = dataTable.oApi._fnAjaxParameters(dataTable.fnSettings());
+      var link = $(this).prop('href') + '?' + $.param(data);
+      window.location.href = link;
+    });
   }
 });
