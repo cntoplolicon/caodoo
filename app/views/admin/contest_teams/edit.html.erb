@@ -7,15 +7,33 @@
     </ul>
   </div>
 <% end %>
-
 <div class="container form-container">
   <%= form_for [:admin, @contest_team] do |f| %>
-    <%= f.hidden_field :password_updated, value: false %>
     <div class="form-group">
-      <%= f.label :password, '密码' %>
-      <%= f.text_field :password, class: 'form-control' %>
+      <%= f.label :name, '团队名称' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :contacts, '联系人' %>
+      <%= f.text_field :contacts, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :phone, '联系方式' %>
+      <%= f.text_field :phone, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :university, '学校' %>
+      <%= f.text_field :university, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :province, '省份' %>
+      <%= f.text_field :province, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, '邮箱' %>
+      <%= f.text_field :email, class: 'form-control' %>
     </div>
     <%= link_to "返回", admin_contest_teams_path, class: 'btn btn-default' %>
-    <%= f.submit '重置密码', :disable_with => '重置密码ing...', class: 'btn btn-primary' %>
+    <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-primary' %>
   <% end %>
 </div>

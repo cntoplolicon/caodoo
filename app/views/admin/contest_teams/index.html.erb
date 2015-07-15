@@ -1,9 +1,14 @@
-<div class="container">
+<div class="container-fluid">
   <table id="contest-teams-table" class="table table-hover" data-source="<%= admin_contest_teams_path(format: :json) %>">
+    <%= link_to "新加参赛团队", new_admin_contest_team_path, class: 'btn btn-primary new-action' %>
     <thead>
       <tr>
-        <th>名称</th>
+        <th>团队名称</th>
+        <th>联系人</th>
         <th>联系方式</th>
+        <th>学校</th>
+        <th>省份</th>
+        <th>邮箱</th>
         <th>经验值</th>
         <th>是否重置初始密码</th>
         <th>操作</th>

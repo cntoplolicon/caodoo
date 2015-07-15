@@ -1,5 +1,5 @@
 class Admin::ContestTeamsController < Admin::AdminController
-  before_action :find_contest_team, only: [:edit, :update]
+  before_action :find_contest_team, only: [:edit, :update, :reset_password, :do_reset_password]
 
   def index
     respond_to do |format|
@@ -12,10 +12,24 @@ class Admin::ContestTeamsController < Admin::AdminController
   end
 
   def update
-    if @contest_team.update(contest_team_params)
+    if @contest_team.update(update_params)
       redirect_to action: :index
     else
       render 'edit'
+    end
+  end
+
+  def reset_password
+  end
+
+  def do_reset_password
+    @contest_team.password = update_password_params[:password]
+    @contest_team.password_updated = false
+    @contest_team.updating_password = true
+    if @contest_team.save
+      redirect_to action: :index
+    else
+      render 'reset_password'
     end
   end
 
@@ -25,7 +39,11 @@ class Admin::ContestTeamsController < Admin::AdminController
     @contest_team = ContestTeam.find(params[:id])
   end
 
-  def contest_team_params
-    params.require(:contest_team).permit(:password, :password_updated)
+  def update_password_params
+    params.require(:contest_team).permit(:password)
+  end
+
+  def update_params
+    params.require(:contest_team).permit(:name, :contacts, :phone, :email, :university, :province)
   end
 end
