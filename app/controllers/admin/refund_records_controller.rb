@@ -19,7 +19,11 @@ class Admin::RefundRecordsController < Admin::AdminController
     respond_to do |format|
       format.html
       format.json { render json: ::RefundRecordDatatable.new(view_context) }
-      format.csv { render text: to_csv(::RefundRecordDatatable.new(view_context).unpaged_records) }
+      format.csv do
+        records = RefundRecordDatatable.new(view_context).unpaged_records
+        bom = "\xEF\xBB\xBF".encode("UTF-8")
+        send_data bom + to_csv(records).encode("UTF-8"), filename: "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')}.csv", type: 'text/csv'
+      end
     end
   end
 

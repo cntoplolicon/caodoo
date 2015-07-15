@@ -3,16 +3,16 @@ class Admin::OrdersController < Admin::AdminController
     respond_to do |format|
       format.html
       format.json { render json: ::OrderDatatable.new(view_context) }
-      format.csv {
+      format.csv do
         bom = "\xEF\xBB\xBF".encode("UTF-8")
         update_exported = params[:update_delivery_exported]
         Order.transaction do
           records = OrderDatatable.new(view_context).unpaged_records
           records = records.where(delivery_exported: false) if update_exported
-          send_data bom + to_csv(records).encode("UTF-8"), filename: "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')}.csv", type: 'text/tsv'
+          send_data bom + to_csv(records).encode("UTF-8"), filename: "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')}.csv", type: 'text/csv'
           Order.where(id: records.ids).update_all(delivery_exported: true) if update_exported
         end
-      }
+      end
     end
   end
 

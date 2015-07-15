@@ -40,6 +40,7 @@ class ContestTeamsController < ContestTeamDashboardController
       @contest_team.password = params[:contest_team][:password]
       @contest_team.password_confirmation = params[:contest_team][:password_confirmation]
       @contest_team.password_updated = true
+      @contest_team.updating_password = true
     end
     if @contest_team.errors.empty? && @contest_team.save
       redirect_to action: :show

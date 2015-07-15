@@ -123,7 +123,12 @@ Rails.application.routes.draw do
       resources :product_sale_schedules
     end
     resources :brands
-    resources :contest_teams
+    resources :contest_teams do
+      member do
+        get :reset_password
+        post :do_reset_password
+      end
+    end
     resources :refund_records
     resources :regions
     resources :orders do

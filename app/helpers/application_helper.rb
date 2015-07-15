@@ -3,4 +3,8 @@ module ApplicationHelper
   def show_day_of_week(day)
     DAYS[day]
   end
+
+  def boolean_text(b)
+    b ? '是' : '否'
+  end
 end

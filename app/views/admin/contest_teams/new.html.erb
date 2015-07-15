@@ -1,0 +1,35 @@
+<div class="container form-container">
+  <%= form_tag(admin_contest_teams_path, method: :post, multipart: true) do %>
+    <%= label_tag '物流CSV上传：格式（学校，省份，队名，联系人，联系方式，邮箱）' %>
+    <%= file_field_tag :file, class: 'form-control' %>
+        <div style="margin-top: 16px">
+      <%= link_to "返回", admin_contest_teams_path, class: 'btn btn-default' %>
+      <%= submit_tag '提交', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
+<div class="container">
+  <% if @results %>
+    <table class="table table-hover">
+      <tr>
+        <th>学校</th>
+        <th>省份</th>
+        <th>队名</th>
+        <th>联系人</th>
+        <th>联系方式</th>
+        <th>邮箱</th>
+      </tr>
+      <% @results.each do |r| %>
+        <tr>
+          <td><%= r[:university] %></td>
+          <td><%= r[:province] %></td>
+          <td><%= r[:name] %></td>
+          <td><%= r[:contacts] %></td>
+          <td><%= r[:phone] %></td>
+          <td><%= r[:email] %></td>
+          <td><%= r[:message] %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
