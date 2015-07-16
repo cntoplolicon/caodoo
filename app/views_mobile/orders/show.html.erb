@@ -67,9 +67,9 @@
         </span>
       </div>
       <div class="order_row">
-        <% if @order.express_id.present? && @order.tracking_number.present? %>
-        <span class="col_name">快递方式:</span>
-        <span><%= @order.express.name %>－运单号<%= @order.tracking_number %></span>
+        <% if logistics_text(@order).present? %>
+          <span class="col_name">快递方式:</span>
+          <span><%= logistics_text(@order) %></span>
         <% end %>
       </div>
     </div>
@@ -80,8 +80,10 @@
       <%= form_for [@user, @order], html: {class: "cancel_order_#{@order.id}_form"} do |f| %>
         <%= f.hidden_field :status, value: Order::CANCELLED %>
       <% end %>
-      <% if [Order::DELIVERED].include?(@order.status)  %>
+      <% if [Order::DELIVERED, Order::COMPLETE].include?(@order.status) && @order.express.present? %>
         <a class="order_pay_bt a_bt_hight" href="http://www.kuaidi100.com">查看物流</a>
+      <% end %>
+      <% if [Order::DELIVERED].include?(@order.status) && @order.express.present? %>
         <a class="order_pay_bt a_bt_hight receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>
       <% end %>
       <% if [Order::TO_PAY].include?(@order.status)  %>

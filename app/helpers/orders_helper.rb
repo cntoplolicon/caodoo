@@ -43,4 +43,14 @@ module OrdersHelper
       '微信支付'
     end
   end
+
+  def logistics_text(order)
+    if @order.status == Order::DELIVERED && order.express.blank?
+      '正在出库'
+    elsif @order.express.present?
+      "#{@order.express.name}－运单号#{@order.tracking_number}"
+    else
+      nil
+    end
+  end
 end

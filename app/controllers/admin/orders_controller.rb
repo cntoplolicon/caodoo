@@ -50,29 +50,38 @@ class Admin::OrdersController < Admin::AdminController
   end
 
   def import_delivery
-    @results = CSV.parse(params[:file].read.to_s.force_encoding("UTF-8")).map {|line| {order_number: line[0], express: line[1], tracking_number: line[2]} }
+    @results = CSV.parse(params[:file].read.to_s.force_encoding("UTF-8")).map do |line|
+      {order_number: line[0], express: line[1].blank? ? nil : line[1], tracking_number: line[2].blank? ? nil : line[2]}
+    end
     @results.each do |r|
       Order.transaction do
         @order = Order.lock.find_by_order_number(r[:order_number])
-        @express = Express.find_by_name(r[:express])
+        expresses = Express.where('lower(name) like ?', "%#{r[:express]}%") if r[:express].present?
+        if expresses.present?
+          if expresses.count > 1
+            r[:message] = '匹配到多个快递公司'
+          else
+            express = expresses.first
+          end
+        end
         if @order.nil?
           r[:message] = '订单不存在'
-        elsif @express.nil?
+        elsif express.nil? && r[:express].present?
           r[:message] = '快递公司不存在'
-        elsif r[:tracking_number].blank?
+        elsif r[:tracking_number].blank? && r[:express].present?
           r[:message] = '快递单号不能为空'
         elsif ![Order::PAID, Order::DELIVERED].include?(@order.status)
           r[:message] = '订单状态不正确'
         else
           @order.tracking_number = r[:tracking_number]
-          @order.express_id = @express.id
+          @order.express_id = express.id if express.present?
           if @order.status == Order::PAID
             @order.status = Order::DELIVERED
           end
           if @order.save
             r[:message] = '更新成功'
           else
-            r[:message] = '未知错误'
+            r[:message] = @order.errors.full_messages.first
           end
         end
         r[:order_status] = @order && @order.status
@@ -107,7 +116,7 @@ class Admin::OrdersController < Admin::AdminController
             r[:message] = '更新成功'
           else
             raise ActiveRecord::Rollback
-            r[:message] = '未知错误'
+            r[:message] = @order.errors.full_messages.first
           end
         end
         r[:order_status] = @order && @order.status

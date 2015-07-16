@@ -69,10 +69,10 @@
             支付方式：<span class="order_span"><%= payment_type_text(@order.payment_record.payment_type) %></span>
           </li>
           <% end %>
-          <% if @order.express_id.present? && @order.tracking_number.present? %>
-          <li>
-            快递方式：<span class="order_span"><%= @order.express.name %>－运单号<%= @order.tracking_number %> </span>
-          </li>
+          <% if logistics_text(@order).present? %>
+            <li>
+              快递方式：<span class="order_span"><%= logistics_text(@order) %></span>
+            </li>
           <% end %>
         </ul>
       </div>
@@ -97,10 +97,10 @@
       <%= form_for [@user, @order], html: {class: "cancel_order_#{@order.id}_form"} do |f| %>
         <%= f.hidden_field :status, value: Order::CANCELLED %>
       <% end %>
-      <% if [Order::DELIVERED, Order::COMPLETE].include?(@order.status)  %>
+      <% if [Order::DELIVERED, Order::COMPLETE].include?(@order.status) && @order.express.present? %>
         <a class="bt_green" href="http://www.kuaidi100.com" target="_blank">查看物流</a>
       <% end %>
-      <% if [Order::DELIVERED].include?(@order.status)  %>
+      <% if [Order::DELIVERED].include?(@order.status) && @order.express.present? %>
         <a class="bt_green receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>
       <% end %>
       <% if [Order::TO_PAY].include?(@order.status)  %>
