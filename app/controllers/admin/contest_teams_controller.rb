@@ -29,7 +29,8 @@ class Admin::ContestTeamsController < Admin::AdminController
   end
 
   def create
-    @results = CSV.parse(params[:file].read.to_s.force_encoding("UTF-8")).map do |line|
+    content = params[:file].read.force_encoding("utf-8").delete("\xEF\xBB\xBF".force_encoding("UTF-8"))
+    @results = CSV.parse(content).map do |line|
       {university: line[0], province: line[1], name: line[2], contacts: line[3], phone: line[4], email: line[5], password: '123456'}
     end
     @results.each do |r|

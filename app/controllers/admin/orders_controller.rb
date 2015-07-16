@@ -50,7 +50,8 @@ class Admin::OrdersController < Admin::AdminController
   end
 
   def import_delivery
-    @results = CSV.parse(params[:file].read.to_s.force_encoding("UTF-8")).map do |line|
+    content = params[:file].read.force_encoding("utf-8").delete("\xEF\xBB\xBF".encode("UTF-8"))
+    @results = CSV.parse(content).map do |line|
       {order_number: line[0], express: line[1].blank? ? nil : line[1], tracking_number: line[2].blank? ? nil : line[2]}
     end
     @results.each do |r|
@@ -94,7 +95,8 @@ class Admin::OrdersController < Admin::AdminController
   end
 
   def import_payment
-    @results = CSV.parse(params[:file].read).map {|line| {order_number: line[0], payment_type: line[1].to_i, amount: line[2].to_f,
+    content = params[:file].read.force_encoding("utf-8").delete("\xEF\xBB\xBF".encode("UTF-8"))
+    @results = CSV.parse(content).map {|line| {order_number: line[0], payment_type: line[1].to_i, amount: line[2].to_f,
                                                           payment_time: line[3].blank? ? nil : Time.parse(line[3])} }
     @results.each do |r|
       Order.transaction do
