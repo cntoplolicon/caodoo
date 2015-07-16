@@ -19,10 +19,16 @@ $(document).ready(function() {
       }]
     }, {
       column_number: 9,
+      filter_delay: 1000,
       filter_type: 'range_date',
       date_format: 'yyyy-mm-dd'
     }, {
       column_number: 10,
+      filter_delay: 1000,
+      filter_type: 'range_date',
+      date_format: 'yyyy-mm-dd'
+    }, {
+      column_number: 11,
       filter_delay: 1000,
       filter_type: 'text',
       data: []

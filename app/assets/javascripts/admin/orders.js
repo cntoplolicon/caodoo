@@ -48,6 +48,11 @@ $(document).ready(function() {
       filter_delay: 1000,
       filter_type: 'range_date',
       date_format: 'yyyy-mm-dd'
+    }, {
+      column_number: 15,
+      filter_delay: 1000,
+      filter_type: 'range_date',
+      date_format: 'yyyy-mm-dd'
     }
   );
 
