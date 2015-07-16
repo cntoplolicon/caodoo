@@ -62,7 +62,8 @@ $(document).ready(function() {
       serverSide: true,
       sDom: 'lrtip',
       ajaxSource: $('#orders-table').data('source'),
-      pagingType: 'full_numbers'
+      pagingType: 'full_numbers',
+      order: [[14, "desc"]]
     }).yadcf(filter_options);
 
     $('.yadcf-filter-reset-button').hide();
