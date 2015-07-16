@@ -1,3 +1,5 @@
+require 'csv'
+
 class Admin::OrdersController < Admin::AdminController
   def index
     respond_to do |format|
