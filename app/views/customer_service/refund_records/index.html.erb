@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div style="margin-bottom: 16px">
+    <%= link_to "新建退货记录", new_customer_service_refund_record_path, class: 'refund-record-csv-link btn btn-primary' %>
+  </div>
+  <table id="refund-records-table" class="table table-hover" data-source="<%= customer_service_refund_records_path(format: :json) %>">
+    <thead>
+      <tr>
+        <th>订单号</th>
+        <th>商品名称</th>
+        <th>数量</th>
+        <th>收件人</th>
+        <th>收件人电话</th>
+        <th>团队名称</th>
+        <th>物流公司</th>
+        <th>物流单号</th>
+        <th>状态</th>
+        <th>创建日期</th>
+        <th>备注</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>

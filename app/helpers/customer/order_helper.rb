@@ -1,0 +1,2 @@
+module Customer::OrderHelper
+end
