@@ -17,6 +17,9 @@
         minVersion: 5
       },
     }, options);
+    settings.qrcode = $.extend({
+      text: settings.url
+    }, settings.qrcode);
     var wechatDialog;
     if (this.find('.csns-share-button[data-cmd="wechat"]').length > 0) {
       var wechatDialog = $('<div class="csns-wechat-dialog"><div class="csns-wechat-dialog-header"><span>分享到微信朋友圈</span><a href="#" class="">×</a></div><div class="csns-wechat-dialog-qrcode"></div><div class="csns-wechat-dialog-footer">打开微信，点击底部的“发现“<br>使用“扫一扫”即可将网页分享至朋友圈</div></div>');
