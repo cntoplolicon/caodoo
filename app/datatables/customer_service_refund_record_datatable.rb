@@ -1,5 +1,5 @@
 class CustomerServiceRefundRecordDatatable < Datatable
-  delegate :edit_admin_refund_record_path, :refund_record_status_text, to: :@view
+  delegate :edit_customer_service_refund_record_path, :refund_record_status_text, to: :@view
   
   def data
     raw_records.map do |refund_record|
@@ -15,7 +15,10 @@ class CustomerServiceRefundRecordDatatable < Datatable
         refund_record_status_text(refund_record.status),
         refund_record.created_at.strftime('%Y/%m/%d %H:%M:%S'),
         refund_record.remark,
-        link_to('编辑', edit_admin_refund_record_path(refund_record), class: 'btn btn-default')
+        if  refund_record.status==0
+           link_to('编辑', edit_customer_service_refund_record_path(refund_record), class: 'btn btn-default')
+        end
+
       ]
     end
   end

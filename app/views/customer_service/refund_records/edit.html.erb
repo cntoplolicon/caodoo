@@ -8,14 +8,14 @@
   </div>
 <% end %>
 <div class="container form-container">
-  <%= form_for [:admin, @refund_record] do |f| %>
+  <%= form_for [:customer_service, @refund_record] do |f| %>
     <div class="form-group">
       <%= label_tag '状态' %>
       <%= f.select :status, options_for_select([
         [refund_record_status_text(RefundRecord::PENDING), RefundRecord::PENDING], 
         [refund_record_status_text(RefundRecord::COMPLETE), RefundRecord::COMPLETE], 
         [refund_record_status_text(RefundRecord::CANCELLED), RefundRecord::CANCELLED]],
-      @refund_record.status), {}, class: 'form-control' %>
+      @refund_record.status), {}, class: 'form-control', disabled: true %>
   </div>
   <div class="form-group">
     <%= label_tag '备注' %>
@@ -31,7 +31,7 @@
       <%= f.text_field :tracking_number, class: 'form-control' %>
     </div>
   <% end %>
-  <%= link_to "返回", admin_refund_records_path, class: 'btn btn-default' %>
+  <%= link_to "返回", customer_service_refund_records_path, class: 'btn btn-default' %>
   <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-primary' %>
 <% end %>
 </div>
