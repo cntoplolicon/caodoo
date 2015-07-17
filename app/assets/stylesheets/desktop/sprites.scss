@@ -1,0 +1,26 @@
+/*
+
+        Creating a sprite from following images:
+        
+        app/assets/images/sprites/dropdown_top.png (140x10)
+        app/assets/images/sprites/tuihuo.png (30x36)
+        app/assets/images/sprites/zhengpin.png (30x35)
+        app/assets/images/sprites/zhengpin2.png (28x33)
+        app/assets/images/sprites/tuihuo2.png (27x33)
+        app/assets/images/sprites/account_icon.png (27x27)
+
+        Output files:
+          app/assets/images/sprites.png
+          app/assets/stylesheets/desktop/sprites.scss
+
+        Output size:
+          140x73
+
+
+*/
+img.dropdown_top { width: 140px; height: 10px; background: image-url('sprites.png') 0px 0px no-repeat; }
+img.tuihuo { width: 30px; height: 36px; background: image-url('sprites.png') 0px -10px no-repeat; }
+img.zhengpin { width: 30px; height: 35px; background: image-url('sprites.png') -30px -10px no-repeat; }
+img.zhengpin2 { width: 28px; height: 33px; background: image-url('sprites.png') -60px -10px no-repeat; }
+img.tuihuo2 { width: 27px; height: 33px; background: image-url('sprites.png') -88px -10px no-repeat; }
+img.account_icon { width: 27px; height: 27px; background: image-url('sprites.png') 0px -46px no-repeat; }
