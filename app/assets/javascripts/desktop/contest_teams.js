@@ -16,77 +16,20 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-
-
-  //if page has share
-
-  if ($(".team_share_link_product").length > 0) {
-
-    //create qrCode links
-
-    $(".team_share_link_product").each(function() {
-
-      //get url link
-
-      var url = $(this).find(".team_share_link_detail_url a").text();
-
-      //gen url qrcode link to set image
-
-      $(this).find(".team_share_link_product_qrcode_img").qrcode({
-        "size": 140,
-        "color": "#3a3",
-        "text": url
-      });
-
+  $('.team_share_link_product .bdsharebuttonbox').each(function() {
+    var productPanel = $(this).closest('.team_share_link_product');
+    var productName = productPanel.find('.team_share_link_detail_name').text();
+    var productUrl = productPanel.find('.team_share_link_detail_url a').text();
+    $(this).csns({
+      title: productName,
+      url: productUrl
     });
-
-    //global share infos
-
-    var shareText = '';
-
-    var shareUrl = '';
-
-    //change each share url and content for share
-
-    $(".bdsharebuttonbox a").click(function() {
-
-      shareText = $(this).parents().children(".team_share_link_detail_name").text();
-
-      shareUrl = $(this).parents().children(".team_share_link_detail_url").find("a").text();
-
+    productPanel.find('.team_share_link_product_qrcode_img').qrcode({
+      size: 140,
+      color: "#3a3",
+      text: productUrl
     });
-
-    //create social share links
-
-    window._bd_share_config = {
-      common: {
-
-        onBeforeClick: function(cmd, config) {
-
-          return {
-
-            bdText: shareText,
-
-            bdDesc: shareText,
-
-            bdUrl: shareUrl
-
-          };
-
-        }
-
-      },
-      share: [{
-        "bdSize": 24
-      }]
-
-    }
-
-    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
-
-  }
-
-  //
+  });
 
   $(".team_performance_tab a").click(function() {
     $(".team_performance_tab a").removeAttr("class");
