@@ -1,0 +1,14 @@
+<div class="container form-container">
+  <%= form_for [:admin, @express] do |f| %>
+    <div class="form-group">
+      <%= f.label :name, '快递公司' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :code, '快递公司代码' %>
+      <%= f.text_field :code, class: 'form-control' %>
+    </div>
+    <%= link_to "返回", admin_expresses_path, class: 'btn btn-default' %>
+    <%= f.submit '提交', data: {disable_with: '正在提交'}, class: 'btn btn-primary' %>
+  <% end %>
+</div>
