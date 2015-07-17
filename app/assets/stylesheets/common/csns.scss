@@ -1,0 +1,76 @@
+.csns-share-button {
+  background-image: image-url('share-icons.png');
+  float: left;
+  line-height: 24px;
+  height: 24px;
+  margin: 6px 6px 6px 0;
+  cursor: pointer;
+  margin-right: 16px;
+  width: 24px;
+}
+
+.csns-share-button:hover {
+  opacity: .8;
+  filter: alpha(opacity=80);
+}
+
+.csns-share-button[data-cmd="tsina"] {
+  background-position: 0 -104px;
+}
+
+.csns-share-button[data-cmd="qzone"] {
+  background-position: 0 -52px;
+}
+
+.csns-share-button[data-cmd="renren"] {
+  background-position: 0 -208px;
+}
+
+.csns-share-button[data-cmd="wechat"] {
+  background-position: 0 -1612px;
+}
+
+.csns-wechat-dialog {
+  position: absolute;
+  display: none;
+  width: 240px;
+  height: 275px;
+  padding: 10px;
+  background-color: #fff;
+  border: solid 1px #d8d8d8;
+  z-index: 11001;
+  font-size: 12px;
+}
+
+.csns-wechat-dialog-header {
+  position: relative;
+}
+
+.csns-wechat-dialog-header span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+}
+
+.csns-wechat-dialog-header a {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 0;
+  top: 0;
+  color: #999;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.csns-wechat-dialog-qrcode {
+  width: 185px;
+  height: 185px;
+  margin: 15px auto;
+}
+
+.csns-wechat-dialog-footer {
+  font-size: 12px;
+  line-height: 22px;
+  color: #666;
+}
