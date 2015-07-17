@@ -148,7 +148,6 @@
   float: right;
   height: 30px;
   line-height: 30px;
-  *margin-top: -15px;
 }
 .team_performance_time_hint span {
   color: #fe6a29;
@@ -165,7 +164,7 @@
   width: 692px;
 }
 .team_performance_line {
-  width: 692px;
+  width: 480px;
   height: 1px;
   background-color: #ebebeb;
   position: relative;
