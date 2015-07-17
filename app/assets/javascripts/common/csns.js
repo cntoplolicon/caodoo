@@ -9,7 +9,7 @@
       url: window.location.href,
       title: document.title,
       desc: document.title,
-      pic: $('img').prop('src'),
+      pic: '',
       qrcode: {
         render: 'div',
         size: 185,
