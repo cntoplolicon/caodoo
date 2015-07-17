@@ -15,7 +15,7 @@
         size: 185,
         ecLevel: 'H',
         minVersion: 5
-      },
+      }
     }, options);
     settings.qrcode = $.extend({
       text: settings.url
