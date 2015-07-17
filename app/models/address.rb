@@ -13,6 +13,8 @@ class Address < ActiveRecord::Base
   validates :district_code, presence: true, if: :city_has_districts
   validates_format_of :phone, with: /\A[^a-zA-Z]*\z/
 
+  default_scope { where(deleted: false) }
+
   def province_has_cities
     province_code.present? && Region.exists?(parent: province_code)
   end
