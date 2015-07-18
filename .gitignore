@@ -38,6 +38,7 @@ pickle-email-*.html
 
 config/database.yml
 config/secrets.yml
+config/shards.yml
 
 #vim noise
 *.swp
