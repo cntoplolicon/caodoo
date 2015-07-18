@@ -15,7 +15,7 @@ class Admin::ExpressesController < Admin::AdminController
   def create
     @express = Express.new(express_params)
     if @express.save
-      redirect_to action:index
+      redirect_to action: :index
     else
       render 'edit'
     end
@@ -32,6 +32,13 @@ class Admin::ExpressesController < Admin::AdminController
     end
   end
 
+  def destroy
+    @express = Express.find(params[:id])
+    @express.update_attributes(deleted: true)
+
+    redirect_to action: :index
+  end
+
   private
 
   def find_express
@@ -39,7 +46,7 @@ class Admin::ExpressesController < Admin::AdminController
   end
 
   def express_params
-    params.require(:express).permit(:name, :code)
+    params.require(:express).permit(:name, :code, :deleted)
   end
 
 end

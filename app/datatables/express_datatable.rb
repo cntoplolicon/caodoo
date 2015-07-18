@@ -1,12 +1,13 @@
 class ExpressDatatable < Datatable
-  delegate :edit_admin_express_path, to: :@view
+  delegate :edit_admin_express_path, :admin_express_path, to: :@view
 
   def data
     raw_records.map do |express|
       [
         express.name,
         express.code,
-        link_to('编辑', edit_admin_express_path(express), class: 'btn btn-default')
+        "#{link_to('编辑', edit_admin_express_path(express), class: 'btn btn-default')}
+        #{link_to('删除', admin_express_path(express), method: :delete, data: {confirm: '请确认是否删除此快递公司!!'}, class: 'btn btn-default')}"
       ]
     end
   end
