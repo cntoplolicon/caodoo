@@ -4,7 +4,6 @@
         
         app/assets/images/sprites/desktop/dropdown-line.png (154x10)
         app/assets/images/sprites/desktop/dropdown-top.png (140x10)
-        app/assets/images/sprites/desktop/logo.png (114x86)
         app/assets/images/sprites/desktop/onsale.png (108x60)
         app/assets/images/sprites/desktop/upcoming.png (107x60)
         app/assets/images/sprites/desktop/product-sold-out.png (60x61)
@@ -32,31 +31,30 @@
           app/assets/stylesheets/desktop/sprites.scss
 
         Output size:
-          262x227
+          282x202
 
 
 */
-img.dropdown-line { width: 154px; height: 10px; background: image-url('sprites-desktop.png') 0px 0px no-repeat; }
-img.dropdown-top { width: 140px; height: 10px; background: image-url('sprites-desktop.png') 0px -10px no-repeat; }
-img.logo { width: 114px; height: 86px; background: image-url('sprites-desktop.png') 0px -20px no-repeat; }
-img.onsale { width: 108px; height: 60px; background: image-url('sprites-desktop.png') -154px 0px no-repeat; }
-img.upcoming { width: 107px; height: 60px; background: image-url('sprites-desktop.png') 0px -106px no-repeat; }
-img.product-sold-out { width: 60px; height: 61px; background: image-url('sprites-desktop.png') 0px -166px no-repeat; }
-img.product-time-out { width: 60px; height: 61px; background: image-url('sprites-desktop.png') -60px -166px no-repeat; }
-img.game-header-logo { width: 57px; height: 42px; background: image-url('sprites-desktop.png') -154px -60px no-repeat; }
-img.success-icon { width: 56px; height: 56px; background: image-url('sprites-desktop.png') -107px -106px no-repeat; }
-img.warning-icon { width: 50px; height: 50px; background: image-url('sprites-desktop.png') -163px -106px no-repeat; }
-img.baoyou { width: 30px; height: 36px; background: image-url('sprites-desktop.png') -211px -60px no-repeat; }
-img.tuihuo { width: 30px; height: 36px; background: image-url('sprites-desktop.png') -114px -20px no-repeat; }
-img.warning-icon-small { width: 35px; height: 35px; background: image-url('sprites-desktop.png') -114px -56px no-repeat; }
-img.zhengpin { width: 30px; height: 35px; background: image-url('sprites-desktop.png') -213px -106px no-repeat; }
-img.baoyou2 { width: 28px; height: 33px; background: image-url('sprites-desktop.png') -120px -166px no-repeat; }
-img.zhengpin2 { width: 28px; height: 33px; background: image-url('sprites-desktop.png') -148px -166px no-repeat; }
-img.tuihuo2 { width: 27px; height: 33px; background: image-url('sprites-desktop.png') -176px -166px no-repeat; }
-img.arrow-left-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -241px -60px no-repeat; }
-img.arrow-right-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -243px -106px no-repeat; }
-img.account-icon { width: 27px; height: 27px; background: image-url('sprites-desktop.png') -203px -166px no-repeat; }
-img.address { width: 12px; height: 18px; background: image-url('sprites-desktop.png') -230px -166px no-repeat; }
-img.backward { width: 16px; height: 8px; background: image-url('sprites-desktop.png') -114px -91px no-repeat; }
-img.mail { width: 14px; height: 10px; background: image-url('sprites-desktop.png') -140px -10px no-repeat; }
-img.game-header-setting-arrow { width: 13px; height: 6px; background: image-url('sprites-desktop.png') -241px -90px no-repeat; }
+img.dropdown-line { width: 154px; height: 10px; background: image-url('sprites-desktop.png') -2px -2px no-repeat; }
+img.dropdown-top { width: 140px; height: 10px; background: image-url('sprites-desktop.png') -2px -16px no-repeat; }
+img.onsale { width: 108px; height: 60px; background: image-url('sprites-desktop.png') -2px -30px no-repeat; }
+img.upcoming { width: 107px; height: 60px; background: image-url('sprites-desktop.png') -2px -94px no-repeat; }
+img.product-sold-out { width: 60px; height: 61px; background: image-url('sprites-desktop.png') -160px -2px no-repeat; }
+img.product-time-out { width: 60px; height: 61px; background: image-url('sprites-desktop.png') -160px -67px no-repeat; }
+img.game-header-logo { width: 57px; height: 42px; background: image-url('sprites-desktop.png') -2px -158px no-repeat; }
+img.success-icon { width: 56px; height: 56px; background: image-url('sprites-desktop.png') -224px -2px no-repeat; }
+img.warning-icon { width: 50px; height: 50px; background: image-url('sprites-desktop.png') -224px -62px no-repeat; }
+img.baoyou { width: 30px; height: 36px; background: image-url('sprites-desktop.png') -224px -116px no-repeat; }
+img.tuihuo { width: 30px; height: 36px; background: image-url('sprites-desktop.png') -224px -156px no-repeat; }
+img.warning-icon-small { width: 35px; height: 35px; background: image-url('sprites-desktop.png') -114px -30px no-repeat; }
+img.zhengpin { width: 30px; height: 35px; background: image-url('sprites-desktop.png') -113px -94px no-repeat; }
+img.baoyou2 { width: 28px; height: 33px; background: image-url('sprites-desktop.png') -63px -158px no-repeat; }
+img.zhengpin2 { width: 28px; height: 33px; background: image-url('sprites-desktop.png') -95px -158px no-repeat; }
+img.tuihuo2 { width: 27px; height: 33px; background: image-url('sprites-desktop.png') -127px -158px no-repeat; }
+img.arrow-left-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -258px -116px no-repeat; }
+img.arrow-right-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -258px -156px no-repeat; }
+img.account-icon { width: 27px; height: 27px; background: image-url('sprites-desktop.png') -158px -158px no-repeat; }
+img.address { width: 12px; height: 18px; background: image-url('sprites-desktop.png') -160px -132px no-repeat; }
+img.backward { width: 16px; height: 8px; background: image-url('sprites-desktop.png') -176px -132px no-repeat; }
+img.mail { width: 14px; height: 10px; background: image-url('sprites-desktop.png') -114px -69px no-repeat; }
+img.game-header-setting-arrow { width: 13px; height: 6px; background: image-url('sprites-desktop.png') -196px -132px no-repeat; }
