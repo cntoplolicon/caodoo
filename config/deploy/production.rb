@@ -45,7 +45,7 @@ set :ssh_options, {
   user: 'ubuntu', # overrides user setting above
   forward_agent: true,
   auth_methods: %w(publickey),
-  keys: %w(/home/cntoplolicon/workspace/deployment/WebServer.pem),
+  keys: %w(~/workspace/deployment/WebServer.pem),
 }
 #
 # The server-based syntax can be used to override options:
@@ -56,9 +56,9 @@ server '54.223.140.135',
   ssh_options: {}
 
 #server '54.223.190.117',
-#  user: 'ubuntu',
-#  roles: %w{web app},
-#  ssh_options: {}
+  #user: 'ubuntu',
+  #roles: %w{web app},
+  #ssh_options: {}
 
 set :password, ask('Server password: ', nil)
 
