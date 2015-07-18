@@ -20,10 +20,10 @@
     <div class="product-detail-images-container">
       <div class="product-detail-carousel">
         <a class="arrow-left">
-          <%= image_tag("mobile_arrows_left.png", class: "arrow-left") %>
+          <%= image_tag("s.png", class: "arrow-left-icon") %>
         </a>
         <a class="arrow-right">
-          <%= image_tag("mobile_arrows_right.png", class: "arrow-right") %>
+          <%= image_tag("s.png", class: "arrow-right-icon") %>
         </a>
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -35,9 +35,9 @@
           </div>
         </div>
         <% if @product.product_sale_schedules[0].sale_end < Time.now %>
-          <%= image_tag("pc-time-out.png", class: "product-detail-carousel-time-out") %>
+          <%= image_tag("s.png", class: "product-detail-carousel-time-out product-time-out") %>
         <% elsif @product.quantity == 0%>
-          <%= image_tag("pc-sold-out.png", class: "product-detail-carousel-sold-out") %>
+          <%= image_tag("s.png", class: "product-detail-carousel-sold-out product-sold-out") %>
         <% end %>
       </div>
       <div class="product-detail-thumnail-panel">
@@ -76,21 +76,21 @@
       <div class="splitter"></div>
       <div class="promises-row">
         <div class="promise-panel">
-          <%= image_tag("zhengpin2.png", class: "promise-icon") %>
+          <%= image_tag("s.png", class: "promise-icon zhengpin2") %>
           <div class="promise-content">
             <div class="promise">正品</div>
             <div class="promise">保证</div>
           </div>
         </div>
         <div class="promise-panel">
-          <%= image_tag("tuihuo2.png", class: "promise-icon") %>
+          <%= image_tag("s.png", class: "promise-icon tuihuo2") %>
           <div class="promise-content">
             <div class="promise">7天</div>
             <div class="promise">包退</div>
           </div>
         </div>
         <div class="promise-panel">
-          <%= image_tag("baoyou2.png", class: "promise-icon") %>
+          <%= image_tag("s.png", class: "promise-icon baoyou2") %>
           <div class="promise-content">
             <div class="promise">全场</div>
             <div class="promise">包邮</div>

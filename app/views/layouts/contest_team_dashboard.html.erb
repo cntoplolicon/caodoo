@@ -12,14 +12,14 @@
       <div class="game-header-container">
         <div class="game-header">
           <div class="game-header-logo">
-            <%= image_tag "game-header-logo.png" %>
+            <%= image_tag "s.png", class: "game-header-logo" %>
           </div>
           <div class="game-header-system">营销大赛参赛管理系统</div>
           <div class="game-header-service">客服咨询：<span class="custom-service-number"><%= Settings.contact.telephone %></span></div>
           <div class="game-header-setting">
             <div id="game_header_management_menu">
               <div>
-                <%= image_tag "line.png" %>
+                <%= image_tag "s.png", class: "dropdown-line" %>
               </div>
               <div class="game_header_management_menu_text">
                 <%= link_to "重置密码", edit_contest_team_path(@contest_team) %>
@@ -33,7 +33,7 @@
               <%= @contest_team.name %>
             </div>
             <div class="game-header-setting-arrow">
-              <%= image_tag "game-header-setting-arrow.png" %>
+              <%= image_tag "s.png", class: "game-header-setting-arrow" %>
             </div>
           </div>
         </div>

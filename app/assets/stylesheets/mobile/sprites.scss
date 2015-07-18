@@ -1,0 +1,56 @@
+/*
+
+        Creating a sprite from following images:
+        
+        app/assets/images/sprites/mobile/dropdown_top.png (140x10)
+        app/assets/images/sprites/mobile/mobile_product-sold-out.png (120x120)
+        app/assets/images/sprites/mobile/mobile_product-time-out.png (120x120)
+        app/assets/images/sprites/mobile/mobile_logo.png (114x86)
+        app/assets/images/sprites/mobile/mobile_baoyou.png (56x66)
+        app/assets/images/sprites/mobile/mobile_zhengping.png (56x66)
+        app/assets/images/sprites/mobile/mobile_qitian.png (54x66)
+        app/assets/images/sprites/mobile/mobile_succeed.png (56x56)
+        app/assets/images/sprites/mobile/mobile_warning.png (50x50)
+        app/assets/images/sprites/mobile/mobile_menu.png (38x30)
+        app/assets/images/sprites/mobile/mobile_address_icon.png (24x36)
+        app/assets/images/sprites/mobile/mobile_qy_icon.png (26x30)
+        app/assets/images/sprites/mobile/mobile_arrows_left.png (17x30)
+        app/assets/images/sprites/mobile/mobile_arrows_right.png (17x30)
+        app/assets/images/sprites/mobile/mobile_qt_icon.png (26x28)
+        app/assets/images/sprites/mobile/mobile_zp_icon.png (24x28)
+        app/assets/images/sprites/mobile/mobile_mail_icon.png (28x20)
+        app/assets/images/sprites/mobile/account_icon.png (27x27)
+        app/assets/images/sprites/mobile/mobile_back.png (16x24)
+        app/assets/images/sprites/mobile/backward.png (16x8)
+        app/assets/images/sprites/mobile/mobile_dropdown.png (6x7)
+
+        Output files:
+          app/assets/images/sprites-mobile.png
+          app/assets/stylesheets/mobile/sprites.scss
+
+        Output size:
+          314x272
+
+
+*/
+img.dropdown_top { width: 140px; height: 10px; background: image-url('sprites-mobile.png') 0px 0px no-repeat; }
+img.mobile_product-sold-out { width: 120px; height: 120px; background: image-url('sprites-mobile.png') 0px -10px no-repeat; }
+img.mobile_product-time-out { width: 120px; height: 120px; background: image-url('sprites-mobile.png') -140px 0px no-repeat; }
+img.mobile_logo { width: 114px; height: 86px; background: image-url('sprites-mobile.png') 0px -130px no-repeat; }
+img.mobile_baoyou { width: 56px; height: 66px; background: image-url('sprites-mobile.png') -114px -130px no-repeat; }
+img.mobile_zhengping { width: 56px; height: 66px; background: image-url('sprites-mobile.png') -170px -130px no-repeat; }
+img.mobile_qitian { width: 54px; height: 66px; background: image-url('sprites-mobile.png') -260px 0px no-repeat; }
+img.mobile_succeed { width: 56px; height: 56px; background: image-url('sprites-mobile.png') 0px -216px no-repeat; }
+img.mobile_warning { width: 50px; height: 50px; background: image-url('sprites-mobile.png') -260px -66px no-repeat; }
+img.mobile_menu { width: 38px; height: 30px; background: image-url('sprites-mobile.png') -260px -116px no-repeat; }
+img.mobile_address_icon { width: 24px; height: 36px; background: image-url('sprites-mobile.png') -260px -146px no-repeat; }
+img.mobile_qy_icon { width: 26px; height: 30px; background: image-url('sprites-mobile.png') -284px -146px no-repeat; }
+img.mobile_arrows_left { width: 17px; height: 30px; background: image-url('sprites-mobile.png') -260px -182px no-repeat; }
+img.mobile_arrows_right { width: 17px; height: 30px; background: image-url('sprites-mobile.png') -277px -182px no-repeat; }
+img.mobile_qt_icon { width: 26px; height: 28px; background: image-url('sprites-mobile.png') -226px -130px no-repeat; }
+img.mobile_zp_icon { width: 24px; height: 28px; background: image-url('sprites-mobile.png') -226px -158px no-repeat; }
+img.mobile_mail_icon { width: 28px; height: 20px; background: image-url('sprites-mobile.png') -114px -196px no-repeat; }
+img.account_icon { width: 27px; height: 27px; background: image-url('sprites-mobile.png') -56px -216px no-repeat; }
+img.mobile_back { width: 16px; height: 24px; background: image-url('sprites-mobile.png') -298px -116px no-repeat; }
+img.backward { width: 16px; height: 8px; background: image-url('sprites-mobile.png') -294px -182px no-repeat; }
+img.mobile_dropdown { width: 6px; height: 7px; background: image-url('sprites-mobile.png') -294px -190px no-repeat; }

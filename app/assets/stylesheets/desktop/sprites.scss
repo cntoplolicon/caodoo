@@ -2,25 +2,61 @@
 
         Creating a sprite from following images:
         
-        app/assets/images/sprites/dropdown_top.png (140x10)
-        app/assets/images/sprites/tuihuo.png (30x36)
-        app/assets/images/sprites/zhengpin.png (30x35)
-        app/assets/images/sprites/zhengpin2.png (28x33)
-        app/assets/images/sprites/tuihuo2.png (27x33)
-        app/assets/images/sprites/account_icon.png (27x27)
+        app/assets/images/sprites/desktop/dropdown-line.png (154x10)
+        app/assets/images/sprites/desktop/dropdown-top.png (140x10)
+        app/assets/images/sprites/desktop/logo.png (114x86)
+        app/assets/images/sprites/desktop/onsale.png (108x60)
+        app/assets/images/sprites/desktop/upcoming.png (107x60)
+        app/assets/images/sprites/desktop/product-sold-out.png (60x61)
+        app/assets/images/sprites/desktop/product-time-out.png (60x61)
+        app/assets/images/sprites/desktop/game-header-logo.png (57x42)
+        app/assets/images/sprites/desktop/success-icon.png (56x56)
+        app/assets/images/sprites/desktop/warning-icon.png (50x50)
+        app/assets/images/sprites/desktop/baoyou.png (30x36)
+        app/assets/images/sprites/desktop/tuihuo.png (30x36)
+        app/assets/images/sprites/desktop/warning-icon-small.png (35x35)
+        app/assets/images/sprites/desktop/zhengpin.png (30x35)
+        app/assets/images/sprites/desktop/baoyou2.png (28x33)
+        app/assets/images/sprites/desktop/zhengpin2.png (28x33)
+        app/assets/images/sprites/desktop/tuihuo2.png (27x33)
+        app/assets/images/sprites/desktop/arrow-left-icon.png (17x30)
+        app/assets/images/sprites/desktop/arrow-right-icon.png (17x30)
+        app/assets/images/sprites/desktop/account-icon.png (27x27)
+        app/assets/images/sprites/desktop/address.png (12x18)
+        app/assets/images/sprites/desktop/backward.png (16x8)
+        app/assets/images/sprites/desktop/mail.png (14x10)
+        app/assets/images/sprites/desktop/game-header-setting-arrow.png (13x6)
 
         Output files:
-          app/assets/images/sprites.png
+          app/assets/images/sprites-desktop.png
           app/assets/stylesheets/desktop/sprites.scss
 
         Output size:
-          140x73
+          262x227
 
 
 */
-img.dropdown_top { width: 140px; height: 10px; background: image-url('sprites.png') 0px 0px no-repeat; }
-img.tuihuo { width: 30px; height: 36px; background: image-url('sprites.png') 0px -10px no-repeat; }
-img.zhengpin { width: 30px; height: 35px; background: image-url('sprites.png') -30px -10px no-repeat; }
-img.zhengpin2 { width: 28px; height: 33px; background: image-url('sprites.png') -60px -10px no-repeat; }
-img.tuihuo2 { width: 27px; height: 33px; background: image-url('sprites.png') -88px -10px no-repeat; }
-img.account_icon { width: 27px; height: 27px; background: image-url('sprites.png') 0px -46px no-repeat; }
+img.dropdown-line { width: 154px; height: 10px; background: image-url('sprites-desktop.png') 0px 0px no-repeat; }
+img.dropdown-top { width: 140px; height: 10px; background: image-url('sprites-desktop.png') 0px -10px no-repeat; }
+img.logo { width: 114px; height: 86px; background: image-url('sprites-desktop.png') 0px -20px no-repeat; }
+img.onsale { width: 108px; height: 60px; background: image-url('sprites-desktop.png') -154px 0px no-repeat; }
+img.upcoming { width: 107px; height: 60px; background: image-url('sprites-desktop.png') 0px -106px no-repeat; }
+img.product-sold-out { width: 60px; height: 61px; background: image-url('sprites-desktop.png') 0px -166px no-repeat; }
+img.product-time-out { width: 60px; height: 61px; background: image-url('sprites-desktop.png') -60px -166px no-repeat; }
+img.game-header-logo { width: 57px; height: 42px; background: image-url('sprites-desktop.png') -154px -60px no-repeat; }
+img.success-icon { width: 56px; height: 56px; background: image-url('sprites-desktop.png') -107px -106px no-repeat; }
+img.warning-icon { width: 50px; height: 50px; background: image-url('sprites-desktop.png') -163px -106px no-repeat; }
+img.baoyou { width: 30px; height: 36px; background: image-url('sprites-desktop.png') -211px -60px no-repeat; }
+img.tuihuo { width: 30px; height: 36px; background: image-url('sprites-desktop.png') -114px -20px no-repeat; }
+img.warning-icon-small { width: 35px; height: 35px; background: image-url('sprites-desktop.png') -114px -56px no-repeat; }
+img.zhengpin { width: 30px; height: 35px; background: image-url('sprites-desktop.png') -213px -106px no-repeat; }
+img.baoyou2 { width: 28px; height: 33px; background: image-url('sprites-desktop.png') -120px -166px no-repeat; }
+img.zhengpin2 { width: 28px; height: 33px; background: image-url('sprites-desktop.png') -148px -166px no-repeat; }
+img.tuihuo2 { width: 27px; height: 33px; background: image-url('sprites-desktop.png') -176px -166px no-repeat; }
+img.arrow-left-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -241px -60px no-repeat; }
+img.arrow-right-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -243px -106px no-repeat; }
+img.account-icon { width: 27px; height: 27px; background: image-url('sprites-desktop.png') -203px -166px no-repeat; }
+img.address { width: 12px; height: 18px; background: image-url('sprites-desktop.png') -230px -166px no-repeat; }
+img.backward { width: 16px; height: 8px; background: image-url('sprites-desktop.png') -114px -91px no-repeat; }
+img.mail { width: 14px; height: 10px; background: image-url('sprites-desktop.png') -140px -10px no-repeat; }
+img.game-header-setting-arrow { width: 13px; height: 6px; background: image-url('sprites-desktop.png') -241px -90px no-repeat; }
