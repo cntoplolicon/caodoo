@@ -131,6 +131,7 @@ Rails.application.routes.draw do
     end
     resources :refund_records
     resources :regions
+    resources :expresses
     resources :orders do
       collection do
         get :upload_delivery

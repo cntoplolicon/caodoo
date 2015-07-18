@@ -29,6 +29,9 @@
             <li class="<%= controller.class == Admin::ProductsController ? 'active' : '' %>">
               <%= link_to "商品管理", admin_products_path %>
             </li>
+            <li class="<%= controller.class == Admin::ExpressesController ? 'active' : '' %>">
+              <%= link_to "快递公司管理", admin_expresses_path %>
+            </li>
             <li class="<%= controller.class == Admin::RegionsController ? 'active' : '' %>">
               <%= link_to "收货区域管理", admin_regions_path %>
             </li>
