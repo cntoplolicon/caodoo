@@ -7,7 +7,7 @@ class WxPayController < ApplicationController
     Order.transaction do
       @order = Order.lock.find(params[:order_id])
       expire = @order.created_at + Settings.payment.expired.to_i.minutes
-      diff = ((expire - Time.now) / 1.minutes).round
+      diff = ((expire - Time.zone.now) / 1.minutes).round
       redirect_to user_order_payment_timeout_path(@order.user_id, @order) and return if diff <= 0
 
       head :forbidden if @order.user_id != session[:login_user_id]
@@ -15,7 +15,7 @@ class WxPayController < ApplicationController
         @code_url = @order.payment_record.wx_code_url
       else
         payment_expire_at = @order.created_at + Settings.payment.expired.to_i.minutes
-        payment_created_at = Time.now
+        payment_created_at = Time.zone.now
         wx_payment_expire_at = [payment_created_at + 5.minutes, payment_expire_at].max
         remote_ip = IPAddr.new(request.remote_ip)
         remote_ip = remote_ip.ipv6? ? '127.0.0.1' : remote_ip.to_s
@@ -52,7 +52,7 @@ class WxPayController < ApplicationController
           order.payment_record.payment_type = PaymentRecord::WECHAT
           order.payment_record.status = PaymentRecord::PAID
           order.payment_record.amount = r[:total_fee].to_f / 100
-          order.payment_record.payment_time = Time.now
+          order.payment_record.payment_time = Time.zone.now
           ContestTeam.where(id: order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', order.quantity]) if order.contest_team_id.present?
           head :unprocessable_entity and return unless order.save
         end

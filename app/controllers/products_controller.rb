@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   def index
     schedule_table = ProductSaleSchedule.arel_table
-    now = Time.now
+    now = Time.zone.now
     @on_sale_products = Product
       .joins(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
       .includes(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])

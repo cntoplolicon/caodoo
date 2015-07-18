@@ -6,13 +6,13 @@
     <div class="game-product-page-banner">
       大学生营销策划赛活动产品
     </div>
-  <% elsif @product.product_sale_schedules[0].sale_end < Time.now%>
+  <% elsif @product.product_sale_schedules[0].sale_end < Time.zone.now%>
     <div class="product-detail-countdown-expired">
       抢购已结束
     </div>
   <% else %>
     <div class="product-detail-countdown">
-      <%= hidden_field_tag('remain-time-hidden-field', [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max) %>
+      <%= hidden_field_tag('remain-time-hidden-field', [(@product.product_sale_schedules[0].sale_end - Time.zone.now).to_i, 0].max) %>
       距离抢购结束还有 <span class="show-remain-time"></span>
     </div>
   <% end%>
@@ -34,7 +34,7 @@
             <% end %>
           </div>
         </div>
-        <% if @product.product_sale_schedules[0].sale_end < Time.now %>
+        <% if @product.product_sale_schedules[0].sale_end < Time.zone.now %>
           <%= image_tag("s.png", class: "product-detail-carousel-time-out product-time-out") %>
         <% elsif @product.quantity == 0%>
           <%= image_tag("s.png", class: "product-detail-carousel-sold-out product-sold-out") %>
@@ -57,7 +57,7 @@
         <%= @product.product_view.detail_page_description %>
       </div>
       <div class="product-price">
-        <% if @product.product_sale_schedules[0].sale_end < Time.now || @product.quantity == 0 %>
+        <% if @product.product_sale_schedules[0].sale_end < Time.zone.now || @product.quantity == 0 %>
           <div class="product-current-price-expired">&#165;<%= @product.price %></div>
         <% else %>
           <div class="product-current-price">&#165;<%= @product.price %></div>
@@ -98,7 +98,7 @@
         </div>
       </div>
       <%= link_to new_user_order_path(session[:login_user_id] || 0, {product_id: @product.id}) do %>
-        <% if @product.product_sale_schedules[0].sale_end < Time.now || @product.quantity == 0 %>
+        <% if @product.product_sale_schedules[0].sale_end < Time.zone.now || @product.quantity == 0 %>
           <button type="button" class="btn-grey purchase-button" disabled>立即购买</button>
         <% else %>
           <button type="button" class="btn-red purchase-button">立即购买</button>

@@ -11,11 +11,11 @@
     <% if @contest_team %>
       <div class="game-background">大学生营销策划赛活动产品</div>
     <% else %>
-      <div class="on-sale-time-left"><%= hidden_field_tag('remain-time-hidden-field', [(@product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max) %>
+      <div class="on-sale-time-left"><%= hidden_field_tag('remain-time-hidden-field', [(@product.product_sale_schedules[0].sale_end - Time.zone.now).to_i, 0].max) %>
         距离抢购结束还有 <span class="show-remain-time"></span></div>
     <% end %>
     <div class="product-detail-slider">
-      <% if @product.product_sale_schedules[0].sale_end < Time.now %>
+      <% if @product.product_sale_schedules[0].sale_end < Time.zone.now %>
         <%= image_tag("mobile_product-time-out.png", class: "product-detail-time-out") %>
       <% elsif @product.quantity == 0%>
         <%= image_tag("mobile_product-sold-out.png", class: "product-detail-sold-out") %>
@@ -51,7 +51,7 @@
     </div>
     <div class="product-detail-cost">
       <div class="product-detail-price">
-        <% if @product.product_sale_schedules[0].sale_end < Time.now || @product.quantity == 0 %>
+        <% if @product.product_sale_schedules[0].sale_end < Time.zone.now || @product.quantity == 0 %>
           <div class="product-detail-price-expired">&#165;<%= @product.price %></div>
         <% else %>
           <div class="product-detail-price-now">&#165;<%= @product.price %></div>
@@ -97,7 +97,7 @@
       <div class="product-detail-gurantee-text">全场包邮</div>
     </div>
     <%= link_to new_user_order_path(session[:login_user_id] || 0, {product_id: @product.id}) do %>
-      <% if @product.product_sale_schedules[0].sale_end < Time.now || @product.quantity == 0 %>
+      <% if @product.product_sale_schedules[0].sale_end < Time.zone.now || @product.quantity == 0 %>
         <button disabled type="button" class="product-detail-submit-fade purchase-button">立即购买</button>
       <% else %>
         <button type="button" class="product-detail-submit purchase-button">立即购买</button>

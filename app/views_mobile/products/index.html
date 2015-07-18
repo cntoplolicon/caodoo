@@ -31,7 +31,7 @@
             <div class="product-current-price">&#165;<%= product.price %></div>
           </div>
         </div>
-        <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.now).to_i, 0].max %>">
+        <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.zone.now).to_i, 0].max %>">
         </div>
       </div>
     <% end %>

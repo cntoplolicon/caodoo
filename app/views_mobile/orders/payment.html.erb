@@ -10,7 +10,7 @@
     <div class="payment-detail">
       <div class="payment-deadline">支付结束时间：
       <span class="payment-remain-time">
-      <%= hidden_field_tag('payment-remain-time-hidden-field', [0, (@order.created_at + Settings.payment.expired.to_i.minutes - Time.now).to_i].max) %>
+      <%= hidden_field_tag('payment-remain-time-hidden-field', [0, (@order.created_at + Settings.payment.expired.to_i.minutes - Time.zone.now).to_i].max) %>
       </span>
       </div>
       <%= image_tag "mobile_payment_step_two.png", class: 'payment-progress' %>

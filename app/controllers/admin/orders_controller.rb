@@ -11,7 +11,7 @@ class Admin::OrdersController < Admin::AdminController
         Order.transaction do
           records = OrderDatatable.new(view_context).unpaged_records
           records = records.where(delivery_exported: false) if update_exported
-          send_data bom + to_csv(records).encode("UTF-8"), filename: "#{Time.now.strftime('%Y/%m/%d %H:%M:%S')}.csv", type: 'text/csv'
+          send_data bom + to_csv(records).encode("UTF-8"), filename: "#{Time.zone.now.strftime('%Y/%m/%d %H:%M:%S')}.csv", type: 'text/csv'
           Order.where(id: records.ids).update_all(delivery_exported: true) if update_exported
         end
       end
@@ -40,7 +40,7 @@ class Admin::OrdersController < Admin::AdminController
         @order.payment_record.update(status: PaymentRecord::REFUNDED)
         Product.where(id: @order.product_id).update_all(['quantity = quantity + ?', @order.quantity])
       elsif [Order::DELIVERED].include?(@order.status) && status == Order::COMPLETE
-        @order.update(status: Order::COMPLETE, receive_time: Time.now)
+        @order.update(status: Order::COMPLETE, receive_time: Time.zone.now)
       else
         @order.errors.add(:status, '订单状态不正确，不能进行该操作')
       end
@@ -114,7 +114,7 @@ class Admin::OrdersController < Admin::AdminController
           @order.payment_record.status = PaymentRecord::PAID
           @order.payment_record.amount = r[:amount]
           @order.payment_record.payment_type = r[:payment_type]
-          @order.payment_record.payment_time = r[:payment_time] || Time.now
+          @order.payment_record.payment_time = r[:payment_time] || Time.zone.now
           ContestTeam.where(id: @order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', @order.quantity]) if @order.contest_team_id.present?
           if @order.save
             r[:message] = '更新成功'

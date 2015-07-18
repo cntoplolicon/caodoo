@@ -35,13 +35,13 @@ class OrdersController < ApplicationController
     end
 
     @onsale = @product.product_sale_schedules.any? do |s|
-      s.sale_start < Time.now && s.sale_end > Time.now
+      s.sale_start < Time.zone.now && s.sale_end > Time.zone.now
     end
     redirect_to action: :sold_out, controller: :standalone and return unless @onsale
 
     @order.build_payment_record(status: PaymentRecord::TO_PAY)
     head :forbidden and return if @order.user_id != @user.id
-    @order.order_number = "#{'%07d' % @order.user_id}#{(Time.now.to_f * 1000).to_i}"
+    @order.order_number = "#{'%07d' % @order.user_id}#{(Time.zone.now.to_f * 1000).to_i}"
     @order.product_name = @product.name
     @order.product_image_url = @product.product_view.product_carousel_images[0].url
     @order.unit_price = @product.price
@@ -109,7 +109,7 @@ class OrdersController < ApplicationController
       elsif status == Order::COMPLETE
         if @order.status == Order::DELIVERED
           @order.status = Order::COMPLETE
-          @order.receive_time = Time.now
+          @order.receive_time = Time.zone.now
           @order.save
         end
       end
@@ -176,13 +176,13 @@ class OrdersController < ApplicationController
   end
 
   def time_out?(order)
-    Time.now > order.created_at + Settings.payment.expired.to_i.minutes
+    Time.zone.now > order.created_at + Settings.payment.expired.to_i.minutes
   end
 
   def try_cancel_timeout_order(order_id)
     Order.transaction do
       @order = @user.orders.lock.find(order_id)
-      if @order.status == Order::TO_PAY && Time.now > @order.created_at + Settings.payment.expired.to_i.minutes
+      if @order.status == Order::TO_PAY && Time.zone.now > @order.created_at + Settings.payment.expired.to_i.minutes
         @order.status = Order::TIMEOUT
         @order.payment_record.status = PaymentRecord::TIMEOUT
         @order.save

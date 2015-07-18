@@ -8,7 +8,7 @@ class AlipayController < ApplicationController
       head :forbidden if @order.user_id != session[:login_user_id]
 
       expire = @order.created_at + Settings.payment.expired.to_i.minutes
-      diff = ((expire - Time.now) / 1.minutes).round
+      diff = ((expire - Time.zone.now) / 1.minutes).round
       redirect_to user_order_payment_timeout_path(@user, @order) and return if diff <= 0
 
       payment_submitted = @order.payment_record.alipay_expire.present?
@@ -91,7 +91,7 @@ class AlipayController < ApplicationController
       else
         @order.payment_record.amount = @order.total_price
       end
-      @order.payment_record.payment_time = Time.now
+      @order.payment_record.payment_time = Time.zone.now
     end
     head :unprocessable_entity and return false unless @order.save
     true

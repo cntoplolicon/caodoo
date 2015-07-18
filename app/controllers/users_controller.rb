@@ -159,7 +159,7 @@ class UsersController < ApplicationController
     security_code = generate_security_code
     params = {security_code: security_code}
     session[:security_code] = security_code
-    session[:security_code_expire] = Time.now + Settings.security_code.expired
+    session[:security_code_expire] = Time.zone.now + Settings.security_code.expired
     session[:security_code_user] = username
     message = Settings.security_code.sms_template % params
     session[:user_to_verify] = username
@@ -175,7 +175,7 @@ class UsersController < ApplicationController
     @user.errors.add(:security_code, '验证码不能为空') and return false unless security_code.present?
     @user.errors.add(:security_code, '验证码错误') and return false unless session[:security_code]
     @user.errors.add(:security_code, '验证码错误') and return false if security_code != session[:security_code]
-    time_compared = Time.now <=> session[:security_code_expire]
+    time_compared = Time.zone.now <=> session[:security_code_expire]
     @user.errors.add(:security_code, '验证码已过期') and return false if time_compared == 1
     @user.errors.add(:security_code, '用户名不匹配') and return false if session[:user_to_verify] != @user.username
     session[:user_verified] = @user.username
