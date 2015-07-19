@@ -11,7 +11,6 @@
       desc: document.title,
       pic: '',
       qrcode: {
-        render: 'div',
         size: 185,
         ecLevel: 'H',
         minVersion: 5
