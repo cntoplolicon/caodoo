@@ -47,7 +47,6 @@ gem 'ar-octopus'
 
 #admin dashboad dependencies
 gem "kaminari"
-gem "font-awesome-rails"
 
 #deployment
 gem 'capistrano'
