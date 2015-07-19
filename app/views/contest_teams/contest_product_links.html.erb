@@ -1,13 +1,17 @@
-<% @links.each do |link| %>
-  <div>
+<div>
+  <% @links.each_with_index do |link, i| %>
     <div class="team_share_link_product">
+      <%= hidden_field_tag("image_link#{i}", asset_url(link[:image_url]), class: 'team_share_link_img_url')%>
       <div class="team_share_link_product_qrcode">
         <div class="team_share_link_product_qrcode_img">
         </div>
       </div>
       <div class="team_share_link_detail">
         <div class="team_share_link_detail_name"><%= link[:title] %></div>
-        <div class="team_share_link_detail_url">营销链接：<p class="team_share_link_detail_p"><%= link_to link[:url], link[:url] %></p> </div>
+        <div class="team_share_link_detail_url">营销链接：
+
+          <p class="team_share_link_detail_p"><%= link_to link[:url], link[:url] %></p>
+        </div>
         <div class="team_share_link_detail_share">
           <span class="team_share_link_detail_share_desc">分享至：</span>
           <div class="bdsharebuttonbox">
@@ -19,6 +23,5 @@
         </div>
       </div>
     </div>
-  </div>
-<% end %>
-
+  <% end %>
+</div>
