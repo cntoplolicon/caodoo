@@ -45,37 +45,47 @@ set :ssh_options, {
   user: 'ubuntu', # overrides user setting above
   forward_agent: true,
   auth_methods: %w(publickey),
-  keys: %w(~/workspace/deployment/WebServer.pem),
+  keys: %w(~/workspace/deployment/WebServer.pem)
 }
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server '54.223.140.135',
-  user: 'ubuntu',
-  roles: %w{web app db batch},
-  ssh_options: {}
 
-#server '54.223.190.117',
+set :deploy_selection, ask("\n1) Deploy To Test Server\n2) Deploy To Backend ERP\n3) Deploy To Frontend Application\n", nil)
+
+case fetch(:deploy_selection).to_i
+when 1
+  server '54.223.201.93',
+    user: 'ubuntu',
+    roles: %w{web app db batch},
+    ssh_options: {}
+when 2
+  server '54.223.208.126',
+    user: 'ubuntu',
+    roles: %w{web app},
+    ssh_options: {}
+when 3
+  server '54.223.140.135',
+    user: 'ubuntu',
+    roles: %w{web app db batch},
+    ssh_options: {}
+
+  #server '54.223.190.117',
   #user: 'ubuntu',
   #roles: %w{web app},
   #ssh_options: {}
 
-set :password, ask('Server password: ', nil)
+  server '123.59.53.54',
+    user: 'ubuntu',
+    roles: %w{web app},
+    ssh_options: {
+      keys: %w(~/.ssh/id_rsa)
+    }
 
-server '123.59.53.54',
-  user: 'ubuntu',
-  roles: %w{web app},
-  ssh_options: {
-    forward_agent: false,
-    auth_methods: %w(password),
-    password: fetch(:password)
-  }
-
-server '120.132.57.121',
-  user: 'ubuntu',
-  roles: %w{web app},
-  ssh_options: {
-    forward_agent: false,
-    auth_methods: %w(password),
-    password: fetch(:password)
-  }
+    server '120.132.57.121',
+      user: 'ubuntu',
+      roles: %w{web app},
+      ssh_options: {
+        keys: %w(~/.ssh/id_rsa)
+      }
+end
