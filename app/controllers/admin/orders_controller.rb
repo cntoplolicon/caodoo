@@ -31,6 +31,11 @@ class Admin::OrdersController < Admin::AdminController
     @order = Order.find(params[:id])
   end
 
+  def express_info
+    @order = Order.find(params[:id])
+    @express_info = ExpressTracker.track_express(@order.express.code, @order.tracking_number)
+  end
+
   def update
     Order.transaction do
       @order = Order.lock.find(params[:id])

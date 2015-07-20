@@ -140,6 +140,10 @@ Rails.application.routes.draw do
         get :upload_payment
         post :import_payment
       end
+
+      member do
+        get :express_info
+      end
     end
   end
 end
