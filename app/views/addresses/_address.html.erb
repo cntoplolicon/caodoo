@@ -15,7 +15,7 @@
             <div class="error-message" id="address-receiver-error"><%= @address.errors.messages[:receiver].first if @address.errors[:receiver].any? %></div>
           </div>
           <div style="float: right">
-            <%= f.text_field :phone, class: 'cd_input', placeholder: '联系方式' %>
+            <%= f.text_field :phone, class: 'cd_input', placeholder: '手机号' %>
             <div class="error-message" id="address-phone-error"><%= @address.errors.messages[:phone].first if @address.errors[:phone].any? %></div>
           </div>
         </li>
