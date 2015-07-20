@@ -9,9 +9,9 @@ $(document).ready(function() {
       $("#address-receiver-error").text(validate_message.address.receiver.blank);
       b = false;
     } else {
-      $("#address-receiver-error").text("");
+      $("#address-receiver-error").text("");address_phone
     }
-    if ($("#address_phone").val() == "") {
+    if (!$("#address_phone").val().match(validate_regex.phone)) {
       $("#address-phone-error").text(validate_message.phone.invalid);
       b = false;
     } else {
