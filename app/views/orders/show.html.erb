@@ -26,6 +26,61 @@
       </div>
       <% end %>
     </div>
+    <div class="order-express-information">
+      <div class="order-express-information-summary-container">
+      <div class="order-express-information-summary">
+        物流追踪：申通快递-单号-123123123123123123
+      </div>
+      </div>
+      <div id="order-express-information-detail-show">
+        <a id="order-express-information-detail-show-button"=>点击查看物流</a>
+      </div>
+      <div id="order-express-information-detail-none">暂无物流信息～</div>
+      <div id="order-express-information-detail">
+        <table class="order-express-information-table">
+          <tr>
+            <th class="order-express-information-time">处理时间</th>
+            <th>到达</th>
+          </tr>
+          <tr>
+            <td>
+              <%= image_tag 's.png', class: 'green-circle' %>
+              <span class="express-latest-time">2015-08-09&nbsp;12:13</span>
+            </td>
+            <td>
+              <span class="express-latest-context">北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= image_tag 's.png', class: 'grey-circle' %>
+              <span>2015-08-09&nbsp;12:13</span>
+            </td>
+            <td>
+              上海发出
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= image_tag 's.png', class: 'grey-circle' %>
+              <span>2015-08-09&nbsp;12:13</span>
+            </td>
+            <td>
+              上海未发出
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= image_tag 's.png', class: 'grey-circle' %>
+              <span>2015-08-09&nbsp;12:13</span>
+            </td>
+            <td>
+              快件发出
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
     <div class="order_info">
       <div class="order_product">
         <%= image_tag @order.product_image_url, class: 'order_product_thumbnail' %>
