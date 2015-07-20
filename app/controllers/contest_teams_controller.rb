@@ -76,7 +76,13 @@ class ContestTeamsController < ContestTeamDashboardController
       .includes(product_view: :product_carousel_images)
       .where(product_table[:contest_level].lteq(@contest_team.level))
       .order(priority: :desc)
-    @links = @products.map { |product| {title: product.name, url: contest_team_contest_product_url(@contest_team.identifier, product)} }
+    @links = @products.map do |product|
+      {
+        title: product.name,
+        url: contest_team_contest_product_url(@contest_team.identifier, product),
+        image_url: product.product_view.sale_image_url
+      }
+    end
     @links.unshift({title: '大赛活动页', url: contest_team_contest_products_url(@contest_team.identifier)})
   end
 

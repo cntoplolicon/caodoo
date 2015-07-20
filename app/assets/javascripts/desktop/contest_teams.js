@@ -18,12 +18,23 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('.team_share_link_product .bdsharebuttonbox').each(function() {
     var productPanel = $(this).closest('.team_share_link_product');
-    var productName = productPanel.find('.team_share_link_detail_name').text();
     var productUrl = productPanel.find('.team_share_link_detail_url a').text();
-    $(this).csns({
-      title: productName,
-      url: productUrl
-    });
+    var productImageUrl = productPanel.find('.team_share_link_img_url').val();
+    if (productPanel.index() === 0) {
+      $(this).csns({
+        title: '我们参加了大学生营销策划赛，来围观吧~',
+        desc: '我们参加了大学生营销策划赛，来围观吧~',
+        url: productUrl
+      });
+    } else {
+      var productName = productPanel.find('.team_share_link_detail_name').text();
+      $(this).csns({
+        title: '我们参加了大学生营销策划赛，向你推荐' + productName + ', 来看看吧~',
+        desc: '我们参加了大学生营销策划赛，向你推荐' + productName + ', 来看看吧~',
+        url: productUrl,
+        pic: productImageUrl
+      });
+    }
     productPanel.find('.team_share_link_product_qrcode_img').qrcode({
       size: 140,
       color: "#3a3",
