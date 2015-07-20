@@ -1,8 +1,6 @@
 <div class="container">
   <div class="row" style="margin-bottom: 16px">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
+    <div class="col-xs-12 order-operation-row">
       <% if @order.errors.any? %>
         <ul>
           <% @order.errors.full_messages.each do |msg| %>
@@ -11,6 +9,9 @@
         </ul>
       <% end %>
       <%= link_to "返回", admin_orders_path, class: 'btn btn-default' %>
+      <% if @order.express.present? && @order.tracking_number.present? %>
+        <%= link_to "查看物流信息", express_info_admin_order_path(@order), class: 'btn btn-default' %>
+      <% end %>
       <% if [Order::CANCELLING].include?(@order.status) %>
         <%= form_for [:admin, @order] do |f| %>
           <%= hidden_field_tag :status, Order::CANCELLED  %>
@@ -23,8 +24,6 @@
           <%= f.submit '确认收货', data: {disable_with: '正在提交', confirm: '确定更改订单状态？'}, class: 'btn btn-primary' %>
         <% end %>
       <% end %>
-    </div>
-    <div class="col-md-4">
     </div>
   </div>
   <div class="row">
