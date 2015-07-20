@@ -16,76 +16,39 @@
       <% elsif @order.status == 4 %>
         <%= image_tag "process_img5.png" %>
       <% else %>
-      <div class="order_status_text_container">
-        <div class="order_status_text_icon_area">
-          <%= image_tag "s.png", class: 'warning-icon-small' %>
+        <div class="order_status_text_container">
+          <div class="order_status_text_icon_area">
+            <%= image_tag "s.png", class: 'warning-icon-small' %>
+          </div>
+          <div class="order_status_text_warning">
+            <%= order_status_text(@order.status) %>
+          </div>
         </div>
-        <div class="order_status_text_warning">
-          <%= order_status_text(@order.status) %>
-        </div>
-      </div>
       <% end %>
     </div>
-    <% if @order.tracking_number.present? && @order.express.present? %>
-      <div>
-        <%= link_to "查看物流信息", user_order_express_info_path(@user, @order), class: "express-info-link" %>
+    <% if @order.status == Order::DELIVERED || (@order.express.present? && @order.tracking_number.present?) %>
+      <div class="order-express-information">
+        <div class="order-express-information-summary-container">
+          <div class="order-express-information-summary">
+            <span>物流追踪：</span>
+            <% if @order.express.present? && @order.tracking_number %>
+              <span><%= "#{@order.express.name}-单号-#{@order.tracking_number}" %></span>
+            <% else %>
+              <span>正在出库</span>
+            <% end %>
+          </div>
+        </div>
+        <% if @order.express.present? && @order.tracking_number %>
+          <div class="order-express-information-detail-show">
+            <%= link_to "点击查看物流", user_order_express_info_path(@user, @order), class: "order-express-info-link" %>
+          </div>
+          <div class="order-express-information-detail">
+            <div class="order-express-information-msg">正在获取物流信息...</div>
+            
+          </div>
+        <% end %>
       </div>
     <% end %>
-    <div class="order-express-information">
-      <div class="order-express-information-summary-container">
-      <div class="order-express-information-summary">
-        物流追踪：申通快递-单号-123123123123123123
-      </div>
-      </div>
-      <div id="order-express-information-detail-show">
-        <a id="order-express-information-detail-show-button"=>点击查看物流</a>
-      </div>
-      <div id="order-express-information-detail-none">暂无物流信息～</div>
-      <div id="order-express-information-detail">
-        <table class="order-express-information-table">
-          <tr>
-            <th class="order-express-information-time">处理时间</th>
-            <th>到达</th>
-          </tr>
-          <tr>
-            <td>
-              <%= image_tag 's.png', class: 'green-circle' %>
-              <span class="express-latest-time">2015-08-09&nbsp;12:13</span>
-            </td>
-            <td>
-              <span class="express-latest-context">北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站北京中转站</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= image_tag 's.png', class: 'grey-circle' %>
-              <span>2015-08-09&nbsp;12:13</span>
-            </td>
-            <td>
-              上海发出
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= image_tag 's.png', class: 'grey-circle' %>
-              <span>2015-08-09&nbsp;12:13</span>
-            </td>
-            <td>
-              上海未发出
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= image_tag 's.png', class: 'grey-circle' %>
-              <span>2015-08-09&nbsp;12:13</span>
-            </td>
-            <td>
-              快件发出
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
     <div class="order_info">
       <div class="order_product">
         <%= image_tag @order.product_image_url, class: 'order_product_thumbnail' %>
@@ -101,7 +64,7 @@
             <% else %>
               &nbsp
             <% end %>
-            </li>
+          </li>
           <li>
             产品单价：<span>¥<%= @order.unit_price %></span>
           </li>
@@ -125,9 +88,9 @@
             下单时间：<span class="order_span"><%= @order.created_at.in_time_zone.strftime('%Y-%m-%d') %></span>
           </li>
           <% if @order.payment_record.payment_type.present? %>
-          <li>
-            支付方式：<span class="order_span"><%= payment_type_text(@order.payment_record.payment_type) %></span>
-          </li>
+            <li>
+              支付方式：<span class="order_span"><%= payment_type_text(@order.payment_record.payment_type) %></span>
+            </li>
           <% end %>
           <% if logistics_text(@order).present? %>
             <li>
