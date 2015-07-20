@@ -13,6 +13,10 @@ $(document).ready(function() {
       window.location.reload();
     }
   };
+  $('#order-express-information-detail-show-button').click(function(){
+    $('#order-express-information-detail-show').hide();
+    $('#order-express-information-detail').show();
+  });
   $('.order-submission').click(function() {
     $(this).prop('disabled', true);
     $(this).closest('form').submit();

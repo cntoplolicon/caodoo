@@ -18,13 +18,15 @@
         app/assets/images/sprites/desktop/baoyou2.png (28x33)
         app/assets/images/sprites/desktop/zhengpin2.png (28x33)
         app/assets/images/sprites/desktop/tuihuo2.png (27x33)
-        app/assets/images/sprites/desktop/arrow-left-icon.png (17x30)
         app/assets/images/sprites/desktop/arrow-right-icon.png (17x30)
+        app/assets/images/sprites/desktop/arrow-left-icon.png (17x30)
         app/assets/images/sprites/desktop/account-icon.png (27x27)
         app/assets/images/sprites/desktop/address.png (12x18)
         app/assets/images/sprites/desktop/backward.png (16x8)
         app/assets/images/sprites/desktop/mail.png (14x10)
         app/assets/images/sprites/desktop/game-header-setting-arrow.png (13x6)
+        app/assets/images/sprites/desktop/green-circle.png (12x12)
+        app/assets/images/sprites/desktop/grey-circle.png (12x12)
 
         Output files:
           app/assets/images/sprites-desktop.png
@@ -51,10 +53,12 @@ img.zhengpin { width: 30px; height: 35px; background: image-url('sprites-desktop
 img.baoyou2 { width: 28px; height: 33px; background: image-url('sprites-desktop.png') -63px -158px no-repeat; }
 img.zhengpin2 { width: 28px; height: 33px; background: image-url('sprites-desktop.png') -95px -158px no-repeat; }
 img.tuihuo2 { width: 27px; height: 33px; background: image-url('sprites-desktop.png') -127px -158px no-repeat; }
-img.arrow-left-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -258px -116px no-repeat; }
-img.arrow-right-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -258px -156px no-repeat; }
+img.arrow-right-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -258px -116px no-repeat; }
+img.arrow-left-icon { width: 17px; height: 30px; background: image-url('sprites-desktop.png') -258px -156px no-repeat; }
 img.account-icon { width: 27px; height: 27px; background: image-url('sprites-desktop.png') -158px -158px no-repeat; }
 img.address { width: 12px; height: 18px; background: image-url('sprites-desktop.png') -160px -132px no-repeat; }
 img.backward { width: 16px; height: 8px; background: image-url('sprites-desktop.png') -176px -132px no-repeat; }
 img.mail { width: 14px; height: 10px; background: image-url('sprites-desktop.png') -114px -69px no-repeat; }
 img.game-header-setting-arrow { width: 13px; height: 6px; background: image-url('sprites-desktop.png') -196px -132px no-repeat; }
+img.green-circle { width: 12px; height: 12px; background: image-url('sprites-desktop.png') -113px -133px no-repeat; }
+img.grey-circle { width: 12px; height: 12px; background: image-url('sprites-desktop.png') -129px -133px no-repeat; }
