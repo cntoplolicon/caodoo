@@ -26,6 +26,11 @@
       </div>
       <% end %>
     </div>
+    <% if @express_info %>
+      <div>
+        <%= @express_info %>
+      </div>
+    <% end %>
     <div class="order_info">
       <div class="order_product">
         <%= image_tag @order.product_image_url, class: 'order_product_thumbnail' %>
