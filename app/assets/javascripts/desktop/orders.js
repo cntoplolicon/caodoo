@@ -14,6 +14,11 @@ $(document).ready(function() {
     }
   };
 
+  $('#order-express-information-detail-show-button').click(function(){
+    $('#order-express-information-detail-show').hide();
+    $('#order-express-information-detail').show();
+  });
+
   function orderRemainTime(time) {
     if (typeof(time) !== 'number') {
       return '00分00秒';
