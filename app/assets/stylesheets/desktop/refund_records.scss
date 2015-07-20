@@ -10,6 +10,7 @@
   *display: inline;
   zoom: 1;
   width: 720px;
+  position: relative;
 }
 .team_return_goods_top_data {
   float: left;
@@ -25,40 +26,43 @@
 }
 .team_return_goods_top_data_text {
   font-size: 16px;
-  color: #757575;
+  margin-top: 4px;
 }
 .team_return_goods_top_text {
   text-align: left;
-  float: left;
-  width: 170px;
-  margin-left: 16px;
+  float: right;
+  width: 186px;
+  height: 150px;
+  background-color: #16b51b;
+  color: white;
+  padding: 0px 10px;
 }
 .team_return_goods_top_text_title {
   margin-top: 20px;
   font-size: 16px;
-  color: #757575;
+  color: white;
 }
 .team_return_goods_top_text_detail {
   font-size: 14px;
-  color: #212121;
+  color: white;
   margin-top: 16px;
 }
 .team_return_goods_middle {
   width: 694px;
   border: 1px solid #ebebeb;
   padding: 13px;
+  margin-top: 20px;
 }
 .team_return_goods_middle_title {
   font-size: 16px;
   text-align: center;
-  color: #212121;
+  color: #979797;
   width: 692px;
   border-bottom: 1px solid #ebebeb;
   height: 26px;
 }
 .team_return_goods_middle table {
   text-align: left;
-  font-size: 16px;
   margin-top: 30px;
   border-top: 1px solid #ebebeb;
   width: 692px;
@@ -66,12 +70,16 @@
   color: #757575;
 }
 .team_return_goods_middle table tr {
-  height: 44px;
   border-bottom: 1px solid #ebebeb;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .team_return_goods_middle table tr td {
   padding-left: 10px;
-  width: 138px;
+  line-height: 24px;
+  float: left;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .team_return_goods_table_title {
   color: #212121;
@@ -85,7 +93,7 @@
 .team_return_goods_bottom_title {
   font-size: 16px;
   text-align: center;
-  color: #212121;
+  color: #979797;
   width: 692px;
   border-bottom: 1px solid #ebebeb;
   height: 26px;
@@ -112,12 +120,14 @@
   color: #757575;
 }
 .team_return_goods_bottom table tr {
-  height: 44px;
   border-bottom: 1px solid #ebebeb;
 }
 .team_return_goods_bottom table tr td {
   padding-left: 10px;
-  width: 115px;
+  float: left;
+  line-height: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .team_return_goods_popup {
   display: none;
@@ -210,15 +220,111 @@
   background-color: #EBEBEB;
   border: 1px solid #DEDEDE;
 }
-.popup_title{
-  color:red;
+
+.popup_title {
+  color: red;
 }
-.team_return_good_info_box{
+
+.team_return_good_info_box {
   float: left;
   width: 180px;
   margin-right: 20px;
 }
 
-.team_return_goods_count{
+.team_return_goods_count {
   color: #fe6a29;
+}
+
+.team_return_good_name_span {
+  float: left;
+  width: 12px;
+  height: 12px;
+  background-color: #16b51b;
+  margin-top: 6px;
+  margin-right: 4px;
+}
+
+.team_refund_record_status_0 {
+  background-color: #F58919;
+  color: white;
+  padding: 4px;
+  font-size: 12px;
+}
+
+.team_refund_record_status_1 {
+  background-color: #16b51b;
+  color: white;
+  padding: 4px;
+  font-size: 12px;
+}
+
+.team_refund_record_status_10 {
+  background-color: #bfbfbf;
+  color: white;
+  padding: 4px;
+  font-size: 12px;
+}
+
+.team_refund_record_order_number {
+  font-size: 12px;
+}
+
+.team_refund_record_tracking_number {
+  font-size: 12px;
+}
+
+.team_return_prompt {
+  color: #979797;
+  font-size: 12px;
+}
+
+.team_return_good_name {
+  width: 186px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.team_return_good_receiver {
+  width: 90px;
+}
+
+.team_return_good_phone {
+  width: 146px;
+}
+
+.team_return_good_address {
+  width: 226px;
+}
+
+.team_return_order_id_col {
+  width: 140px;
+  word-break: normal;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.team_return_order_count_col {
+  width: 40px;
+}
+
+.team_return_order_receiver_col {
+  width: 90px;
+}
+
+.team_return_order_express_col {
+  width: 100px;
+}
+
+.team_return_order_tracking_number_col {
+  width: 100px;
+  word-break: normal;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.team_return_order_status_col {
+  width: 106px;
 }

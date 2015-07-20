@@ -118,29 +118,36 @@
   height: 36px;
 }
 
-.team_login_error_box{
-
+.team_login_error_box {
   width: 232px;
   margin: 0 auto;
   text-align: left;
   margin-top: 8px;
-
 }
 
+.team_performance_top_box {
+  overflow: hidden;
+}
 .team_performance_top {
-  height: 168px;
+  height: 148px;
   border: 1px solid #ebebeb;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 13px;
+  margin-top: 30px;
+  width: 480px;
+  float: left;
+  padding: 12px;
+}
+.team_performance_image{
+  float: right;
+  margin-top: 30px;
 }
 .team_performance_time_hint {
   font-size: 14px;
   color: #757575;
   float: right;
-  *margin-top: -15px;
+  height: 30px;
+  line-height: 30px;
 }
-.team_performance_time_hint a {
+.team_performance_time_hint span {
   color: #fe6a29;
   cursor: auto;
 }
@@ -155,7 +162,7 @@
   width: 692px;
 }
 .team_performance_line {
-  width: 692px;
+  width: 480px;
   height: 1px;
   background-color: #ebebeb;
   position: relative;
@@ -177,6 +184,7 @@
   float: left;
   padding: 8px 0;
   z-index: 22;
+  font-size: 16px;
 }
 .team_performance_tab ul {
   overflow: hidden;
@@ -190,37 +198,36 @@
   float: left;
   padding: 8px 0;
   z-index: 22;
+  font-size: 16px;
 }
 .team_performance_bottom_tab ul {
   overflow: hidden;
 }
 .team_performance_top_results {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 .team_performance_top_results_top {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
+  height: 40px;
+  line-height: 40px;
 }
 .team_performance_top_results_top_number {
   float: left;
   height: 32px;
-  border-right: 1px solid #efefef;
-  width: 170px;
+  width: 158px;
   text-align: center;
   font-size: 21px;
   padding-top: 8px;
 }
 .team_performance_top_results_bottom {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 4px;
 }
 .team_performance_top_results_bottom_text {
   float: left;
   font-size: 16px;
   color: #757575;
-  width: 171px;
+  width: 158px;
 }
 .team_performance_bottom {
   margin-top: 24px;
@@ -243,7 +250,10 @@
 }
 .team_performance_bottom_table tr td {
   padding: 10px 0 10px 10px;
-  width: 163px;
+  float: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .title_black {
   color: #212121;
@@ -312,4 +322,30 @@
 .qccy-wx-container {
   padding: 32px 8px;
   color: #fff;
+}
+
+.team_performance_product_index {
+  padding: 2px 6px;
+  background-color: red;
+  color: white;
+}
+
+.team_performance_product_quantity {
+  color: #16B51B;
+}
+
+.team_performance_product_total_price {
+  color: red;
+}
+
+.team_performance_index_col {
+  width: 90px;
+}
+
+.team_performance_name_col {
+  width: 318px;
+}
+
+.team_performance_sale_count_col {
+  width: 120px;
 }
