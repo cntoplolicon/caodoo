@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       get :payment_timeout
       get :payment_succeed
       get :status
+      get :express_info
     end
     resources :addresses
 
