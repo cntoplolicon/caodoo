@@ -220,20 +220,22 @@
   background-color: #EBEBEB;
   border: 1px solid #DEDEDE;
 }
-.popup_title{
-  color:red;
+
+.popup_title {
+  color: red;
 }
-.team_return_good_info_box{
+
+.team_return_good_info_box {
   float: left;
   width: 180px;
   margin-right: 20px;
 }
 
-.team_return_goods_count{
+.team_return_goods_count {
   color: #fe6a29;
 }
 
-.team_return_good_name_span{
+.team_return_good_name_span {
   float: left;
   width: 12px;
   height: 12px;
@@ -241,72 +243,88 @@
   margin-top: 6px;
   margin-right: 4px;
 }
-.team_refund_record_status_0{
+
+.team_refund_record_status_0 {
   background-color: #F58919;
   color: white;
   padding: 4px;
   font-size: 12px;
 }
-.team_refund_record_status_1{
+
+.team_refund_record_status_1 {
   background-color: #16b51b;
   color: white;
   padding: 4px;
   font-size: 12px;
 }
-.team_refund_record_status_10{
+
+.team_refund_record_status_10 {
   background-color: #bfbfbf;
   color: white;
   padding: 4px;
   font-size: 12px;
 }
-.team_refund_record_order_number{
+
+.team_refund_record_order_number {
   font-size: 12px;
 }
-.team_refund_record_tracking_number{
+
+.team_refund_record_tracking_number {
   font-size: 12px;
 }
-.team_return_prompt{
+
+.team_return_prompt {
   color: #979797;
   font-size: 12px;
 }
-.team_return_good_name{
+
+.team_return_good_name {
   width: 186px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-.team_return_good_receiver{
+
+.team_return_good_receiver {
   width: 90px;
 }
-.team_return_good_phone{
+
+.team_return_good_phone {
   width: 146px;
 }
-.team_return_good_address{
+
+.team_return_good_address {
   width: 226px;
 }
-.team_return_order_id_col{
+
+.team_return_order_id_col {
   width: 140px;
-  word-break:normal;
-  white-space:pre-wrap;
-  word-wrap : break-word ;
-  overflow: hidden ;
+  word-break: normal;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
 }
-.team_return_order_count_col{
+
+.team_return_order_count_col {
   width: 40px;
 }
-.team_return_order_receiver_col{
+
+.team_return_order_receiver_col {
   width: 90px;
 }
-.team_return_order_express_col{
+
+.team_return_order_express_col {
   width: 100px;
 }
-.team_return_order_tracking_number_col{
+
+.team_return_order_tracking_number_col {
   width: 100px;
-  word-break:normal;
-  white-space:pre-wrap;
-  word-wrap : break-word ;
-  overflow: hidden ;
+  word-break: normal;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
 }
-.team_return_order_status_col{
+
+.team_return_order_status_col {
   width: 106px;
 }
