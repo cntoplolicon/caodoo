@@ -697,3 +697,66 @@
   color: #15ae10;
   text-align: left;
 }
+
+.order-express-information-summary {
+  padding-left: 6px;
+  font-size: 14px;
+  color: #85ac15;
+  border-left: 3px solid #15ae10;
+}
+.order-express-information-summary-container {
+  border-bottom: 2px solid #f4f4f4;
+  padding-left: 11px;
+  padding-bottom: 10px;
+}
+.order-express-information {
+  width: 720px;
+  border-top: 2px solid #e5e5e5;
+  padding: 10px 0;
+}
+
+.order-express-information-table {
+  text-align: left;
+  margin-top: 10px;
+  padding-left: 17px;
+  width: 100%;
+}
+.order-express-information-table td {
+  padding-bottom: 20px;
+  color: #979797;
+  box-sizing: border-box;
+}
+.order-express-information-table th {
+  padding-bottom: 20px;
+  font-weight: 100;
+  color: #3f3f3f;
+  text-align: left;
+}
+.order-express-information-time {
+  width: 200px;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+#order-express-information-detail {
+  display: none;
+}
+#order-express-information-detail-none {
+  padding: 20px;
+  color: #979797;
+  display: none;
+}
+#order-express-information-detail-show {
+  padding: 20px;
+}
+#order-express-information-detail-show-button {
+  background-color: #FFFFFF;
+  font-size: 14px;
+  color: #979797;
+}
+.express-latest-time {
+  color: #6b6b6b;
+}
+.express-latest-context {
+  color: #85ac15;
+}
