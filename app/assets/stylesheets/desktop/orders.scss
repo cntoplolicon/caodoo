@@ -738,19 +738,18 @@
   *display: inline;
   zoom: 1;
 }
-#order-express-information-detail {
+.order-express-information-detail {
   display: none;
 }
-#order-express-information-detail-none {
+.order-express-information-msg {
   padding: 20px;
   color: #979797;
-  display: none;
 }
-#order-express-information-detail-show {
+
+.order-express-information-detail-show {
   padding: 20px;
 }
-#order-express-information-detail-show-button {
-  background-color: #FFFFFF;
+.order-express-info-link {
   font-size: 14px;
   color: #979797;
 }
