@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20150719221654) do
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree
   add_index "orders", ["contest_team_id"], name: "index_orders_on_contest_team_id", using: :btree
-  add_index "orders", ["delivery_exported"], name: "test_index", using: :btree
   add_index "orders", ["express_id"], name: "index_orders_on_express_id", using: :btree
   add_index "orders", ["order_number"], name: "index_orders_on_order_number", unique: true, using: :btree
   add_index "orders", ["product_id"], name: "index_orders_on_product_id", using: :btree
