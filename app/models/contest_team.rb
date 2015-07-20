@@ -24,7 +24,9 @@ class ContestTeam < ActiveRecord::Base
 
   def normalize_blank_values
     attributes.each do |column, value|
-      self[column].present? || self[column] = nil
+      if self[column] == ""
+        self[column] = nil
+      end
     end
   end
 end
