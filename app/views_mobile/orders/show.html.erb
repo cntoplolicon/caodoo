@@ -80,9 +80,6 @@
       <%= form_for [@user, @order], html: {class: "cancel_order_#{@order.id}_form"} do |f| %>
         <%= f.hidden_field :status, value: Order::CANCELLED %>
       <% end %>
-      <% if [Order::DELIVERED, Order::COMPLETE].include?(@order.status) && @order.express.present? %>
-        <a class="order_pay_bt a_bt_hight" href="http://www.kuaidi100.com">查看物流</a>
-      <% end %>
       <% if [Order::DELIVERED].include?(@order.status) && @order.express.present? %>
         <a class="order_pay_bt a_bt_hight receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>
       <% end %>

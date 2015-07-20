@@ -78,9 +78,6 @@
             <% if [Order::TO_PAY, Order::PAID].include?(order.status) %>
                <a class="cancel_order_action order_cancel_bt a_bt" data-order-id="<%= order.id %>">取消订单</a>
             <% end %>
-            <% if [Order::DELIVERED, Order::COMPLETE].include?(order.status) && order.express.present?%>
-              <a class="pay_order" href="http://www.kuaidi100.com">查看物流</a>
-            <% end %>
             <% if [Order::DELIVERED].include?(order.status) && order.express.present?%>
               <a class="pay_order receive_order_action" data-order-id="<%= order.id %>">确认收货</a>
             <% end %>
