@@ -115,4 +115,21 @@ $(document).ready(function() {
       });
     }, 7000);
   }
+
+  $('.express-info-link').click(function(event) {
+    event.preventDefault();
+    $(this).text('正在获取物流信息...');
+    var that = this;
+    $.ajax({
+      url: $(this).prop('href'),
+      type: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        $(that).text(JSON.stringify(res));
+      },
+      error: function() {
+        $(that).text('发生未知错误');
+      }
+    });
+  });
 });

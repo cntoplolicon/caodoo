@@ -26,9 +26,9 @@
       </div>
       <% end %>
     </div>
-    <% if @express_info %>
+    <% if @order.tracking_number && @order.express.present? %>
       <div>
-        <%= @express_info %>
+        <%= link_to "查看物流信息", user_order_express_info_path(@user, @order), class: "express-info-link" %>
       </div>
     <% end %>
     <div class="order_info">
