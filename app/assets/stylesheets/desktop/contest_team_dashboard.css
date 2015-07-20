@@ -1,8 +1,11 @@
-.green {
-  color: #0ca011;
+.blue {
+  color: #189EC6;
 }
 .red {
-  color: #fe6a29;
+  color:red;
+}
+.green {
+  color: #0ca011;
 }
 
 .game-header-container {
@@ -109,6 +112,7 @@ li {
 }
 .current_tab {
   border-bottom: 2px solid #3fb134;
+  color: #3fb134;
 }
 #game_header_management_menu {
   border-bottom: 1px solid #16b51b;
