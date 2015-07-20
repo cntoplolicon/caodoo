@@ -11,7 +11,7 @@ class Address < ActiveRecord::Base
   validates :province_code, presence: true
   validates :city_code, presence: true, if: :province_has_cities 
   validates :district_code, presence: true, if: :city_has_districts
-  validates_format_of :phone, with: /\A[^a-zA-Z]*\z/
+  validates_format_of :phone, with: /\A\d{11}\z/
 
   default_scope { where(deleted: false) }
 

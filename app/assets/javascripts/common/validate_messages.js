@@ -27,8 +27,8 @@ var validate_message = {
     }
   },
   phone: {
-    blank: '联系方式不能为空',
-    invalid: '请输入正确的联系方式'
+    blank: '手机号不能为空',
+    invalid: '请输入正确的手机号'
   },
   detailed_address: {
     blank: '详细地址不能为空'
