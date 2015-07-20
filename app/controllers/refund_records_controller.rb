@@ -43,7 +43,7 @@ class RefundRecordsController < ContestTeamDashboardController
     if @total_orders_count == 0 && @returned_orders_count == 0 then
       @return_ratio = 0
     else
-      @return_ratio = @returned_orders_count.to_f / (@returned_orders_count + @total_orders_count) * 100
+      @return_ratio =@returned_orders_count.to_f / (@returned_orders_count + @total_orders_count) * 100
     end
   end
 
