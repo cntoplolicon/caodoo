@@ -51,7 +51,7 @@ set :ssh_options, {
 # The server-based syntax can be used to override options:
 # ------------------------------------
 
-set :deploy_selection, ask("\n0) All\n1) Deploy To Test Server\n2) Deploy To Backend ERP\n3) Deploy To Frontend Application\n", nil)
+set :deploy_selection, ask("\n1) Deploy To Test Server\n2) Deploy To Backend ERP\n3) Deploy To Frontend Application\n", nil)
 
 def deploy_to_test_server
   server '54.223.201.93',
@@ -94,10 +94,6 @@ def deploy_to_frontend_app
 end
 
 case fetch(:deploy_selection).to_i
-when 0
-  deploy_to_test_server
-  deploy_to_backend_erp
-  deploy_to_frontend_app
 when 1
   deploy_to_test_server
 when 2
