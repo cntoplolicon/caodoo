@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row" style="margin-bottom: 16px">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <% if @order.errors.any? %>
+        <ul>
+          <% @order.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <%= link_to "返回", customer_service_orders_path, class: 'btn btn-default' %>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-xs-6">
+      <div class="title">基本信息</div>
+      <dl class="dl-horizontal">
+        <dt>订单编号</dt>
+        <dd><%= @order.order_number %></dd>
+        <dt>产品名称</dt>
+        <dd><%= @order.product_name %></dd>
+        <dt>单价</dt>
+        <dd><%= @order.unit_price %></dd>
+        <dt>数量</dt>
+        <dd><%= @order.quantity %></dd>
+        <dt>总价</dt>
+        <dd><%= @order.total_price %></dd>
+        <dt>状态</dt>
+        <dd><%= order_status_text(@order.status) %></dd>
+      </dl>
+    </div>
+    <div class="col-md-4 col-xs-6">
+      <div class="title">物流信息</div>
+      <dl class="dl-horizontal">
+        <dt>收件人</dt>
+        <dd><%= @order.receiver %></dd>
+        <dt>收件人联系方式</dt>
+        <dd><%= @order.phone %></dd>
+        <dt>省份</dt>
+        <dd><%= @order.province_name %></dd>
+        <dt>城市</dt>
+        <dd><%= @order.city_name %></dd>
+        <dt>地区</dt>
+        <dd><%= @order.district_name %></dd>
+        <dt>详细地址</dt>
+        <dd><%= @order.detailed_address %></dd>
+        <dt>快递公司</dt>
+        <dd><%= @order.try(:express).try(:name) %></dd>
+        <dt>物流单号</dt>
+        <dd><%= @order.tracking_number %></dd>
+      </dl>
+    </div>
+    <div class="col-md-4 col-xs-6">
+      <div class="title">比赛信息</div>
+      <dl class="dl-horizontal">
+        <dt>是否比赛商品</dt>
+        <dd><%= @order.product.contest_product? ? '是' : '否' %></dd>
+        <dt>商品等级</dt>
+        <dd><%= @order.product.contest_level %></dd>
+        <dt>推荐团队</dt>
+        <dd><%= @order.try(:contest_team).try(:name) %></dd>
+      </dl>
+    </div>
+    <div class="col-md-4 col-xs-6">
+      <div class="title">支付信息</div>
+      <dl class="dl-horizontal">
+        <dt>状态</dt>
+        <dd><%= payment_record_status_text(@order.payment_record.status) %></dd>
+        <dt>支付方式</dt>
+        <dd><%= payment_type_text(@order.payment_record.payment_type) %></dd>
+        <dt>支付金额</dt>
+        <dd><%= @order.payment_record.amount %></dd>
+      </dl>
+    </div>
+  </div>
+</div>

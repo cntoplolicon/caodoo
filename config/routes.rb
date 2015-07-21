@@ -141,4 +141,13 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :customer_service do
+    root 'orders#index'
+    resources :orders
+    resources :refund_records
+
+  end
+
+
 end

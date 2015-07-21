@@ -1,0 +1,39 @@
+<% if @refund_record.errors.any? %>
+  <div class="container form-container">
+    <ul>
+      <% @refund_record.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="container form-container">
+  <%= form_for [:customer_service, @refund_record] do |f| %>
+    <div class="form-group">
+      <% if @refund_record.new_record? %>
+        <%= label_tag '订单号' %>
+        <%= f.text_field :order_number, class: 'form-control' %>
+      <% else %>
+        <%= @refund_record.order.order_number %>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= label_tag '退货数量' %>
+      <%= f.number_field :quantity, min: 1, max: 10, value: 1, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag '快递公司' %>
+      <%= f.collection_select :express_id, Express.all, :id, :name, {}, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag '运单号' %>
+      <%= f.text_field :tracking_number, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag '备注' %>
+      <%= f.text_field :remark, class: 'form-control' %>
+    </div>
+    <%= link_to "返回", customer_service_refund_records_path, class: 'btn btn-default' %>
+    <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -3,12 +3,12 @@
     <div class="team_return_goods_top_data_number"><span class="green"><%= @total_orders_count %>件</span></div>
     <div class="team_return_goods_top_data_text"><span class="green">总销量</span></div>
   </div>
-  <div class="team_return_goods_top_data <%= @returned_orders_count==0?'green':'red'%>">
+  <div class="team_return_goods_top_data <%= @returned_orders_count==0 ? 'green' : 'red' %>">
     <div class="team_return_goods_top_data_number"><%= @returned_orders_count %>件</div>
     <div class="team_return_goods_top_data_text">退货量</div>
   </div>
-  <div class="team_return_goods_top_data <%= @return_ratio==0?'green':'red'%>" style="margin-top: 39px">
-    <div class="team_return_goods_top_data_number"><%= number_to_percentage(@return_ratio,precision:1) %></div>
+  <div class="team_return_goods_top_data <%= @return_ratio==0 ? 'green' : 'red' %>" style="margin-top: 39px">
+    <div class="team_return_goods_top_data_number"><%= number_to_percentage(@return_ratio, precision: 1) %></div>
     <div class="team_return_goods_top_data_text">退货率</div>
   </div>
   <div class="team_return_goods_top_text">
@@ -22,44 +22,182 @@
 </div>
 <div class="team_return_goods_middle">
   <div class="team_return_goods_middle_title">退货联系方式</div>
-  <table>
+  <div class="team_return_contacts">
+    <ul class="team_return_contacts_ul">
+      <li date="#team_return_contact_type1" class="team_return_contact team_return_current_contact">基础版</li>
+      <% if @team_level>=1 %>
+        <li date="#team_return_contact_type2" class="team_return_contact">A类</li>
+      <% end %>
+      <% if @team_level>=2 %>
+        <li date="#team_return_contact_type3" class="team_return_contact">B类</li>
+      <% end %>
+      <% if @team_level==3 %>
+        <li date="#team_return_contact_type4" class="team_return_contact">C类</li>
+      <% end %>
+    </ul>
+    <div class="team_return_contacts_bottom_line"></div>
+  </div>
+  <table id="team_return_contact_type1" class="team_return_contact_table" style="display: block">
     <tbody>
-      <tr class="team_return_goods_table_title">
-        <td class="team_return_good_name">产品名</td>
-        <td class="team_return_good_receiver">收件人</td>
-        <td class="team_return_good_phone">电话</td>
-        <td class="team_return_good_address">收件地址</td>
-      </tr>
-      <tr>
-        <td class="team_return_good_name"><span class="team_return_good_name_span"></span>Pearlty"多折一体式"无线自拍杆</td>
-        <td class="team_return_good_receiver">联臣公司</td>
-        <td class="team_return_good_phone">0769-82018060-805</td>
-        <td class="team_return_good_address">广东省东莞市清溪镇上元银坑工业区银松路二街三号</td>
-      </tr>
-      <tr>
-        <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐心BonBon智能运动手环</td>
-        <td class="team_return_good_receiver">李兴建</td>
-        <td class="team_return_good_phone">0760-85166920</td>
-        <td class="team_return_good_address"> 广东省中山市锦安路8号（一品木业东侧）</td>
-      </tr>
-      <tr>
-        <td class="team_return_good_name"><span class="team_return_good_name_span"></span>魔调M100Talk智能无线运动耳机</td>
-        <td class="team_return_good_receiver">古莉媚</td>
-        <td class="team_return_good_phone">0755-23763130</td>
-        <td class="team_return_good_address">深圳市龙华新区民治街道梅龙路与中梅路交汇处441号光浩国际中心12楼</td>
-      </tr>
-      <tr>
-        <td class="team_return_good_name"><span class="team_return_good_name_span"></span>360P1大户型智能无线路由器</td>
-        <td class="team_return_good_receiver">于溪</td>
-        <td class="team_return_good_phone">0769-82129317</td>
-        <td class="team_return_good_address">广东东莞市塘厦镇三坑路10号磊科旗舰店</td>
-      </tr>
-      <tr>
-        <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐蜗（SVR Glass）虚拟现实眼镜头盔</td>
-        <td class="team_return_good_receiver">张峰</td>
-        <td class="team_return_good_phone">4006605311</td>
-        <td class="team_return_good_address">上海市浦东新区居里路123号4幢607</td>
-      </tr>
+    <tr class="team_return_goods_table_title">
+      <td class="team_return_good_name">产品名</td>
+      <td class="team_return_good_receiver">收件人</td>
+      <td class="team_return_good_phone">电话</td>
+      <td class="team_return_good_address">收件地址</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>Pearlty"多折一体式"无线自拍杆</td>
+      <td class="team_return_good_receiver">联臣公司</td>
+      <td class="team_return_good_phone">0769-82018060-805</td>
+      <td class="team_return_good_address">广东省东莞市清溪镇上元银坑工业区银松路二街三号</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐心BonBon智能运动手环</td>
+      <td class="team_return_good_receiver">李兴建</td>
+      <td class="team_return_good_phone">0760-85166920</td>
+      <td class="team_return_good_address"> 广东省中山市锦安路8号（一品木业东侧）</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>魔调M100Talk智能无线运动耳机</td>
+      <td class="team_return_good_receiver">古莉媚</td>
+      <td class="team_return_good_phone">0755-23763130</td>
+      <td class="team_return_good_address">深圳市龙华新区民治街道梅龙路与中梅路交汇处441号光浩国际中心12楼</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>360P1大户型智能无线路由器</td>
+      <td class="team_return_good_receiver">于溪</td>
+      <td class="team_return_good_phone">0769-82129317</td>
+      <td class="team_return_good_address">广东东莞市塘厦镇三坑路10号磊科旗舰店</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐蜗（SVR Glass）虚拟现实眼镜头盔</td>
+      <td class="team_return_good_receiver">张峰</td>
+      <td class="team_return_good_phone">4006605311</td>
+      <td class="team_return_good_address">上海市浦东新区居里路123号4幢607</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table id="team_return_contact_type2" class="team_return_contact_table" style="display: none">
+    <tbody>
+    <tr class="team_return_goods_table_title">
+      <td class="team_return_good_name">产品名</td>
+      <td class="team_return_good_receiver">收件人</td>
+      <td class="team_return_good_phone">电话</td>
+      <td class="team_return_good_address">收件地址</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>A类Pearlty"多折一体式"无线自拍杆</td>
+      <td class="team_return_good_receiver">联臣公司</td>
+      <td class="team_return_good_phone">0769-82018060-805</td>
+      <td class="team_return_good_address">广东省东莞市清溪镇上元银坑工业区银松路二街三号</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐心BonBon智能运动手环</td>
+      <td class="team_return_good_receiver">李兴建</td>
+      <td class="team_return_good_phone">0760-85166920</td>
+      <td class="team_return_good_address"> 广东省中山市锦安路8号（一品木业东侧）</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>魔调M100Talk智能无线运动耳机</td>
+      <td class="team_return_good_receiver">古莉媚</td>
+      <td class="team_return_good_phone">0755-23763130</td>
+      <td class="team_return_good_address">深圳市龙华新区民治街道梅龙路与中梅路交汇处441号光浩国际中心12楼</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>360P1大户型智能无线路由器</td>
+      <td class="team_return_good_receiver">于溪</td>
+      <td class="team_return_good_phone">0769-82129317</td>
+      <td class="team_return_good_address">广东东莞市塘厦镇三坑路10号磊科旗舰店</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐蜗（SVR Glass）虚拟现实眼镜头盔</td>
+      <td class="team_return_good_receiver">张峰</td>
+      <td class="team_return_good_phone">4006605311</td>
+      <td class="team_return_good_address">上海市浦东新区居里路123号4幢607</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table id="team_return_contact_type3" class="team_return_contact_table" style="display: none">
+    <tbody>
+    <tr class="team_return_goods_table_title">
+      <td class="team_return_good_name">产品名</td>
+      <td class="team_return_good_receiver">收件人</td>
+      <td class="team_return_good_phone">电话</td>
+      <td class="team_return_good_address">收件地址</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>B类Pearlty"多折一体式"无线自拍杆</td>
+      <td class="team_return_good_receiver">联臣公司</td>
+      <td class="team_return_good_phone">0769-82018060-805</td>
+      <td class="team_return_good_address">广东省东莞市清溪镇上元银坑工业区银松路二街三号</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐心BonBon智能运动手环</td>
+      <td class="team_return_good_receiver">李兴建</td>
+      <td class="team_return_good_phone">0760-85166920</td>
+      <td class="team_return_good_address"> 广东省中山市锦安路8号（一品木业东侧）</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>魔调M100Talk智能无线运动耳机</td>
+      <td class="team_return_good_receiver">古莉媚</td>
+      <td class="team_return_good_phone">0755-23763130</td>
+      <td class="team_return_good_address">深圳市龙华新区民治街道梅龙路与中梅路交汇处441号光浩国际中心12楼</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>360P1大户型智能无线路由器</td>
+      <td class="team_return_good_receiver">于溪</td>
+      <td class="team_return_good_phone">0769-82129317</td>
+      <td class="team_return_good_address">广东东莞市塘厦镇三坑路10号磊科旗舰店</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐蜗（SVR Glass）虚拟现实眼镜头盔</td>
+      <td class="team_return_good_receiver">张峰</td>
+      <td class="team_return_good_phone">4006605311</td>
+      <td class="team_return_good_address">上海市浦东新区居里路123号4幢607</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table id="team_return_contact_type4" class="team_return_contact_table" style="display: none">
+    <tbody>
+    <tr class="team_return_goods_table_title">
+      <td class="team_return_good_name">产品名</td>
+      <td class="team_return_good_receiver">收件人</td>
+      <td class="team_return_good_phone">电话</td>
+      <td class="team_return_good_address">收件地址</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>C类Pearlty"多折一体式"无线自拍杆</td>
+      <td class="team_return_good_receiver">联臣公司</td>
+      <td class="team_return_good_phone">0769-82018060-805</td>
+      <td class="team_return_good_address">广东省东莞市清溪镇上元银坑工业区银松路二街三号</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐心BonBon智能运动手环</td>
+      <td class="team_return_good_receiver">李兴建</td>
+      <td class="team_return_good_phone">0760-85166920</td>
+      <td class="team_return_good_address"> 广东省中山市锦安路8号（一品木业东侧）</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>魔调M100Talk智能无线运动耳机</td>
+      <td class="team_return_good_receiver">古莉媚</td>
+      <td class="team_return_good_phone">0755-23763130</td>
+      <td class="team_return_good_address">深圳市龙华新区民治街道梅龙路与中梅路交汇处441号光浩国际中心12楼</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>360P1大户型智能无线路由器</td>
+      <td class="team_return_good_receiver">于溪</td>
+      <td class="team_return_good_phone">0769-82129317</td>
+      <td class="team_return_good_address">广东东莞市塘厦镇三坑路10号磊科旗舰店</td>
+    </tr>
+    <tr>
+      <td class="team_return_good_name"><span class="team_return_good_name_span"></span>乐蜗（SVR Glass）虚拟现实眼镜头盔</td>
+      <td class="team_return_good_receiver">张峰</td>
+      <td class="team_return_good_phone">4006605311</td>
+      <td class="team_return_good_address">上海市浦东新区居里路123号4幢607</td>
+    </tr>
     </tbody>
   </table>
 </div>
@@ -70,52 +208,58 @@
   </div>
   <table>
     <tbody>
-      <tr class="team_return_goods_table_title">
-        <td class="team_return_order_id_col">订单号</td>
-        <td class="team_return_order_count_col">数量</td>
-        <td class="team_return_order_receiver_col">收件人</td>
-        <td class="team_return_order_express_col">退货物流</td>
-        <td class="team_return_order_tracking_number_col">退货运单号</td>
-        <td class="team_return_order_status_col">退货状态</td>
-        <td class="team_return_order_action_col">操作</td>
-      </tr>
-      <% @refund_records.each do |r| %>
-        <tr>
-          <td class="team_return_order_id_col"><span class="team_refund_record_order_number"><%= r.order.order_number %></span></td>
-          <td class="team_return_order_count_col team_return_goods_count"><%= r.quantity %></td>
-          <td class="team_return_order_receiver_col"><%= r.order.receiver %></td>
-          <td class="team_return_order_express_col"><%= r.express.name %></td>
-          <td class="team_return_order_tracking_number_col"><span class="team_refund_record_tracking_number"><%= r.tracking_number %></span></td>
-          <% if r.remark.blank? %>
-            <td class="team_return_order_status_col"><span class="team_refund_record_status_<%= r.status %>"><%= refund_record_status_text(r.status) %></span></td>
-          <% else %>
-            <td class="team_return_order_status_col"><a class="a_live refund_record_remark_action" data-message="<%= r.remark %>"><%= refund_record_status_text(r.status) %></td>
-            <% end %>
-            <td>
-              <% if r.status == RefundRecord::PENDING %>
-                <%= link_to '编辑', edit_contest_team_refund_record_path(@contest_team, r), class: 'refund_record_edit_action' %>
-                <% else  %>
-                <span>-</span>
-                <% end %>
-            </td>
-          </tr>
+    <tr class="team_return_goods_table_title">
+      <td class="team_return_order_id_col">订单号</td>
+      <td class="team_return_order_count_col">数量</td>
+      <td class="team_return_order_receiver_col">收件人</td>
+      <td class="team_return_order_express_col">退货物流</td>
+      <td class="team_return_order_tracking_number_col">退货运单号</td>
+      <td class="team_return_order_status_col">退货状态</td>
+      <td class="team_return_order_action_col">操作</td>
+    </tr>
+    <% @refund_records.each do |r| %>
+      <tr>
+        <td class="team_return_order_id_col">
+          <span class="team_refund_record_order_number"><%= r.order.order_number %></span></td>
+        <td class="team_return_order_count_col team_return_goods_count"><%= r.quantity %></td>
+        <td class="team_return_order_receiver_col"><%= r.order.receiver %></td>
+        <td class="team_return_order_express_col"><%= r.express.name %></td>
+        <td class="team_return_order_tracking_number_col">
+          <span class="team_refund_record_tracking_number"><%= r.tracking_number %></span></td>
+        <% if r.remark.blank? %>
+          <td class="team_return_order_status_col">
+            <span class="team_refund_record_status_<%= r.status %>"><%= refund_record_status_text(r.status) %></span>
+          </td>
+        <% else %>
+          <td class="team_return_order_status_col">
+            <a class="a_live refund_record_remark_action" data-message="<%= r.remark %>"><%= refund_record_status_text(r.status) %>
+          </td>
         <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="team_return_goods_popup" id="team_return_goods_popup">
-  </div>
-  <div id="refund_record_remark_box" class="popup" style="display: none;">
-    <div class="resales_popup_box">
-      <div class="customer_service_info">
-        <ul>
-          <li><span style="color: black;">订单备注:</span></li>
-          <li class="refund_record_remark_message"></li>
-          <li style="text-align: right">
-            <a class="close_refund_record_remark_button">知道了</a>
-          </li>
-        </ul>
-      </div>
+        <td>
+          <% if r.status == RefundRecord::PENDING %>
+            <%= link_to '编辑', edit_contest_team_refund_record_path(@contest_team, r), class: 'refund_record_edit_action' %>
+          <% else %>
+            <span>-</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="team_return_goods_popup" id="team_return_goods_popup">
+</div>
+<div id="refund_record_remark_box" class="popup" style="display: none;">
+  <div class="resales_popup_box">
+    <div class="customer_service_info">
+      <ul>
+        <li><span style="color: black;">订单备注:</span></li>
+        <li class="refund_record_remark_message"></li>
+        <li style="text-align: right">
+          <a class="close_refund_record_remark_button">知道了</a>
+        </li>
+      </ul>
     </div>
   </div>
+</div>
 </div>

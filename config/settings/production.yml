@@ -8,3 +8,7 @@ admin:
 
 security_code:
   disabled: false
+
+customer_service:
+    username: 'customer'
+    password: 'customer'
