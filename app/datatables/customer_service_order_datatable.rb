@@ -18,7 +18,8 @@ class CustomerServiceOrderDatatable < Datatable
         order_status_text(order.status),
         order.try(:contest_team).try(:name),
         order.try(:contest_team).try(:phone),
-        order.created_at.strftime('%Y/%m/%d %H:%M:%S')
+        order.created_at.strftime('%Y/%m/%d %H:%M:%S'),
+        order.updated_at.strftime('%Y/%m/%d %H:%M:%S')
       ]
     end
   end
@@ -33,7 +34,7 @@ class CustomerServiceOrderDatatable < Datatable
           range = filter.split('-yadcf_delim-')
           records = records.where("#{column} >= :search", search: range[0]) if range[0].present?
           records = records.where("#{column} < :search", search: range[1]) if range[1].present?
-        elsif column.end_with?('created_at')
+        elsif column.end_with?('created_at') || column.end_with?('updated_at')
           range = filter.split('-yadcf_delim-')
           records = records.where("#{column} >= :search", search: Time.parse(range[0])) if range[0].present?
           records = records.where("#{column} < :search", search: Time.parse(range[1])) if range[1].present?
@@ -56,6 +57,7 @@ class CustomerServiceOrderDatatable < Datatable
   def sortable_columns
     @sortable_columns ||= ['orders.order_number', 'orders.product_name', 'orders.unit_price', 'orders.quantity', 'orders.total_price',
                            'orders.receiver', 'orders.phone', 'orders.province_name', 'orders.city_name', 'orders.district_name',
-                           'orders.detailed_address', 'orders.status', 'contest_teams.name', 'contest_teams.phone', 'orders.created_at']
+                           'orders.detailed_address', 'orders.status', 'contest_teams.name', 'contest_teams.phone',
+                           'orders.created_at', 'orders.updated_at']
   end
 end
