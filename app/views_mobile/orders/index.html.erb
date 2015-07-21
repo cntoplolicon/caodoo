@@ -79,10 +79,10 @@
                <a class="cancel_order_action order_cancel_bt a_bt" data-order-id="<%= order.id %>">取消订单</a>
             <% end %>
             <% if [Order::DELIVERED, Order::COMPLETE].include?(order.status) && order.express.present?%>
-              <a class="pay_order" href="http://www.kuaidi100.com">查看物流</a>
+              <a class="order_pay_bt a_bt_hight" href="http://www.kuaidi100.com">查看物流</a>
             <% end %>
             <% if [Order::DELIVERED].include?(order.status) && order.express.present?%>
-              <a class="pay_order receive_order_action" data-order-id="<%= order.id %>">确认收货</a>
+              <a class="order_pay_bt a_bt_hight receive_order_action" data-order-id="<%= order.id %>">确认收货</a>
             <% end %>
           </div>
         </li>
@@ -111,14 +111,14 @@
       <div class="confirm_title">
         确认收货?
       </div>
-    <div class="confirm_action">
-      <a class="cancel_receive_order_button">
-        关闭窗口
-      </a>
-      &nbsp;&nbsp;&nbsp;
-      <a class="confirm_receive_order_button">
-        确认收货
-      </a>
-    </div>
+      <div class="confirm_action">
+        <a class="cancel_receive_order_button">
+          关闭窗口
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a class="confirm_receive_order_button">
+          确认收货
+        </a>
+      </div>
     </div>
   </div>
