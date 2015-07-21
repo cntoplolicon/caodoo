@@ -16,6 +16,21 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
+  var ie =  (function(){
+    var undef,
+    v = 3,
+      div = document.createElement('div'),
+      all = div.getElementsByTagName('i');
+    while (
+      div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+      all[0]
+    );
+    return v > 4 ? v : undef;
+  }());
+  if (ie <= 8) {
+    $('.csns-share-button[data-cmd="wechat"]').remove();
+    $('.browser-version-hint').show();
+  }
   $('.team_share_link_product .bdsharebuttonbox').each(function() {
     var productPanel = $(this).closest('.team_share_link_product');
     var productUrl = productPanel.find('.team_share_link_detail_url a').text();
@@ -35,11 +50,12 @@ $(document).ready(function() {
         pic: productImageUrl
       });
     }
-    productPanel.find('.team_share_link_product_qrcode_img').qrcode({
-      size: 140,
-      color: "#3a3",
-      text: productUrl
-    });
+    if (!(ie <= 8)) {
+      productPanel.find('.team_share_link_product_qrcode_img').qrcode({
+        size: 140,
+        text: productUrl
+      });
+    }
   });
 
   $(".team_performance_tab a").click(function() {

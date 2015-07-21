@@ -1,4 +1,7 @@
 <div>
+  <div class="browser-version-hint">
+    您使用的浏览器版本过低，无法查看分享二维码
+  </div>
   <% @links.each_with_index do |link, i| %>
     <div class="team_share_link_product">
       <%= hidden_field_tag("image_link#{i}", asset_url(link[:image_url]), class: 'team_share_link_img_url')%>
