@@ -1,31 +1,27 @@
 <% if !@express_data || @express_data.empty? %>
   <div class="order-express-information-msg">暂无物流信息~</div>
 <% else %>
-  <table class="order-express-information-table">
-    <tr>
-      <th class="order-express-information-time">处理时间</th>
-      <th>到达</th>
-    </tr>
+  <ul class="order-express-information-table">
     <% @express_data.each_with_index do |r, i| %>
-      <tr>
+      <li>
         <% if i == 0 %>
-          <td>
-            <%= image_tag 's.png', class: 'green-circle' %>
+          <div class="mobile-express-table-detail">
+            <%= image_tag 'mobile-green-circle.png' %>
             <span class="express-latest-time"><%= r[:time] %></span>
-          </td>
-          <td>
+          </div>
+          <div class="mobile-express-table-detail-time">
             <span class="express-latest-context"><%= r[:context] %></span>
-          </td>
+          </div>
         <% else %>
-          <td>
-            <%= image_tag 's.png', class: 'grey-circle' %>
+          <div class="mobile-express-table-detail">
+            <%= image_tag 'mobile-grey-circle.png' %>
             <span><%= r[:time] %></span>
-          </td>
-          <td>
+          </div>
+          <div class="mobile-express-table-detail-time">
             <span><%= r[:context] %></span>
-          </td>
+          </div>
         <% end %>
-      </tr>
+      </li>
     <% end %>
-  </table>
+  </ul>
 <% end %>
