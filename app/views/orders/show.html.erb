@@ -91,11 +91,6 @@
               支付方式：<span class="order_span"><%= payment_type_text(@order.payment_record.payment_type) %></span>
             </li>
           <% end %>
-          <% if logistics_text(@order).present? %>
-            <li>
-              快递方式：<span class="order_span"><%= logistics_text(@order) %></span>
-            </li>
-          <% end %>
         </ul>
       </div>
       <div class="order_info_block2">
