@@ -13,10 +13,6 @@ $(document).ready(function() {
       window.location.reload();
     }
   };
-  $('#order-express-information-detail-show-button').click(function(){
-    $('#order-express-information-detail-show').hide();
-    $('#order-express-information-detail').show();
-  });
   $('.order-submission').click(function() {
     $(this).prop('disabled', true);
     $(this).closest('form').submit();
@@ -36,13 +32,11 @@ $(document).ready(function() {
     }
     return minutes + '分' + seconds + '秒';
   };
-
   if ($('.payment-deadline').length > 0) {
     var time = $('#payment-remain-time-hidden-field').val();
     paymentTimeCountDown();
     window.setInterval(paymentTimeCountDown, 1000);
   };
-
   $('.return_application_action').click(function() {
     $('#return_application_box').show();
   });
@@ -84,7 +78,13 @@ $(document).ready(function() {
   $('#payment_failure_box .close_button').click(function() {
     $('#payment_failure_box').hide();
   });
-
+  $('.order-express-info-link').click(function(event) {
+    event.preventDefault();
+    $(this).parent().hide();
+    var detailPanel = $('.order-express-information-detail');
+    detailPanel.show();
+    detailPanel.load($(this).prop('href'));
+  });
   if ($('#order_status_url').length > 0) {
     window.setInterval(function() {
       $.ajax({

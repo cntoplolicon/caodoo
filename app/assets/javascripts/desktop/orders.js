@@ -13,12 +13,6 @@ $(document).ready(function() {
       window.location.reload();
     }
   };
-
-  $('#order-express-information-detail-show-button').click(function(){
-    $('#order-express-information-detail-show').hide();
-    $('#order-express-information-detail').show();
-  });
-
   function orderRemainTime(time) {
     if (typeof(time) !== 'number') {
       return '00分00秒';
@@ -34,7 +28,6 @@ $(document).ready(function() {
     }
     return minutes + '分' + seconds + '秒';
   };
-
   $('input[name = "order_radio"]').change(function() {
     $('#payment-before-choose').hide();
     $('.payment-button').show();
@@ -44,21 +37,17 @@ $(document).ready(function() {
     $('#payment-before-choose').hide();
     $('.payment-button').show();
   }
-
-
   if ($('.payment-deadline').length > 0) {
     var time = $('#payment-remain-time-hidden-field').val();
     paymentTimeCountDown();
     window.setInterval(paymentTimeCountDown, 1000);
   };
-
   var wxPayUrl = $('#wechat-qrcode-field').val();
   $('.qrcode').qrcode({
     'render': 'div',
     'size': 250,
     'text': wxPayUrl
   });
-
   $('.return_application_action').click(function() {
     $('#return_application_box').show();
   });
@@ -89,7 +78,6 @@ $(document).ready(function() {
     $('.confirm_receive_order_button').prop('disabled', true);
     $('.receive_order_' + orderId + '_form').submit();
   });
-
   $('.payment-button').click(function() {
     if ($('.alipay-radio').prop('checked')) {
       $('#alipay_confirm_box').show();
@@ -105,7 +93,6 @@ $(document).ready(function() {
   $('#payment_failure_box .close_button').click(function() {
     $('#payment_failure_box').hide();
   });
-
   if ($('#order_status_url').length > 0) {
     window.setInterval(function() {
       $.ajax({
@@ -120,11 +107,9 @@ $(document).ready(function() {
       });
     }, 7000);
   }
-
   $('.order-express-info-link').click(function(event) {
     event.preventDefault();
     $(this).parent().hide();
-
     var detailPanel = $('.order-express-information-detail');
     detailPanel.show();
     detailPanel.load($(this).prop('href'));
