@@ -4,6 +4,10 @@
 $(document).ready(function() {
   var filter_options = filter_columns(8);
   filter_options[2].filter_type = 'range_number';
+  var datepickerDefaults = {
+    showTodayButton: true,
+    showClear: true,
+  };
   filter_options.push(
     {
       column_number: 8,
@@ -21,12 +25,16 @@ $(document).ready(function() {
       column_number: 9,
       filter_delay: 1000,
       filter_type: 'range_date',
-      date_format: 'yyyy-mm-dd'
+      datepicker_type: 'bootstrap-datetimepicker',
+      date_format: 'YYYY-MM-DD HH:mm:ss',
+      filter_plugin_options: datepickerDefaults
     }, {
       column_number: 10,
       filter_delay: 1000,
       filter_type: 'range_date',
-      date_format: 'yyyy-mm-dd'
+      datepicker_type: 'bootstrap-datetimepicker',
+      date_format: 'YYYY-MM-DD HH:mm:ss',
+      filter_plugin_options: datepickerDefaults
     }, {
       column_number: 11,
       filter_delay: 1000,

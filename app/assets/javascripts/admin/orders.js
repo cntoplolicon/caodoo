@@ -2,9 +2,13 @@
 // All this logic will automatically be available in application.js.
 //
 $(document).ready(function() {
-  filter_options = filter_columns(11);
+  var filter_options = filter_columns(11);
   filter_options[8].data = filter_options[9].data = {};
   filter_options[2].filter_type = filter_options[3].filter_type = filter_options[4].filter_type = 'range_number';
+  var datepickerDefaults = {
+    showTodayButton: true,
+    showClear: true,
+  };
   filter_options.push(
     {
       column_number: 11,
@@ -47,12 +51,16 @@ $(document).ready(function() {
       column_number: 14,
       filter_delay: 1000,
       filter_type: 'range_date',
-      date_format: 'yyyy-mm-dd'
+      datepicker_type: 'bootstrap-datetimepicker',
+      date_format: 'YYYY-MM-DD HH:mm:ss',
+      filter_plugin_options: datepickerDefaults
     }, {
       column_number: 15,
       filter_delay: 1000,
       filter_type: 'range_date',
-      date_format: 'yyyy-mm-dd'
+      datepicker_type: 'bootstrap-datetimepicker',
+      date_format: 'YYYY-MM-DD HH:mm:ss',
+      filter_plugin_options: datepickerDefaults
     }
   );
 

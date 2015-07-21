@@ -14,6 +14,6 @@ $(document).ready(function() {
   });
 
  $('div.input-group.date').datetimepicker({
-   format: 'YYYY-MM-DD HH:mm:ss'
+   format: 'YYYY-MM-DD HH:mm:ss',
   });
 });
