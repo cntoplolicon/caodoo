@@ -4,9 +4,9 @@ $(function() {
   var setupRefundRecordForm = function() {
     $('input').placeholder();
     $('#refund_record_express_id').selectlist({
-      zIndex:20,
-      width:180,
-      height:32,
+      zIndex: 20,
+      width: 180,
+      height: 32,
     });
   }
 
@@ -52,6 +52,12 @@ $(document).ready(function() {
   $(".close_refund_record_remark_button").click(function() {
     $("#refund_record_remark_box").hide();
   });
+  $(".team_return_contact").click(function() {
+    $(".team_return_contact").attr("class", "team_return_contact");
+    $(this).addClass("team_return_current_contact");
+    $('.team_return_contact_table').hide();
+    $($(this).attr('date')).show();
+  });
 });
 
 function validate_refund_record() {
@@ -69,7 +75,6 @@ function validate_refund_record() {
   } else {
     $("#refund_record_receiver_error").text("");
   }
-
 
   if ($("input[name='refund_record[express_id]']").val() == "") {
     $("#refund_record_express_error").text(validate_message.express_id.blank);
@@ -93,3 +98,5 @@ function validate_refund_record() {
   }
   return b;
 }
+
+

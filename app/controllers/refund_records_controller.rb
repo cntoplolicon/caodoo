@@ -45,6 +45,8 @@ class RefundRecordsController < ContestTeamDashboardController
     else
       @return_ratio = @returned_orders_count.to_f / (@returned_orders_count + @total_orders_count) * 100
     end
+    # @team_level=@contest_team.level;
+    @team_level=3;
   end
 
   private

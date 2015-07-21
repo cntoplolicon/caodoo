@@ -36,7 +36,7 @@ class CustomerService::RefundRecordsController < CustomerService::CustomerServic
       if @refund_record.errors.empty? && @refund_record.save
         redirect_to action: :index
       else
-        render 'edit', status: :bad_request, layout: false
+        render 'edit'
       end
     end
   end
