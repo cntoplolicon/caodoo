@@ -9,7 +9,7 @@ class Address < ActiveRecord::Base
   validates :detailed_address, presence: true
   validates :phone, presence:  true
   validates :province_code, presence: true
-  validates :city_code, presence: true, if: :province_has_cities 
+  validates :city_code, presence: true, if: :province_has_cities
   validates :district_code, presence: true, if: :city_has_districts
   validates_format_of :phone, with: /\A\d{11}\z/
 
@@ -21,6 +21,10 @@ class Address < ActiveRecord::Base
 
   def city_has_districts
     city_code.present? && Region.exists?(parent: province_code)
+  end
+
+  def to_text_with_receiver
+    "#{self.receiver} #{self.phone} #{self.try(:province).try(:name)}#{self.try(:city).try(:name)}#{self.try(:district).try(:name)}#{self.detailed_address}"
   end
 
   def to_text
