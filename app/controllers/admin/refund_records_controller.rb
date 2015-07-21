@@ -1,7 +1,7 @@
 require 'csv'
 
 class Admin::RefundRecordsController < Admin::AdminController
-  before_action :find_refund_record, only: [:edit, :update]
+  before_action :find_refund_record, only: [:edit, :update, :express_info]
 
   include OrdersHelper
   include RefundRecords
@@ -25,6 +25,10 @@ class Admin::RefundRecordsController < Admin::AdminController
         send_data bom + to_csv(records).encode("UTF-8"), filename: "#{Time.zone.now.strftime('%Y/%m/%d %H:%M:%S')}.csv", type: 'text/csv'
       end
     end
+  end
+
+  def express_info
+    @express_info = ExpressTracker.track_express(@refund_record.express.code, @refund_record.tracking_number)
   end
 
   def new

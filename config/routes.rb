@@ -130,7 +130,11 @@ Rails.application.routes.draw do
         post :do_reset_password
       end
     end
-    resources :refund_records
+    resources :refund_records do
+      member do
+        get :express_info
+      end
+    end
     resources :regions
     resources :expresses
     resources :orders do
@@ -140,7 +144,6 @@ Rails.application.routes.draw do
         get :upload_payment
         post :import_payment
       end
-
       member do
         get :express_info
       end
