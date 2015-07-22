@@ -23,11 +23,7 @@ class Address < ActiveRecord::Base
     city_code.present? && Region.exists?(parent: province_code)
   end
 
-  def to_text_with_receiver
-    "#{self.receiver} #{self.phone} #{self.try(:province).try(:name)}#{self.try(:city).try(:name)}#{self.try(:district).try(:name)}#{self.detailed_address}"
-  end
-
   def to_text
-    "#{self.try(:province).try(:name)}#{self.try(:city).try(:name)}#{self.try(:district).try(:name)}#{self.detailed_address}"
+    "#{self.receiver} #{self.phone} #{self.try(:province).try(:name)}#{self.try(:city).try(:name)}#{self.try(:district).try(:name)}#{self.detailed_address}"
   end
 end

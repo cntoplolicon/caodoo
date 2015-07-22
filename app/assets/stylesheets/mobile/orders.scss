@@ -113,7 +113,6 @@
 .order-address {
   margin-top: 14px;
   background-color: #f8f8f8;
-  height: 96px;
   padding: 24px 20px;
   width: auto;
 }
@@ -140,11 +139,21 @@
 }
 
 .address-selection {
+  width: 256px;
   color: #626262;
-  width: 100%;
   background-color: #ebebeb;
-  padding: 11px 13px;
+  padding: 8px 10px;
   border: 1px solid #cccccc;
+  margin-bottom: 6px;
+}
+
+.order-address-select-button {
+  float: left;
+}
+
+.order-address-select-content {
+  text-align: left;
+  margin-left: 20px;
 }
 
 .order-information {
