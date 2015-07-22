@@ -6,7 +6,7 @@ $(function() {
     $('#refund_record_express_id').selectlist({
       zIndex: 20,
       width: 180,
-      height: 32,
+      height: 32
     });
   }
 
