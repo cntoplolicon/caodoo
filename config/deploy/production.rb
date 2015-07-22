@@ -54,6 +54,7 @@ set :ssh_options, {
 set :deploy_selection, ask("\n1) Deploy To Test Server\n2) Deploy To Backend ERP\n3) Deploy To Frontend Application\n", nil)
 
 def deploy_to_test_server
+  set :branch, :master
   server '54.223.201.93',
     user: 'ubuntu',
     roles: %w{web app db batch},

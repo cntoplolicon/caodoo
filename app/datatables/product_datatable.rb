@@ -7,6 +7,7 @@ class ProductDatatable < Datatable
       [
         product.name,
         product.brand.name,
+        product.reduced_price,
         product.price,
         product.original_price,
         product.quantity,
@@ -35,6 +36,6 @@ class ProductDatatable < Datatable
   end
 
   def sortable_columns
-    @sortable_columns ||= ['products.name', 'brands.name', 'products.price', 'products.original_price', 'products.contest_level']
+    @sortable_columns ||= ['products.name', 'brands.name', 'products.reduced_price', 'products.price', 'products.original_price', 'products.contest_level']
   end
 end
