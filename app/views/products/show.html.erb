@@ -60,20 +60,23 @@
         <% if @product.product_sale_schedules[0].sale_end < Time.zone.now || @product.quantity == 0 %>
           <div class="product-current-price-expired">&#165;<%= @product.price %></div>
         <% else %>
-          <span style="float: right; color: #15ae10">
+          <span class="product-original-price-wrapper">
             (
             <% if @product.original_price_link.present? %>
               <%= link_to @product.original_price_link, target: '_blank' do %>
-                <span style="text-decoration: line-through; color: #15ae10">京东价<%= @product.original_price %></span>
+                <span class="product-original-price">京东价<%= @product.original_price %></span>
               <% end %>
             <% else %>
-              <span style="text-decoration: line-through; color: #15ae10">京东价<%= @product.original_price %></span>
+              <span class="product-original-price">京东价<%= @product.original_price %></span>
             <% end %>
             )
           </span>
           <div class="product-current-price">&#165;<%= @product.price %></div>
           <% if @product.reduced_price.present? %>
-            <span style="font-size: 12px; line-height: 22px; padding: 0 3px; background-color: #f3f3f3"><span style="color: #fff; padding: 2px; background-color: #d73131">惠</span><span style="color: #d73131"><%= "减#{@product.price - @product.reduced_price}元" %></span></span>
+            <span class="product-discount-text">
+              <span class="product-discount-hint" style=>惠</span>
+              <span class="product-reduced-price"><%= "减#{@product.price - @product.reduced_price}元" %></span>
+            </span>
           <% end %>
         <% end %>
       </div>

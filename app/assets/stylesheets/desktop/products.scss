@@ -245,7 +245,6 @@
 }
 
 .product-detail .product-current-price,
-.product-detail .product-original-price,
 .product-detail .product-current-price-expired {
   display: inline-block;
   *display: inline;
@@ -263,11 +262,14 @@
   color: #000000;
 }
 
+.product-detail .product-original-price-wrapper {
+  float: right;
+  color: #15ae10;
+}
+
 .product-detail .product-original-price {
-  font-size: 14px;
-  color: #6B6B6B;
+  color: #15ae10;
   text-decoration: line-through;
-  vertical-align: middle;
 }
 
 .product-detail .product-quantity-panel {
@@ -540,4 +542,21 @@
 .product-detail-share .bdsharebuttonbox {
   margin-left: 20px;
   margin-top: 20px;
+}
+
+.product-discount-text {
+  font-size: 12px;
+  line-height: 22px;
+  padding: 0 3px;
+  background-color: #f3f3f3
+}
+
+.product-discount-hint {
+  color: #fff;
+  padding: 2px;
+  background-color: #d73131
+}
+
+.product-reduced-price {
+  color: #d73131
 }
