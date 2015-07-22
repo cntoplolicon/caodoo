@@ -60,8 +60,17 @@
           </div>
         </div>
         <div class="order-address-bottom">
-          <%= f.collection_select :address_id, @addresses || @user.addresses.where(deleted: false).order(created_at: :desc),
-            :id, :to_text, {prompt: '请选择收货地址'}, {class: 'address-selection'} %>
+          <% (@addresses || @user.addresses.order(created_at: :desc)).each do |address| %>
+            <%= f.label :"address_id_#{address.id}" do %>
+              <div class = "address-selection">
+                <div class="order-address-select-button"><%= f.radio_button :address_id, address.id %></div>
+                <div class="order-address-select-content">
+                  <div><%= "#{address.receiver} #{address.phone}" %></div>
+                  <div><%= "#{address.try(:province).try(:name)}#{address.try(:city).try(:name)}#{address.try(:district).try(:name)}#{address.detailed_address}" %></div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
           <div class="error-message" id="username-error"><%= @order.errors.messages[:address_id].first if @order.errors[:address_id].any? %></div>
         </div>
       </div>
