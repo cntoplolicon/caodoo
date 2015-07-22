@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719221654) do
+ActiveRecord::Schema.define(version: 20150722015619) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20150719221654) do
     t.text     "logo_url",   limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "colleges", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.string   "password_digest", limit: 255
+    t.boolean  "update_password", limit: 1
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "contest_page_views", force: :cascade do |t|
@@ -169,15 +177,17 @@ ActiveRecord::Schema.define(version: 20150719221654) do
   add_index "product_views", ["product_id"], name: "index_product_views_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.integer  "brand_id",       limit: 4
-    t.decimal  "price",                      precision: 10, scale: 2
-    t.decimal  "original_price",             precision: 10, scale: 2
-    t.datetime "created_at",                                                      null: false
-    t.datetime "updated_at",                                                      null: false
-    t.integer  "priority",       limit: 4,                            default: 0
-    t.integer  "quantity",       limit: 4,                            default: 0
-    t.integer  "contest_level",  limit: 4
+    t.string   "name",                limit: 255
+    t.integer  "brand_id",            limit: 4
+    t.decimal  "price",                           precision: 10, scale: 2
+    t.decimal  "original_price",                  precision: 10, scale: 2
+    t.datetime "created_at",                                                           null: false
+    t.datetime "updated_at",                                                           null: false
+    t.integer  "priority",            limit: 4,                            default: 0
+    t.integer  "quantity",            limit: 4,                            default: 0
+    t.integer  "contest_level",       limit: 4
+    t.decimal  "reduced_price",                   precision: 10, scale: 2
+    t.string   "original_price_link", limit: 255
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree

@@ -44,8 +44,8 @@ class OrdersController < ApplicationController
     @order.order_number = "#{'%07d' % @order.user_id}#{(Time.zone.now.to_f * 1000).to_i}"
     @order.product_name = @product.name
     @order.product_image_url = @product.product_view.product_carousel_images[0].url
-    @order.unit_price = @product.price
-    @order.total_price = @order.quantity * @product.price
+    @order.unit_price = @product.actual_price
+    @order.total_price = @order.quantity * @order.unit_price
     @order.status = Order::TO_PAY
     @order.receiver = @address.receiver
     @order.phone = @address.phone

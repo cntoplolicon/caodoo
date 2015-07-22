@@ -27,7 +27,9 @@
             </div>
             <div class="product-price">
               <div class="product-current-price">&#165;<%= product.price %></div>
-              <div class="product-original-price">原价&#165;<%= product.original_price %> </div>
+              <%= content_tag :div, class: 'product-original-price', data: {original_price_link: product.original_price_link || ''} do  %>
+                <span>京东价格&#165;</span><span><%= product.original_price %></span>
+              <% end %>
             </div>
           </div>
           <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.zone.now).to_i, 0].max %>">

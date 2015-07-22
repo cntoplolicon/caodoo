@@ -17,15 +17,21 @@
     </div>
     <ul class="game_recommend_product_container">
       <% @products.each do |product| %>
-        <%= link_to product_path(product) do %>
         <li class="game_recommend_product_content">
-          <%= image_tag product.product_view.sale_image_url, class:'game_recommend_product_img' %>
-          <div class="game_recommend_product_detail">
-            <p class="game_recommend_product_name"><%=product.name %></p>
-            <p class="recommend_product_price">￥<%=product.price %></p>
-          </div>
+          <%= link_to product_path(product) do %>
+            <%= image_tag product.product_view.sale_image_url, class:'game_recommend_product_img' %>
+            <div class="game_recommend_product_detail">
+              <p class="game_recommend_product_name"><%=product.name %></p>
+              <p class="game_recommend_product_prices">
+                <% if product.reduced_price.present? %>
+                  <span style="float: right; font-size: 12px; line-height: 22px; padding: 0 3px; background-color: #f3f3f3"><span style="color: #fff; padding: 2px; background-color: #d73131">惠</span><span style="color: #d73131"><%= "减#{product.price - product.reduced_price}元" %></span></span>
+                <% end %>
+                <span class="recommend_product_price">￥<%=product.price %></span>
+                <span class="recommend_product_original_price">￥<%= product.original_price %></span>
+              </p>
+            </div>
+          <% end %>
         </li>
-        <% end %>
       <% end %>
     </ul>
   </div>

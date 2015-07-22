@@ -7,6 +7,14 @@
       itemSelector: '.on-sale-product'
     });
 
+    $('.on-sale-products .product-original-price').click(function(event) {
+      var link = $(this).data('original-price-link');
+      if (link) {
+        event.preventDefault();
+        window.open(link);
+      }
+    });
+
     var countDown = function() {
       $('.product-sale-remain-time').each(function() {
         var time = $(this).data('time');
@@ -39,7 +47,6 @@
       if ($("#unit-price-field").length > 0) {
         var quantity = parseInt($('.quantity-input').val());
         var unit_price = parseFloat($('#unit-price-field').val());
-        $('.quantity-display').text(quantity);
         $('.total-price-display').text((quantity * unit_price).toFixed(2));
       }
     }

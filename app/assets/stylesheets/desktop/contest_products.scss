@@ -42,11 +42,7 @@
 
 .game_recommend_product_detail {
   border-top: 1px solid #E5E5E5;
-  padding-top: 20px;
-}
-
-.game_recommend_product_detail p {
-  margin: 0 0 10px 20px;
+  padding: 20px 16px 12px 24px;
 }
 
 .game_share_content {
@@ -55,8 +51,21 @@
   top: 50px;
 }
 
+.game_recommend_product_prices {
+  line-height: 22px;
+}
+
 .recommend_product_price {
   color: #FB3127;
+}
+
+.recommend_product_original_price {
+  font-size: 12px;
+  text-decoration: line-through;
+}
+
+.recommend_product_original_price_link .recommend_product_original_price {
+  color: #337ab7;
 }
 
 .game_recommend_product_img {
@@ -92,5 +101,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin-bottom: 16px;
 }
 

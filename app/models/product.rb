@@ -12,7 +12,12 @@ class Product < ActiveRecord::Base
   validates_presence_of :original_price
   validates_presence_of :priority
   validates_presence_of :priority
+
   def contest_product?
     !self.contest_level.nil?
+  end
+
+  def actual_price
+    self.reduced_price || self.price
   end
 end
