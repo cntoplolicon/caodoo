@@ -56,19 +56,21 @@
 
 .game_recommend_product_detail {
   border-top: 1px solid #E5E5E5;
-  padding-top: 10px;
+  padding: 10px;
 }
 
-.game_recommend_product_detail p {
-  margin: 0px 0px 5px 10px;
+.game_recommend_product_detail .product-discount-text {
+  float: right;
 }
 
 .recommend_product_price {
   color: #FB3127;
+  line-height: 18px;
 }
 
 .game_recommend_product_name {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin-bottom: 5px;
 }

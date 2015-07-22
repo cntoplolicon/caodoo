@@ -26,7 +26,15 @@
             <%= image_tag product.product_view.sale_image_url, class: 'game_recommend_product_img' %>
             <div class="game_recommend_product_detail">
               <p class="game_recommend_product_name"><%=product.name %></p>
-              <p class="recommend_product_price">￥<%=product.price %></p>
+              <p class="recommend_product_price">
+                <% if product.reduced_price.present? %>
+                  <span class="product-discount-text">
+                    <span class="product-discount-hint" style=>惠</span>
+                    <span class="product-reduced-price"><%= "减#{product.price - product.reduced_price}元" %></span>
+                  </span>
+                <% end %>
+                <span class="recommend_product_price">￥<%=product.price %></span>
+              </p>
             </div>
           </li>
         <% end %>

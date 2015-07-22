@@ -205,27 +205,25 @@
 }
 
 .product-detail-price {
-  display: inline-block;
+  line-height: 28px;
 }
 
-.product-detail-price-now {
+.product-detail-current-price {
   font-size: 24px;
   color: #d73131;
   float: left;
 }
 
-.product-detail-price-expired {
+.product-current-price-expired {
   font-size: 24px;
   color: #6B6B6B;
   float: left;
 }
 
-.product-detail-price-original {
-  margin-top: 7px;
+.product-detail-original-price {
+  color: #15ae10;
+  text-decoration: line-through;
   font-size: 14px;
-  color: #6b6b6b;
-  float: left;
-  margin-left: 5px;
 }
 
 .product-detail-quantity {
@@ -470,5 +468,28 @@
 .arrow-left-img, .arrow-right-img {
   width: 12px;
   height: 20px;
+}
+
+.product-discount-text {
+  font-size: 12px;
+  line-height: 22px;
+  padding: 0 3px;
+  background-color: #f3f3f3
+}
+
+.product-discount-hint {
+  color: #fff;
+  padding: 2px;
+  background-color: #d73131
+}
+
+.product-reduced-price {
+  color: #d73131
+}
+
+.product-detail-original-price-wrapper {
+  float: right;
+  color: #15ae10;
+  font-size: 14px;
 }
 
