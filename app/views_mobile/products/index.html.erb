@@ -38,28 +38,30 @@
   <% end %>
 </div>
 <!--soon-->
-<div class="product_soon">
-  <%= image_tag "mobile_product_soon.png", :class => "mwidth_center" %>
-  <!--soon products-->
-  <div class="mwidth_center">
-    <ul class="product_soon_ul">
-      <% @upcoming_products.each do |product| %>
-      <li>
-        <%= image_tag(product.product_view.trailer_image_url, class: "trailer-image") %>
-        <div class="product_bottom_black">
-        </div>
-        <div class="product_infos">
-          <div class="product_date">
-            <%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %>
-          </div>
-          <div class="product_title">
-            <%= product.product_view.trailer_description %>
-          </div>
-        </div>
-      </li>
-      <% end %>
-  </div>
-</div>
+<% if @upcoming_products.any? %>
+  <div class="product_soon">
+    <%= image_tag "mobile_product_soon.png", :class => "mwidth_center" %>
+    <!--soon products-->
+    <div class="mwidth_center">
+      <ul class="product_soon_ul">
+        <% @upcoming_products.each do |product| %>
+          <li>
+            <%= image_tag(product.product_view.trailer_image_url, class: "trailer-image") %>
+            <div class="product_bottom_black">
+            </div>
+            <div class="product_infos">
+              <div class="product_date">
+                <%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %>
+              </div>
+              <div class="product_title">
+                <%= product.product_view.trailer_description %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </div>
+    </div>
+<% end %>
 <!--footer-->
 
 <div class="footer">
