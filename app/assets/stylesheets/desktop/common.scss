@@ -513,6 +513,20 @@ input {
   background-color: black;
 
 }
+
+.footer-page-links {
+  overflow: hidden;
+  width: 580px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.footer-page-links li {
+  float: left;
+  padding: 0px 30px;
+  color: #8A9195;
+}
+
 .footer_ul{
 
   overflow:hidden;
@@ -521,10 +535,7 @@ input {
 
   margin: 0 auto;
 
-  margin-top: 40px;
-
-
-
+  margin-top: 20px;
 }
 
 .footer_ul li{
