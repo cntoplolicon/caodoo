@@ -5,11 +5,11 @@
     <dt>订单号</dt>
     <dd> <%= @refund_record.tracking_number %></dd>
   </dl>
-  <% if @express_info[:showapi_res_body][:data].present? && @express_info[:showapi_res_body][:data].any? %>
+  <% if @express_info.any? %>
     <dl class="dl-horizontal">
-      <% @express_info[:showapi_res_body][:data].each do |r| %>
+      <% @express_info.each do |r| %>
         <dt><%= r[:time] %></dt>
-        <dd><%= r[:context] %></dd>
+        <dd><%= r[:content] %></dd>
       <% end %>
     </dl>
   <% else %>

@@ -153,8 +153,7 @@ class OrdersController < ApplicationController
   end
 
   def express_info
-    raw_data =  ExpressTracker.track_express(@order.express.code, @order.tracking_number)
-    @express_data = raw_data[:showapi_res_body][:data]
+    @express_data =  ExpressTracker.track_express(@order.express.code, @order.tracking_number)
     render layout: false
   end
 

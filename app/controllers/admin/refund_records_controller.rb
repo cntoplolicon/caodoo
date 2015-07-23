@@ -67,7 +67,7 @@ class Admin::RefundRecordsController < Admin::AdminController
   end
 
   def update_params
-    params.require(:refund_record).permit(:status, :remark, :quantity)
+    params.require(:refund_record).permit(:status, :remark, :quantity, :express_id, :tracking_number)
   end
 
   def create_params
