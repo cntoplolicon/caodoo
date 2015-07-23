@@ -66,22 +66,37 @@
         <%= "#{@order.province_name}#{@order.city_name}#{@order.district_name}#{@order.detailed_address}" %>
         </span>
       </div>
-      <div class="order_row">
-        <% if logistics_text(@order).present? %>
-          <span class="col_name">快递方式:</span>
-          <span><%= logistics_text(@order) %></span>
+    </div>
+    <% if @order.status == Order::DELIVERED || (@order.express.present? && @order.tracking_number.present?) %>
+      <div class="order-express-information">
+        <div class="order-express-information-title">物流追踪</div>
+        <div class="order-express-information-summary-container">
+          <div class="order-express-information-summary">
+            <span>物流追踪：</span>
+            <% if @order.express.present? && @order.tracking_number %>
+              <span><%= "#{@order.express.name}-单号-#{@order.tracking_number}" %></span>
+            <% else %>
+              <span>正在出库</span>
+            <% end %>
+          </div>
+        </div>
+        <% if @order.express.present? && @order.tracking_number %>
+          <div class="order-express-information-detail-show">
+            <%= link_to "点击查看物流", user_order_express_info_path(@user, @order), class: "order-express-info-link" %>
+          </div>
+          <div class="order-express-information-detail">
+            <div class="order-express-information-msg">正在获取物流信息...</div>
+          </div>
         <% end %>
       </div>
-    </div>
+    <% end %>
+
     <div class="one_order_action">
       <%= form_for [@user, @order], html: {class: "receive_order_#{@order.id}_form"} do |f| %>
         <%= f.hidden_field :status, value: Order::COMPLETE %>
       <% end %>
       <%= form_for [@user, @order], html: {class: "cancel_order_#{@order.id}_form"} do |f| %>
         <%= f.hidden_field :status, value: Order::CANCELLED %>
-      <% end %>
-      <% if [Order::DELIVERED, Order::COMPLETE].include?(@order.status) && @order.express.present? %>
-        <a class="order_pay_bt a_bt_hight" href="http://www.kuaidi100.com">查看物流</a>
       <% end %>
       <% if [Order::DELIVERED].include?(@order.status) && @order.express.present? %>
         <a class="order_pay_bt a_bt_hight receive_order_action" data-order-id="<%= @order.id %>">确认收货</a>

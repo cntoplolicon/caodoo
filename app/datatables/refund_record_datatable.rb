@@ -1,5 +1,5 @@
 class RefundRecordDatatable < Datatable
-  delegate :edit_admin_refund_record_path, :refund_record_status_text, to: :@view
+  delegate :edit_admin_refund_record_path, :express_info_admin_refund_record_path, :refund_record_status_text, to: :@view
   
   def data
     raw_records.map do |refund_record|
@@ -16,7 +16,7 @@ class RefundRecordDatatable < Datatable
         refund_record.created_at.strftime('%Y/%m/%d %H:%M:%S'),
         refund_record.updated_at.strftime('%Y/%m/%d %H:%M:%S'),
         refund_record.remark,
-        link_to('编辑', edit_admin_refund_record_path(refund_record), class: 'btn btn-default')
+        avail_ops(refund_record)
       ]
     end
   end
@@ -58,5 +58,15 @@ class RefundRecordDatatable < Datatable
     @sortable_columns ||= ['orders.order_number', 'products.name', 'refund_records.quantity', 'orders.receiver', 'orders.phone',
                            'contest_teams.name', 'expresses.name', 'refund_records.tracking_number',
                            'refund_records.status', 'refund_records.created_at', 'refund_records.updated_at', 'refund_records.remark']
+  end
+
+  private
+
+  def avail_ops(refund_record)
+    ret = "#{link_to('编辑', edit_admin_refund_record_path(refund_record), class: 'btn btn-default')}"
+    if refund_record.express.present? && refund_record.tracking_number.present?
+      ret += "#{link_to('查看物流', express_info_admin_refund_record_path(refund_record), class: 'btn btn-default')}"
+    end
+    ret
   end
 end

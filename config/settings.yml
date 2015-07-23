@@ -17,3 +17,6 @@ contact:
 security_code:
   sms_template: "您的验证码是%{security_code}, 请在三分钟内输入"
   expired: 180
+
+express_tracker:
+  key: 'a64175d696824c568f654603e8d29870'

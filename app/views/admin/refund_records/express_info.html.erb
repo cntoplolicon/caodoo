@@ -1,0 +1,22 @@
+<div class="container">
+  <dl class="dl-horizontal">
+    <dt>快递公司</dt>
+    <dd> <%= @refund_record.express.name %></dd>
+    <dt>订单号</dt>
+    <dd> <%= @refund_record.tracking_number %></dd>
+  </dl>
+  <% if @express_info.any? %>
+    <dl class="dl-horizontal">
+      <% @express_info.each do |r| %>
+        <dt><%= r[:time] %></dt>
+        <dd><%= r[:content] %></dd>
+      <% end %>
+    </dl>
+  <% else %>
+    <dl class="dl-horizontal">
+      <dt>暂无物流信息</dt>
+      <dd></dd>
+    </dl>
+  <% end %>
+  <%= link_to "返回", admin_refund_records_path, class: 'btn btn-default' %>
+</div>

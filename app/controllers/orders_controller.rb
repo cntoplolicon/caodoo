@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :find_user, except: [:new]
-  before_action :find_user_and_order, only: [:payment, :payment_succeed, :status]
+  before_action :find_user_and_order, only: [:payment, :payment_succeed, :status, :express_info]
   before_action :find_user_or_login, only: [:new]
 
   def new
@@ -150,6 +150,11 @@ class OrdersController < ApplicationController
 
   def status
     render json: {status: @order.status}
+  end
+
+  def express_info
+    @express_data =  ExpressTracker.track_express(@order.express.code, @order.tracking_number)
+    render layout: false
   end
 
   private
