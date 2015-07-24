@@ -9,7 +9,7 @@
   <div class="user_info">
     用户注册手机号：<span> <%= session[:login_username] %> </span>
     <div class="user_info_box username-box">
-      <%= form_for @user , html: {id: 'update-phone'} do |f| %>
+      <%= form_for @user , remote:true ,  html: {id: 'update-phone'} do |f| %>
         <ul>
           <li>
             <%= f.text_field :username, placeholder: "请输入新手机号", id: 'username-input', class: 'cd_input', value: '' %>

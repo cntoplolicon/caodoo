@@ -1,0 +1,1 @@
+$("#security-code-error").text('<%= @user.errors.messages[:security_code].first if @user.errors[:security_code].any? %>')

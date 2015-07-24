@@ -37,11 +37,17 @@ class UsersController < ApplicationController
     unless @user.present?
       @user = User.new
       @user.errors.add(:username, '用户名不存在')
-      render 'forget_password' and return
+    else
+      security_code = params[:user][:security_code]
+      @user.security_code = security_code
+      verify_security_code(security_code)
     end
-    security_code = params[:user][:security_code]
-    @user.security_code = security_code
-    render 'forget_password' and return unless verify_security_code(security_code)
+    respond_to do |format|
+      format.html do
+        render 'forget_password' if @user.errors.any?
+      end
+      format.js
+    end
   end
 
   def new
@@ -55,7 +61,15 @@ class UsersController < ApplicationController
     @user.security_code = security_code
     user_valid = @user.valid?
     security_code_verified = verify_security_code(security_code)
-    render 'new' and return unless security_code_verified && user_valid
+    respond_to do |format|
+      format.html do
+        render 'new' and return unless security_code_verified && user_valid
+      end
+      format.js do
+        return
+      end
+    end
+
     unless @user.save
       render 'new'
     else
@@ -78,7 +92,7 @@ class UsersController < ApplicationController
     @user = User.find(session[:login_user_id])
     render layout: 'account_setting'
   end
-  
+
   def update
     user_id = params[:id].to_i
     if params[:user].has_key?(:username)
@@ -89,6 +103,10 @@ class UsersController < ApplicationController
       @user.username = params[:user][:username]
       user_valid = another_user.nil? && @user.valid?
       security_code_verified = verify_security_code(params[:user][:security_code])
+      respond_to do |format|
+        format.html { render 'user_settings', layout: 'account_setting' and user_valid && security_code_verified }
+        format.js { return }
+      end
       if user_valid && security_code_verified && @user.save
         clear_verify_information
         session[:login_username] = @user.username
@@ -97,6 +115,7 @@ class UsersController < ApplicationController
         @page_status = 'editing_username'
         render 'user_settings', layout: 'account_setting'
       end
+
     elsif params[:user].has_key?(:old_password)
       head :forbidden and return unless user_id == session[:login_user_id]
       @user = User.find(user_id)
