@@ -157,5 +157,5 @@ Rails.application.routes.draw do
 
   end
 
-
+  get 'wx_test', to: 'wx_test#index'
 end
