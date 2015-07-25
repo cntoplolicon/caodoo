@@ -1,3 +1,6 @@
+<% content_for :page_title do %>
+  提交订单-草垛网
+<% end %>
 <%= form_for [@user, @order] do |f| %>
   <%= f.hidden_field :product_id %>
   <%= f.hidden_field :user_id %>

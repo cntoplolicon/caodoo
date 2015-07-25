@@ -1,3 +1,6 @@
+<% content_for :mobile_page_title do %>
+  微信支付-草垛网
+<% end %>
 <div class="payment-detail-container">
   <%= hidden_field_tag :payment_succeed_url, user_order_payment_succeed_url(@order.user_id, @order) %>
   <%= hidden_field_tag :order_status_url, user_order_status_url(@order.user_id, @order) %>
