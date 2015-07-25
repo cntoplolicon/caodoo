@@ -7,13 +7,20 @@
       timestamp: <%= @wx_jsapi[:timestamp] %>,
       nonceStr: '<%= @wx_jsapi[:nonce_str] %>',
       signature: '<%= @wx_jsapi[:signature] %>',
-      jsApiList: ['onMenuShareTimeline']
+      jsApiList: ['onMenuShareTimeline'],
+      success: function() {
+        alert('success');
+      }
     });
     wx.ready(function() {
-      console.log('ready');
-    });
-    wx.error(function(res) {
-      console.log('error: ' + res);
+      wx.onMenuShareTimeline({
+        title: '这是测试标题',
+        link: window.location.href,
+        imgUrl: '<%= asset_url("mobile_game_poster.jpg") %>',
+        success: function () {
+          alert('分享成功');
+        }
+      });
     });
   </script>
 <% end %>

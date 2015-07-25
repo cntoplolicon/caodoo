@@ -34,5 +34,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :mobile_device?
+  def wechat_broswer?
+    request.user_agent =~ /MicroMessenger/
+  end
+
+  helper_method :mobile_device?, :wechat_broswer?
 end
