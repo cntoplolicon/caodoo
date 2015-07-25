@@ -183,6 +183,9 @@
       </div>
     </div>
     <%= javascript_include_tag 'application' %>
+    <% if content_for?(:page_specific_js) %>
+      <%= yield(:page_specific_js) %>
+    <% end %>
     <script>
       var _hmt = _hmt || [];
       (function() {

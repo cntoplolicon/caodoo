@@ -1,0 +1,19 @@
+<% content_for(:page_specific_js) do %>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    wx.config({
+      debug: true,
+      appId: '<%= Settings.wx_api.app_id %>',
+      timestamp: <%= @wx_jsapi[:timestamp] %>,
+      nonceStr: '<%= @wx_jsapi[:nonce_str] %>',
+      signature: '<%= @wx_jsapi[:signature] %>',
+      jsApiList: ['onMenuShareTimeline']
+    });
+    wx.ready(function() {
+      console.log('ready');
+    });
+    wx.error(function(res) {
+      console.log('error: ' + res);
+    });
+  </script>
+<% end %>
