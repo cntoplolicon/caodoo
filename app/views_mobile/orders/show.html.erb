@@ -53,6 +53,10 @@
         <span class="col_name">订单状态:</span>
         <strong class="strong_value left"><%= order_status_text(@order.status) %></strong>
       </div>
+      <div class="order_row">
+        <span class="col_name">补充说明:</span>
+        <strong class="strong_value left"><%= @order.remark %></strong>
+      </div>
     </div>
     <!--delivery info-->
     <div class="order_product_info">
