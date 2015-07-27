@@ -6,6 +6,9 @@
     产品详情
   </div>
 <% end %>
+<% content_for(:page_specific_js_before) do %>
+  <%= render 'js/wx_share_config' %>
+<% end %>
 <div class="product-detail-container">
   <div class="product-detail">
     <% if @contest_team %>
@@ -44,7 +47,7 @@
           <div style="float: left; font-size: 16px">向您推荐</div>
         </div>
       <% end %>
-      <div class="product-detail-text-head"><%= @product.name %></div>
+      <div class="product-detail-text-head product-name"><%= @product.name %></div>
       <div class="product-detail-text-content">
         <%= @product.product_view.detail_page_description %>
       </div>

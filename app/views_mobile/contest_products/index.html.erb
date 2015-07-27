@@ -6,32 +6,6 @@
 <% content_for(:page_specific_js_before) do %>
   <%= render 'js/wx_share_config' %>
 <% end %>
-<% content_for(:page_specific_js_after) do %>
-  <script type="text/javascript" charset="utf-8">
-    wx.ready(function() {
-      wx.onMenuShareTimeline({
-        title: '这是分享到朋友圈测试标题',
-        desc: '这是分享到朋友圈测试描述',
-        link: window.location.href,
-        imgUrl: '<%= asset_url("mobile_game_poster.jpg") %>',
-        success: function () {
-          alert('分享成功');
-        }
-      });
-      wx.onMenuShareAppMessage({
-        title: '这是测试标题',
-        link: window.location.href,
-        imgUrl: '<%= asset_url("mobile_game_poster.jpg") %>',
-        success: function () {
-          alert('分享成功');
-        }
-      });
-    });
-    wx.error(function(res) {
-      alert(JSON.stringify(res));
-    });
-  </script>
-<% end %>
 <div class="game_container">
   <div class="game_poster_content">
     <%= image_tag "mobile_game_poster.jpg", class: "game_poster" %>

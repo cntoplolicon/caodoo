@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   def index
+    @wx_jsapi = WxApi.jsapi_sign(request.original_url) if mobile_device?
+
     schedule_table = ProductSaleSchedule.arel_table
     now = Time.zone.now
     @on_sale_products = Product
@@ -19,6 +21,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @wx_jsapi = WxApi.jsapi_sign(request.original_url) if mobile_device?
+
     @product = Product
       .where(id: params[:id])
       .joins(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
