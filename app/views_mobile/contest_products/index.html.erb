@@ -6,6 +6,9 @@
     <%= image_tag "mobile_logo.png" %>
   </a>
 <% end %>
+<% content_for(:page_specific_js_before) do %>
+  <%= render 'js/wx_share_config' %>
+<% end %>
 <div class="game_container">
   <div class="game_poster_content">
     <%= image_tag "mobile_game_poster.jpg", class: "game_poster" %>

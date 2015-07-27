@@ -8,6 +8,7 @@ class ContestProductsController < ApplicationController
       .includes(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
       .where(product_table[:contest_level].lteq(@contest_team.level))
       .order(priority: :desc)
+    @wx_jsapi = WxApi.jsapi_sign(request.original_url) if mobile_device?
   end
 
   def show

@@ -29,6 +29,17 @@
         wechatDialog.hide();
       });
     }
+
+    if ($(this).length > 0 && settings.wechat_client_sharing && typeof(wx) != 'undefined') {
+      wx.ready(function() {
+        var wx_option = $.extend({}, settings, {imgUrl: settings.pic});
+        wx.onMenuShareTimeline(wx_option);
+        wx.onMenuShareAppMessage(wx_option);
+        wx.onMenuShareQQ(wx_option);
+        wx.onMenuShareWeibo(wx_option);
+      });
+    }
+
     this.find('.csns-share-button').click(function(event) {
       event.preventDefault();
       var command = $(this).data('cmd');

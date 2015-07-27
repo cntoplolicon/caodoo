@@ -106,7 +106,13 @@
         <button type="button" class="terms_of_privicy_close_button">关闭</button>
       </div>
     </div>
+    <% if content_for?(:page_specific_js_before) %>
+      <%= yield(:page_specific_js_before) %>
+    <% end %>
     <%= javascript_include_tag 'application_mobile' %>
+    <% if content_for?(:page_specific_js_after) %>
+      <%= yield(:page_specific_js_after) %>
+    <% end %>
     <script>
       var _hmt = _hmt || [];
       (function() {

@@ -157,5 +157,6 @@ Rails.application.routes.draw do
 
   end
 
-
+  get 'access_token', to: 'wx_test#access_token'
+  get 'jsapi_ticket', to: 'wx_test#jsapi_ticket'
 end
