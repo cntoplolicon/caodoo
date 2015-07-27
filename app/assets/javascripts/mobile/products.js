@@ -99,5 +99,16 @@
       pic: $('.swiper-slide-visible .product-detail-image').prop('src'),
       wechat_client_sharing: true
     });
+
+    var handler = function() {
+      $(window).scrollTop() > 1000 ? $('.mobile-purchase-bottom').show() : $('.mobile-purchase-bottom').hide();
+      }
+
+    $(window).on('DOMContentLoaded load resize scroll', handler);
+
+    $('.product-back-to-top-link').click(function(e) {
+      e.preventDefault()
+      scroll(0,0);
+    });
   });
 })(this, Zepto);
