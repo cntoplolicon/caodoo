@@ -47,15 +47,21 @@ $(document).ready(function() {
       filter_delay: 1000,
       filter_type: 'text',
       data: {}
-    }, {
+    },{
       column_number: 14,
+      filter_delay: 1000,
+      filter_type: 'text',
+      data: {}
+    },
+    {
+      column_number: 15,
       filter_delay: 1000,
       filter_type: 'range_date',
       datepicker_type: 'bootstrap-datetimepicker',
       date_format: 'YYYY-MM-DD HH:mm:ss',
       filter_plugin_options: datepickerDefaults
     }, {
-      column_number: 15,
+      column_number: 16,
       filter_delay: 1000,
       filter_type: 'range_date',
       datepicker_type: 'bootstrap-datetimepicker',

@@ -31,6 +31,8 @@
         <dd><%= @order.total_price %></dd>
         <dt>状态</dt>
         <dd><%= order_status_text(@order.status) %></dd>
+        <dt>补充说明</dt>
+        <dd><%=@order.remark %></dd>
       </dl>
     </div>
     <div class="col-md-4 col-xs-6">
