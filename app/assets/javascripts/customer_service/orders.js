@@ -52,7 +52,7 @@ $(document).ready(function() {
       filter_delay: 1000,
       filter_type: 'text',
       data: {}
-    },{
+    }, {
       column_number: 15,
       filter_delay: 1000,
       filter_type: 'range_date',
