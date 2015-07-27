@@ -1,5 +1,7 @@
 class ContestProductsController < ApplicationController
   def index
+    @wx_jsapi = WxApi.jsapi_sign(request.original_url) if mobile_device?
+
     identify_contest_team
     record_team_id_and_page_view
     product_table = Product.arel_table
@@ -8,10 +10,11 @@ class ContestProductsController < ApplicationController
       .includes(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
       .where(product_table[:contest_level].lteq(@contest_team.level))
       .order(priority: :desc)
-    @wx_jsapi = WxApi.jsapi_sign(request.original_url) if mobile_device?
   end
 
   def show
+    @wx_jsapi = WxApi.jsapi_sign(request.original_url) if mobile_device?
+
     @product = Product
       .where(id: params[:id])
       .joins(:product_sale_schedules, :product_view => [:product_detail_images, :product_carousel_images])
