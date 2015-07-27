@@ -63,23 +63,14 @@
 }
 
 .submission-information {
-
-    height: 208px;
-
     margin-top: 40px;
-
 }
 
 .submission-detail .product-information {
-
+    height: 242px;
     width: 600px;
-
-    height: 208px;
-
     float: left;
-
     background-color: #f8f8f8;
-
 }
 
 .product-display {
@@ -137,27 +128,19 @@
 }
 
 .product-display-flex-y {
-
     height: 20px;
-
     display: block;
-
 }
 
 .product-display-price {
-
     display: inline-block;
-
     width: 100%;
-
+    padding: 4px 0;
 }
 
 .product-display-price-tag {
-
     color: #6b6b6b;
-
     float: left;
-
 }
 
 .product-display-price-number {
@@ -169,37 +152,23 @@
 }
 
 .product-display-quantity {
-
     display: block;
-
-    margin-top: 8px;
-
+    padding: 4px 0;
 }
 
 .product-display-quantity-text {
-
     float: left;
-
     color: #6b6b6b;
-
 }
 
 .order-information {
-
-    height: 208px;
-
+    height: 242px;
     float: left;
-
     width: 336px;
-
     margin-left: 24px;
-
     background-color: #f8f8f8;
-
     text-align: left;
-
     font-size: 16px;
-
 }
 
 .order-information-top {
@@ -268,35 +237,20 @@
 }
 
 .address-selection {
-
     width: 100%;
-
     font-size: 14px;
-
     background-color: #ebebeb;
-
     color: #626262;
-
     margin-top: 20px;
-
     height: 36px;
-
     background-color: #EBEBEB;
-
-
-
     border: 1px solid #DEDEDE;
-
 }
 
 .address-creation {
-
     position: absolute;
-
     right: 0;
-
     color: #15ae10;
-
 }
 
 .order-submission {
@@ -761,4 +715,23 @@
 }
 .express-latest-context {
   color: #85ac15;
+}
+.product-display-remark{
+  padding: 4px 0;
+}
+.product-display-remark-span{
+  color: #6b6b6b;
+  float: left;
+  line-height: 40px;
+}
+.product-display-remark-ipnut{
+  width: 208px;
+  padding: 4px 2px;
+  font-size: 12px;
+  margin-left: 4px;
+  resize: none;
+}
+.order-description-text-light{
+  color: #6b6b6b;
+  padding: 4px 0;
 }

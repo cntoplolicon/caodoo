@@ -4,7 +4,7 @@
 <%= form_for [@user, @order] do |f| %>
   <%= f.hidden_field :product_id %>
   <%= f.hidden_field :user_id %>
-  <%= hidden_field_tag :new_order_refresh_url, new_user_order_path(@user, @order), class: 'new_order_refresh_url'  %>
+  <%= hidden_field_tag :new_order_refresh_url, new_user_order_path(@user, @order), class: 'new_order_refresh_url' %>
   <%= hidden_field_tag :new_address_url, new_user_address_path(@user), class: 'new_address_url' %>
   <div class="submission-detail-container">
     <div class="submission-detail">
@@ -12,7 +12,7 @@
       <div class="submission-step">
         <%= image_tag "payment-step-one.png" %>
       </div>
-      <div class="submission-information">
+      <div class="submission-information clearfix">
         <div class="product-information">
           <div class="product-display">
             <div class="grey">购买产品：</div>
@@ -24,14 +24,14 @@
                 <div class="product-display-name black"> <%= @product.name %></div>
                 <div class="product-display-flex-y">
                   <% if @contest_team %>
-                    <div class="product-information-team-name">来自<%= @contest_team.name%>的推荐</div>
+                    <div class="product-information-team-name">来自<%= @contest_team.name %>的推荐</div>
                   <% end %>
                 </div>
                 <div class="product-display-price">
                   <div class="product-display-price-tag">产品单价：</div>
                   <div class="product-display-price-number">￥<%= "#{'%.2f' % @product.actual_price}" %></div>
                 </div>
-                <div class="product-display-quantity">
+                <div class="product-display-quantity clearfix">
                   <%= hidden_field_tag('quantity-limit-field', Settings.sale.max_quantity) %>
                   <div class="product-display-quantity-text">购买数量：</div>
                   <div class="product-display-quantity-controller">
@@ -49,6 +49,11 @@
                   </div>
                   <div class="error-message"><%= @order.errors.messages[:quantity].first if @order.errors[:quantity].any? %></div>
                 </div>
+
+                <div class="product-display-remark"><span class="product-display-remark-span">补充说明：</span>
+                  <%= f.text_area :remark, class: "product-display-remark-ipnut", placeholder: "请输入您的颜色型号要求(可选)" %>
+                  <div class="error-message" id="order-remark-error"><%= @order.errors.messages[:remark].first if @order.errors[:remark].any? %></div>
+                </div>
               </div>
             </div>
           </div>
@@ -56,7 +61,7 @@
         <div class="order-information">
           <%= hidden_field_tag('unit-price-field', @product.actual_price) %>
           <div class="order-information-top">
-            <div class="order-information-text">产品金额：￥<span class="total-price-display"></span> </div>
+            <div class="order-information-text">产品金额：￥<span class="total-price-display"></span></div>
             <div class="order-information-text">运费：0</div>
           </div>
           <div class="order-information-bottom">
@@ -68,9 +73,10 @@
       <div class="submission-address">
         <div class="address-container">
           <a href="#" class="address-creation new_address_action">+添加收货地址</a>
+
           <div class="address-hint">收货地址：</div>
           <%= f.collection_select :address_id, @addresses || @user.addresses.where(deleted: false).order(created_at: :desc),
-            :id, :to_text, {prompt: '请选择收货地址'}, {class: 'address-selection'} %>
+                                  :id, :to_text, {prompt: '请选择收货地址'}, {class: 'address-selection'} %>
           <div class="error-message" id="username-error"><%= @order.errors.messages[:address_id].first if @order.errors[:address_id].any? %></div>
         </div>
       </div>
