@@ -129,15 +129,44 @@ class OrdersController < ApplicationController
 
   def show
     @order = @user.orders.find(params[:id])
-    if time_out?(@order)
+    if @order.payment_expired?
       try_cancel_timeout_order(@order.id)
     end
     render layout: 'account_setting'
   end
 
   def payment
-    if time_out?(@order)
-      redirect_to user_order_payment_timeout_path(@user, @order)
+    if @order.payment_expired?
+      redirect_to user_order_payment_timeout_path(@user, @order) and return
+    end
+    if wechat_browser?
+      if params[:state].nil?
+        uri = URI('https://open.weixin.qq.com/connect/oauth2/authorize')
+        query_params = {
+          appid: Settings.wx_api.app_id,
+          redirect_uri: user_order_payment_url(@user, @order),
+          response_type: :code,
+          scope: :snsapi_base,
+          state: :wx_oauth_code
+        }
+        uri.query = URI.encode_www_form(query_params)
+        redirect_to "#{uri.to_s}#wechat_redirect" and return
+      elsif params[:state] == 'wx_oauth_code'
+        uri = URI('https://api.weixin.qq.com/sns/oauth2/access_token')
+        query_params = {
+          appid: Settings.wx_api.app_id,
+          secret: Settings.wx_api.app_secret,
+          code: params[:code],
+          grant_type: :authorization_code
+        }
+        uri.query = URI.encode_www_form(query_params)
+        res = Net::HTTP.get_response(uri)
+        res = JSON.parse(res.body).deep_symbolize_keys
+        redirect_to orders_payment_path(@order.id, user_id: @user.id, state: 'wx_oauth_openid', openid: res[:openid])
+      elsif params[:state] == 'wx_oauth_openid'
+        @wx_openid = params[:openid]
+        @wx_jsapi = WxApi.jsapi_sign(request.original_url) if mobile_device?
+      end
     end
   end
 
@@ -178,10 +207,6 @@ class OrdersController < ApplicationController
     else
       find_user
     end
-  end
-
-  def time_out?(order)
-    Time.zone.now > order.created_at + Settings.payment.expired.to_i.minutes
   end
 
   def try_cancel_timeout_order(order_id)

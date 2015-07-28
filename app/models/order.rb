@@ -19,4 +19,8 @@ class Order < ActiveRecord::Base
   CANCELLING = 9
   CANCELLED = 10
   TIMEOUT = 11
+
+  def payment_expired?
+    status == TO_PAY && created_at + Settings.payment.expired.to_i.minutes <= Time.zone.now
+  end
 end

@@ -96,6 +96,7 @@ Rails.application.routes.draw do
   post 'alipay/notify', to: 'alipay#async_notify'
 
   post 'wx_pay/pay', to: 'wx_pay#pay'
+  post 'wx_pay/pay_by_jsapi', to: 'wx_pay#pay_by_jsapi'
   post 'wx_pay/notify', to: 'wx_pay#notify'
 
   resources :contest_teams do
@@ -154,9 +155,10 @@ Rails.application.routes.draw do
     root 'orders#index'
     resources :orders
     resources :refund_records
-
   end
 
   get 'access_token', to: 'wx_test#access_token'
   get 'jsapi_ticket', to: 'wx_test#jsapi_ticket'
+
+  get 'orders/payment/:order_id', to: 'orders#payment', as: 'orders_payment'
 end

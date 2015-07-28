@@ -6,39 +6,55 @@ class WxPayController < ApplicationController
   def pay
     Order.transaction do
       @order = Order.lock.find(params[:order_id])
-      expire = @order.created_at + Settings.payment.expired.to_i.minutes
-      diff = ((expire - Time.zone.now) / 1.minutes).round
-      redirect_to user_order_payment_timeout_path(@order.user_id, @order) and return if diff <= 0
+      redirect_to user_order_payment_timeout_path(@order.user_id, @order) and return if @order.payment_expired?
 
       head :forbidden if @order.user_id != session[:login_user_id]
       if @order.payment_record.wx_code_url.present?
         @code_url = @order.payment_record.wx_code_url
       else
-        payment_expire_at = @order.created_at + Settings.payment.expired.to_i.minutes
-        payment_created_at = Time.zone.now
-        wx_payment_expire_at = [payment_created_at + 5.minutes, payment_expire_at].max
-        remote_ip = IPAddr.new(request.remote_ip)
-        remote_ip = remote_ip.ipv6? ? '127.0.0.1' : remote_ip.to_s
-        options = {
-          body: @order.product_name,
-          out_trade_no: @order.order_number,
-          spbill_create_ip: remote_ip,
-          time_start: payment_created_at.localtime.strftime('%Y%m%d%H%M%S'),
-          time_expire: wx_payment_expire_at.localtime.strftime('%Y%m%d%H%M%S'),
-          trade_type: 'NATIVE'
-        }
-        if Rails.env.production? then
-          options[:notify_url] = "#{root_url}/wx_pay/notify"
-          options[:total_fee] = (@order.total_price * 100).round
-        else
-          options[:total_fee] = @order.quantity
-        end
+        options = unify_order_params(@order, 'NATIVE')
         r = WxPay::Service.invoke_unifiedorder(options)
-        render status: :internal_server_error, json: {error: r} and return unless r.success?
+        raise r unless r.success?
         @order.payment_record.wx_code_url = r['code_url']
-        head :unprocessable_entity and return unless @order.save
+        @order.payment_record.prepay_id = r['prepay_id']
+        @order.save(validate: false)
         @code_url = r['code_url']
       end
+    end
+  end
+
+  def pay_by_jsapi
+    Order.transaction do
+      @order = Order.lock.find(params[:order_id])
+      render json: {redirect: true, url: user_order_payment_timeout_path(@order.user_id, @order)} and return if @order.payment_expired?
+
+      head :forbidden if @order.user_id != session[:login_user_id]
+      if @order.payment_record.prepay_id.present?
+        @prepay_id = @order.payment_record.prepay_id
+      else
+        options = unify_order_params(@order, 'JSAPI')
+        r = WxPay::Service.invoke_unifiedorder(options)
+        raise r unless r.success?
+        @order.payment_record.prepay_id = r['prepay_id']
+        @order.save(validate: false)
+        @prepay_id = r['prepay_id']
+      end
+
+      sign_options = {
+        appId: Settings.wx_api.app_id,
+        timeStamp: Time.zone.now.to_i.to_s,
+        nonceStr: SecureRandom.hex,
+        package: "prepay_id=#{@prepay_id}",
+        signType: 'MD5'
+      }
+      payment_option = {
+        timestamp: sign_options[:timeStamp],
+        nonceStr: sign_options[:nonceStr],
+        package: sign_options[:package],
+        signType: sign_options[:signType],
+        paySign: WxPay::Sign.generate(sign_options)
+      }
+      render json: payment_option
     end
   end
 
@@ -61,5 +77,32 @@ class WxPayController < ApplicationController
     else
       render :xml => {return_code: 'FAIL', return_msg: "签名失败"}.to_xml(root: 'xml', dasherize: false)
     end
+  end
+
+  private
+  
+  def unify_order_params(order, trade_type)
+    payment_expire_at = order.created_at + Settings.payment.expired.to_i.minutes
+    payment_created_at = Time.zone.now
+    wx_payment_expire_at = [payment_created_at + 5.minutes, payment_expire_at].max
+    remote_ip = IPAddr.new(request.remote_ip)
+    remote_ip = remote_ip.ipv6? ? '127.0.0.1' : remote_ip.to_s
+    options = {
+      body: order.product_name,
+      out_trade_no: order.order_number,
+      spbill_create_ip: remote_ip,
+      time_start: payment_created_at.localtime.strftime('%Y%m%d%H%M%S'),
+      time_expire: wx_payment_expire_at.localtime.strftime('%Y%m%d%H%M%S'),
+      notify_url: "#{root_url}/wx_pay/notify",
+      trade_type: trade_type,
+      nonce_str: SecureRandom.hex,
+    }
+    options[:openid] = params[:openid] if trade_type == 'JSAPI'
+    if Rails.env.development? then
+      options[:total_fee] = order.quantity
+    else
+      options[:total_fee] = (order.total_price * 100).round
+    end
+    options
   end
 end
