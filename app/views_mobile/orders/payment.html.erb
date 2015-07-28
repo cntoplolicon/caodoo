@@ -10,7 +10,9 @@
   </div>
 <% end %>
 <% content_for(:page_specific_js_before) do %>
-  <%= render 'js/wx_payment_config' %>
+  <% if wechat_browser? %>
+    <%= render 'js/wx_payment_config' %>
+  <% end %>
 <% end %>
 <div class="payment-detail-container">
   <div class="payment-detail">
