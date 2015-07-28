@@ -16,7 +16,6 @@ class WxPayController < ApplicationController
         r = WxPay::Service.invoke_unifiedorder(options)
         raise r unless r.success?
         @order.payment_record.wx_code_url = r['code_url']
-        @order.payment_record.prepay_id = r['prepay_id']
         @order.save(validate: false)
         @code_url = r['code_url']
       end
