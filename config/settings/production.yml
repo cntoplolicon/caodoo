@@ -1,6 +1,6 @@
 contest:
   default_team_identifier: '16c7cd1b9df7a2bc840ec02f7d8d4a7b'
-  level_exp: [0, 100, 300, 500]
+  level_exp: [0, 60, 300, 500]
 
 admin:
   username: 'caodoo-admin'
