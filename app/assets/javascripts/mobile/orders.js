@@ -69,6 +69,28 @@ $(document).ready(function() {
     if ($('.alipay-radio').prop('checked')) {
       $('#alipay_confirm_box').show();
       $('.alipay_submission_form').submit();
+    } else if ($('.wechat-radio').prop('checked')) {
+      var ajax_option = {
+        type: 'POST',
+        url: $('#wx_jsapi_pay_url').val(),
+        dataType: 'json',
+        data: {
+          openid: $('#wx_openid').val(),
+          order_id: $('#wx_pay_order_id').val(),
+          authenticity_token: $('meta[name=csrf-token]').attr('content')
+        },
+        success: function(data) {
+          if (data.redirect) {
+            window.location.replace(data.url);
+          } else {
+            var payment_option = $.extend({}, data, {success: function() {
+              window.location.replace($('#payment_succeed_url').val());
+            }});
+            wx.chooseWXPay(payment_option);
+          }
+        }
+      }
+      $.ajax(ajax_option);
     }
   });
   $('#alipay_confirm_box .alipay_fail_button').click(function() {

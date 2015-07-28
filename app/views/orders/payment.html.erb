@@ -20,12 +20,14 @@
       <div class="payment-icon">
         <%= image_tag "alipay.png" %>
       </div>
-      <div class="radio-icon">
-        <input type="radio" class="order-radio wechat-radio" name="order_radio">
-      </div>
-      <div class="payment-icon">
-        <%= image_tag "wechat.png" %>
-      </div>
+      <% unless @order.payment_record.wx_pay_by_jsapi?  %>
+        <div class="radio-icon">
+          <input type="radio" class="order-radio wechat-radio" name="order_radio">
+        </div>
+        <div class="payment-icon">
+          <%= image_tag "wechat.png" %>
+        </div>
+      <% end %>
     </div>
     <div class="flex-y"></div>
     <div>

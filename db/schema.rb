@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722015619) do
+ActiveRecord::Schema.define(version: 20150728063717) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -34,14 +34,6 @@ ActiveRecord::Schema.define(version: 20150722015619) do
     t.text     "logo_url",   limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-  end
-
-  create_table "colleges", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.string   "password_digest", limit: 255
-    t.boolean  "update_password", limit: 1
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
   end
 
   create_table "contest_page_views", force: :cascade do |t|
@@ -126,6 +118,7 @@ ActiveRecord::Schema.define(version: 20150722015619) do
     t.text     "wx_code_url",   limit: 65535
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
+    t.string   "prepay_id",     limit: 255
   end
 
   add_index "payment_records", ["order_id"], name: "index_payment_records_on_order_id", using: :btree
