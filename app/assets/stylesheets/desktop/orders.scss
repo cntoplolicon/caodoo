@@ -377,11 +377,6 @@
   margin-top: 140px;
 }
 
-.backward {
-  position: absolute;
-  left: 0;
-}
-
 .back-icon {
   float: left;
 }
@@ -601,8 +596,7 @@
 }
 
 .backward {
-  position: absolute;
-  left: 40px;
+  margin-left: 40px;
 }
 
 .back-icon {
