@@ -188,6 +188,7 @@
   height: 16px;
   text-align: center;
 }
+
 /*change the display.none to switch between game-page and original-page*/
 
 .product-information-team-name {
@@ -387,6 +388,13 @@
   color: black;
 }
 
+.remark_content {
+  width: 230px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .order_row {
   overflow: hidden;
   margin: 10px 0;
@@ -557,6 +565,7 @@
   font-size: 14px;
   color: #85ac15;
 }
+
 .order-express-information {
   width: 320px;
   padding: 25px 10px;
@@ -564,30 +573,37 @@
   box-sizing: border-box;
   border-bottom: 12px solid white;
 }
+
 .order-express-information-table {
   text-align: left;
   margin-top: 10px;
   width: 100%;
   color: #979797;
 }
+
 .order-express-information-table li {
   margin-top: 20px;
   font-size: 12px;
 }
+
 .order-express-information-time {
   width: 200px;
   display: inline-block;
 }
+
 .order-express-information-detail {
   display: none;
 }
+
 .order-express-information-msg {
   padding: 20px 0;
   color: #979797;
 }
+
 .order-express-information-detail-show {
   padding: 20px 0;
 }
+
 .order-express-info-link {
   font-size: 14px;
   color: #979797;
@@ -595,41 +611,50 @@
   padding: 8px;
   border-radius: 4px;
 }
+
 .express-latest-time {
   color: #6b6b6b;
 }
+
 .express-latest-context {
   color: #85ac15;
 }
+
 .order-express-information-title {
   font-size: 16px;
   color: #919191;
 }
+
 .mobile-express-table-detail span {
   margin-left: 5px;
 }
+
 .mobile-express-table-detail-time {
   margin-left: 20px;
 }
-.product-display-remark{
+
+.product-display-remark {
   padding: 4px 0;
   width: 278px;
   display: inline-block;
   margin-top: 18px;
 }
-.product-display-remark-span{
+
+.product-display-remark-span {
   color: #6b6b6b;
   float: left;
   line-height: 40px;
 }
-.product-display-remark-ipnut{
+
+.product-display-remark-ipnut {
   width: 192px;
   padding: 4px 2px;
   font-size: 12px;
   margin-left: 4px;
   resize: none;
 }
-.order-description-text-light{
+
+.order-description-text-light {
   color: #6b6b6b;
   padding: 4px 0;
 }

@@ -8,7 +8,6 @@
 
 /*公共*/
 
-
 html {
   height: 100%;
 }
@@ -44,474 +43,294 @@ a {
 
 }
 
-.a_live{
-
+.a_live {
   color: #15ae10;
-
   text-decoration: underline;
-
 }
 
-button{
-
+button {
   border: none;
-
 }
-
 
 img {
   border: none;
 }
 
 input {
-
   outline: 0;
   border: 0;
-
 }
 
-.header_center{
-
+.header_center {
   width: 960px;
-
   height: 58px;
-
   margin: 0 auto;
 }
 
-.center{
-
+.center {
   overflow: hidden;
-
   width: 960px;
-
   margin: 0 auto;
-
 }
 
-.container{
-
+.container {
   overflow: hidden;
-
-
   width: 100%;
   z-index: 50;
-
 }
 
-
-.white{
-
+.white {
   color: white;
-
 }
 
-.black{
-
-  color:black;
-
+.black {
+  color: black;
 }
 
-
-.gray_bg{
-
+.gray_bg {
   background-color: #F7F7F7;
-
 }
 
 /*header*/
 
-
-.header{
-
+.header {
   height: 58px;
-
   background-color: black;
-
 }
-.header_ul_left{
 
+.header_ul_left {
   float: left;
-
   overflow: hidden;
-
   height: 58px;
-
 }
 
 .header_ul_left li {
-
   line-height: 58px;
-
-
-
   float: left;
 }
 
 .header_ul_left li a {
-
   color: white;
-
   font-size: 16px;
-
-
 }
 
-.header_li_marign{
-
+.header_li_marign {
   margin: 0 30px;
-
 }
 
-.header-logo{
+.header-logo {
   width: 57px;
   height: 43px;
   margin-top: 4px;
 }
 
-.header_ul_right{
-
+.header_ul_right {
   float: right;
-
   height: 58px;
 }
 
-
-.header_ul_right li{
-
+.header_ul_right li {
   line-height: 58px;
-
-  float:left;
-
+  float: left;
   margin: 0px 10px;
-
 }
 
 .header_ul_right li,
-.header_ul_right li a{
-
+.header_ul_right li a {
   font-size: 16px;
-
   color: white;
-
-
 }
-
-
-
 
 /*about*/
 
-
-.about_slogan{
-
+.about_slogan {
   width: 100%;
-
   background-color: black;
-
   height: 424px;
-
   overflow: hidden;
-
 }
 
-
-.about_slogan_bg{
-
+.about_slogan_bg {
   display: block;
-
   height: 424px;
-
   margin: 0 auto;
-
   overflow: hidden;
-
   background-image: image-url('about_slogan_bg.jpg');
-
   background-position: center;
-
   background-repeat: no-repeat;
-
   position: relative;
 }
 
-.about_slogan_box{
-
+.about_slogan_box {
   margin-top: 160px;
-
   position: relative;
-
 }
 
-.about_slogan_title{
-
+.about_slogan_title {
   text-align: center;
-
   color: white;
-
   font-size: 56px;
-
 }
 
-.about_slogan_desc_box{
-
+.about_slogan_desc_box {
   width: 400px;
-
   margin: 0 auto;
-
   margin-top: 10px;
-
   overflow: hidden;
-
 }
 
-.other_desc_box{
-
-
+.other_desc_box {
   text-align: center;
-
   font-size: 16px;
-
   margin-top: 30px;
-
   color: #ffffff;
-
 }
 
-.coming_soon{
-
+.coming_soon {
   font-size: 18px;
-
   text-align: center;
-
   color: #ffffff;
-
   margin-top: 40px;
-
-
 }
 
-
-.about_slogan_desc_text{
-
+.about_slogan_desc_text {
   float: left;
-
   font-size: 24px;
-
   color: white;
-
   text-align: center;
-
 }
 
-.about_slogan_desc_line{
-
+.about_slogan_desc_line {
   margin-top: 14px;
-
   float: left;
-
   width: 48px;
-
   border-bottom: 1px solid white;
 }
 
-
-.black_title{
-
+.black_title {
   text-align: center;
-
   color: black;
-
   font-size: 24px;
-
 }
-.white_title{
 
+.white_title {
   text-align: center;
-
   color: white;
-
   font-size: 24px;
-
   margin: 30px 0px;
-
 }
 
-.about_segment{
-
+.about_segment {
   padding: 30px 0;
-
   background-color: white;
 }
 
-.about_segment_ul{
-
+.about_segment_ul {
   overflow: hidden;
-
   padding-top: 30px;
-
 }
 
-.about_segment_li{
-
+.about_segment_li {
   float: left;
-
   width: 122px;
 }
 
-.about_segment_li img{
-
+.about_segment_li img {
   display: block;
 }
 
-.about_segment_img{
-
-
+.about_segment_img {
 }
 
-.about_segment_title{
-
+.about_segment_title {
   text-align: center;
-
   margin: 10px 0px;
 }
 
-.about_segment_p{
-
+.about_segment_p {
   text-align: center;
-
   line-height: 18px;
 }
 
-.team{
-
+.team {
   height: 300px;
-
   background-color: black;
-
   overflow: hidden;
 }
 
-.team_bg{
-
+.team_bg {
   overflow: hidden;
-
   height: 300px;
-
   margin: 0 auto;
-
   background-image: image-url('about_company.jpg');
-
   background-repeat: no-repeat;
-
   background-position: center;
 }
 
-.team_desc_box{
-
+.team_desc_box {
   position: relative;
-
 }
 
-.team_desc{
-
+.team_desc {
   margin-top: 80px;
-
   font-size: 16px;
-
-  color:white;
-
+  color: white;
   text-align: center;
-
   line-height: 34px;
 }
 
-
-.contact_box{
-
+.contact_box {
   overflow: hidden;
-
   position: relative;
-
-
 }
 
-.contact{
-
+.contact {
   height: 300px;
-
   background-color: black;
-
   overflow: hidden;
-
   background-size: cover;
-
   background-position: center center;
-
-  background-image:image-url("about_contact.png");
-
+  background-image: image-url("about_contact.png");
   height: 300px;
 }
 
-.contact_desc{
-
+.contact_desc {
   margin-top: 90px;
-
   font-size: 16px;
-
-  color:white;
-
+  color: white;
   text-align: center;
 }
-.contact_segment_ul{
 
+.contact_segment_ul {
   overflow: hidden;
-
   width: 692px;
-
   margin-left: 215px;
-
 }
 
-.contact_segment_li{
-
+.contact_segment_li {
   float: left;
-
   margin: 5px 20px;
 }
 
-.contact_address{
-
+.contact_address {
   margin-top: 2px;
 }
 
-.partner{
-
+.partner {
   margin-bottom: 40px;
 }
 
-.partner_center{
-
+.partner_center {
   display: block;
-
   margin: 0 auto;
-
-
-
 }
-
-
 
 /*footer*/
 
-.footer{
-
+.footer {
   overflow: hidden;
-
   height: 90px;
-
   background-color: black;
-
 }
 
 .footer-page-links {
@@ -527,76 +346,44 @@ input {
   color: #8A9195;
 }
 
-.footer_ul{
-
-  overflow:hidden;
-
+.footer_ul {
+  overflow: hidden;
   width: 580px;
-
   margin: 0 auto;
-
   margin-top: 20px;
 }
 
-.footer_ul li{
-
+.footer_ul li {
   float: left;
-
   padding: 0px 30px;
-
   border-right: 1px solid #333333;
-
 }
 
-.footer_ul li a, button{
-
+.footer_ul li a, button {
   color: #8A9195;
-
   font-size: 12px;
-
 }
-
-
 
 /*order menu */
 
-
-.order_menu{
-
+.order_menu {
   float: left;
-
   width: 130px;
-
   padding: 0px 10px;
-
   background-color: white;
-
-
-
 }
 
-.order_menu ul li{
-
+.order_menu ul li {
   border-bottom: 1px solid #EEEEEE;
-
   width: 130px;
-
   padding-top: 15px;
-
   padding-bottom: 15px;
-
   text-align: center;
-
   margin-bottom: 4px;
-
 }
 
-
-
-.order{
-
+.order {
   overflow: hidden;
-
   padding: 40px 0px;
 }
 
@@ -604,57 +391,37 @@ input {
   border-bottom: 1px solid #3FB134;
 }
 
-.order_box{
-
+.order_box {
   float: right;
-
   width: 760px;
-
   min-height: 717px;
-
   background-color: white;
-
   padding: 0 20px;
-
   z-index: 10;
-
 }
 
-.status_box{
-
+.status_box {
   overflow: hidden;
 }
 
 .status_box ul li {
-
   float: left;
-
   margin-right: 20px;
-
 }
 
-.status_box ul li a{
-
-
+.status_box ul li a {
   position: relative;
-
   z-index: 22;
-
   float: left;
-
   padding: 15px 0;
-
   margin-right: 15px;
 }
-.order_row{
 
+.order_row {
   width: 750px;
-
   height: 177px;
-
   background-color: #F7F7F7;
   margin-top: 10px;
-
 }
 
 .order_product_thumbnail {
@@ -662,14 +429,11 @@ input {
   height: 100px;
 }
 
-.order_title{
+.order_title {
   color: #979797;
   height: 36px;
-
   line-height: 36px;
-
   background-color: #E7E7E7;
-
   padding: 0 20px 0 10px;
 }
 
@@ -695,221 +459,151 @@ input {
   color: #6b6b6b;
 }
 
-.order_infos{
-
+.order_infos {
   overflow: hidden;
-
   margin-top: 21px;
 }
 
-.order_infos li{
-
+.order_infos li {
   width: 124px;
-
   float: left;
-
   text-align: center;
 }
 
-.product_text_color{
-
+.product_text_color {
   color: #6B6B6B;;
   max-height: 38px;
   overflow-y: hidden;
-
 }
 
-.product_title{
-
+.product_title {
   color: #6B6B6B;
 }
 
-.product_name{
-
-
+.product_name {
 }
 
-.product_price{
-
+.product_price {
   line-height: 24px;
   color: #6b6b6b;
-
 }
 
-
-.order_action{
-
+.order_action {
   margin-top: 25px;
-
   margin-left: 20px;
-
 }
 
-
-
-.product_tt{
-
+.product_tt {
   margin-top: 20px;
-
   height: 40px;
-
   border-right: 1px solid #EEEEEE;
 }
 
-.product_tt_40{
-
+.product_tt_40 {
   line-height: 40px;
-
   text-align: center;
-
 }
 
-.order_hight{
-  color: #3f3f3f;
+.order_hight {
+  color: #3FB134;
 }
 
-.pay_order{
-
+.pay_order {
   display: block;
-
   color: white;
-
   width: 84px;
-
   height: 30px;
-
   line-height: 30px;
-
-  background-color:  #3FB134;
-
+  background-color: #3FB134;
   margin-top: 5px;
-
 }
 
-.cancel_order{
-
+.cancel_order {
   display: block;
-
   width: 84px;
-
   height: 30px;
-
   line-height: 30px;
-
   color: #979797;
   margin-top: 4px;
   font-size: 12px;
-
 }
 
-.page_action{
-
+.page_action {
   overflow: hidden;
-
   margin: 20px 0;
-
 }
-
 
 .page_action ul {
-
-
   overflow: hidden;
-
   width: 420px;
-
   margin: 0 auto;
-
 }
-
 
 .page_action ul li {
-
   float: left;
-
   margin-right: 20px;
-
 }
 
-.page_action ul li a{
-
+.page_action ul li a {
   display: block;
-
   height: 24px;
-
   width: 24px;
-
   line-height: 24px;
-
   text-align: center;
-
   background-color: #F7F7F7;
-
-
 }
 
-.return_action{
-
-
+.return_action {
   height: 40px;
-
   line-height: 40px;
-
   border-bottom: 1px solid #EEEEEE;
-
 }
 
-.order_process{
-
+.order_process {
   margin: 30px 0px;
-
 }
 
-.order_info{
-
-  height: 100px;
-
+.order_info {
+  height: 120px;
   background-color: #F7F7F7;
-
   padding: 20px;
 }
 
-
-.order_product{
-
+.order_product {
   float: left;
-
 }
-.order_product_info{
 
+.order_product_info {
   float: left;
-
   margin-left: 30px;
-
   margin-top: -10px;
-
 }
 
 .order_product_info ul li {
   margin: 6px 0;
   color: #6b6b6b;
+  width: 440px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.order_product_info ul li span{
+
+.order_product_info ul li span {
   color: #3f3f3f;
 }
-.order_product_price{
+
+.order_product_price {
   float: right;
   margin-right: 20px;
   margin-top: 75px;
   color: #6b6b6b;
 }
 
-.order_product_name{
-
+.order_product_name {
   font-size: 16px;
 }
 
-.order_info_block{
+.order_info_block {
   float: left;
   width: 450px;
   background-color: #F7F7F7;
@@ -921,29 +615,21 @@ input {
 }
 
 .order_info_block li {
-
   color: #6B6B6B;
-
   font-size: 14px;
-
   line-height: 24px;
-
 }
 
-.order_span{
+.order_span {
   color: #3f3f3f;
 }
 
-.info_block{
-
-
+.info_block {
   overflow: hidden;
-
   width: 760px;
-
 }
 
-.order_info_block2{
+.order_info_block2 {
   overflow: hidden;
   float: right;
   width: 220px;
@@ -965,150 +651,93 @@ input {
   font-size: 14px;
 }
 
-.bt_green{
-
+.bt_green {
   border-radius: 4px;
-
   color: white;
-
   float: right;
-
   padding: 10px 15px;
-
   background-color: #3FB134;
-
   margin: 10px 10px 10px 0;
-
   border: 1px solid #EAEAEA;
-
   text-align: center;
-
   cursor: pointer;
-
 }
 
-.bt{
-
+.bt {
   border-radius: 4px;
-
   color: #6B6B6B;
-
   float: right;
-
   padding: 10px 15px;
-
   background-color: white;
-
   border: 1px solid #EAEAEA;
-
   margin: 10px;
-
   text-align: center;
-
-
-
 }
 
-.our_ts{
-
+.our_ts {
   background-color: #031522;
-
   overflow: hidden;
-
   padding: 25px 0;
-
 }
 
-.our_ts_center{
-
+.our_ts_center {
   width: 780px;
-
   margin: 0 auto;
-
   overflow: hidden;
-
 }
 
-.our_ts_li{
-
+.our_ts_li {
   float: left;
-
   padding: 0 30px;
-
 }
 
-.our_ts_img{
-
+.our_ts_img {
   float: left;
-
 }
 
-.our_ts_one_content{
-
+.our_ts_one_content {
   float: left;
-
   margin-left: 20px;
-
 }
 
-.our_ts_one_left_border{
-
-  border-left:1px solid #44515B;
-
+.our_ts_one_left_border {
+  border-left: 1px solid #44515B;
   padding-left: 10px;
 }
 
-
-.our_ts_one_title{
-
+.our_ts_one_title {
   color: #DEE0E2;
-
   font-size: 16px;
-
 }
 
-.our_ts_one_desc{
-
+.our_ts_one_desc {
   color: #909090;
-
   padding: 6px 0;
 }
 
-.our_ts_one_desc_contact{
-
+.our_ts_one_desc_contact {
   color: #909090;
-
   padding: 2px 0;
 }
 
-
-.service_box{
-
+.service_box {
   margin-top: 20px;
-
   margin-bottom: 20px;
 }
 
-.update_action{
-
+.update_action {
   float: right;
 }
 
-.update_action a:hover{
-
-
-
+.update_action a:hover {
 
 }
 
-.user_info{
-
+.user_info {
   margin: 20px 0;
-
-
 }
 
-.cd_input{
+.cd_input {
   border-radius: 4px;
   width: 224px;
   height: 30px;
@@ -1118,19 +747,12 @@ input {
   border: 1px solid #DEDEDE;
 }
 
-
-.user_info_box{
-
+.user_info_box {
   overflow: hidden;
-
   background-color: #F7F7F7;
-
   padding: 6px;
-
   margin: 10px 0;
-
   display: none;
-
 }
 
 .user_info_box ul li {
@@ -1148,7 +770,7 @@ input {
   margin-top: 6px;
 }
 
-.user_before{
+.user_before {
   float: left;
 }
 
@@ -1186,7 +808,7 @@ input {
   z-index: 99;
 }
 
-.address_center{
+.address_center {
   width: 480px;
   margin: 0 auto;
   margin-top: 20px;
@@ -1201,10 +823,11 @@ input {
   margin-bottom: 8px;
 }
 
-.green_text{
+.green_text {
   color: #15AE10;
 }
-.cd_select{
+
+.cd_select {
   border-radius: 4px;
   width: 153px;
   height: 38px;
@@ -1213,12 +836,11 @@ input {
   border: 1px solid #DEDEDE;
 }
 
-.delivery_user span{
+.delivery_user span {
   float: left;
 }
 
-
-.address_span{
+.address_span {
   width: 80px;
   text-align: left;
   color: #979797;
@@ -1228,33 +850,34 @@ input {
   overflow: hidden;
 }
 
-.current_tab{
+.current_tab {
   border-bottom: 2px solid #3FB134;
 }
 
 .status_box_line {
   width: 750px;
   border-bottom: 2px solid #EEEEEE;
-  margin-bottom: 10px;position: relative;
+  margin-bottom: 10px;
+  position: relative;
   top: -2px;
   z-index: 5;
 }
 
-.service_box p{
+.service_box p {
   line-height: 22px;
 }
 
-.resales_popup_box{
+.resales_popup_box {
   overflow: hidden;
   width: 400px;
   height: 180px;
   background-color: white;
-  margin:180px auto 0px auto;
+  margin: 180px auto 0px auto;
   box-shadow: 3px 3px 3px #666;
   z-index: 99;
 }
 
-.customer_service_info{
+.customer_service_info {
   width: 250px;
   margin: 45px auto 0 auto;
 }
@@ -1264,11 +887,11 @@ input {
   color: #909090;
 }
 
-.customer_service_info ul li a{
+.customer_service_info ul li a {
   color: #909090;
 }
 
-.confirm_popup_box{
+.confirm_popup_box {
   position: relative;
   width: 400px;
   height: 180px;
@@ -1279,33 +902,32 @@ input {
   z-index: 99;
 }
 
-.confirm_title{
+.confirm_title {
   margin-top: 62px;
   margin-left: 39px;
   color: #909090;
 }
 
-.confirm_action{
+.confirm_action {
   position: absolute;
   bottom: 30px;
   right: 30px;
 }
 
-.confirm_action a{
+.confirm_action a {
   color: #909090;
 }
 
-
-.currnet_address{
-  color:#3FB134;
+.currnet_address {
+  color: #3FB134;
 }
 
-.user_icon{
+.user_icon {
   margin-top: 15px;
   *margin-top: 0;
 }
 
-.cd_dropdown{
+.cd_dropdown {
   width: 140px;
   position: absolute;
   right: 0;
@@ -1314,7 +936,7 @@ input {
   z-index: 100;
 }
 
-.cd_dropdown ul{
+.cd_dropdown ul {
   background-color: #ffffff;
   margin-top: -25px;
   border-left: 1px solid #15ae10;
@@ -1322,14 +944,13 @@ input {
   border-bottom: 1px solid #15ae10;
 }
 
-
 .cd_dropdown ul li {
   float: none;
   line-height: 40px;
   width: 100%;
 }
 
-.cd_dropdown ul li a{
+.cd_dropdown ul li a {
   text-align: center;
   display: block;
   color: #6b6b6b;
@@ -1398,23 +1019,29 @@ input {
   position: relative;
   z-index: 10;
 }
+
 #update-phone #username-input {
   margin-top: 15px;
 }
+
 .security-code-button {
   height: 42px;
   margin-bottom: 0;
 }
+
 #update-pwd .cd_input {
   margin-top: 15px;
 }
+
 #update-phone {
   padding-left: 10px;
 }
+
 #update-pwd {
   padding-left: 10px;
 }
-.clearfix:after{
+
+.clearfix:after {
   content: " ";
   display: block;
   height: 0;
