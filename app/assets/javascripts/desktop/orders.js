@@ -43,7 +43,7 @@ $(document).ready(function() {
     paymentTimeCountDown();
     window.setInterval(paymentTimeCountDown, 1000);
   }
-  ;
+
   var wxPayUrl = $('#wechat-qrcode-field').val();
   $('.qrcode').qrcode({
     'render': 'div',
