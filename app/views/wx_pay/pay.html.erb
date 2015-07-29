@@ -6,7 +6,7 @@
   <%= hidden_field_tag :order_status_url, user_order_status_url(@order.user_id, @order) %>
   <div class="payment-detail">
     <%= link_to user_order_payment_path(@order.user_id, @order), class: 'backward' do %>
-      <div class="back-text">< 重新选择支付方式</div>
+      <div class="back-text">&lt重新选择支付方式</div>
     <% end %>
     <div class="micro-message">微信支付</div>
     <div class="qrcode-example">
