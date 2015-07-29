@@ -33,6 +33,8 @@ zh-CN:
           attributes:
             address_id:
               blank: '收货地址不能为空'
+            remark:
+              too_long: '补充说明太长啦,请简述!'
         refund_record:
           attributes:
             express_id:

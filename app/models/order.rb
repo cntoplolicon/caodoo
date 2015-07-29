@@ -4,10 +4,11 @@ class Order < ActiveRecord::Base
   belongs_to :contest_team
   belongs_to :express
 
-  validates :quantity, :inclusion => {:in => 1..10}
+  validates :quantity, inclusion: {in: 1..10}
   validates_presence_of :address_id
   validates_presence_of :product_id
   validates_presence_of :user_id
+  validates :remark, length: { maximum: 255 }
 
   has_one :payment_record, autosave: true, validate: true
   has_many :refund_records

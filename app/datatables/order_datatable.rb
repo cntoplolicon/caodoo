@@ -18,6 +18,7 @@ class OrderDatatable < Datatable
         order_status_text(order.status),
         order.try(:contest_team).try(:name),
         order.try(:contest_team).try(:phone),
+        order.remark,
         order.created_at.strftime('%Y/%m/%d %H:%M:%S'),
         order.updated_at.strftime('%Y/%m/%d %H:%M:%S')
       ]
@@ -57,7 +58,7 @@ class OrderDatatable < Datatable
   def sortable_columns
     @sortable_columns ||= ['orders.order_number', 'orders.product_name', 'orders.unit_price', 'orders.quantity', 'orders.total_price',
                            'orders.receiver', 'orders.phone', 'orders.province_name', 'orders.city_name', 'orders.district_name',
-                           'orders.detailed_address', 'orders.status', 'contest_teams.name', 'contest_teams.phone',
+                           'orders.detailed_address', 'orders.status', 'contest_teams.name', 'contest_teams.phone','orders.remark',
                            'orders.created_at', 'orders.updated_at']
   end
 end

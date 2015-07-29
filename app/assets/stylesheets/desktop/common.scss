@@ -1414,3 +1414,11 @@ input {
 #update-pwd {
   padding-left: 10px;
 }
+.clearfix:after{
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
