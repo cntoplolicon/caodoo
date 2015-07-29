@@ -10,5 +10,9 @@ security_code:
   disabled: true
 
 customer_service:
-    username: 'customer'
-    password: 'customer'
+  username: 'customer'
+  password: 'customer'
+
+wx_api:
+  app_id: 'wx53c8aabe10ca7e80'
+  app_secret: '122a24ed9136c75dc2b5f195c5fbdfa4'

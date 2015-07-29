@@ -20,7 +20,3 @@ security_code:
 
 express_tracker:
   key: 'a64175d696824c568f654603e8d29870'
-
-wx_api:
-  app_id: 'wxece631711e340ec1'
-  app_secret: 'f483aea124f9b84238338153a05deba7'
