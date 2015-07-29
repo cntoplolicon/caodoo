@@ -3,7 +3,8 @@
   <head>
     <title><%= (yield :mobile_page_title).blank? ? "草垛网-专注智能硬件特卖" : (yield :mobile_page_title) %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true" />
     <meta name="format-detection" content="telephone=no">
     <%= stylesheet_link_tag 'application_mobile', media: 'all' %>
     <%= csrf_meta_tags %>
@@ -74,8 +75,6 @@
       </ul>
     </div>
     <%= content_for?(:content) ? yield(:content) : yield %>
-    <ul class="footer_links">
-    </ul>
     <ul class="footer_links">
       <li>
         <a>&nbsp;&nbsp;©2015 CAODOO</a>
