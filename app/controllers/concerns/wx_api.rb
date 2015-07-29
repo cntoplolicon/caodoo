@@ -22,7 +22,7 @@ module WxApi
       uri = URI('https://api.weixin.qq.com/cgi-bin/ticket/getticket?')
       query_params = {access_token: access_token, type: 'jsapi'}
       res = get_json_response(uri, query_params)
-      if ['40001', '42001'].include?(res[:errcode])
+      if [40001, 40014, 42001].include?(res[:errcode])
         query_params = {access_token: refresh_access_token, type: 'jsapi'}
         res = get_json_response(uri, query_params)
       end
