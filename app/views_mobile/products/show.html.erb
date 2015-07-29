@@ -137,16 +137,16 @@
     <div class="product-detail-middle-block">产品详情</div>
     <% @product.product_view.product_detail_images.each do |image| %>
       <%= image_tag(image.url, class: "product-detail-description center-block") %>
-    </div>
-    <%= link_to new_user_order_path(session[:login_user_id] || 0, {product_id: @product.id}) do %>
     <% end %>
   </div>
-  <div class="mobile-purchase-bottom">
+</div>
+<div class="mobile-purchase-bottom">
+  <%= link_to new_user_order_path(session[:login_user_id] || 0, {product_id: @product.id}) do %>
     <% if @product.product_sale_schedules[0].sale_end > Time.zone.now && @product.quantity != 0 %>
       <button type="button" class="product-detail-submit-bottom">立即购买</button>
     <% end %>
-    <a class="product-back-to-top-link">
-      <%= image_tag "mobile_back_to_top.png", class: "product-back-to-top-icon" %>
-    </a>
-  </div>
-<% end %>
+  <% end %>
+  <a class="product-back-to-top-link">
+    <%= image_tag "mobile_back_to_top.png", class: "product-back-to-top-icon" %>
+  </a>
+</div>

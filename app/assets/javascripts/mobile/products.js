@@ -101,6 +101,9 @@
     });
 
     function isElementInViewport (el) {
+      if (el.length === 0) {
+        return ;
+      }
       el = el[0];
       var rect = el.getBoundingClientRect();
       return rect.top + rect.height > 0;
