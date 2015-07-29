@@ -139,7 +139,7 @@ class OrdersController < ApplicationController
     if @order.payment_expired?
       redirect_to user_order_payment_timeout_path(@user, @order) and return
     end
-    if wechat_browser?
+    if wechat_browser? && Rails.env.production?
       if params[:state].nil?
         uri = URI('https://open.weixin.qq.com/connect/oauth2/authorize')
         query_params = {

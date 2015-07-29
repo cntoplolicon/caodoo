@@ -10,7 +10,7 @@
   </div>
 <% end %>
 <% content_for(:page_specific_js_before) do %>
-  <% if wechat_browser? %>
+  <% if wechat_browser? && Rails.env.production? %>
     <%= render 'js/wx_payment_config' %>
   <% end %>
 <% end %>
