@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
-    <%= render :partial=>'js/google_analytics' %>
+    <%= render 'js/google_analytics' %>
   </head>
   <body>
     <div>
@@ -68,6 +68,6 @@
       </div>
     </div>
     <%= javascript_include_tag 'application' %>
-    <%= render :partial=>'js/baidu_analytics' %>
+    <%= render 'js/baidu_analytics' %>
   </body>
 </html>

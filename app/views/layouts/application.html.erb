@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
-    <%= render :partial=>'js/google_analytics' %>
+    <%= render 'js/google_analytics' %>
   </head>
   <body style=" <%= yield :body_style %>">
     <div class="header">
@@ -178,6 +178,6 @@
     <% if content_for?(:page_specific_js) %>
       <%= yield(:page_specific_js) %>
     <% end %>
-    <%= render :partial=>'js/baidu_analytics' %>
+    <%= render 'js/baidu_analytics' %>
   </body>
 </html>
