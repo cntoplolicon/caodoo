@@ -13,6 +13,7 @@ $(document).ready(function() {
       window.location.reload();
     }
   };
+
   function orderRemainTime(time) {
     if (typeof(time) !== 'number') {
       return '00分00秒';
@@ -41,7 +42,8 @@ $(document).ready(function() {
     var time = $('#payment-remain-time-hidden-field').val();
     paymentTimeCountDown();
     window.setInterval(paymentTimeCountDown, 1000);
-  };
+  }
+  ;
   var wxPayUrl = $('#wechat-qrcode-field').val();
   $('.qrcode').qrcode({
     'render': 'div',
@@ -114,8 +116,8 @@ $(document).ready(function() {
     detailPanel.show();
     detailPanel.load($(this).prop('href'));
   });
-  $("#new_order").submit(function(){
-    if($("#order_remark").val().length>255){
+  $("#new_order").submit(function() {
+    if ($("#order_remark").val().length > 255) {
       $("#order-remark-error").text("补充说明太长啦,请简述!");
       return false;
     }

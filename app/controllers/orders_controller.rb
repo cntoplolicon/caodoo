@@ -26,8 +26,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @product = Product.where(id: @order.product_id).joins(:product_sale_schedules, :product_view => :product_carousel_images)
-      .includes(:product_sale_schedules, :product_view => :product_carousel_images)
-      .take
+                 .includes(:product_sale_schedules, :product_view => :product_carousel_images)
+                 .take
     @address = @user.addresses.find(@order.address_id) if @order.address_id.present?
     unless @address.present?
       @order.errors.add(:address_id, '请选择收货地址')
@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
       else
         @contest_team = ContestTeam.find_by_identifier(Settings.contest.default_team_identifier)
       end
-      head :bad_request and return if  @product.contest_level > @contest_team.level
+      head :bad_request and return if @product.contest_level > @contest_team.level
       @order.contest_team_id = @contest_team.id
     end
 
@@ -182,7 +182,7 @@ class OrdersController < ApplicationController
   end
 
   def express_info
-    @express_data =  ExpressTracker.track_express(@order.express.code, @order.tracking_number)
+    @express_data = ExpressTracker.track_express(@order.express.code, @order.tracking_number)
     render layout: false
   end
 
@@ -234,6 +234,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:address_id, :product_id, :quantity, :user_id,:remark)
+    params.require(:order).permit(:address_id, :product_id, :quantity, :user_id, :remark)
   end
 end
