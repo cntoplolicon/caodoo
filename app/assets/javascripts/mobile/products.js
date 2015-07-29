@@ -100,11 +100,21 @@
       wechat_client_sharing: true
     });
 
-    var handler = function() {
-      $(window).scrollTop() > 1000 ? $('.mobile-purchase-bottom').show() : $('.mobile-purchase-bottom').hide();
-      }
+    function isElementInViewport (el) {
+      el = el[0];
+      var rect = el.getBoundingClientRect();
+      return rect.top + rect.height > 0;
+    }
 
-    $(window).on('DOMContentLoaded load resize scroll', handler);
+    var showBottomButton = function() {
+      if (isElementInViewport($('.product-detail .purchase-button'))) {
+        $('.mobile-purchase-bottom').hide()
+      } else {
+        $('.mobile-purchase-bottom').show();
+      }
+    }
+
+    $(window).on('DOMContentLoaded load scroll', showBottomButton);
 
     $('.product-back-to-top-link').click(function(e) {
       e.preventDefault()
