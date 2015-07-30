@@ -11,8 +11,8 @@ class OrdersController < ApplicationController
     quantity = [quantity, 1].max
     quantity = [quantity, Settings.sale.max_quantity].min
     @order.quantity = quantity
-    @order_random_id=SecureRandom.uuid
-    session[:order_random_id]=@order_random_id
+    @order_random_id = SecureRandom.uuid
+    session[:order_random_id] = @order_random_id
     @product = Product.find(params[:product_id])
     @order.product_id = @product.id
     if @product.contest_product?
