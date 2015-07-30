@@ -85,13 +85,6 @@ def deploy_to_frontend_app
     ssh_options: {
       keys: %w(~/.ssh/id_rsa)
     }
-
-  server '120.132.57.121',
-    user: 'ubuntu',
-    roles: %w{web app},
-    ssh_options: {
-      keys: %w(~/.ssh/id_rsa)
-    }
 end
 
 case fetch(:deploy_selection).to_i
