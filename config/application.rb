@@ -24,5 +24,9 @@ module Caodoo
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+
+    redis_config = YAML.load(File.open(Rails.root.join("config/redis.yml"))).deep_symbolize_keys[Rails.env.to_sym]
+    redis_config = {host: '127.0.0.1',  port: 6379, db: 0}.merge(redis_config)
+    config.cache_store = :redis_store, "redis://#{redis_config[:host]}:#{redis_config[:port]}/#{redis_config[:db]}/#{redis_config[:namespace]}"
   end
 end

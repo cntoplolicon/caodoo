@@ -58,3 +58,7 @@ gem 'capistrano-bower'
 #css sprite
 gem 'sprite-factory'
 gem 'rmagick'
+
+#redis cache
+gem 'redis'
+gem 'redis-rails'

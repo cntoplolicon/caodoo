@@ -1,0 +1,9 @@
+development:
+  host: localhost
+  db: 0
+  namespace: cache
+
+production:
+  host: localhost
+  db: 1
+  namespace: cache

@@ -55,14 +55,14 @@ set :deploy_selection, ask("\n1) Deploy To Test Server\n2) Deploy To Backend ERP
 
 def deploy_to_test_server
   set :branch, :master
-  server '54.223.201.93',
+  server 'test.caodoo.com',
     user: 'ubuntu',
     roles: %w{web app db batch},
     ssh_options: {}
 end
 
 def deploy_to_backend_erp
-  server '54.223.208.126',
+  server 'backend.caodoo.com',
     user: 'ubuntu',
     roles: %w{web app},
     ssh_options: {}
