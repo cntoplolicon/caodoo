@@ -33,6 +33,7 @@
                 </div>
                 <div class="product-display-quantity clearfix">
                   <%= hidden_field_tag('quantity-limit-field', Settings.sale.max_quantity) %>
+                  <%= hidden_field_tag('order_random_id', @order_random_id) %>
                   <div class="product-display-quantity-text">购买数量：</div>
                   <div class="product-display-quantity-controller">
                     <a class="quantity-controller-decrease">
@@ -81,6 +82,11 @@
         </div>
       </div>
       <%= f.submit '提交订单', data: {disable_with: '正在提交订单'}, class: 'order-submission' %>
+      <div class="error-message" id="order-random-id-error">
+        <% if @order.errors[:order_random_id].any? %> <%= @order.errors.messages[:order_random_id].first %>
+          可在<%= link_to "订单管理", user_orders_path(session[:login_user_id]), {class: 'green'} %>中查看
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>

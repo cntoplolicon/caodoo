@@ -12,7 +12,7 @@
 <%= form_for [@user, @order] do |f| %>
   <%= f.hidden_field :product_id %>
   <%= f.hidden_field :user_id %>
-  <%= hidden_field_tag :new_order_refresh_url, new_user_order_path(@user, @order), class: 'new_order_refresh_url'  %>
+  <%= hidden_field_tag :new_order_refresh_url, new_user_order_path(@user, @order), class: 'new_order_refresh_url' %>
   <%= hidden_field_tag :new_address_url, new_user_address_path(@user), class: 'new_address_url' %>
   <div class="submission-detail-container">
     <div class="submission-detail">
@@ -22,7 +22,7 @@
       </div>
       <div class="product-information">
         <% if @contest_team %>
-          <div class="product-information-team-name">来自<%= @contest_team.name%>的推荐</div>
+          <div class="product-information-team-name">来自<%= @contest_team.name %>的推荐</div>
         <% end %>
         <div class="product-information-top">购买产品：</div>
         <div class="product-information-middle">
@@ -39,6 +39,7 @@
         </div>
         <div class="product-information-bottom">
           <%= hidden_field_tag('quantity-limit-field', Settings.sale.max_quantity) %>
+          <%= hidden_field_tag('order_random_id', @order_random_id) %>
           <div class="product-information-quantity">购买数量：</div>
           <div class="product-information-quantity-controller">
             <a class="quantity-controller-increase">
@@ -69,13 +70,13 @@
         <div class="order-address-bottom">
           <% (@addresses || @user.addresses.order(created_at: :desc)).each do |address| %>
             <%= f.label :"address_id_#{address.id}" do %>
-              <div class = "address-selection">
+              <div class="address-selection">
                 <div class="order-address-select-button"><%= f.radio_button :address_id, address.id %></div>
                 <div class="order-address-select-content">
                   <div><%= "#{address.receiver} #{address.phone}" %></div>
                   <div><%= "#{address.try(:province).try(:name)}#{address.try(:city).try(:name)}#{address.try(:district).try(:name)}#{address.detailed_address}" %></div>
                 </div>
-              <% end %>
+            <% end %>
             </div>
           <% end %>
           <div class="error-message" id="username-error"><%= @order.errors.messages[:address_id].first if @order.errors[:address_id].any? %></div>
@@ -84,13 +85,18 @@
       <div class="order-information">
         <%= hidden_field_tag('unit-price-field', @product.actual_price) %>
         <div class="order-information-top">
-          <div class="order-information-text">产品金额：￥<span class="total-price-display"></span> </div>
-          <div class="order-information-text">产品数量：x <span class="quantity-display"></span> </div>
+          <div class="order-information-text">产品金额：￥<span class="total-price-display"></span></div>
+          <div class="order-information-text">产品数量：x <span class="quantity-display"></span></div>
           <div class="order-information-text">运费：0</div>
         </div>
         <div class="order-information-bottom">总计金额：￥<span class="total-price-display"></span></div>
       </div>
       <%= f.submit '提交订单', :disable_with => '正在提交订单ing', class: 'order-submission' %>
+      <div class="error-message" id="order-random-id-error">
+        <% if @order.errors[:order_random_id].any? %> <%= @order.errors.messages[:order_random_id].first %>
+          可在<%= link_to "订单管理", user_orders_path(session[:login_user_id]), {class: 'green'} %>中查看
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>

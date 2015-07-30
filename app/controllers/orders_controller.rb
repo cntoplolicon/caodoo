@@ -11,7 +11,8 @@ class OrdersController < ApplicationController
     quantity = [quantity, 1].max
     quantity = [quantity, Settings.sale.max_quantity].min
     @order.quantity = quantity
-
+    @order_random_id = SecureRandom.uuid
+    session[:order_random_id] = @order_random_id
     @product = Product.find(params[:product_id])
     @order.product_id = @product.id
     if @product.contest_product?
@@ -31,6 +32,13 @@ class OrdersController < ApplicationController
     @address = @user.addresses.find(@order.address_id) if @order.address_id.present?
     unless @address.present?
       @order.errors.add(:address_id, '请选择收货地址')
+      render 'new' and return
+    end
+
+    if session[:order_random_id] == params[:order_random_id]
+      session.delete(:order_random_id)
+    else
+      @order.errors.add(:order_random_id, '请勿重复提交订单')
       render 'new' and return
     end
 
