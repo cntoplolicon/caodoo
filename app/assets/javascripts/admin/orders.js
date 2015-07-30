@@ -77,7 +77,7 @@ $(document).ready(function() {
       sDom: 'lrtip',
       ajaxSource: $('#orders-table').data('source'),
       pagingType: 'full_numbers',
-      order: [[14, "desc"]]
+      order: [[15, "desc"]]
     }).yadcf(filter_options);
 
     $('.yadcf-filter-reset-button').hide();
