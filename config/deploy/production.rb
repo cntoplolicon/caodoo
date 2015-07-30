@@ -74,11 +74,6 @@ def deploy_to_frontend_app
     roles: %w{web app db batch},
     ssh_options: {}
 
-  #server '54.223.190.117',
-  #user: 'ubuntu',
-  #roles: %w{web app},
-  #ssh_options: {}
-
   server '123.59.53.54',
     user: 'ubuntu',
     roles: %w{web app},
