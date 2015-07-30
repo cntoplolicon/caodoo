@@ -118,10 +118,5 @@
     }
 
     $(window).on('DOMContentLoaded load scroll', showBottomButton);
-
-    $('.product-back-to-top-link').click(function(e) {
-      e.preventDefault()
-      scroll(0,0);
-    });
   });
 })(this, Zepto);
