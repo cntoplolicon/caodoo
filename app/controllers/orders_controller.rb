@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
       render 'new' and return
     end
 
-    if session[:order_random_id]==params[:order_random_id]
+    if session[:order_random_id] == params[:order_random_id]
       session.delete(:order_random_id)
     else
       @order.errors.add(:order_random_id, '请勿重复提交订单')

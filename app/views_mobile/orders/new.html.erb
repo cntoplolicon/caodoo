@@ -95,7 +95,8 @@
       <div class="error-message" id="order-random-id-error">
         <% if @order.errors[:order_random_id].any? %> <%= @order.errors.messages[:order_random_id].first %>
           可在<%= link_to "订单管理", user_orders_path(session[:login_user_id]), {class: 'green'} %>中查看
-        <% end %></div>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
