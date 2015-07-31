@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
 
-  before_action :check_for_mobile 
+  before_action :check_for_mobile
+
+  before_action :check_user_recember_pwd
 
   protect_from_forgery with: :exception
 
@@ -14,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def generate_security_code
-    (1..6).map {rand(10)}.join
+    (1..6).map { rand(10) }.join
   end
 
   def check_for_mobile
@@ -36,6 +38,15 @@ class ApplicationController < ActionController::Base
 
   def wechat_browser?
     request.user_agent =~ /MicroMessenger/
+  end
+
+  def check_user_recember_pwd
+    login_username_from_cookies = cookies[:login_username]
+    if login_username_from_cookies
+      @user = User.find_by_username(login_username_from_cookies)
+      session[:login_user_id] = @user.id
+      session[:login_username] = @user.username
+    end
   end
 
   helper_method :mobile_device?, :wechat_browser?

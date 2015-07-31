@@ -8,7 +8,7 @@
   <div class="user-op-form-header">
     登录
   </div>
-  <%= form_for @user, url: {action: :do_login}, method: :post , html: {id: 'login-user'} do |f| %>
+  <%= form_for @user, url: {action: :do_login}, method: :post, html: {id: 'login-user'} do |f| %>
     <div class="username-panel input-panel">
       <%= f.text_field :username, placeholder: "注册手机号" %>
       <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first if @user.errors[:username].any? %></div>
@@ -18,7 +18,11 @@
       <div class="error-message" id="userpwd-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
     </div>
     <div class="forget-password-panel input-panel">
-      <%= link_to "忘记密码?", forget_password_users_url %>
+      <div class="recember-password-box">
+        <%= f.check_box :recember_pwd %>
+        <%= f.label :recember_pwd, '记住密码' %>
+      </div>
+      <%= link_to "忘记密码?", forget_password_users_url, class: 'forget_pwd' %>
     </div>
     <div class="submit-panel input-panel">
       <%= f.submit "登录", data: {disable_with: '正在登录'} %>

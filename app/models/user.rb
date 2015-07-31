@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, if: :should_validate_password?
   validates_format_of :password, with: /\A[ -~]{6,20}\z/, if: :should_validate_password?
   validates :terms_of_service, acceptance: true
+  validates :recember_pwd, acceptance: true
   validates_confirmation_of :password, if: :should_validate_password?
 
   has_many :addresses

@@ -307,3 +307,9 @@
 .user_info_box .password-box {
   margin-bottom: 0;
 }
+.forget_pwd{
+  float: right;
+}
+.recember-password-box{
+  float: left;
+}

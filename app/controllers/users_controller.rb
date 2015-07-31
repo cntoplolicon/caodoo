@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def login
     @user = User.new
+    @user.recember_pwd = true
   end
 
   def do_login
@@ -19,12 +20,21 @@ class UsersController < ApplicationController
     end
     session[:login_user_id] = @user.id
     session[:login_username] = @user.username
+    if params[:user][:recember_pwd]
+      cookies[:login_username] = {
+        value: @user.username,
+        expires: 1.year.from_now
+      }
+    else
+      cookies.delete :login_username
+    end
     back_to_before_login_or_index
   end
 
   def logout
     session.delete(:login_user_id)
     session.delete(:login_username)
+    cookies.delete :login_username
     redirect_to action: :login
   end
 
@@ -78,7 +88,7 @@ class UsersController < ApplicationController
     @user = User.find(session[:login_user_id])
     render layout: 'account_setting'
   end
-  
+
   def update
     user_id = params[:id].to_i
     if params[:user].has_key?(:username)
