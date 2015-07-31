@@ -14,12 +14,12 @@
       <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first if @user.errors[:username].any? %></div>
     </div>
     <div class="security-code-panel input-panel">
-      <%= f.text_field :security_code, placeholder: "验证码", class: 'security-code-input' %>
+      <%= f.text_field :security_code, placeholder: "短信验证码", class: 'security-code-input' %>
       <button class="security-code-button">获取验证码</button>
       <div class="error-message" id="security-code-error"><%= @user.errors.messages[:security_code].first if @user.errors[:security_code].any? %></div>
     </div>
     <div class="password-panel input-panel">
-      <%= f.password_field :password, placeholder: '密码' %>
+      <%= f.password_field :password, placeholder: '请输入6-20位登陆密码' %>
       <div class="error-message" id="userpwd-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
     </div>
     <div class="terms-of-service-panel input-panel">
