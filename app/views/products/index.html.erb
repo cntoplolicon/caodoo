@@ -20,7 +20,7 @@
     <% @on_sale_products.each do |product| %>
       <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
         <%= link_to product_path(product) do %>
-          <%= image_tag product.product_view.sale_image_url %>
+          <%= tag :img, data: {original: asset_path(product.product_view.sale_image_url)}, class: 'lazy' %>
           <div class="product-information">
             <div class="product-name">
               <%= product.name %>

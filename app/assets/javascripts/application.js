@@ -18,5 +18,6 @@
 //= require swiper
 //= require jquery-qrcode
 //= require jquery.debouncedresize
+//= require jquery.lazyload
 //= require_tree ./common
 //= require_tree ./desktop

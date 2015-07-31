@@ -35,6 +35,13 @@
   height: 480px;
 }
 
+.on-sale-products img.lazy {
+  background-image: image-url('spinner.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+}
+
 .on-sale-product .product-information {
   position: absolute;
 }
@@ -522,6 +529,7 @@
 
 .products_banner_container {
   width: 960px;
+  height: 482px;
   position: relative;
   z-index: 5;
 }

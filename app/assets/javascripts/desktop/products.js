@@ -3,8 +3,12 @@
 
 (function(window, $) {
   $(document).ready(function() {
-    $('.on-sale-products').masonry({
-      itemSelector: '.on-sale-product'
+    var productsAutoLayout = $('.on-sale-products').masonry({
+      itemSelector: '.on-sale-product',
+      isInitLayout: true
+    });
+    productsAutoLayout.masonry('reload', function() {
+      $('.on-sale-products img.lazy').lazyload();
     });
 
     $('.on-sale-products .product-original-price').click(function(event) {
