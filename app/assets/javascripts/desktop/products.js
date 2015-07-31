@@ -8,7 +8,7 @@
       isInitLayout: true
     });
     productsAutoLayout.masonry('reload', function() {
-      $('.on-sale-products img.lazy').lazyload();
+      $('.on-sale-products img.lazy').lazyload({effect: 'fadeIn'});
     });
 
     $('.on-sale-products .product-original-price').click(function(event) {
