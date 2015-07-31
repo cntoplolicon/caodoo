@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require zepto
+//= require jquery
 //= require masonry/dist/masonry.pkgd.js
 //= require swiper
 //= require_tree ./common

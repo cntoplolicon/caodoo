@@ -119,4 +119,4 @@
 
     $(window).on('DOMContentLoaded load scroll', showBottomButton);
   });
-})(this, Zepto);
+})(this, jQuery);
