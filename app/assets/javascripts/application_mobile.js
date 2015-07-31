@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require imagesloaded/imagesloaded.pkgd
 //= require masonry/dist/masonry.pkgd.js
 //= require swiper
 //= require_tree ./common
