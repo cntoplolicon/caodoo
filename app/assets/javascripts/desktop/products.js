@@ -4,12 +4,9 @@
 (function(window, $) {
   $(document).ready(function() {
     var productsAutoLayout = $('.on-sale-products').masonry({
-      itemSelector: '.on-sale-product',
-      isInitLayout: true
+      itemSelector: '.on-sale-product'
     });
-    productsAutoLayout.masonry('reload', function() {
-      $('.on-sale-products img.lazy').lazyload({effect: 'fadeIn'});
-    });
+    $('.on-sale-products img.lazy').lazyload({effect: 'fadeIn'});
 
     $('.on-sale-products .product-original-price').click(function(event) {
       var link = $(this).data('original-price-link');

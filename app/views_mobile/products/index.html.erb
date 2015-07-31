@@ -12,74 +12,73 @@
 <% end %>
 <!--container-->
 <div class="container">
-<div class="banner">
-  <%= link_to contest_products_path do%>
-  <%= image_tag "mobile_banner.jpg", :class => "mwidth_center" %>
-  <% end %>
-</div>
-<!--now-->
-<div class="product_now">
-    <%= image_tag "mobile_product_now.png", :class => "mwidth_center" %>
-</div>
-<div class="on-sale-products">
-  <% @on_sale_products.each do |product| %>
-    <%= link_to product_path(product) do %>
-      <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
-        <%= image_tag product.product_view.sale_image_url %>
-        <div class="product-information">
-          <div class="product-name">
-            <%= product.name %>
-          </div>
-          <div class="product-price">
-            <div class="product-current-price">&#165;<%= product.price %></div>
-          </div>
-        </div>
-        <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.zone.now).to_i, 0].max %>">
-        </div>
-      </div>
+  <div class="banner">
+    <%= link_to contest_products_path do%>
+      <%= image_tag "mobile_banner.jpg", :class => "mwidth_center" %>
     <% end %>
-  <% end %>
-</div>
-<!--soon-->
-<% if @upcoming_products.any? %>
-  <div class="product_soon">
-    <%= image_tag "mobile_product_soon.png", :class => "mwidth_center" %>
-    <!--soon products-->
-    <div class="mwidth_center">
-      <ul class="product_soon_ul">
-        <% @upcoming_products.each do |product| %>
-          <li>
-            <%= image_tag(product.product_view.trailer_image_url, class: "trailer-image") %>
-            <div class="product_bottom_black">
+  </div>
+  <!--now-->
+  <div class="product_now">
+    <%= image_tag "mobile_product_now.png", :class => "mwidth_center" %>
+  </div>
+  <div class="on-sale-products">
+    <% @on_sale_products.each do |product| %>
+      <%= link_to product_path(product) do %>
+        <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
+          <%= tag :img, data: {original: asset_path(product.product_view.sale_image_url)}, class: 'lazy' %>
+          <div class="product-information">
+            <div class="product-name">
+              <%= product.name %>
             </div>
-            <div class="product_infos">
-              <div class="product_date">
-                <%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %>
-              </div>
-              <div class="product_title">
-                <%= product.product_view.trailer_description %>
-              </div>
+            <div class="product-price">
+              <div class="product-current-price">&#165;<%= product.price %></div>
             </div>
-          </li>
-        <% end %>
+          </div>
+          <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.zone.now).to_i, 0].max %>">
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!--soon-->
+  <% if @upcoming_products.any? %>
+    <div class="product_soon">
+      <%= image_tag "mobile_product_soon.png", :class => "mwidth_center" %>
+      <!--soon products-->
+      <div class="mwidth_center">
+        <ul class="product_soon_ul">
+          <% @upcoming_products.each do |product| %>
+            <li>
+              <%= image_tag(product.product_view.trailer_image_url, class: "trailer-image") %>
+              <div class="product_bottom_black">
+                <div class="product_date">
+                  <%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %>
+                </div>
+                <div class="product_title">
+                  <%= product.product_view.trailer_description %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
-<% end %>
-<!--footer-->
-
-<div class="footer">
-  <!--our ts -->
-  <div class="ts">
-    <ul class="ts_ul">
-      <li>
-        <%= image_tag "mobile_zp_icon.png" %> 正品保证
-      </li>
-      <li>
-        <%= image_tag "mobile_qt_icon.png" %> 7天放心退
-      </li>
-      <li>
-        <%= image_tag "mobile_qy_icon.png" %> 全场包邮
-      </li>
-    </ul>
+  <% end %>
+  <!--footer-->
+  <div class="footer">
+    <!--our ts -->
+    <div class="ts">
+      <ul class="ts_ul">
+        <li>
+          <%= image_tag "mobile_zp_icon.png" %> 正品保证
+        </li>
+        <li>
+          <%= image_tag "mobile_qt_icon.png" %> 7天放心退
+        </li>
+        <li>
+          <%= image_tag "mobile_qy_icon.png" %> 全场包邮
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

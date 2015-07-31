@@ -21,14 +21,7 @@
   position: absolute;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-.product_infos {
-  position: absolute;
-  bottom: 0;
-  width: 147px;
-  height: 48px;
-  color: white;
+  color: #fff;
 }
 
 .product_soon_ul {
@@ -60,9 +53,20 @@
   width: 146px;
 }
 
+.product_now {
+  height: 90px;
+}
+
 .on-sale-products {
   margin: 0 auto;
   width: 320px;
+}
+
+.on-sale-product {
+  background-image: image-url('spinner.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
 }
 
 .on-sale-product0,

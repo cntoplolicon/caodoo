@@ -3,11 +3,10 @@
 
 (function(window, $) {
   $(document).ready(function() {
-    if ($('.on-sale-products').length > 0) {
-      new Masonry(document.querySelector('.on-sale-products'), {
-        itemSelector: '.on-sale-product'
-      });
-    }
+    var productsAutoLayout = $('.on-sale-products').masonry({
+      itemSelector: '.on-sale-product'
+    });
+    $('.on-sale-products img.lazy').lazyload({effect: 'fadeIn'});
 
     var countDown = function() {
       $('.product-sale-remain-time').each(function() {
