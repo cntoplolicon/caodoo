@@ -23,3 +23,6 @@ every 2.minutes do
   rake "orders:clean_timeout_orders"
 end
 
+every 1.hours do
+  rake "wx:refresh_tokens"
+end
