@@ -416,3 +416,11 @@ button {
   color: white;
   margin-top: 5px;
 }
+.clearfix:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
