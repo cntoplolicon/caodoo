@@ -21,7 +21,7 @@
       <div class="error-message" id="security-code-error"><%= @user.errors.messages[:security_code].first if @user.errors[:security_code].any? %></div>
     </div>
     <div class="password-panel input-panel">
-      <%= f.password_field :password, placeholder: '请输入6-20位登陆密码' %>
+      <%= f.password_field :password, placeholder: '请输入6-20位密码' %>
       <div class="error-message" id="userpwd-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
     </div>
     <div class="terms-of-service-panel input-panel">
