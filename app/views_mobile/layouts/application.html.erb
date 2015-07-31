@@ -30,7 +30,7 @@
           <li>
             <a href="/">首页</a>
           </li>
-          <li>
+          <li style="border: none">
             <a class="dropdown_action">
               <span>我的</span>
               <%= image_tag "mobile_dropdown.png", :class => "dropdown" %>
@@ -50,7 +50,7 @@
               <li>
                 <%= link_to "个人设置", user_settings_user_path(session[:login_user_id]) %>
               </li>
-              <li>
+              <li style="border: none">
                 <%= link_to "退出账户", logout_users_path %>
               </li>
             </ul>
