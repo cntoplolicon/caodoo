@@ -15,18 +15,18 @@
     <div class="payment-hint">订单提交成功，您的订单号为<span><%= @order.order_number %></span>，请尽快支付！</div>
     <div class="payment-choise">
       <div class="radio-icon">
-        <input type="radio" class="order-radio alipay-radio" name="order_radio">
+        <input id="order-alipay-radio" type="radio" class="order-radio alipay-radio" name="order_radio">
       </div>
-      <div class="payment-icon">
+      <label class="payment-icon" for="order-alipay-radio">
         <%= image_tag "alipay.png" %>
-      </div>
+      </label>
       <% unless @order.payment_record.wx_pay_by_jsapi?  %>
         <div class="radio-icon">
-          <input type="radio" class="order-radio wechat-radio" name="order_radio">
+          <input id="order-wechat-radio" type="radio" class="order-radio wechat-radio" name="order_radio">
         </div>
-        <div class="payment-icon">
+        <label class="payment-icon" for="order-wechat-radio">
           <%= image_tag "wechat.png" %>
-        </div>
+        </label>
       <% end %>
     </div>
     <div class="flex-y"></div>

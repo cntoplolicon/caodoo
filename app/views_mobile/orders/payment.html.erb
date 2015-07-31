@@ -26,18 +26,18 @@
     <div class="payment-choise">
       <% if wechat_browser? && !@order.payment_record.wx_pay_by_qrcode? %>
         <div class="radio-icon">
-          <input type="radio" class="order-radion wechat-radio" name="order-radio">
+          <input id="order-wechat-radio" type="radio" class="order-radion wechat-radio" name="order-radio">
         </div>
-        <div class="payment-icon">
+        <label class="payment-icon" for="order-wechat-radio">
           <%= image_tag "mobile_wechat.png", class: 'payment-choise-icon'%>
-        </div>
+        </label>
       <% end %>
       <div class="radio-icon">
-        <input type="radio" class="order-radion alipay-radio" name="order-radio">
+        <input id="order-alipay-radio" type="radio" class="order-radion alipay-radio" name="order-radio">
       </div>
-      <div class="payment-icon">
+      <label class="payment-icon" for="order-alipay-radio">
         <%= image_tag "mobile_alipay.png", class: 'payment-choise-icon'%>
-      </div>
+      </label>
     </div>
     <div class="flex-y"></div>
     <div>
