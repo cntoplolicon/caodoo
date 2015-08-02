@@ -6,7 +6,10 @@
     var productsAutoLayout = $('.on-sale-products').masonry({
       itemSelector: '.on-sale-product'
     });
-    $('.on-sale-products img.lazy').lazyload({effect: 'fadeIn'});
+    $('.on-sale-products img.lazy').lazyload({
+      effect: 'fadeIn',
+      threshold : 200
+    });
 
     $('.on-sale-products .product-original-price').click(function(event) {
       var link = $(this).data('original-price-link');
