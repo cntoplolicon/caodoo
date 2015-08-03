@@ -161,7 +161,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :terms_of_service, :recember_pwd)
+    params.require(:user).permit(:username, :password, :terms_of_service)
   end
 
   def send_security_code_over_sms(username)
