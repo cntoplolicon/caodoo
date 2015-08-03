@@ -96,7 +96,7 @@
 .user-op-form-link {
   position: absolute;
   top: 24px;
-  right: 42px;
+  right: 22px;
 }
 
 .user-op-form-link a {
@@ -325,4 +325,7 @@
 
 .recember-password-box {
   float: left;
+}
+.security-code-box{
+  overflow: auto;
 }

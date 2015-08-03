@@ -14,8 +14,10 @@
       <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first if @user.errors[:username].any? %></div>
     </div>
     <div class="security-code-panel input-panel">
-      <%= f.text_field :security_code, placeholder: "短信验证码", class: 'security-code-input' %>
-      <button class="security-code-button">获取验证码</button>
+      <div class="security-code-box">
+        <%= f.text_field :security_code, placeholder: "短信验证码", class: 'security-code-input' %>
+        <button class="security-code-button">获取验证码</button>
+      </div>
       <div class="error-message" id="security-code-error"><%= @user.errors.messages[:security_code].first if @user.errors[:security_code].any? %></div>
     </div>
     <div class="password-panel input-panel">
