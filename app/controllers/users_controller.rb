@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     end
     session[:login_user_id] = @user.id
     session[:login_username] = @user.username
-    if params[:user][:recember_pwd]
+    if @user.recember_pwd
       cookies[:login_username] = {
         value: @user.username,
         expires: 1.year.from_now
@@ -95,7 +95,7 @@ class UsersController < ApplicationController
       head :forbidden and return unless user_id == session[:login_user_id]
       @user = User.find(user_id)
       another_user = User.find_by_username(params[:user][:username])
-      @user.errors.add(:username, '用户名已存在') if another_user.present?
+      @user.errors.add(:username, '手机号已注册') if another_user.present?
       @user.username = params[:user][:username]
       user_valid = another_user.nil? && @user.valid?
       security_code_verified = verify_security_code(params[:user][:security_code])
@@ -140,7 +140,7 @@ class UsersController < ApplicationController
   def get_security_code_for_new_user
     username = params[:username]
     @user = User.find_by_username(username)
-    render status: :bad_request, json: {error: '用户名已存在'} and return if @user.present?
+    render status: :bad_request, json: {error: '手机号已注册'} and return if @user.present?
     @user = User.new(username: username)
     if @user.invalid? && @user.errors[:username].any?
       render status: :bad_request, json: {error: @user.errors[:username].first} and return
@@ -155,14 +155,14 @@ class UsersController < ApplicationController
       render status: :bad_request, json: {error: @user.errors[:username].first} and return
     end
     @user = User.find_by_username(username)
-    render status: :bad_request, json: {error: '用户名不存在'} and return unless @user.present?
+    render status: :bad_request, json: {error: '手机号未注册'} and return unless @user.present?
     send_security_code_over_sms(username)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :terms_of_service)
+    params.require(:user).permit(:username, :password, :terms_of_service,:recember_pwd)
   end
 
   def send_security_code_over_sms(username)

@@ -20,12 +20,12 @@
     <div class="forget-password-panel input-panel">
       <div class="recember-password-box">
         <%= f.check_box :recember_pwd %>
-        <%= f.label :recember_pwd, '记住密码' %>
+        <%= f.label :recember_pwd, '下次自动登录' %>
       </div>
       <%= link_to "忘记密码?", forget_password_users_url, class: 'forget_pwd' %>
     </div>
     <div class="submit-panel input-panel">
-      <%= f.submit "登录" %>
+      <%= f.submit "登录", data: {disable_with: '正在登录'} %>
     </div>
   <% end %>
 </div>

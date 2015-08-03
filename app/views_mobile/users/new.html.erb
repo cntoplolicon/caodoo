@@ -20,7 +20,7 @@
     </div>
     <div class="password-panel input-panel">
       <%= f.password_field :password, placeholder: '密码' %>
-      <div class="error-message"  id="userpwd-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
+      <div class="error-message" id="userpwd-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
     </div>
     <div class="terms-of-service-panel input-panel">
       <%= f.check_box :terms_of_service %>
@@ -29,7 +29,7 @@
       <span class="error-message" id="terms_of_service_error"><%= @user.errors.messages[:terms_of_service].first if @user.errors[:terms_of_service].any? %></span>
     </div>
     <div class="submit-panel input-panel">
-      <%= f.submit "注册" %>
+      <%= f.submit "注册", data: {disable_with: '正在提交'} %>
     </div>
   <% end %>
 </div>
