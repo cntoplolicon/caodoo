@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :security_code
   attr_accessor :updating_password
-  attr_accessor :recember_pwd
 
   has_secure_password validations: false
 

@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def login
     @user = User.new
-    @user.recember_pwd = true
   end
 
   def do_login
@@ -11,7 +10,7 @@ class UsersController < ApplicationController
     unless @user.present?
       @user = User.new
       @user.username = params[:user][:username]
-      @user.errors.add(:username, '手机号已注册')
+      @user.errors.add(:username, '手机号未注册')
       render 'login' and return
     end
     unless @user.authenticate(params[:user][:password])
@@ -20,7 +19,7 @@ class UsersController < ApplicationController
     end
     session[:login_user_id] = @user.id
     session[:login_username] = @user.username
-    if @user.recember_pwd
+    if params[:user][:recember_pwd]
       cookies[:login_username] = {
         value: @user.username,
         expires: 1.year.from_now
@@ -46,7 +45,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user][:username])
     unless @user.present?
       @user = User.new
-      @user.errors.add(:username, '手机号已注册')
+      @user.errors.add(:username, '手机号未注册')
       render 'forget_password' and return
     end
     security_code = params[:user][:security_code]
