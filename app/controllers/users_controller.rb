@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     end
     session[:login_user_id] = @user.id
     session[:login_username] = @user.username
-    if params[:user][:recember_pwd]
+    if params[:recember_pwd]
       cookies[:login_username] = {
         value: @user.username,
         expires: 1.year.from_now
