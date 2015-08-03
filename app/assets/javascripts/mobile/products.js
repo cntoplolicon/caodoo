@@ -4,11 +4,11 @@
 (function(window, $) {
   $(document).ready(function() {
     var productsAutoLayout = $('.on-sale-products').masonry({
-      itemSelector: '.on-sale-product'
+      itemSelector: '.on-sale-product',
+      columnWidth: 160
     });
     $('.on-sale-products img.lazy').lazyload({
-      effect: 'fadeIn',
-      threshold : 200
+      effect: 'fadeIn'
     });
 
     var countDown = function() {

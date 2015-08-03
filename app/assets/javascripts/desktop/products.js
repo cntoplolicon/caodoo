@@ -4,11 +4,11 @@
 (function(window, $) {
   $(document).ready(function() {
     var productsAutoLayout = $('.on-sale-products').masonry({
-      itemSelector: '.on-sale-product'
+      itemSelector: '.on-sale-product',
+      columnWidth: 480
     });
     $('.on-sale-products img.lazy').lazyload({
-      effect: 'fadeIn',
-      threshold : 200
+      effect: 'fadeIn'
     });
 
     $('.on-sale-products .product-original-price').click(function(event) {
