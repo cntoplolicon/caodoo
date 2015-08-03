@@ -155,14 +155,14 @@ class UsersController < ApplicationController
       render status: :bad_request, json: {error: @user.errors[:username].first} and return
     end
     @user = User.find_by_username(username)
-    render status: :bad_request, json: {error: '手机号已注册'} and return unless @user.present?
+    render status: :bad_request, json: {error: '手机号未注册'} and return unless @user.present?
     send_security_code_over_sms(username)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :terms_of_service,:recember_pwd)
+    params.require(:user).permit(:username, :password, :terms_of_service, :recember_pwd)
   end
 
   def send_security_code_over_sms(username)
