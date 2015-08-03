@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     unless @user.present?
       @user = User.new
       @user.username = params[:user][:username]
-      @user.errors.add(:username, '用户名不存在')
+      @user.errors.add(:username, '手机号未注册')
       render 'login' and return
     end
     unless @user.authenticate(params[:user][:password])
@@ -19,12 +19,21 @@ class UsersController < ApplicationController
     end
     session[:login_user_id] = @user.id
     session[:login_username] = @user.username
+    if params[:user][:recember_pwd]
+      cookies[:login_username] = {
+        value: @user.username,
+        expires: 1.year.from_now
+      }
+    else
+      cookies.delete(:login_username)
+    end
     back_to_before_login_or_index
   end
 
   def logout
     session.delete(:login_user_id)
     session.delete(:login_username)
+    cookies.delete(:login_username)
     redirect_to action: :login
   end
 
@@ -36,7 +45,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:user][:username])
     unless @user.present?
       @user = User.new
-      @user.errors.add(:username, '用户名不存在')
+      @user.errors.add(:username, '手机号未注册')
       render 'forget_password' and return
     end
     security_code = params[:user][:security_code]
@@ -78,14 +87,14 @@ class UsersController < ApplicationController
     @user = User.find(session[:login_user_id])
     render layout: 'account_setting'
   end
-  
+
   def update
     user_id = params[:id].to_i
     if params[:user].has_key?(:username)
       head :forbidden and return unless user_id == session[:login_user_id]
       @user = User.find(user_id)
       another_user = User.find_by_username(params[:user][:username])
-      @user.errors.add(:username, '用户名已存在') if another_user.present?
+      @user.errors.add(:username, '手机号已注册') if another_user.present?
       @user.username = params[:user][:username]
       user_valid = another_user.nil? && @user.valid?
       security_code_verified = verify_security_code(params[:user][:security_code])
@@ -130,7 +139,7 @@ class UsersController < ApplicationController
   def get_security_code_for_new_user
     username = params[:username]
     @user = User.find_by_username(username)
-    render status: :bad_request, json: {error: '用户名已存在'} and return if @user.present?
+    render status: :bad_request, json: {error: '手机号已注册'} and return if @user.present?
     @user = User.new(username: username)
     if @user.invalid? && @user.errors[:username].any?
       render status: :bad_request, json: {error: @user.errors[:username].first} and return
@@ -145,7 +154,7 @@ class UsersController < ApplicationController
       render status: :bad_request, json: {error: @user.errors[:username].first} and return
     end
     @user = User.find_by_username(username)
-    render status: :bad_request, json: {error: '用户名不存在'} and return unless @user.present?
+    render status: :bad_request, json: {error: '手机号未注册'} and return unless @user.present?
     send_security_code_over_sms(username)
   end
 

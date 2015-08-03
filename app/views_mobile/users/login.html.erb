@@ -5,23 +5,27 @@
   登录
 <% end %>
 <div class="user-op-form-link">
-  <%= link_to "新用户，快速注册？", action: :new %>
+  <%= link_to "新用户 ? 快速注册", action: :new %>
 </div>
 <div class="user-op-form-panel center-block login-box">
-    <%= form_for @user, url: {action: :do_login}, method: :post , html: {id: 'login-user'} do |f| %>
+  <%= form_for @user, url: {action: :do_login}, method: :post, html: {id: 'login-user'} do |f| %>
     <div class="username-panel input-panel">
       <%= f.text_field :username, placeholder: "注册手机号" %>
       <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first if @user.errors[:username].any? %></div>
     </div>
     <div class="password-panel input-panel">
-      <%= f.password_field :password, placeholder: '密码' %>
+      <%= f.password_field :password, placeholder: '请输入密码' %>
       <div class="error-message" id="userpwd-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
     </div>
     <div class="forget-password-panel input-panel">
-      <%= link_to "忘记密码?", forget_password_users_url %>
+      <div class="recember-password-box">
+        <input type="checkbox" name="recember_pwd" id="recember_pwd" checked>
+        <label for="recember_pwd">下次自动登录</label>
+      </div>
+      <%= link_to "忘记密码?", forget_password_users_url, class: 'forget_pwd' %>
     </div>
     <div class="submit-panel input-panel">
-      <%= f.submit "登录" %>
+      <%= f.submit "登录", data: {disable_with: '正在登录'} %>
     </div>
   <% end %>
 </div>
