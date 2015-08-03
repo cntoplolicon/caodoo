@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/cntoplolicon/alipay.git
+  revision: 67790286718e0a1bcccb1a9b8c425b7f9e91d362
+  specs:
+    alipay (0.8.0)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -36,7 +42,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    alipay (0.7.1)
     ar-octopus (0.8.5)
       activerecord (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -201,7 +206,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  alipay
+  alipay!
   ar-octopus
   bcrypt
   byebug
