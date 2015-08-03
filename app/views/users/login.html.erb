@@ -18,10 +18,6 @@
       <div class="error-message" id="userpwd-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
     </div>
     <div class="forget-password-panel input-panel">
-      <div class="recember-password-box">
-        <input type="checkbox" name="recember_pwd" id="recember_pwd" checked>
-        <label for="recember_pwd">下次自动登录</label>
-      </div>
       <%= link_to "忘记密码?", forget_password_users_url, class: 'forget_pwd' %>
     </div>
     <div class="submit-panel input-panel">

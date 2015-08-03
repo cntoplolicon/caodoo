@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
 
   before_action :check_for_mobile
 
-  before_action :check_user_recember_pwd
-
   protect_from_forgery with: :exception
 
   def send_sms_message(mobile, msg)
@@ -38,15 +36,6 @@ class ApplicationController < ActionController::Base
 
   def wechat_browser?
     request.user_agent =~ /MicroMessenger/
-  end
-
-  def check_user_recember_pwd
-    login_username_from_cookies = cookies[:login_username]
-    if login_username_from_cookies
-      @user = User.find_by_username(login_username_from_cookies)
-      session[:login_user_id] = @user.id
-      session[:login_username] = @user.username
-    end
   end
 
   helper_method :mobile_device?, :wechat_browser?
