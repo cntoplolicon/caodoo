@@ -13,7 +13,7 @@
 <!--container-->
 <div class="container">
   <div class="banner">
-    <%= link_to contest_products_path do%>
+    <%= link_to contest_products_path do %>
       <%= image_tag "mobile_banner.jpg", :class => "mwidth_center" %>
     <% end %>
   </div>
@@ -45,7 +45,7 @@
     <div class="product_soon">
       <%= image_tag "mobile_product_soon.png", :class => "mwidth_center" %>
       <!--soon products-->
-      <div class="mwidth_center">
+      <div>
         <ul class="product_soon_ul">
           <% @upcoming_products.each do |product| %>
             <li>
