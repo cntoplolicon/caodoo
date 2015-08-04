@@ -142,7 +142,7 @@
 }
 
 .product-detail {
-  width: 320px;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   background-color: #ffffff;
@@ -289,7 +289,7 @@
 }
 
 .product-detail-description {
-  width: 320px;
+  width: 100%;
 }
 
 .product-detail-flex-y {
@@ -498,4 +498,8 @@
   float: right;
   color: #15ae10;
   font-size: 14px;
+}
+
+.purchase-a {
+  display: block;
 }
