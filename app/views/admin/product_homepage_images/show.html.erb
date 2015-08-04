@@ -1,0 +1,20 @@
+<div class="container product-homepage-images">
+  <%= link_to "返回", admin_products_path, class: 'btn btn-default' %>
+  <%= link_to "编辑", edit_admin_product_product_homepage_images_path(@product), class: 'btn btn-primary' %>
+  <div style="margin-top: 16px">
+    <div class="row">
+      <div class="col-md-6">
+        <div>在售图片</div>
+        <a class="thumbnail">
+          <%= image_tag(asset_url(@product.product_view.sale_image_url, host: Settings.cdn.hosts[rand(Settings.cdn.hosts.length)])) %>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <div>预告图片</div>
+        <a class="thumbnail">
+          <%= image_tag(asset_url(@product.product_view.trailer_image_url, host: Settings.cdn.hosts[rand(Settings.cdn.hosts.length)])) %>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
