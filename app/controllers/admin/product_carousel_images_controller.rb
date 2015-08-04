@@ -2,13 +2,13 @@ class Admin::ProductCarouselImagesController < Admin::AdminController
   before_action :find_product
 
   def create
-    Product.transaction do
-      @product = Product.lock.find(@product.id)
-      @product.product_view.product_carousel_images.destroy_all
-      urls = params[:images].squish.split(' ')
-      urls.each_with_index do |url, index|
-        @product.product_view.product_carousel_images.create(position: index, url: url)
-      end
+    @product.product_view.product_carousel_images.destroy_all
+    s3 = AWS::S3.new
+    params[:images].each_with_index do |image, index|
+      content = image.read
+      filename = "images/products/#{@product.id}/#{Digest::MD5.hexdigest(content)}#{File.extname(image.original_filename)}"
+      s3.buckets[Settings.aws.s3.bucket].objects[filename].write(content)
+      @product.product_view.product_carousel_images.create(position: index, url: "/#{filename}")
     end
     redirect_to action: :show
   end
