@@ -55,7 +55,6 @@
       productDetailCountDown();
       window.setInterval(productDetailCountDown, 1000);
     }
-    ;
 
     $(".othmenu").click(function () {
       $(".menu_list").toggle();
