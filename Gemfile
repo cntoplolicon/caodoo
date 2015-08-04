@@ -62,3 +62,6 @@ gem 'rmagick'
 #redis cache
 gem 'redis'
 gem 'redis-rails'
+
+#aws
+gem 'aws-sdk-v1'
