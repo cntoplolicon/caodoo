@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ujs
 //= require bootstrap/dist/js/bootstrap
+//= require bootstrap-fileinput
 //= require datatables
 //= require datatables-bootstrap3-plugin/media/js/datatables-bootstrap3
 //= require yadcf

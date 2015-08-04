@@ -1,9 +1,14 @@
-<div class="container">
+<div class="container product-detail-images">
   <%= link_to "返回", admin_products_path, class: 'btn btn-default' %>
   <%= link_to "编辑", edit_admin_product_product_detail_images_path(@product), class: 'btn btn-primary' %>
-  <ul class="list-group" style="margin-top: 16px">
-    <% @product.product_view.product_detail_images.each do |image| %>
-      <li class="list-group-item"><%= image_tag image.url, class: 'detail-image' %> <span><%= image.url %></span></li>
+  <ol style="margin-top: 16px">
+    <% @product.product_view.product_detail_images.each_with_index do |image, i| %>
+      <li>
+        <a class="thumbnail">
+          <%= image_tag(asset_url(image.url, host: Settings.cdn.hosts[i % Settings.cdn.hosts.length]),
+                        class: 'detail-image') %>
+        </a>
+      </li>
     <% end %>
-  </ul>
+  </ol>
 </div>

@@ -16,3 +16,10 @@ customer_service:
 wx_api:
   app_id: 'wx53c8aabe10ca7e80'
   app_secret: '122a24ed9136c75dc2b5f195c5fbdfa4'
+
+aws:
+  s3:
+    bucket: caodoo-development
+
+cdn:
+  hosts: [caodoo-development.s3-website.cn-north-1.amazonaws.com.cn]

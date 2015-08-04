@@ -16,3 +16,10 @@ customer_service:
 wx_api:
   app_id: 'wxece631711e340ec1'
   app_secret: 'f483aea124f9b84238338153a05deba7'
+
+aws:
+  s3:
+    bucket: caodoo
+
+cdn:
+  hosts: [img1.caodoo.com, img2.caodoo.com, img3.caodoo.com, img4.caodoo.com]
