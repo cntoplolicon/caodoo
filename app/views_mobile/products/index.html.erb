@@ -14,12 +14,12 @@
 <div class="container">
   <div class="banner">
     <%= link_to contest_products_path do %>
-      <%= image_tag "mobile_banner.jpg", :class => "mwidth_center" %>
+      <%= image_tag "mobile_banner.jpg", :class => "center-block mobile_index_banner" %>
     <% end %>
   </div>
   <!--now-->
   <div class="product_now">
-    <%= image_tag "mobile_product_now.png", :class => "mwidth_center" %>
+    <%= image_tag "mobile_product_now.png", :class => "center-block product_status_banner" %>
   </div>
   <div class="on-sale-products">
     <% @on_sale_products.each do |product| %>
@@ -43,7 +43,9 @@
   <!--soon-->
   <% if @upcoming_products.any? %>
     <div class="product_soon">
-      <%= image_tag "mobile_product_soon.png", :class => "mwidth_center" %>
+      <div class="product_soon_banner">
+        <%= image_tag "mobile_product_soon.png", :class => "center-block product_status_banner" %>
+      </div>
       <!--soon products-->
       <div>
         <ul class="product_soon_ul">
