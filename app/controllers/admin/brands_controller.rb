@@ -15,6 +15,7 @@ class Admin::BrandsController < Admin::AdminController
   def create
     @brand = Brand.new(brand_params)
     if @brand.save
+      update_logo(params[:brand][:logo]) if params[:brand][:logo]
       redirect_to action: :index
     else
       render 'edit'
@@ -26,6 +27,7 @@ class Admin::BrandsController < Admin::AdminController
 
   def update
     if @brand.update(brand_params)
+      update_logo(params[:brand][:logo]) if params[:brand][:logo]
       redirect_to action: :index
     else
       render 'edit'
@@ -39,6 +41,19 @@ class Admin::BrandsController < Admin::AdminController
   end
 
   def brand_params
-    params.require(:brand).permit(:name, :logo_url)
+    params.require(:brand).permit(:name)
+  end
+
+  def upload_image(s3, image)
+    content = image.read
+    filename = "images/brands/#{@brand.id}/#{Digest::MD5.hexdigest(content)}#{File.extname(image.original_filename)}"
+    s3.buckets[Rails.configuration.x.aws_s3_bucket].objects[filename].write(content)
+    "/#{filename}"
+  end
+
+  def update_logo(image)
+    s3 = AWS::S3.new
+    @brand.logo_url = upload_image(s3, image)
+    @brand.save(validate: false)
   end
 end

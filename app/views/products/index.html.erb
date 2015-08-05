@@ -20,7 +20,7 @@
     <% @on_sale_products.each do |product| %>
       <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
         <%= link_to product_path(product) do %>
-          <%= tag :img, data: {original: asset_path(product.product_view.sale_image_url)}, class: 'lazy' %>
+          <%= tag :img, data: {original: asset_url(product.product_view.sale_image_url)}, class: 'lazy' %>
           <div class="product-information">
             <div class="product-name">
               <%= product.name %>
@@ -49,8 +49,8 @@
   <div class="upcoming-products">
     <% @upcoming_products.each do |product| %>
       <div class="upcoming-product">
-        <%= image_tag(product.brand.logo_url, class: "brand-image") %>
-        <%= image_tag(product.product_view.trailer_image_url, class: "trailer-image") %>
+        <%= image_tag(asset_url(product.brand.logo_url), class: "brand-image") %>
+        <%= image_tag(asset_url(product.product_view.trailer_image_url), class: "trailer-image") %>
         <div class="trailer-content">
           <div class="trailer-time"><%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %></div>
           <div class="trailer-description"> <%= product.product_view.trailer_description %> </div>

@@ -122,6 +122,7 @@ Rails.application.routes.draw do
     resources :products do
       resource :product_carousel_images
       resource :product_detail_images
+      resource :product_homepage_images
       resources :product_sale_schedules
     end
     resources :brands

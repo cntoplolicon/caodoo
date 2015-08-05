@@ -32,7 +32,7 @@
           <div class="swiper-wrapper">
             <% @product.product_view.product_carousel_images.each do |image| %>
               <div class="swiper-slide">
-                <%= image_tag(image.url, class: "product-detail-image carousel-image") %>
+                <%= image_tag(asset_url(image.url), class: "product-detail-image carousel-image") %>
               </div>
             <% end %>
           </div>
@@ -45,7 +45,7 @@
       </div>
       <div class="product-detail-thumnail-panel">
         <% @product.product_view.product_carousel_images.each do |image| %>
-          <%= image_tag(image.url, class: "product-detail-thumbnail") %>
+          <%= image_tag(asset_url(image.url), class: "product-detail-thumbnail") %>
         <% end %>
       </div>
     </div>
@@ -141,7 +141,7 @@
   </div>
   <div>
     <% @product.product_view.product_detail_images.each do |image| %>
-      <%= image_tag(image.url, class: "center-block") %>
+      <%= image_tag(asset_url(image.url), class: "center-block") %>
     <% end %>
   </div>
   <div class="faq center-block">

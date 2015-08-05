@@ -1,0 +1,6 @@
+aws:
+  s3:
+    bucket: caodoo-development
+
+cdn:
+  hosts: [caodoo-development.s3-website.cn-north-1.amazonaws.com.cn]

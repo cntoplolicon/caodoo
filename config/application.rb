@@ -28,5 +28,15 @@ module Caodoo
     redis_config = YAML.load(File.open(Rails.root.join("config/redis.yml"))).deep_symbolize_keys[Rails.env.to_sym]
     redis_config = {host: '127.0.0.1',  port: 6379, db: 0}.merge(redis_config)
     config.cache_store = :redis_store, "redis://#{redis_config[:host]}:#{redis_config[:port]}/#{redis_config[:db]}/#{redis_config[:namespace]}"
+    
+    cdn_config = YAML.load(File.open(Rails.root.join("config/cdn.yml"))).deep_symbolize_keys
+    config.x.aws_s3_bucket = cdn_config[:aws][:s3][:bucket]
+
+    config.action_controller.asset_host = Proc.new { |source|
+      if (source.include?('images/products/') || source.include?('images/brands/')) && !source.include?('development')
+        hosts = cdn_config[:cdn][:hosts]
+        hosts[Digest::MD5.hexdigest(source).to_i(16) % 2 % hosts.length]
+      end
+    }
   end
 end

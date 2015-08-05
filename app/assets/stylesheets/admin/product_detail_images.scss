@@ -1,3 +1,11 @@
 // Place all the styles related to the admin/product_detail_images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-detail-images ol {
+  list-style-type: none;
+}
+
+.product-detail-images .thumbnail {
+  display: inline-block;
+}

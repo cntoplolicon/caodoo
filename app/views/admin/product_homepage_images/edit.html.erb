@@ -1,0 +1,15 @@
+<div class="container">
+  <%= link_to "返回", admin_product_product_homepage_images_path(@product), class: 'btn btn-default' %>
+  <div style="margin-top: 16px">
+    <%= form_tag admin_product_product_homepage_images_path(@product), multipart: true do |f| %>
+      <div class="form-group">
+        <%= label_tag :sale_image, '在售图片' %>
+        <%= file_field_tag :sale_image, class: 'product-homepage-images-input' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :trailer_image, '预告图片' %>
+        <%= file_field_tag :trailer_image, class: 'product-homepage-images-input' %>
+      </div>
+    <% end %>
+  </div>
+</div>

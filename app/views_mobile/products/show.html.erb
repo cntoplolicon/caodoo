@@ -37,7 +37,7 @@
         <div class="swiper-wrapper">
           <% @product.product_view.product_carousel_images.each do |image| %>
             <div class="swiper-slide">
-              <%= image_tag(image.url, class: "product-detail-image") %>
+              <%= image_tag(asset_url(image.url), class: "product-detail-image") %>
             </div>
           <% end %>
         </div>
@@ -139,7 +139,7 @@
     <% end %>
     <div class="product-detail-middle-block">产品详情</div>
     <% @product.product_view.product_detail_images.each do |image| %>
-      <%= image_tag(image.url, class: "product-detail-description center-block") %>
+      <%= image_tag(asset_url(image.url), class: "product-detail-description center-block") %>
     <% end %>
   </div>
 </div>

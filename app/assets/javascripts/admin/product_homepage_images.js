@@ -2,5 +2,5 @@
 // All this logic will automatically be available in application.js.
 
 $(function() {
-  $('input.product-carousel-images-input').fileinput();
+  $('input.product-homepage-images-input').fileinput();
 });
