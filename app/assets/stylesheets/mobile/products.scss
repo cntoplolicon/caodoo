@@ -16,7 +16,7 @@
 }
 
 .product_bottom_black {
-  width: 147px;
+  width: 100%;
   height: 48px;
   position: absolute;
   bottom: 0;
@@ -31,7 +31,7 @@
 .product_soon_ul li {
   float: left;
   position: relative;
-  margin: 0px 6px;
+  width: 33.3%;
 }
 
 .product_date {
@@ -50,7 +50,7 @@
 }
 
 .product_soon_ul .trailer-image {
-  width: 146px;
+  width: 100%;
 }
 
 .product_now {
@@ -58,30 +58,19 @@
 }
 
 .on-sale-products {
-  margin: 0 auto;
-  width: 320px;
+  width: 100%;
 }
 
 .on-sale-product {
   background-color: #fff;
+  box-sizing: border-box;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #E5E5E5;
 }
 
-.on-sale-product0,
-.on-sale-product0 img {
-  width: 160px;
-  height: 320px;
-}
-
-.on-sale-product1,
-.on-sale-product1 img {
-  width: 160px;
-  height: 160px;
-}
-
-.on-sale-product2,
-.on-sale-product2 img {
-  width: 320px;
-  height: 160px;
+.on-sale-product img {
+  width: 100%;
+  height: 100%;
 }
 
 .on-sale-product .product-information {
@@ -153,7 +142,7 @@
 }
 
 .product-detail {
-  width: 320px;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   background-color: #ffffff;
@@ -300,13 +289,14 @@
 }
 
 .product-detail-description {
-  width: 320px;
+  width: 100%;
 }
 
 .product-detail-flex-y {
   height: 16px;
   display: block;
 }
+
 /*change .style.display to switch between original-page and sold-out/time-out page*/
 
 .product-detail-submit {
@@ -360,6 +350,7 @@
   width: 60px;
   z-index: 100;
 }
+
 /*change .style.display to switch between orginal-page and game-page*/
 
 .on-sale-time-left {
@@ -507,4 +498,8 @@
   float: right;
   color: #15ae10;
   font-size: 14px;
+}
+
+.purchase-a {
+  display: block;
 }

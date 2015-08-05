@@ -262,7 +262,7 @@
 }
 
 .order_box {
-  width: 320px;
+  width: 100%;
   min-height: 320px;
   background-color: white;
   margin: 0 auto;

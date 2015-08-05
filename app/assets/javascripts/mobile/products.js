@@ -3,10 +3,26 @@
 
 (function(window, $) {
   $(document).ready(function() {
+
+    var column_width = Math.floor($(document).width() / 2);
+    $(".on-sale-product0").css({
+      height: column_width * 2,
+      width: column_width
+    });
+    $(".on-sale-product1").css({
+      height: column_width,
+      width: column_width
+    });
+    $(".on-sale-product2").css({
+      height: column_width,
+      width: column_width * 2
+    });
+
     var productsAutoLayout = $('.on-sale-products').masonry({
       itemSelector: '.on-sale-product',
-      columnWidth: 160
+      columnWidth: column_width
     });
+
     $('.on-sale-products img.lazy').lazyload({
       effect: 'fadeIn'
     });
@@ -24,7 +40,7 @@
     if ($('.product-sale-remain-time').length > 0) {
       countDown();
       window.setInterval(countDown, 1000);
-    };
+    }
 
     var productDetailCountDown = function() {
       var time = $('#remain-time-hidden-field').val();
@@ -37,7 +53,7 @@
     if ($('.on-sale-time-left').length > 0) {
       productDetailCountDown();
       window.setInterval(productDetailCountDown, 1000);
-    };
+    }
 
     $(".othmenu").click(function() {
       $(".menu_list").toggle();
@@ -102,9 +118,9 @@
       wechat_client_sharing: true
     });
 
-    function isElementInViewport (el) {
+    function isElementInViewport(el) {
       if (el.length === 0) {
-        return ;
+        return;
       }
       el = el[0];
       var rect = el.getBoundingClientRect();

@@ -23,7 +23,7 @@
     <div class="product-detail-slider">
       <% if @product.product_sale_schedules[0].sale_end < Time.zone.now %>
         <%= image_tag("mobile_product-time-out.png", class: "product-detail-time-out") %>
-      <% elsif @product.quantity == 0%>
+      <% elsif @product.quantity == 0 %>
         <%= image_tag("mobile_product-sold-out.png", class: "product-detail-sold-out") %>
       <% end %>
       <a class="arrow-left">
@@ -32,6 +32,7 @@
       <a class="arrow-right">
         <%= image_tag("mobile_arrows_right.png", class: "arrow-right-img") %>
       </a>
+
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <% @product.product_view.product_carousel_images.each do |image| %>
@@ -46,7 +47,7 @@
     <div class="product-detail-text">
       <% if @contest_team %>
         <div class="product-detail-text-team">
-          <div class="product-detail-text-name"><%= @contest_team.name%></div>
+          <div class="product-detail-text-name"><%= @contest_team.name %></div>
           <div style="float: left; font-size: 16px">向您推荐</div>
         </div>
       <% end %>
@@ -71,6 +72,7 @@
             <% end %>
             )
           </span>
+
           <div class="product-detail-current-price">&#165;<%= @product.price %></div>
           <% if @product.reduced_price.present? %>
             <span class="product-discount-text">
@@ -116,7 +118,7 @@
       </div>
       <div class="product-detail-gurantee-text">全场包邮</div>
     </div>
-    <%= link_to new_user_order_path(session[:login_user_id] || 0, {product_id: @product.id}) do %>
+    <%= link_to new_user_order_path(session[:login_user_id] || 0, {product_id: @product.id}), class: "purchase-a" do %>
       <% if @product.product_sale_schedules[0].sale_end < Time.zone.now || @product.quantity == 0 %>
         <button disabled type="button" class="product-detail-submit-fade purchase-button">立即购买</button>
       <% else %>
@@ -127,6 +129,7 @@
     <% if @contest_team %>
       <div class="product-detail-share">
         <span class="share_title">为TA推广</span>
+
         <div class="bdsharebuttonbox" data-tag="share_1">
           <a class="csns-share-button" data-cmd="tsina"></a>
           <a class="csns-share-button" data-cmd="qzone"></a>
