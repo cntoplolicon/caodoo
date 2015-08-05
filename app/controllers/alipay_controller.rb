@@ -5,7 +5,7 @@ class AlipayController < ApplicationController
   def pay
     Order.transaction do
       @order = Order.lock.find(params[:order_id])
-      head :forbidden if @order.user_id != session[:login_user_id]
+      head :forbidden and return if @order.user_id != session[:login_user_id]
 
       expire = @order.created_at + Settings.payment.expired.to_i.minutes
       diff = ((expire - Time.zone.now) / 1.minutes).round
@@ -14,34 +14,29 @@ class AlipayController < ApplicationController
       payment_submitted = @order.payment_record.alipay_expire.present?
       unless payment_submitted
         @order.payment_record.alipay_expire = "#{diff}m"
+        @order.save(validate: false)
       end
 
       options = {
         out_trade_no: @order.order_number,
         subject: @order.product_name,
-        quantity: @order.quantity,
         it_b_pay: @order.payment_record.alipay_expire
       }
       if Rails.env.production? then
         options[:return_url] = "#{root_url}/alipay/return"
         options[:notify_url] = "#{root_url}/alipay/notify"
-        options[:price] = "%.2f" % @order.unit_price
+        options[:total_fee] = "%.2f" % (@order.quantity * @order.unit_price)
       else
         options[:return_url] = "#{root_url}/alipay/return"
-        options[:price] = '0.01'
-      end
-      uri = URI(Alipay::Service.create_direct_pay_by_user_url(options))
-
-      unless payment_submitted
-        Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
-          request = Net::HTTP::Get.new uri
-          http.request(request)
-        end
+        options[:total_fee] = "%.2f" % (@order.quantity * 0.01)
       end
 
-      unless payment_submitted
-        head :unprocessable_entity and return unless @order.save
+      if mobile_device?
+        uri = URI(Alipay::Service.create_wap_direct_pay_by_user_url(options))
+      else
+        uri = URI(Alipay::Service.create_direct_pay_by_user_url(options))
       end
+
       redirect_to(uri.to_s)
     end
   end

@@ -285,7 +285,7 @@ button {
 .cd_input {
   border-radius: 4px;
   width: 133px;
-  height: 30px;
+  height: 34px;
   padding: 4px 6px;
   background-color: #EBEBEB;
   margin: 8px 0;
@@ -415,4 +415,12 @@ button {
   font-size: 14px;
   color: white;
   margin-top: 5px;
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
 }

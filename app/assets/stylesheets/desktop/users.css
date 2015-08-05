@@ -208,3 +208,10 @@
 #login-user .error-message {
   margin: 0;
 }
+
+.forget_pwd{
+  float: right;
+}
+.recember-password-box{
+  float: left;
+}

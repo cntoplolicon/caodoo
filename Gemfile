@@ -40,7 +40,7 @@ end
 gem 'mysql2'
 gem 'bcrypt'
 gem 'rails_config'
-gem 'alipay'
+gem 'alipay', github: 'cntoplolicon/alipay'
 gem 'wx_pay'
 gem 'whenever'
 gem 'ar-octopus'

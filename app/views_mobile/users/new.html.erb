@@ -14,13 +14,15 @@
       <div class="error-message" id="username-error"><%= @user.errors.messages[:username].first if @user.errors[:username].any? %></div>
     </div>
     <div class="security-code-panel input-panel">
-      <%= f.text_field :security_code, placeholder: "验证码", class: 'security-code-input' %>
-      <button class="security-code-button">获取验证码</button>
+      <div class="security-code-box">
+        <%= f.text_field :security_code, placeholder: "短信验证码", class: 'security-code-input' %>
+        <button class="security-code-button">获取验证码</button>
+      </div>
       <div class="error-message" id="security-code-error"><%= @user.errors.messages[:security_code].first if @user.errors[:security_code].any? %></div>
     </div>
     <div class="password-panel input-panel">
-      <%= f.password_field :password, placeholder: '密码' %>
-      <div class="error-message"  id="userpwd-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
+      <%= f.password_field :password, placeholder: '请输入6-20位密码' %>
+      <div class="error-message" id="userpwd-error"><%= @user.errors.messages[:password].first if @user.errors[:password].any? %></div>
     </div>
     <div class="terms-of-service-panel input-panel">
       <%= f.check_box :terms_of_service %>
@@ -29,7 +31,7 @@
       <span class="error-message" id="terms_of_service_error"><%= @user.errors.messages[:terms_of_service].first if @user.errors[:terms_of_service].any? %></span>
     </div>
     <div class="submit-panel input-panel">
-      <%= f.submit "注册" %>
+      <%= f.submit "注册", data: {disable_with: '正在提交'} %>
     </div>
   <% end %>
 </div>

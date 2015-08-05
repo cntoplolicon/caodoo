@@ -1,18 +1,34 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-(function(window, $) {
-  $(document).ready(function() {
-    var productsAutoLayout = $('.on-sale-products').masonry({
-      itemSelector: '.on-sale-product'
+(function (window, $) {
+  $(document).ready(function () {
+
+    var column_width = Math.floor($(document).width() / 2);
+    $(".on-sale-product0").css({
+      height: column_width * 2,
+      width: column_width
     });
-    $('.on-sale-products img.lazy').lazyload({
-      effect: 'fadeIn',
-      threshold : 200
+    $(".on-sale-product1").css({
+      height: column_width,
+      width: column_width
+    });
+    $(".on-sale-product2").css({
+      height: column_width,
+      width: column_width * 2
     });
 
-    var countDown = function() {
-      $('.product-sale-remain-time').each(function() {
+    var productsAutoLayout = $('.on-sale-products').masonry({
+      itemSelector: '.on-sale-product',
+      columnWidth: column_width
+    });
+
+    $('.on-sale-products img.lazy').lazyload({
+      effect: 'fadeIn'
+    });
+
+    var countDown = function () {
+      $('.product-sale-remain-time').each(function () {
         var time = $(this).data('time');
         time = Math.max(time - 1, 0);
         var remainTimeString = showRemainTime(time);
@@ -24,9 +40,10 @@
     if ($('.product-sale-remain-time').length > 0) {
       countDown();
       window.setInterval(countDown, 1000);
-    };
+    }
+    ;
 
-    var productDetailCountDown = function() {
+    var productDetailCountDown = function () {
       var time = $('#remain-time-hidden-field').val();
       time = Math.max(time - 1, 0);
       var remainTimeString = showRemainTime(time);
@@ -37,17 +54,17 @@
     if ($('.on-sale-time-left').length > 0) {
       productDetailCountDown();
       window.setInterval(productDetailCountDown, 1000);
-    };
+    }
 
-    $(".othmenu").click(function() {
+    $(".othmenu").click(function () {
       $(".menu_list").toggle();
     });
 
-    $(".dropdown_action").click(function() {
+    $(".dropdown_action").click(function () {
       $(".children_list").toggle();
     });
 
-    var update_quantity_and_price = function() {
+    var update_quantity_and_price = function () {
       if ($("#unit-price-field").length > 0) {
         var quantity = parseInt($('.quantity-number').val());
         var unit_price = parseFloat($('#unit-price-field').val());
@@ -56,15 +73,15 @@
       }
     }
     update_quantity_and_price();
-    $('.quantity-controller-decrease').click(function() {
+    $('.quantity-controller-decrease').click(function () {
       $('.quantity-number').val(Math.max(parseInt($('.quantity-number').val()) - 1, 1));
       update_quantity_and_price();
     });
-    $('.quantity-controller-increase').click(function() {
+    $('.quantity-controller-increase').click(function () {
       $('.quantity-number').val(Math.min(parseInt($('.quantity-number').val()) + 1, $('#quantity-limit-field').val()));
       update_quantity_and_price();
     });
-    $('.quantity-number').change(function() {
+    $('.quantity-number').change(function () {
       var quantity = parseInt($('.quantity-number').val());
       if (isNaN(quantity)) {
         quantity = 1;
@@ -75,7 +92,7 @@
       update_quantity_and_price();
     });
 
-    $('.product-detail .purchase-button').click(function(event) {
+    $('.product-detail .purchase-button').click(function (event) {
       event.preventDefault();
       var link = $(this).closest('a');
       window.location.href = link.attr('href') + '&quantity=' + $('.quantity-number').val();
@@ -86,11 +103,11 @@
       grabCursor: true,
       paginationClickable: true
     })
-    $('.arrow-left').on('click', function(e) {
+    $('.arrow-left').on('click', function (e) {
       e.preventDefault()
       mySwiper.swipePrev()
     })
-    $('.arrow-right').on('click', function(e) {
+    $('.arrow-right').on('click', function (e) {
       e.preventDefault()
       mySwiper.swipeNext()
     })
@@ -102,16 +119,16 @@
       wechat_client_sharing: true
     });
 
-    function isElementInViewport (el) {
+    function isElementInViewport(el) {
       if (el.length === 0) {
-        return ;
+        return;
       }
       el = el[0];
       var rect = el.getBoundingClientRect();
       return rect.top + rect.height > 0;
     }
 
-    var showBottomButton = function() {
+    var showBottomButton = function () {
       if (isElementInViewport($('.product-detail .purchase-button'))) {
         $('.mobile-purchase-bottom').hide()
       } else {

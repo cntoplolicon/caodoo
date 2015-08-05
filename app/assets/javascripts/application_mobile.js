@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.lazyload
+//= require jquery-ujs
 //= require masonry/dist/masonry.pkgd.js
 //= require swiper
 //= require_tree ./common
