@@ -11,4 +11,8 @@ $(document).ready(function() {
       {targets: -1, sortable: false}
     ]
   });
+
+  $('input.brand-logo-input').fileinput({
+    showUpload: false
+  });
 });

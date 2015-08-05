@@ -5,8 +5,8 @@
       <%= f.text_field :name, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :logo_url, 'logo URL' %>
-      <%= f.text_field :logo_url, class: 'form-control' %>
+      <%= f.label :logo, '上传logo' %>
+      <%= f.file_field :logo, class: 'brand-logo-input' %>
     </div>
     <%= link_to "返回", admin_brands_path, class: 'btn btn-default' %>
     <%= f.submit '提交', data: {disable_with: '正在提交'}, class: 'btn btn-primary' %>

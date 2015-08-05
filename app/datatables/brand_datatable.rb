@@ -1,11 +1,11 @@
 class BrandDatatable < Datatable
-  delegate :image_tag, :edit_admin_brand_path, to: :@view
+  delegate :image_tag, :asset_url, :edit_admin_brand_path, to: :@view
   
   def data
     raw_records.map do |brand|
       [
         brand.name,
-        image_tag(brand.logo_url),
+        image_tag(asset_url(brand.logo_url, host: Settings.cdn.hosts[rand(Settings.cdn.hosts.length)])),
         link_to('编辑', edit_admin_brand_path(brand), class: 'btn btn-default')
       ]
     end

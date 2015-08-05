@@ -49,7 +49,7 @@
   <div class="upcoming-products">
     <% @upcoming_products.each_with_index do |product, i| %>
       <div class="upcoming-product">
-        <%= image_tag(product.brand.logo_url, class: "brand-image") %>
+        <%= image_tag(asset_url(product.brand.logo_url, host: Settings.cdn.hosts[i % Settings.cdn.hosts.length]), class: "brand-image") %>
         <%= image_tag(asset_url(product.product_view.trailer_image_url, host: Settings.cdn.hosts[i % Settings.cdn.hosts.length]), class: "trailer-image") %>
         <div class="trailer-content">
           <div class="trailer-time"><%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %></div>
