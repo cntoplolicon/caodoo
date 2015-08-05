@@ -72,10 +72,18 @@ input {
   width: 320px;
 }
 
-.mwidth_center {
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
   display: block;
-  width: 320px;
+}
+.product_status_banner {
+  display: block;
   margin: 0 auto;
+  height: 27px;
+}
+.mobile_index_banner {
+  width: 100%;
 }
 /*header*/
 

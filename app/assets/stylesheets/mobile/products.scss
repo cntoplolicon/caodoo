@@ -5,13 +5,11 @@
 
 .banner {
   width: 100%;
-  height: 120px;
   overflow: hidden;
   background-color: black;
 }
 
-.on-sale-products,
-.product_soon {
+.on-sale-products {
   background-color: black;
 }
 
@@ -54,7 +52,24 @@
 }
 
 .product_now {
-  height: 90px;
+  height: 50px;
+  text-align: center;
+  background-color: #000000;
+  box-sizing: border-box;
+  padding-top: 15px;
+}
+
+.product_soon {
+  width: 100%;
+  text-align: center;
+  background-color: #000000;
+}
+
+.product_soon_banner {
+  height: 50px;
+  padding-top: 15px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .on-sale-products {
