@@ -5,7 +5,7 @@ class BrandDatatable < Datatable
     raw_records.map do |brand|
       [
         brand.name,
-        image_tag(asset_url(brand.logo_url, host: Settings.cdn.hosts[rand(Settings.cdn.hosts.length)])),
+        image_tag(asset_url(brand.logo_url)),
         link_to('编辑', edit_admin_brand_path(brand), class: 'btn btn-default')
       ]
     end

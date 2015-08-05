@@ -7,7 +7,7 @@ class Admin::ProductCarouselImagesController < Admin::AdminController
     params[:images].each_with_index do |image, index|
       content = image.read
       filename = "images/products/#{@product.id}/#{Digest::MD5.hexdigest(content)}#{File.extname(image.original_filename)}"
-      s3.buckets[Settings.aws.s3.bucket].objects[filename].write(content)
+      s3.buckets[Rails.configuration.x.aws_s3_bucket].objects[filename].write(content)
       @product.product_view.product_carousel_images.create(position: index, url: "/#{filename}")
     end
     redirect_to action: :show

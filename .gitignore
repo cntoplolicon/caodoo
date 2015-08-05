@@ -40,6 +40,7 @@ config/database.yml
 config/secrets.yml
 config/shards.yml
 config/redis.yml
+config/cdn.yml
 
 #vim noise
 *.swp

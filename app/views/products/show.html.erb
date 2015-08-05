@@ -30,9 +30,9 @@
         </a>
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <% @product.product_view.product_carousel_images.each_with_index do |image, i| %>
+            <% @product.product_view.product_carousel_images.each do |image| %>
               <div class="swiper-slide">
-                <%= image_tag(asset_url(image.url, host: Settings.cdn.hosts[i % Settings.cdn.hosts.length]), class: "product-detail-image carousel-image") %>
+                <%= image_tag(asset_url(image.url), class: "product-detail-image carousel-image") %>
               </div>
             <% end %>
           </div>
@@ -44,8 +44,8 @@
         <% end %>
       </div>
       <div class="product-detail-thumnail-panel">
-        <% @product.product_view.product_carousel_images.each_with_index do |image, i| %>
-          <%= image_tag(asset_url(image.url, host: Settings.cdn.hosts[i % Settings.cdn.hosts.length]), class: "product-detail-thumbnail") %>
+        <% @product.product_view.product_carousel_images.each do |image| %>
+          <%= image_tag(asset_url(image.url), class: "product-detail-thumbnail") %>
         <% end %>
       </div>
     </div>
@@ -140,9 +140,8 @@
     产品详情
   </div>
   <div>
-    <% @product.product_view.product_detail_images.each_with_index do |image, i| %>
-      <%= image_tag(asset_url(image.url, host: Settings.cdn.hosts[i % Settings.cdn.hosts.length]),
-                    class: "center-block") %>
+    <% @product.product_view.product_detail_images.each do |image| %>
+      <%= image_tag(asset_url(image.url), class: "center-block") %>
     <% end %>
   </div>
   <div class="faq center-block">

@@ -6,13 +6,13 @@
       <div class="col-md-6">
         <div>在售图片</div>
         <a class="thumbnail">
-          <%= image_tag(asset_url(@product.product_view.sale_image_url, host: Settings.cdn.hosts[rand(Settings.cdn.hosts.length)])) %>
+          <%= image_tag(asset_url(@product.product_view.sale_image_url)) %>
         </a>
       </div>
       <div class="col-md-6">
         <div>预告图片</div>
         <a class="thumbnail">
-          <%= image_tag(asset_url(@product.product_view.trailer_image_url, host: Settings.cdn.hosts[rand(Settings.cdn.hosts.length)])) %>
+          <%= image_tag(asset_url(@product.product_view.trailer_image_url)) %>
         </a>
       </div>
     </div>

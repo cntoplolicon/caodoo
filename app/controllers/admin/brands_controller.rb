@@ -47,7 +47,7 @@ class Admin::BrandsController < Admin::AdminController
   def upload_image(s3, image)
     content = image.read
     filename = "images/brands/#{@brand.id}/#{Digest::MD5.hexdigest(content)}#{File.extname(image.original_filename)}"
-    s3.buckets[Settings.aws.s3.bucket].objects[filename].write(content)
+    s3.buckets[Rails.configuration.x.aws_s3_bucket].objects[filename].write(content)
     "/#{filename}"
   end
 
