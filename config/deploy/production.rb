@@ -45,7 +45,7 @@ set :ssh_options, {
   user: 'ubuntu', # overrides user setting above
   forward_agent: true,
   auth_methods: %w(publickey),
-  keys: %w(~/workspace/deployment/WebServer.pem)
+  keys: %w(/etc/ssh/WebServer.pem)
 }
 #
 # The server-based syntax can be used to override options:
