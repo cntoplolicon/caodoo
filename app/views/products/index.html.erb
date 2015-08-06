@@ -52,7 +52,7 @@
         <%= image_tag(asset_url(product.brand.logo_url), class: "brand-image") %>
         <%= image_tag(asset_url(product.product_view.trailer_image_url), class: "trailer-image") %>
         <div class="trailer-content">
-          <div class="trailer-time"><%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %></div>
+          <div class="trailer-time"><%= show_day_of_week(product.product_sale_schedules[0].sale_start.localtime.wday) %></div>
           <div class="trailer-description"> <%= product.product_view.trailer_description %> </div>
         </div>
       </div>
