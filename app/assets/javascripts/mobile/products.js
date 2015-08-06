@@ -97,10 +97,8 @@
       window.location.href = link.attr('href') + '&quantity=' + $('.quantity-number').val();
     });
 
-    var mySwiper = new Swiper('.swiper-container', {
+    var mySwiper = new Swiper('.product-detail .swiper-container', {
       loop: true,
-      grabCursor: true,
-      paginationClickable: true
     })
     $('.arrow-left').on('click', function(e) {
       e.preventDefault()
@@ -110,6 +108,16 @@
       e.preventDefault()
       mySwiper.swipeNext()
     })
+
+    if ($(".banner .swiper-wrapper :nth-child(2)").length > 0) {
+      var bannerSwiper = new Swiper('.banner .swiper-container',{
+        loop: true,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        autoplay: 5000,
+        autoplayDisableOnInteraction: false
+      })
+    }
 
     $('.product-detail-share').csns({
       title: '我们参加了大学生营销策划赛，向你推荐' + $('.product-name').text() + ', 来看看吧~',

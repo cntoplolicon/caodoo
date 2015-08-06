@@ -13,6 +13,7 @@
  *= require_tree ./common
  *= require_tree ./mobile
  *= require_self
+ *= require swiper
  */
 
 body {
