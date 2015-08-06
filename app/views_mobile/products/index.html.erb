@@ -54,7 +54,7 @@
               <%= image_tag(asset_url(product.product_view.trailer_image_url), class: "trailer-image") %>
               <div class="product_bottom_black">
                 <div class="product_date">
-                  <%= show_day_of_week(product.product_sale_schedules[0].trailer_start.localtime.wday) %>
+                  <%= show_day_of_week(product.product_sale_schedules[0].sale_start.localtime.wday) %>
                 </div>
                 <div class="product_title">
                   <%= product.product_view.trailer_description %>
