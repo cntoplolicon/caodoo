@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
       .where(schedule_table[:trailer_end].gt(now))
       .where(contest_level: nil)
       .order(priority: :desc)
+    @homepage_banners = HomepageBanner.all
   end
 
   def show
