@@ -42,7 +42,7 @@
 
 .product-information-middle {
   height: 73px;
-  display: inline-block;
+  margin-left: 20px;
 }
 
 .product-information-image {
@@ -65,7 +65,7 @@
 }
 
 .product-information-price {
-  margin-top: 6px;
+  margin-top: 22px;
   height: 16px;
   font-size: 16px;
   display: inline-block;
@@ -83,7 +83,8 @@
 
 .product-information-bottom {
   margin-top: 30px;
-  display: inline-block;
+  margin-left: 20px;
+  overflow: auto;
   width: 278px;
 }
 
@@ -95,10 +96,12 @@
 
 .product-information-quantity-controller {
   float: right;
-  border: solid 1px #000000;
-  width: 16px;
-  height: 16px;
+  border: solid 1px #666666;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
   text-align: center;
+  border-radius: 2px;
 }
 
 .product-information-quantity-number {
@@ -140,7 +143,6 @@
 }
 
 .address-selection {
-  width: 256px;
   color: #626262;
   background-color: #ebebeb;
   padding: 8px 10px;
@@ -650,9 +652,11 @@
 .product-display-remark-ipnut {
   width: 192px;
   padding: 4px 2px;
-  font-size: 12px;
   margin-left: 4px;
   resize: none;
+  font-size: 14px;
+  border-color: #E5E5E5;
+  height: 40px;
 }
 
 .order-description-text-light {
@@ -660,6 +664,6 @@
   padding: 4px 0;
 }
 
-.order-random-id-error{
+.order-random-id-error {
   text-align: center;
 }
