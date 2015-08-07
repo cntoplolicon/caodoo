@@ -70,7 +70,7 @@
         $('.quantity-display').text(quantity);
         var coupon_price = parseFloat($('.total-coupon-price-display').text());
         $('.total-price-display').text((quantity * unit_price).toFixed(2));
-        $('.total-finally-price-display').text((quantity * unit_price).toFixed(2) - coupon_price.toFixed(2));
+        $('.total-finally-price-display').text((quantity * unit_price - coupon_price).toFixed(2));
       }
     }
     update_quantity_and_price();
