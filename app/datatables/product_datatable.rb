@@ -16,6 +16,7 @@ class ProductDatatable < Datatable
         product.original_price,
         product.quantity,
         product.contest_level,
+        product.product_version,
         "#{link_to('编辑', edit_admin_product_path(product), class: 'btn btn-default')} 
         #{link_to('查看首页图', admin_product_product_homepage_images_path(product), class: 'btn btn-default')}
         #{link_to('查看缩略图', admin_product_product_carousel_images_path(product), class: 'btn btn-default')}
@@ -41,6 +42,7 @@ class ProductDatatable < Datatable
   end
 
   def sortable_columns
-    @sortable_columns ||= ['products.name', 'brands.name', 'products.reduced_price', 'products.price', 'products.original_price', 'products.contest_level']
+    @sortable_columns ||= ['products.name', 'brands.name', 'products.reduced_price', 'products.price', 'products.original_price',
+                           'products.quantity', 'products.contest_level', 'products.product_version']
   end
 end

@@ -37,6 +37,10 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'rubocop'
+end
+
 gem 'mysql2'
 gem 'bcrypt'
 gem 'rails_config'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729013514) do
+ActiveRecord::Schema.define(version: 20150806103323) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -71,6 +71,18 @@ ActiveRecord::Schema.define(version: 20150729013514) do
   add_index "contest_teams", ["identifier"], name: "index_contest_teams_on_identifier", unique: true, using: :btree
   add_index "contest_teams", ["phone"], name: "index_contest_teams_on_phone", unique: true, using: :btree
   add_index "contest_teams", ["university"], name: "index_contest_teams_on_university", using: :btree
+
+  create_table "coupons", force: :cascade do |t|
+    t.float    "money",      limit: 24
+    t.date     "begin_date"
+    t.date     "end_date"
+    t.integer  "state",      limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "coupons", ["user_id"], name: "index_coupons_on_user_id", using: :btree
 
   create_table "expresses", force: :cascade do |t|
     t.string   "code",       limit: 32
@@ -152,6 +164,14 @@ ActiveRecord::Schema.define(version: 20150729013514) do
 
   add_index "product_detail_images", ["product_view_id"], name: "index_product_detail_images_on_product_view_id", using: :btree
 
+  create_table "product_groups", force: :cascade do |t|
+    t.integer  "primary_product_id", limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "product_groups", ["primary_product_id"], name: "index_product_groups_on_primary_product_id", using: :btree
+
   create_table "product_sale_schedules", force: :cascade do |t|
     t.integer  "product_id",    limit: 4
     t.datetime "sale_start"
@@ -190,9 +210,12 @@ ActiveRecord::Schema.define(version: 20150729013514) do
     t.integer  "contest_level",       limit: 4
     t.decimal  "reduced_price",                   precision: 10, scale: 2
     t.string   "original_price_link", limit: 255
+    t.integer  "product_group_id",    limit: 4
+    t.string   "product_version",     limit: 255
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
+  add_index "products", ["product_group_id"], name: "index_products_on_product_group_id", using: :btree
 
   create_table "refund_records", force: :cascade do |t|
     t.integer  "order_id",        limit: 4
@@ -227,6 +250,7 @@ ActiveRecord::Schema.define(version: 20150729013514) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "coupons", "users"
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "contest_teams"
   add_foreign_key "orders", "expresses"
@@ -235,9 +259,11 @@ ActiveRecord::Schema.define(version: 20150729013514) do
   add_foreign_key "payment_records", "orders"
   add_foreign_key "product_carousel_images", "product_views"
   add_foreign_key "product_detail_images", "product_views"
+  add_foreign_key "product_groups", "products", column: "primary_product_id"
   add_foreign_key "product_sale_schedules", "products"
   add_foreign_key "product_views", "products"
   add_foreign_key "products", "brands"
+  add_foreign_key "products", "product_groups"
   add_foreign_key "refund_records", "expresses"
   add_foreign_key "refund_records", "orders"
 end

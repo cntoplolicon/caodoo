@@ -49,7 +49,8 @@ class Admin::ProductsController < Admin::AdminController
   def product_params
     params[:product][:contest_level] = nil if params[:product][:contest_level].blank?
     params[:product][:reduced_price] = nil if params[:product][:reduced_price].blank?
-    params.require(:product).permit(:name, :brand_id, :price, :reduced_price, :original_price, :original_price_link, :priority, :contest_level, :quantity_delta,
+    params.require(:product).permit(:name, :brand_id, :price, :reduced_price, :original_price, :original_price_link,
+                                    :priority, :contest_level, :quantity_delta, :product_version,
                                     product_view_attributes: [:id, :home_page_description, :trailer_description, :detail_page_description,
                                                               :sale_image_type, :sale_image_url, :trailer_image_url])
   end
