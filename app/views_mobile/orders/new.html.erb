@@ -31,6 +31,12 @@
           </div>
           <div class="product-information-text">
             <div class="product-information-name"><%= @product.name %></div>
+            <% if @product.product_version %>
+            <div class="product-information-product-version">
+              <div class="product-information-product-version-tag">产品型号：</div>
+              <div class="product-information-product-version-content"><%= @product.product_version %></div>
+            </div>
+            <% end %>
             <div class="product-information-price">
               <div class="product-information-price-tag">产品单价：</div>
               <div class="product-information-price-data">￥<%= "#{'%.2f' % @product.actual_price}" %></div>

@@ -41,8 +41,8 @@
 }
 
 .product-information-middle {
-  height: 73px;
   margin-left: 20px;
+  overflow: hidden;
 }
 
 .product-information-image {
@@ -65,10 +65,9 @@
 }
 
 .product-information-price {
-  margin-top: 22px;
+  margin-top: 12px;
   height: 16px;
   font-size: 16px;
-  display: inline-block;
 }
 
 .product-information-price-tag {
@@ -77,6 +76,22 @@
 }
 
 .product-information-price-data {
+  float: left;
+  color: #3f3f3f;
+}
+
+.product-information-product-version {
+  margin-top: 12px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.product-information-product-version-tag {
+  float: left;
+  color: #6b6b6b;
+}
+
+.product-information-product-version-content {
   float: left;
   color: #3f3f3f;
 }
