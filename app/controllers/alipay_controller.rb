@@ -86,10 +86,7 @@ class AlipayController < ApplicationController
       if params[:total_fee].present?
         @order.payment_record.amount = params[:total_fee].to_f
       else
-        @order.payment_record.amount = @order.total_price
-        unless @order.coupon.nil?
-          @order.payment_record.amount -= @order.coupon.money
-        end
+        @order.payment_record.amount = @order.amount_to_pay
       end
       @order.payment_record.payment_time = Time.zone.now
     end
