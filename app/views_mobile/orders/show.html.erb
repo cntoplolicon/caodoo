@@ -47,13 +47,7 @@
 
     <div class="order_row">
       <span class="col_name">总计金额:</span>
-      <strong class="strong_value right">￥
-        <% unless @order.coupon.nil? %>
-          <%= @order.total_price-@order.coupon.money %>
-        <% else %>
-          <%= @order.total_price %>
-        <% end %>
-      </strong>
+      <strong class="strong_value right">￥<%= @order.amount_to_pay %></strong>
     </div>
   </div>
   <!--order info-->
