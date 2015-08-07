@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     session[:order_random_id] = @order_random_id
     @product = Product.find(params[:product_id])
     @order.product_id = @product.id
+    @coupons = @user.coupons.where(order_id: nil).where('end_date > ?', Time.zone.now)
     if @product.contest_product?
       if session[:contest_team_id].present?
         @contest_team = ContestTeam.find(session[:contest_team_id])
@@ -91,18 +92,12 @@ class OrdersController < ApplicationController
         end
       end
       if @order.save
-        coupon_id=params['coupon_id']
-        unless coupon_id.nil?
-          @coupon=Coupon.find(coupon_id)
-          @coupon.order_id=@order.id
-          if @coupon.save
-            redirect_to user_order_payment_url(@user, @order) and return
-          else
-            raise ActiveRecord::Rollback
-          end
-        else
-          redirect_to user_order_payment_url(@user, @order) and return
+        coupon_id = params['coupon_id']
+        if coupon_id.present?
+          @coupon = Coupon.find(coupon_id)
+          @coupon.update(order_id: @order.id) if @coupon.present?
         end
+        redirect_to user_order_payment_url(@user, @order) and return
       else
         raise ActiveRecord::Rollback
       end
@@ -119,11 +114,7 @@ class OrdersController < ApplicationController
           @order.status = Order::CANCELLED
           @order.payment_record.status = PaymentRecord::CANCELLED
           @order.save
-          unless @order.coupon.nil?
-            coupon=Coupon.find(@order.coupon.id)
-            coupon.order_id=nil
-            coupon.save
-          end
+          @order.coupon.update(order_id: nil) unless @order.coupon.nil?
           Product.where(id: @order.product_id).update_all(['quantity = quantity + ?', @order.quantity])
         elsif @order.status == Order::PAID
           @order.status = Order::CANCELLING

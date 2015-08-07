@@ -103,7 +103,7 @@ class WxPayController < ApplicationController
       if order.coupon.nil?
         options[:total_fee] = (order.total_price * 100).round
       else
-        options[:total_fee] = (order.total_price * 100).round-order.coupon.money
+        options[:total_fee] = (order.total_price - order.coupon.money) * 100.round
       end
     end
     options

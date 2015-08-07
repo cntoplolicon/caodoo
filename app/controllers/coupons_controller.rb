@@ -2,7 +2,7 @@ class CouponsController < ApplicationController
   before_action :find_user
 
   def index
-    @coupons=@user.coupons.where('coupons.order_id' => nil).order(end_date: 'desc')
+    @coupons = @user.coupons.where('coupons.order_id' => nil).order(end_date: 'desc')
   end
 
   private

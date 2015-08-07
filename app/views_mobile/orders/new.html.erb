@@ -84,12 +84,12 @@
           <div class="error-message" id="username-error"><%= @order.errors.messages[:address_id].first if @order.errors[:address_id].any? %></div>
         </div>
       </div>
-      <% if @user.coupons.where('coupons.order_id' => nil).where('end_date>now()').any? %>
+      <% if @coupons.any? %>
         <div class="order-coupon">
           <div class="order-coupon-tag">使用优惠券</div>
           <div class="order-coupon-list">
             <ul>
-              <% @user.coupons.where('coupons.order_id' => nil).each_with_index do |coupon, i| %>
+              <% @coupons.each do |coupon| %>
                 <li>
                   <input type="radio" name="coupon_id" value="<%= coupon.id %>" class="order-coupon-radio">
                   <span>金额:</span>
