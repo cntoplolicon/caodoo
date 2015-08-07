@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
     session[:order_random_id] = @order_random_id
     @product = Product.find(params[:product_id])
     @order.product_id = @product.id
-    @coupons = @user.coupons.where(order_id: nil).where('end_date > ?', Time.zone.now)
     if @product.contest_product?
       if session[:contest_team_id].present?
         @contest_team = ContestTeam.find(session[:contest_team_id])
