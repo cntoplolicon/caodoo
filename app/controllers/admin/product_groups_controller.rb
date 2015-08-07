@@ -18,7 +18,7 @@ class Admin::ProductGroupsController < Admin::AdminController
       @product_group = ProductGroup.new(product_group_params)
       render 'new' and return unless primary_product_valid?
       if @product_group.save
-        set_groupped_products
+        @product_group.product_ids = @product_ids
         redirect_to action: :index
       else
         render 'new'
@@ -34,7 +34,7 @@ class Admin::ProductGroupsController < Admin::AdminController
       @product_group.attributes = product_group_params
       render 'edit' and return unless primary_product_valid?
       if @product_group.save
-        set_groupped_products
+        @product_group.product_ids = @product_ids
         redirect_to action: :index
       else
         render 'edit'
@@ -64,14 +64,9 @@ class Admin::ProductGroupsController < Admin::AdminController
   def primary_product_valid?
     if @product_group.primary_product_id.present? &&
         !@product_ids.include?(@product_group.primary_product_id)
-      @product_group.errors.add(:primary_product_id, '首要产品在包含产品中')
+      @product_group.errors.add(:primary_product_id, '首要产品不在所包含产品中')
       return false
     end
     true
-  end
-
-  def set_groupped_products
-    @product_group.products.clear
-    @product_group.product_ids = @product_ids
   end
 end
