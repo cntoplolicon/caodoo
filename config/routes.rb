@@ -66,6 +66,7 @@ Rails.application.routes.draw do
       get :express_info
     end
     resources :addresses
+    resources :coupons
 
     collection do
       get :login

@@ -1,5 +1,25 @@
 <% content_for :page_header_title do %>
   注册成功
 <% end %>
-<%= image_tag "success_icon.png", :class => "center-block success-icon" %>
-<div class="success-message cen">恭喜注册成功，欢迎加入草垛大家族</div>
+<%= image_tag "success_icon", :class => "center-block success-icon" %>
+<div class="success-message cen">注册成功，欢迎加入草垛!</div>
+<p class="success-box-desc">
+  恭喜您获得<%= Settings.coupon.money %>元优惠券
+</p>=
+<p class="success-box-desc">
+  即刻开始体验!
+</p>
+<script language="javascript" type="text/javascript">
+  setTimeout(redirect_to, 2000)
+  function redirect_to() {
+    <%
+       if session[:return_to].present?
+         link = session[:return_to] % {user_id: session[:login_user_id]}
+         session.delete(:return_to)
+    %>
+    window.location.href =<%=link%>;
+    <% else %>
+    window.location.href = "<%='/' %>";
+    <%end%>
+  }
+</script>

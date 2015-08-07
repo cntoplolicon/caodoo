@@ -25,7 +25,11 @@ class AlipayController < ApplicationController
       if Rails.env.production? then
         options[:return_url] = "#{root_url}/alipay/return"
         options[:notify_url] = "#{root_url}/alipay/notify"
-        options[:total_fee] = "%.2f" % (@order.quantity * @order.unit_price)
+        if @order.coupon.nil?
+          options[:total_fee] = "%.2f" % (@order.quantity * @order.unit_price)
+        else
+          options[:total_fee] = "%.2f" % (@order.quantity * @order.unit_price-@order.coupon.money)
+        end
       else
         options[:return_url] = "#{root_url}/alipay/return"
         options[:total_fee] = "%.2f" % (@order.quantity * 0.01)

@@ -20,3 +20,7 @@ security_code:
 
 express_tracker:
   key: 'a64175d696824c568f654603e8d29870'
+
+coupon:
+  money: 10
+  expired: 30

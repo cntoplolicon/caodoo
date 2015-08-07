@@ -8,10 +8,11 @@ class Order < ActiveRecord::Base
   validates_presence_of :address_id
   validates_presence_of :product_id
   validates_presence_of :user_id
-  validates :remark, length: { maximum: 255 }
+  validates :remark, length: {maximum: 255}
 
   has_one :payment_record, autosave: true, validate: true
   has_many :refund_records
+  has_one :coupon
 
   TO_PAY = 0
   PAID = 1

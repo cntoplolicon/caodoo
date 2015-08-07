@@ -35,6 +35,9 @@
                 <%= link_to "订单管理", user_orders_path(session[:login_user_id]) %>
               </li>
               <li>
+                <%= link_to "我的优惠", user_coupons_path(session[:login_user_id]) %>
+              </li>
+              <li>
                 <%= link_to "收货地址", user_addresses_path(session[:login_user_id]) %>
               </li>
               <li>

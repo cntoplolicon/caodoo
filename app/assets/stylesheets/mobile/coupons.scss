@@ -1,0 +1,56 @@
+// Place all the styles related to the Coupons controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.my-coupons-box{
+  min-height: 350px;
+}
+
+.my-coupons-box ul li{
+  background-color: white;
+  margin: 10px 0;
+  padding: 23px;
+  overflow: hidden;
+}
+
+.one-coupon-left-info{
+  float: left;
+  overflow: hidden;
+}
+
+.one-coupon-money{
+  font-size: 24px;
+  color: black;
+}
+.one-coupon-desc{
+  color: #909090;
+  margin-top: 20px;
+}
+.one-coupon-center-line{
+  width: 150px;
+  height: 1px;
+  background-color: #E5E5E5;
+  margin-top: 20px;
+}
+.one-coupon-right-info{
+  float: right;
+  overflow: hidden;
+  padding-left: 40px;
+  border-left: 1px solid #E5E5E5;
+}
+.one-coupon-time-title{
+  font-size: 14px;
+  color: #389E2E;
+  margin-bottom: 10px;
+}
+.one-coupon-time-desc{
+  color: black;
+  padding: 2px 0;
+}
+.order-coupon-none{
+  text-align: center;
+  margin-top: 100px;
+}
+.order-coupon-none-desc{
+  text-align: center;
+  margin-top: 20px;
+}

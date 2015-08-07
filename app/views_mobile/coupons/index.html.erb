@@ -1,0 +1,50 @@
+<% content_for :mobile_page_title do %>
+  我的优惠券-草垛网
+<% end %>
+<% content_for :page_header do %>
+  <a class="back mobile_go_back_button">
+    <%= image_tag "mobile_back.png" %>
+  </a>
+  <div class="mobile-page-title">
+    我的优惠券
+  </div>
+<% end %>
+<div class="my-coupons-box clearfix">
+
+  <% if @coupons.any? %>
+
+    <ul>
+      <% @coupons.each do |coupon| %>
+        <li>
+          <div class="one-coupon-left-info">
+            <div class="one-coupon-money">
+              ¥<%= coupon.money %>
+            </div>
+            <div class="one-coupon-center-line">
+            </div>
+            <div class="one-coupon-desc">
+              可用范围:全部商品
+            </div>
+          </div>
+          <div class="one-coupon-right-info">
+            <div class="one-coupon-time-title">有效期</div>
+            <div class="one-coupon-time-desc"><%= coupon.begin_date %></div>
+            <div class="one-coupon-time-desc">~</div>
+            <div class="one-coupon-time-desc"><%= coupon.end_date %></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="order-coupon-none">
+      <%= image_tag "mobile_warning.png" %>
+    </div>
+    <div class="order-coupon-none-desc">
+      暂无可用优惠券
+    </div>
+  <% end %>
+
+</div>
+
+
+

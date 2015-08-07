@@ -84,13 +84,31 @@
           <div class="error-message" id="username-error"><%= @order.errors.messages[:address_id].first if @order.errors[:address_id].any? %></div>
         </div>
       </div>
+      <% if @user.coupons.where('coupons.order_id' => nil).where('end_date>now()').any? %>
+        <div class="order-coupon">
+          <div class="order-coupon-tag">使用优惠券</div>
+          <div class="order-coupon-list">
+            <ul>
+              <% @user.coupons.where('coupons.order_id' => nil).each_with_index do |coupon, i| %>
+                <li>
+                  <input type="radio" name="coupon_id" value="<%= coupon.id %>" class="order-coupon-radio">
+                  <span>金额:</span>
+                  <span class="order-coupon-price"><%= coupon.money %></span>
+                  <span>有效期至:</span> <span><%= coupon.end_date %></span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
       <div class="order-information">
         <%= hidden_field_tag('unit-price-field', @product.actual_price) %>
         <div class="order-information-top">
           <div class="order-information-text">产品金额：￥<span class="total-price-display"></span></div>
-          <div class="order-information-text">运费：0</div>
+          <div class="order-information-text">产品优惠：-￥<span class="total-coupon-price-display">0.00</span></div>
+          <div class="order-information-text">运费：0.00</div>
         </div>
-        <div class="order-information-bottom">总计金额：￥<span class="total-price-display"></span></div>
+        <div class="order-information-bottom">总计金额：￥<span class="total-finally-price-display"></span></div>
       </div>
       <%= f.submit '提交订单', :disable_with => '正在提交订单ing', class: 'order-submission' %>
       <div class="error-message" id="order-random-id-error">

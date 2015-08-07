@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :addresses
   has_many :orders
+  has_many :coupons
 
   def should_validate_password?
     updating_password || new_record?

@@ -6,7 +6,6 @@ class OrdersController < ApplicationController
   def new
     @order = @user.orders.build
     load_order_addresses
-
     quantity = params[:quantity].to_i
     quantity = [quantity, 1].max
     quantity = [quantity, Settings.sale.max_quantity].min
@@ -41,7 +40,6 @@ class OrdersController < ApplicationController
       @order.errors.add(:order_random_id, '请勿重复提交订单')
       render 'new' and return
     end
-
     @onsale = @product.product_sale_schedules.any? do |s|
       s.sale_start < Time.zone.now && s.sale_end > Time.zone.now
     end
@@ -93,7 +91,18 @@ class OrdersController < ApplicationController
         end
       end
       if @order.save
-        redirect_to user_order_payment_url(@user, @order) and return
+        coupon_id=params['coupon_id']
+        unless coupon_id.nil?
+          @coupon=Coupon.find(coupon_id)
+          @coupon.order_id=@order.id
+          if @coupon.save
+            redirect_to user_order_payment_url(@user, @order) and return
+          else
+            raise ActiveRecord::Rollback
+          end
+        else
+          redirect_to user_order_payment_url(@user, @order) and return
+        end
       else
         raise ActiveRecord::Rollback
       end
@@ -110,6 +119,11 @@ class OrdersController < ApplicationController
           @order.status = Order::CANCELLED
           @order.payment_record.status = PaymentRecord::CANCELLED
           @order.save
+          unless @order.coupon.nil?
+            coupon=Coupon.find(@order.coupon.id)
+            coupon.order_id=nil
+            coupon.save
+          end
           Product.where(id: @order.product_id).update_all(['quantity = quantity + ?', @order.quantity])
         elsif @order.status == Order::PAID
           @order.status = Order::CANCELLING
