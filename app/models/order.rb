@@ -33,4 +33,8 @@ class Order < ActiveRecord::Base
       product_name
     end
   end
+
+  def amount_to_pay
+    coupon.nil? ? total_price : (total_price - coupon.money)
+  end
 end
