@@ -4,7 +4,6 @@
 <% content_for :body_style do %>
   background-color: #000 !important;
 <% end %>
-
 <% content_for :page_header do %>
   <a href="/" class="logo">
     <%= image_tag "mobile_logo.png" %>
@@ -13,9 +12,23 @@
 <!--container-->
 <div class="container">
   <div class="banner">
-    <%= link_to contest_products_path do %>
-      <%= image_tag "mobile_banner.jpg", :class => "center-block mobile_index_banner" %>
-    <% end %>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <%= link_to contest_products_path do %>
+            <%= image_tag "mobile_banner.jpg", :class => "center-block mobile_index_banner" %>
+          <% end %>
+        </div>
+        <% @homepage_banners.each do |homepage_banner|%>
+        <div class="swiper-slide">
+          <%= link_to homepage_banner.link_url do %>
+            <%= image_tag(asset_url(homepage_banner.mobile_image_url), class: "center-block mobile_index_banner") %>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
   </div>
   <!--now-->
   <div class="product_now">
