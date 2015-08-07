@@ -125,6 +125,8 @@ Rails.application.routes.draw do
       resource :product_homepage_images
       resources :product_sale_schedules
     end
+
+    resources :product_groups
     resources :brands
     resources :contest_teams do
       member do

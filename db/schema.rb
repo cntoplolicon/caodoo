@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806103323) do
+ActiveRecord::Schema.define(version: 20150807015953) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -80,8 +80,10 @@ ActiveRecord::Schema.define(version: 20150806103323) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "order_id",   limit: 4
   end
 
+  add_index "coupons", ["order_id"], name: "index_coupons_on_order_id", using: :btree
   add_index "coupons", ["user_id"], name: "index_coupons_on_user_id", using: :btree
 
   create_table "expresses", force: :cascade do |t|
@@ -90,6 +92,14 @@ ActiveRecord::Schema.define(version: 20150806103323) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "deleted",    limit: 1,   default: false, null: false
+  end
+
+  create_table "homepage_banners", force: :cascade do |t|
+    t.text    "pc_image_url",     limit: 65535
+    t.text    "mobile_image_url", limit: 65535
+    t.text    "link_url",         limit: 65535
+    t.string  "description",      limit: 255
+    t.integer "priority",         limit: 4
   end
 
   create_table "orders", force: :cascade do |t|
@@ -166,8 +176,9 @@ ActiveRecord::Schema.define(version: 20150806103323) do
 
   create_table "product_groups", force: :cascade do |t|
     t.integer  "primary_product_id", limit: 4
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "name",               limit: 255
   end
 
   add_index "product_groups", ["primary_product_id"], name: "index_product_groups_on_primary_product_id", using: :btree
@@ -250,6 +261,7 @@ ActiveRecord::Schema.define(version: 20150806103323) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "coupons", "orders"
   add_foreign_key "coupons", "users"
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "contest_teams"

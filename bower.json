@@ -27,6 +27,7 @@
     "jquery.debouncedresize": "~1.0.1",
     "selectlist": "shenmiweiyi/selectlist",
     "jquery.lazyload": "~1.9.5",
-    "bootstrap-fileinput": "~4.2.5"
+    "bootstrap-fileinput": "~4.2.5",
+    "select2": "~4.0.0"
   }
 }

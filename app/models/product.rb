@@ -21,4 +21,12 @@ class Product < ActiveRecord::Base
   def actual_price
     self.reduced_price || self.price
   end
+
+  def name_with_product_version
+    if product_version.present?
+      "#{name} (#{product_version})"
+    else
+      name
+    end
+  end
 end

@@ -1,6 +1,9 @@
 <div class="container">
   <table id="products-table" class="table table-hover" data-source="<%= admin_products_path(format: :json) %>">
-    <%= link_to "添加新商品", new_admin_product_path, class: 'btn btn-primary new-action' %>
+    <div style="margin-bottom: 16px">
+      <%= link_to "商品组合管理", admin_product_groups_path, class: 'btn btn-primary' %>
+      <%= link_to "添加新商品", new_admin_product_path, class: 'btn btn-primary' %>
+    </div>
     <thead>
       <tr>
         <th>名称</th>
