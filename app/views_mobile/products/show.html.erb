@@ -101,6 +101,15 @@
           </a>
         </div>
       </div>
+      <% if @related_products.present? %>
+        <div class="choose-product-version">
+          请选择型号:
+          <% @related_products.each do |related_product| %>
+            <%= link_to related_product.product_version, product_path(related_product),
+              class: related_product.id == @product.id ? 'selected-version' : nil %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="product-detail-gurantee">
       <div class="product-detail-gurantee-image">

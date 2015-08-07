@@ -50,11 +50,6 @@
                   </div>
                   <div class="error-message"><%= @order.errors.messages[:quantity].first if @order.errors[:quantity].any? %></div>
                 </div>
-
-                <div class="product-display-remark"><span class="product-display-remark-span">补充说明：</span>
-                  <%= f.text_area :remark, class: "product-display-remark-ipnut", placeholder: "请输入您的颜色型号要求(可选)" %>
-                  <div class="error-message" id="order-remark-error"><%= @order.errors.messages[:remark].first if @order.errors[:remark].any? %></div>
-                </div>
               </div>
             </div>
           </div>
