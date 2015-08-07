@@ -17,6 +17,9 @@
     <% if @contest_team %>
       <div class="game-background">大学生营销策划赛活动产品</div>
     <% else %>
+      <div class="mobile-product-top-coupon">
+        <%= image_tag "mobile-product-coupon.jpg", class: "mobile-product-top-coupon-image" %>
+      </div>
       <div class="on-sale-time-left"><%= hidden_field_tag('remain-time-hidden-field', [(@product.product_sale_schedules[0].sale_end - Time.zone.now).to_i, 0].max) %>
         距离抢购结束还有 <span class="show-remain-time"></span></div>
     <% end %>
