@@ -1,0 +1,13 @@
+<div class="container">
+  <%= link_to "添加产品组合", new_admin_product_group_path, class: 'btn btn-primary new-action' %>
+  <table id="product-groups-table" class="table table-hover" data-source="<%= admin_product_groups_path(format: :json) %>">
+    <thead>
+      <tr>
+        <th>名称</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>

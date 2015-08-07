@@ -31,6 +31,12 @@
                   <div class="product-display-price-tag">产品单价：</div>
                   <div class="product-display-price-number">￥<%= "#{'%.2f' % @product.actual_price}" %></div>
                 </div>
+                <% if @product.product_version.present? %>
+                  <div class="product-display-product-version">
+                    <div class="product-display-product-version-tag">产品型号：</div>
+                    <div class="product-display-product-version-content"><%= @product.product_version %></div>
+                  </div>
+                <% end %>
                 <div class="product-display-quantity clearfix">
                   <%= hidden_field_tag('quantity-limit-field', Settings.sale.max_quantity) %>
                   <%= hidden_field_tag('order_random_id', @order_random_id) %>
@@ -49,11 +55,6 @@
                     </a>
                   </div>
                   <div class="error-message"><%= @order.errors.messages[:quantity].first if @order.errors[:quantity].any? %></div>
-                </div>
-
-                <div class="product-display-remark"><span class="product-display-remark-span">补充说明：</span>
-                  <%= f.text_area :remark, class: "product-display-remark-ipnut", placeholder: "请输入您的颜色型号要求(可选)" %>
-                  <div class="error-message" id="order-remark-error"><%= @order.errors.messages[:remark].first if @order.errors[:remark].any? %></div>
                 </div>
               </div>
             </div>

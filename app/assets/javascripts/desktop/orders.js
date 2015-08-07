@@ -115,10 +115,4 @@ $(document).ready(function() {
     detailPanel.show();
     detailPanel.load($(this).prop('href'));
   });
-  $("#new_order").submit(function() {
-    if ($("#order_remark").val().length > 255) {
-      $("#order-remark-error").text("补充说明太长啦,请简述!");
-      return false;
-    }
-  })
 });

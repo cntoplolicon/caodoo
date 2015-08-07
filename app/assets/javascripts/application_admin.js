@@ -17,6 +17,7 @@
 //= require datatables
 //= require datatables-bootstrap3-plugin/media/js/datatables-bootstrap3
 //= require yadcf
+//= require select2
 //= require moment
 //= require moment/locale/zh-cn
 //= require eonasdan-bootstrap-datetimepicker

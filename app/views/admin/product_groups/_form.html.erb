@@ -1,0 +1,27 @@
+<% if @product_group.errors.any? %>
+  <div class="container form-container">
+    <ul>
+      <% @product_group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for [:admin, @product_group] do |f| %>
+  <div class="container form-container product-group-form">
+    <div class="form-group">
+      <%= f.label :name, '名称' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :primary_product_id, '包含产品' %>
+      <%= select_tag :product_ids, options_from_collection_for_select(Product.all, :id, :name_with_product_version, @product_group.product_ids), multiple: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :primary_product_id, '首要产品' %>
+      <%= f.collection_select :primary_product_id, Product.all, :id, :name_with_product_version, {include_blank: true}, class: 'form-control' %>
+    </div>
+    <%= link_to "返回", admin_product_groups_path, class: 'btn btn-default' %>
+    <%= f.submit '提交', :disable_with => '提交ing...', class: 'btn btn-primary' %>
+  </div>
+<% end %>

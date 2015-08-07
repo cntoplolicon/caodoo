@@ -100,8 +100,23 @@
   float: left;
 }
 
+.product-display-product-version {
+  display: inline-block;
+  width: 100%;
+  padding: 4px 0;
+}
+
+.product-display-product-version-tag {
+  color: #6b6b6b;
+  float: left;
+}
+
+.product-display-product-version-content {
+  color: #3f3f3f;
+  float: left;
+}
+
 .product-display-quantity {
-  display: block;
   padding: 4px 0;
 }
 

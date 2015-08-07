@@ -31,6 +31,12 @@
           </div>
           <div class="product-information-text">
             <div class="product-information-name"><%= @product.name %></div>
+            <% if @product.product_version %>
+            <div class="product-information-product-version">
+              <div class="product-information-product-version-tag">产品型号：</div>
+              <div class="product-information-product-version-content"><%= @product.product_version %></div>
+            </div>
+            <% end %>
             <div class="product-information-price">
               <div class="product-information-price-tag">产品单价：</div>
               <div class="product-information-price-data">￥<%= "#{'%.2f' % @product.actual_price}" %></div>
@@ -54,10 +60,6 @@
               <span>-</span>
             </a>
           </div>
-        </div>
-        <div class="product-display-remark"><span class="product-display-remark-span">补充说明：</span>
-          <%= f.text_area :remark, class: "product-display-remark-ipnut", placeholder: "请输入您的颜色型号要求(可选)" %>
-          <div class="error-message" id="order-remark-error"><%= @order.errors.messages[:remark].first if @order.errors[:remark].any? %></div>
         </div>
       </div>
       <div class="order-address">
