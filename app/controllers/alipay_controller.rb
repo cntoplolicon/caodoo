@@ -85,10 +85,11 @@ class AlipayController < ApplicationController
       ContestTeam.where(id: @order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', @order.quantity]) if @order.contest_team_id.present?
       if params[:total_fee].present?
         @order.payment_record.amount = params[:total_fee].to_f
-      elsif params[:price].present? && params[:quantity].present?
-        @order.payment_record.amount = params[:quantity].to_i * params[:price].to_f
       else
         @order.payment_record.amount = @order.total_price
+        unless @order.coupon.nil?
+          @order.payment_record.amount -= @order.coupon.money
+        end
       end
       @order.payment_record.payment_time = Time.zone.now
     end
