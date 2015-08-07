@@ -115,10 +115,9 @@ class OrdersController < ApplicationController
           @order.payment_record.status = PaymentRecord::CANCELLED
           @order.save
           unless @order.coupon.nil?
-            @coupon = Coupon.new(money: @order.coupon.money, begin_date: @order.coupon.begin_date,
+            @coupon = Coupon.create(money: @order.coupon.money, begin_date: @order.coupon.begin_date,
                                  end_date: @order.coupon.end_date, state: 0, user_id: @user.id)
           end
-          render 'new' and return unless @coupon.save
           Product.where(id: @order.product_id).update_all(['quantity = quantity + ?', @order.quantity])
         elsif @order.status == Order::PAID
           @order.status = Order::CANCELLING
