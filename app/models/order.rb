@@ -24,4 +24,12 @@ class Order < ActiveRecord::Base
   def payment_expired?
     status == TO_PAY && created_at + Settings.payment.expired.to_i.minutes <= Time.zone.now
   end
+
+  def product_name_with_version
+    if product_version?
+      "#{product_name} #{product_version}"
+    else
+      product_name
+    end
+  end
 end

@@ -45,7 +45,7 @@
                 <%= image_tag order.product_image_url, class:'order_product_img'%>
                 <div class="order_product_name_price">
                   <div class="order_product_name">
-                    <%= order.product_name %>
+                    <%= order.product_name_with_version %>
                   </div>
                   <div class="order_product_price">
                     ¥<%= order.unit_price %>（单价）

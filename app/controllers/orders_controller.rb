@@ -51,6 +51,7 @@ class OrdersController < ApplicationController
     head :forbidden and return if @order.user_id != @user.id
     @order.order_number = "#{'%07d' % @order.user_id}#{(Time.zone.now.to_f * 1000).to_i}"
     @order.product_name = @product.name
+    @order.product_version = @product.product_version
     @order.product_image_url = @product.product_view.product_carousel_images[0].url
     @order.unit_price = @product.actual_price
     @order.total_price = @order.quantity * @order.unit_price

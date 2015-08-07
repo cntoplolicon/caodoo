@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807015953) do
+ActiveRecord::Schema.define(version: 20150807070542) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20150807015953) do
     t.string   "tracking_number",   limit: 255
     t.boolean  "delivery_exported", limit: 1,                              default: false, null: false
     t.string   "remark",            limit: 255
+    t.string   "product_version",   limit: 255
   end
 
   add_index "orders", ["address_id"], name: "index_orders_on_address_id", using: :btree

@@ -58,7 +58,7 @@
       <div class="order_product_info">
         <ul>
           <li class="order_product_name">
-            <%= @order.product_name %>
+            <%= @order.product_name_with_version %>
           </li>
           <li class="order_product_name">
             <% if @order.contest_team.present? %>
