@@ -5,6 +5,8 @@ class ContestProductsController < ApplicationController
     identify_contest_team
     record_team_id_and_page_view
     product_table = Product.arel_table
+    schedule_table = ProductSaleSchedule.arel_table
+    now = Time.zone.now
     @products = Product
       .joins(:product_sale_schedules, product_view: [:product_detail_images, :product_carousel_images])
       .includes(:product_sale_schedules, product_view: [:product_detail_images, :product_carousel_images])
