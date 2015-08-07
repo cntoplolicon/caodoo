@@ -17,7 +17,7 @@
       <%= hidden_field_tag('wechat-qrcode-field', @code_url) %>
       </div>
     </div>
-    <div class="total-cost">￥ <%= @order.total_price %> </div>
+    <div class="total-cost">￥ <%= @order.amount_to_pay %> </div>
     <div class="order-content">购买产品： <%= @order.product_name %></div>
   </div>
 </div>
