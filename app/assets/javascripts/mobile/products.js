@@ -68,7 +68,9 @@
         var quantity = parseInt($('.quantity-number').val());
         var unit_price = parseFloat($('#unit-price-field').val());
         $('.quantity-display').text(quantity);
+        var coupon_price = parseFloat($('.total-coupon-price-display').text());
         $('.total-price-display').text((quantity * unit_price).toFixed(2));
+        $('.total-finally-price-display').text((quantity * unit_price).toFixed(2) - coupon_price);
       }
     }
     update_quantity_and_price();
@@ -88,6 +90,11 @@
       quantity = Math.max(quantity, 1);
       quantity = Math.min(quantity, $('#quantity-limit-field').val());
       $('.quantity-number').val(quantity);
+      update_quantity_and_price();
+    });
+    $('.order-coupon-radio').click(function() {
+      var price = parseFloat($(this).parent().find(".order-coupon-price").text());
+      $('.total-coupon-price-display').text(price);
       update_quantity_and_price();
     });
 

@@ -59,10 +59,12 @@ class UsersController < ApplicationController
     unless @user.save
       render 'new'
     else
+      @coupon = Coupon.new(money: Settings.coupon.money, begin_date: Date.current, end_date: Date.current +
+                           Settings.coupon.expired, state: 0, user_id: @user.id)
+      render 'new' and return unless @coupon.save
       clear_verify_information
       session[:login_user_id] = @user.id
       session[:login_username] = @user.username
-      back_to_before_login_or_index
     end
   end
 

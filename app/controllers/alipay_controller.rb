@@ -25,7 +25,11 @@ class AlipayController < ApplicationController
       if Rails.env.production? then
         options[:return_url] = "#{root_url}/alipay/return"
         options[:notify_url] = "#{root_url}/alipay/notify"
-        options[:total_fee] = "%.2f" % (@order.quantity * @order.unit_price)
+        if @order.coupon.nil?
+          options[:total_fee] = "%.2f" % (@order.quantity * @order.unit_price)
+        else
+          options[:total_fee] = "%.2f" % (@order.quantity * @order.unit_price-@order.coupon.money)
+        end
       else
         options[:return_url] = "#{root_url}/alipay/return"
         options[:total_fee] = "%.2f" % (@order.quantity * 0.01)
@@ -81,10 +85,11 @@ class AlipayController < ApplicationController
       ContestTeam.where(id: @order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', @order.quantity]) if @order.contest_team_id.present?
       if params[:total_fee].present?
         @order.payment_record.amount = params[:total_fee].to_f
-      elsif params[:price].present? && params[:quantity].present?
-        @order.payment_record.amount = params[:quantity].to_i * params[:price].to_f
       else
         @order.payment_record.amount = @order.total_price
+        unless @order.coupon.nil?
+          @order.payment_record.amount -= @order.coupon.money
+        end
       end
       @order.payment_record.payment_time = Time.zone.now
     end

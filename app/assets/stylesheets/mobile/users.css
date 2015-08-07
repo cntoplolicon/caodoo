@@ -179,13 +179,15 @@
 
 .user-op-form .success-icon {
   padding-top: 124px;
+  width: 56px;
 }
 
 .user-op-form .success-message {
   padding-top: 53px;
   text-align: center;
   color: #3BAF47;
-  font-size: 16px
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
 .user-op-form .terms-of-service-title {
@@ -328,6 +330,13 @@
 .recember-password-box {
   float: left;
 }
-.security-code-box{
+
+.security-code-box {
   overflow: auto;
+}
+
+.success-box-desc {
+  text-align: center;
+  width: 180px;
+  margin: 0 auto;
 }

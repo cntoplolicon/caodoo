@@ -79,7 +79,7 @@ class WxPayController < ApplicationController
   end
 
   private
-  
+
   def unify_order_params(order, trade_type)
     payment_expire_at = order.created_at + Settings.payment.expired.to_i.minutes
     payment_created_at = Time.zone.now
@@ -100,7 +100,11 @@ class WxPayController < ApplicationController
     if Rails.env.development? then
       options[:total_fee] = order.quantity
     else
-      options[:total_fee] = (order.total_price * 100).round
+      if order.coupon.nil?
+        options[:total_fee] = (order.total_price * 100).round
+      else
+        options[:total_fee] = (order.total_price - order.coupon.money) * 100.round
+      end
     end
     options
   end
