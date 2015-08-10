@@ -117,7 +117,7 @@ class OrdersController < ApplicationController
             @coupon = Coupon.create(money: @order.coupon.money, begin_date: @order.coupon.begin_date,
                                  end_date: @order.coupon.end_date, state: 0, user_id: @user.id)
           end
-          Product.where(id: @order.product_id).update_all(['quantity = quantity + ?, updated_at = ?', @order.quantity, Time.znoe.now])
+          Product.where(id: @order.product_id).update_all(['quantity = quantity + ?, updated_at = ?', @order.quantity, Time.zone.now])
         elsif @order.status == Order::PAID
           @order.status = Order::CANCELLING
           @order.save
