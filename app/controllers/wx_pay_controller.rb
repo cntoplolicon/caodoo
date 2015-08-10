@@ -68,7 +68,7 @@ class WxPayController < ApplicationController
           order.payment_record.status = PaymentRecord::PAID
           order.payment_record.amount = r[:total_fee].to_f / 100
           order.payment_record.payment_time = Time.zone.now
-          ContestTeam.where(id: order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?', order.quantity]) if order.contest_team_id.present?
+          ContestTeam.where(id: order.contest_team_id).update_all(['sales_quantity = sales_quantity + ?, updated_at = ?', order.quantity, Time.zone.now]) if order.contest_team_id.present?
           head :unprocessable_entity and return unless order.save
         end
       end

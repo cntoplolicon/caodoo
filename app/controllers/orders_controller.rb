@@ -81,7 +81,7 @@ class OrdersController < ApplicationController
 
     Order.transaction do
       updated_record = Product.where(id: @order.product_id).where('quantity >= ?', @order.quantity).
-        update_all(['quantity = quantity - ?', @order.quantity])
+        update_all(['quantity = quantity - ?, updated_at = ?', @order.quantity, Time.zone.now])
       if updated_record == 0
         if @product.quantity <= 0
           render 'standalone/sold_out' and return if @product.quantity <= 0
@@ -117,7 +117,7 @@ class OrdersController < ApplicationController
             @coupon = Coupon.create(money: @order.coupon.money, begin_date: @order.coupon.begin_date,
                                  end_date: @order.coupon.end_date, state: 0, user_id: @user.id)
           end
-          Product.where(id: @order.product_id).update_all(['quantity = quantity + ?', @order.quantity])
+          Product.where(id: @order.product_id).update_all(['quantity = quantity + ?, updated_at = ?', @order.quantity, Time.znoe.now])
         elsif @order.status == Order::PAID
           @order.status = Order::CANCELLING
           @order.save
@@ -232,7 +232,7 @@ class OrdersController < ApplicationController
         @order.status = Order::TIMEOUT
         @order.payment_record.status = PaymentRecord::TIMEOUT
         @order.save
-        Product.where(id: @order.product_id).update_all(["quantity = quantity + ?", @order.quantity])
+        Product.where(id: @order.product_id).update_all(["quantity = quantity + ?, updated_at = ?", @order.quantity, Time.zone.now])
       end
     end
   end

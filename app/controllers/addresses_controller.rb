@@ -16,7 +16,7 @@ class AddressesController < ApplicationController
     @address = @user.addresses.build(address_params)
     Address.transaction do
       if @address.save
-        @user.addresses.where.not(id: @address.id).update_all(default: false) if @address.default
+        @user.addresses.where.not(id: @address.id).update_all(default: false, updated_at: Time.zone.now) if @address.default
         render status: :ok, json: {address_id: @address.id}
       else
         load_regions_for_address
@@ -36,7 +36,7 @@ class AddressesController < ApplicationController
       @address = @user.addresses.find(params[:id])
       @address.attributes = address_params
       if @address.save
-        @user.addresses.where.not(id: @address.id).update_all(default: false) if @address.default
+        @user.addresses.where.not(id: @address.id).update_all(default: false, updated_at: Time.zone.now) if @address.default
         redirect_to action: :index
       else
         load_regions_for_address

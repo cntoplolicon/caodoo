@@ -32,7 +32,8 @@ class Admin::ProductsController < Admin::AdminController
     Product.transaction do
       @product = Product.find(params[:id])
       if @product.update(product_params)
-        Product.where(id: params[:id]).update_all(['quantity = quantity + ?', params[:product][:quantity_delta]])
+        Product.where(id: params[:id]).update_all(['quantity = quantity + ?, updated_at = ?',
+                                                   params[:product][:quantity_delta], Time.zone.now])
         redirect_to action: :index
       else
         render 'edit'
