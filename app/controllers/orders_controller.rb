@@ -238,7 +238,7 @@ class OrdersController < ApplicationController
   end
 
   def load_order_addresses
-    @addresses = @user.addresses.where(deleted: false).order(updated_at: :desc)
+    @addresses = @user.addresses.where(deleted: false).order(created_at: :desc)
     default_address = @addresses.find(&:default)
     if params[:address]
       @order.address_id = params[:address].to_i
