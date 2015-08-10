@@ -19,6 +19,14 @@
       }
     });
 
+    var setupCountDown = function() {
+      var now = new Date();
+      $('.product-sale-remain-time').each(function() {
+        var sale_end = new Date(parseInt($(this).data('time')));
+        var time = Math.max(0, Math.round((sale_end - now) / 1000.0));
+        $(this).data('time', time);
+      });
+    }
     var countDown = function() {
       $('.product-sale-remain-time').each(function() {
         var time = $(this).data('time');
@@ -28,8 +36,8 @@
         $(this).text(remainTimeString);
       });
     };
-
     if ($('.product-sale-remain-time').length > 0) {
+      setupCountDown();
       countDown();
       window.setInterval(countDown, 1000);
     };

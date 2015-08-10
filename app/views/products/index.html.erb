@@ -36,8 +36,9 @@
               <% end %>
             </div>
           </div>
-          <div class="product-sale-remain-time" data-time="<%= [(product.product_sale_schedules[0].sale_end - Time.zone.now).to_i, 0].max %>">
-          </div>
+          <%= content_tag :div, class: 'product-sale-remain-time',
+            data: {time: (product.product_sale_schedules[0].sale_end.to_f * 1000).to_i } do %>
+          <% end %>
         <% end %>
       </div>
     <% end %>
