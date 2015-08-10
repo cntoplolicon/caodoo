@@ -4,6 +4,15 @@ GIT
   specs:
     alipay (0.8.0)
 
+GIT
+  remote: git://github.com/redis-store/redis-rails.git
+  revision: e357b8e83bc40f15a0d6aa1ee4ecd7a21a906cfb
+  specs:
+    redis-rails (4.0.0)
+      redis-actionpack (~> 4)
+      redis-activesupport (~> 4)
+      redis-store (~> 1.1.0)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -151,15 +160,11 @@ GEM
       actionpack (~> 4)
       redis-rack (~> 1.5.0)
       redis-store (~> 1.1.0)
-    redis-activesupport (4.1.0)
+    redis-activesupport (4.1.1)
       activesupport (~> 4)
       redis-store (~> 1.1.0)
     redis-rack (1.5.0)
       rack (~> 1.5)
-      redis-store (~> 1.1.0)
-    redis-rails (4.0.0)
-      redis-actionpack (~> 4)
-      redis-activesupport (~> 4)
       redis-store (~> 1.1.0)
     redis-store (1.1.6)
       redis (>= 2.2)
@@ -244,7 +249,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   rails_config
   redis
-  redis-rails
+  redis-rails!
   rmagick
   rubocop
   sass-rails
