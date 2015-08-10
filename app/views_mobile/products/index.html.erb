@@ -25,7 +25,8 @@
     <% @on_sale_products.each do |product| %>
       <%= link_to product_path(product) do %>
         <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
-          <%= tag :img, data: {original: asset_url(product.product_view.sale_image_url)}, class: 'lazy' %>
+          <%= tag :img, data: {original: asset_url(product.product_view.sale_image_url)},
+            src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', class: 'lazy' %>
           <div class="product-information">
             <div class="product-name">
               <%= product.name %>
