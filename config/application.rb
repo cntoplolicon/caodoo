@@ -26,7 +26,7 @@ module Caodoo
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
 
     redis_config = YAML.load(File.open(Rails.root.join("config/redis.yml"))).deep_symbolize_keys[Rails.env.to_sym]
-    redis_config = {host: '127.0.0.1',  port: 6379, db: 0}.merge(redis_config)
+    redis_config = {host: '127.0.0.1',  port: 6379, db: 0, expires_in: 120.minutes}.merge(redis_config)
     config.cache_store = :redis_store, redis_config
     
     cdn_config = YAML.load(File.open(Rails.root.join("config/cdn.yml"))).deep_symbolize_keys

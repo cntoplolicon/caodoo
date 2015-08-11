@@ -16,48 +16,50 @@
     <% end %>
   </div>
   <%= image_tag("s.png", class: "onsale center-block on-sale-notification") %>
-  <div class="on-sale-products">
-    <% @on_sale_products.each do |product| %>
-      <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
-        <%= link_to product_path(product) do %>
-          <%= tag :img, data: {original: asset_url(product.product_view.sale_image_url)},
-            src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', class: 'lazy' %>
-          <div class="product-information">
-            <div class="product-name">
-              <%= product.name %>
+  <%= cache(cache_key_for_on_sale_products) do %>
+    <div class="on-sale-products">
+      <% @on_sale_products.each do |product| %>
+        <div class="on-sale-product on-sale-product<%= product.product_view.sale_image_type %>">
+          <%= link_to product_path(product) do %>
+            <%= tag :img, data: {original: asset_url(product.product_view.sale_image_url)},
+              src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=', class: 'lazy' %>
+            <div class="product-information">
+              <div class="product-name">
+                <%= product.name %>
+              </div>
+              <div class="product-description">
+                <%= product.product_view.home_page_description %>
+              </div>
+              <div class="product-price">
+                <div class="product-current-price">&#165;<%= product.price %></div>
+                <%= content_tag :div, class: 'product-original-price', data: {original_price_link: product.original_price_link || ''} do  %>
+                  <span>京东价格&#165;</span><span><%= product.original_price %></span>
+                <% end %>
+              </div>
             </div>
-            <div class="product-description">
-              <%= product.product_view.home_page_description %>
-            </div>
-            <div class="product-price">
-              <div class="product-current-price">&#165;<%= product.price %></div>
-              <%= content_tag :div, class: 'product-original-price', data: {original_price_link: product.original_price_link || ''} do  %>
-                <span>京东价格&#165;</span><span><%= product.original_price %></span>
-              <% end %>
-            </div>
-          </div>
-          <%= content_tag :div, class: 'product-sale-remain-time',
-            data: {time: (product.product_sale_schedules[0].sale_end.to_f * 1000).to_i } do %>
+            <%= content_tag :div, class: 'product-sale-remain-time',
+              data: {time: (product.product_sale_schedules[0].sale_end.to_f * 1000).to_i } do %>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <% if @upcoming_products.any? %>
-    <%= image_tag("s.png", class: "upcoming center-block upcoming-notification") %>
-  <% end %>
-</div>
-<div class="container">
-  <div class="upcoming-products">
-    <% @upcoming_products.each do |product| %>
-      <div class="upcoming-product">
-        <%= image_tag(asset_url(product.brand.logo_url), class: "brand-image") %>
-        <%= image_tag(asset_url(product.product_view.trailer_image_url), class: "trailer-image") %>
-        <div class="trailer-content">
-          <div class="trailer-time"><%= show_day_of_week(product.product_sale_schedules[0].sale_start.localtime.wday) %></div>
-          <div class="trailer-description"> <%= product.product_view.trailer_description %> </div>
         </div>
-      </div>
+      <% end %>
+    </div>
+  <% end %>
+  <%= cache(cache_key_for_upcoming_products) do %>
+    <% if @upcoming_products.any? %>
+      <%= image_tag("s.png", class: "upcoming center-block upcoming-notification") %>
     <% end %>
-  </div>
+    <div class="upcoming-products">
+      <% @upcoming_products.each do |product| %>
+        <div class="upcoming-product">
+          <%= image_tag(asset_url(product.brand.logo_url), class: "brand-image") %>
+          <%= image_tag(asset_url(product.product_view.trailer_image_url), class: "trailer-image") %>
+          <div class="trailer-content">
+            <div class="trailer-time"><%= show_day_of_week(product.product_sale_schedules[0].sale_start.localtime.wday) %></div>
+            <div class="trailer-description"> <%= product.product_view.trailer_description %> </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
