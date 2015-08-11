@@ -115,7 +115,7 @@ class OrdersController < ApplicationController
           @order.save
           unless @order.coupon.nil?
             @coupon = Coupon.create(money: @order.coupon.money, begin_date: @order.coupon.begin_date,
-                                 end_date: @order.coupon.end_date, state: 0, user_id: @user.id)
+                                 end_date: @order.coupon.end_date, state: 0, user_id: @order.user_id)
           end
           Product.where(id: @order.product_id).update_all(['quantity = quantity + ?, updated_at = ?', @order.quantity, Time.zone.now])
         elsif @order.status == Order::PAID
@@ -232,6 +232,10 @@ class OrdersController < ApplicationController
         @order.status = Order::TIMEOUT
         @order.payment_record.status = PaymentRecord::TIMEOUT
         @order.save
+        unless @order.coupon.nil?
+          @coupon = Coupon.create(money: @order.coupon.money, begin_date: @order.coupon.begin_date,
+                                  end_date: @order.coupon.end_date, state: 0, user_id: @order.user_id)
+        end
         Product.where(id: @order.product_id).update_all(["quantity = quantity + ?, updated_at = ?", @order.quantity, Time.zone.now])
       end
     end
