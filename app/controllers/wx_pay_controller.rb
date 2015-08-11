@@ -14,7 +14,7 @@ class WxPayController < ApplicationController
       else
         options = unify_order_params(@order, 'NATIVE')
         r = WxPay::Service.invoke_unifiedorder(options)
-        raise r unless r.success?
+        raise r.to_s unless r.success?
         @order.payment_record.wx_code_url = r['code_url']
         @order.save(validate: false)
         @code_url = r['code_url']
