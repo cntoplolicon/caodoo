@@ -1,10 +1,6 @@
 module ProductsHelper
   def products_signature
-    keys = [Product.count, Product.maximum(:updated_at).try(:utc).try(:iso8601),
-            Brand.count, Brand.maximum(:updated_at).try(:utc).try(:iso8601),
-            ProductGroup.count, ProductGroup.maximum(:updated_at).try(:utc)..try(:iso8601),
-            Time.now.utc.change(sec: 0).iso8601]
-    Digest::MD5.hexdigest(keys.join)
+    Time.now.utc.change(sec: 0).iso8601
   end
 
   def cache_key_for_on_sale_products
