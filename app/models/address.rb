@@ -20,7 +20,7 @@ class Address < ActiveRecord::Base
   end
 
   def city_has_districts
-    city_code.present? && Region.exists?(parent: province_code)
+    city_code.present? && Region.exists?(parent: city_code)
   end
 
   def to_text
